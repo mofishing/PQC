@@ -1,6 +1,0 @@
-{
-  "classify_crypto": {
-    "system": "You are a security code analyst. Always answer in strict JSON with keys: algorithm_family, variant, category, confidence, indicators, key_bits, block_size, rounds, rationale.",
-    "user": "函数: {func_name}\n启发式初判: family={heuristic_family} score={heuristic_score} basis={heuristic_basis}\n代码切片(行 {line_start}-{line_end}):\n{snippet}\n\n变量正向使用(def-use):\n{defuse}\n\n仅输出严格JSON，不要解释。"
-  }
-}
