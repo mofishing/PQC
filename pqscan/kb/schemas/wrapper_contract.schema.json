@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://pqscan.github.io/schemas/wrapper_contract.schema.json",
+  "title": "Wrapper Contract Schema",
+  "description": "封装函数契约定义，与 apis 规则同构但携带 derived_meta",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string"
+    },
+    "wrappers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/WrapperContract"
+      }
+    }
+  },
+  "required": ["wrappers"],
+  "definitions": {
+    "WrapperContract": {
+      "type": "object",
+      "description": "单个封装函数契约，复用 apis 规则结构 + derived_meta",
+      "properties": {
+        "api_id": {
+          "type": "string",
+          "pattern": "^(wrap|drv)\\.",
+          "description": "封装规则 ID，前缀 wrap. (手工) 或 drv. (自动派生)"
+        },
+        "language": {
+          "type": "string",
+          "enum": ["c", "cpp", "java", "python", "go", "rust"]
+        },
+        "library": {
+          "type": "string",
+          "description": "库名（可选）"
+        },
+        "library_version": {
+          "type": "string",
+          "description": "库版本（可选）"
+        },
+        "function": {
+          "type": "string",
+          "description": "函数名或 fqname"
+        },
+        "func_params": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "参数名列表"
+        },
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "import 语句（可选）"
+        },
+        "semantic": {
+          "$ref": "#/definitions/Semantic",
+          "description": "语义信息，复用 apis 规则结构"
+        },
+        "derived_meta": {
+          "$ref": "#/definitions/DerivedMeta",
+          "description": "封装特有的元信息"
+        }
+      },
+      "required": ["api_id", "language", "function", "semantic", "derived_meta"]
+    },
+    "Semantic": {
+      "type": "object",
+      "description": "语义信息，与 apis 规则同构",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "description": "算法 profile ID（可选，分支模式下可为空）"
+        },
+        "operation": {
+          "type": "string",
+          "description": "操作类型（keygen/encrypt_init/factory...）"
+        },
+        "branching": {
+          "type": "boolean",
+          "description": "是否为分支选择模式"
+        },
+        "returns": {
+          "type": "object",
+          "description": "返回值类型（工厂模式）"
+        },
+        "key_bits": {
+          "$ref": "#/definitions/InputSource"
+        },
+        "algorithm_name": {
+          "$ref": "#/definitions/InputSource"
+        },
+        "curve": {
+          "$ref": "#/definitions/InputSource"
+        },
+        "ctx_write": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CtxAccess"
+          }
+        },
+        "ctx_read": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CtxAccess"
+          }
+        }
+      }
+    },
+    "InputSource": {
+      "type": "object",
+      "description": "关键输入来源（参数/ctx/常量）",
+      "oneOf": [
+        {
+          "properties": {
+            "from_param": {
+              "type": "string"
+            },
+            "unit": {
+              "type": "string",
+              "enum": ["bytes", "bits"]
+            },
+            "transform": {
+              "type": "string",
+              "description": "变换表达式（如 *8 / /8）"
+            }
+          },
+          "required": ["from_param"]
+        },
+        {
+          "properties": {
+            "const": {
+              "type": ["integer", "string"]
+            }
+          },
+          "required": ["const"]
+        },
+        {
+          "properties": {
+            "from_ctx": {
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            }
+          },
+          "required": ["from_ctx", "field"]
+        },
+        {
+          "properties": {
+            "encoding": {
+              "type": "string",
+              "enum": ["string", "integer"]
+            }
+          }
+        }
+      ]
+    },
+    "CtxAccess": {
+      "type": "object",
+      "description": "ctx 状态访问",
+      "properties": {
+        "object": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "from_param": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "transform": {
+          "type": "string"
+        }
+      },
+      "required": ["object", "field"]
+    },
+    "DerivedMeta": {
+      "type": "object",
+      "description": "封装特有的元信息",
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": ["manual", "auto"],
+          "description": "规则来源：手工预定义或自动派生"
+        },
+        "wraps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "被封装的底层 API 名或 api_id"
+        },
+        "infer_depth": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "封装层数"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["confirmed", "probable", "suspect"],
+          "description": "置信度，用于剪枝"
+        },
+        "propagation": {
+          "$ref": "#/definitions/Propagation",
+          "description": "局部传播证据（不含全路径）"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Condition"
+          },
+          "description": "分支/条件信息（可选）"
+        }
+      },
+      "required": ["source", "wraps", "infer_depth", "confidence"]
+    },
+    "Propagation": {
+      "type": "object",
+      "description": "局部传播证据，只存 B 内 B→A 的信息",
+      "properties": {
+        "local_sink_calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "callee": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer"
+              },
+              "file": {
+                "type": "string"
+              }
+            },
+            "required": ["callee"]
+          }
+        },
+        "key_input_sources": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "关键输入表达式（如 key_bits: 'keylen*8'）"
+        }
+      }
+    },
+    "Condition": {
+      "type": "object",
+      "description": "分支条件或约束覆盖",
+      "properties": {
+        "when": {
+          "type": "string",
+          "description": "条件表达式"
+        },
+        "semantic_override": {
+          "$ref": "#/definitions/Semantic",
+          "description": "该分支下的语义覆盖"
+        },
+        "contract_override": {
+          "type": "object",
+          "description": "该分支下的局部约束覆盖"
+        }
+      },
+      "required": ["when"]
+    }
+  }
+}

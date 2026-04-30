@@ -1,0 +1,480 @@
+{
+  "version": "1.0",
+  "language": "c",
+  "library": "gnutls",
+  "description": "GnuTLS cryptographic API mappings (Task 28) — cipher/HMAC/hash/PK operations",
+  "algid_tables": {
+    "gnutls_cipher_algorithm": {
+      "GNUTLS_CIPHER_AES_128_CBC": { "profile_id": "ALG.AES", "key_bits": 128, "mode": "CBC" },
+      "GNUTLS_CIPHER_AES_192_CBC": { "profile_id": "ALG.AES", "key_bits": 192, "mode": "CBC" },
+      "GNUTLS_CIPHER_AES_256_CBC": { "profile_id": "ALG.AES", "key_bits": 256, "mode": "CBC" },
+      "GNUTLS_CIPHER_AES_128_GCM": { "profile_id": "ALG.AES", "key_bits": 128, "mode": "GCM" },
+      "GNUTLS_CIPHER_AES_256_GCM": { "profile_id": "ALG.AES", "key_bits": 256, "mode": "GCM" },
+      "GNUTLS_CIPHER_AES_128_CCM": { "profile_id": "ALG.AES", "key_bits": 128, "mode": "CCM" },
+      "GNUTLS_CIPHER_AES_256_CCM": { "profile_id": "ALG.AES", "key_bits": 256, "mode": "CCM" },
+      "GNUTLS_CIPHER_AES_128_XTS": { "profile_id": "ALG.AES", "key_bits": 128, "mode": "XTS" },
+      "GNUTLS_CIPHER_AES_256_XTS": { "profile_id": "ALG.AES", "key_bits": 256, "mode": "XTS" },
+      "GNUTLS_CIPHER_CHACHA20_POLY1305": { "profile_id": "ALG.CHACHA20_POLY1305", "key_bits": 256 },
+      "GNUTLS_CIPHER_3DES_CBC": { "profile_id": "ALG.3DES", "key_bits": 168, "mode": "CBC" },
+      "GNUTLS_CIPHER_DES_CBC": { "profile_id": "ALG.DES", "key_bits": 56, "mode": "CBC" },
+      "GNUTLS_CIPHER_ARCFOUR_128": { "profile_id": "ALG.RC4", "key_bits": 128 },
+      "GNUTLS_CIPHER_CAMELLIA_128_CBC": { "profile_id": "ALG.CAMELLIA", "key_bits": 128, "mode": "CBC" },
+      "GNUTLS_CIPHER_CAMELLIA_256_CBC": { "profile_id": "ALG.CAMELLIA", "key_bits": 256, "mode": "CBC" }
+    },
+    "gnutls_mac_algorithm": {
+      "GNUTLS_MAC_AEAD": { "profile_id": "ALG.AEAD" },
+      "GNUTLS_MAC_SHA1": { "profile_id": "ALG.HMAC", "hash": "SHA1" },
+      "GNUTLS_MAC_SHA256": { "profile_id": "ALG.HMAC", "hash": "SHA256", "key_bits": 256 },
+      "GNUTLS_MAC_SHA384": { "profile_id": "ALG.HMAC", "hash": "SHA384", "key_bits": 384 },
+      "GNUTLS_MAC_SHA512": { "profile_id": "ALG.HMAC", "hash": "SHA512", "key_bits": 512 },
+      "GNUTLS_MAC_MD5": { "profile_id": "ALG.HMAC", "hash": "MD5" },
+      "GNUTLS_MAC_SHA3_224": { "profile_id": "ALG.HMAC", "hash": "SHA3-224" },
+      "GNUTLS_MAC_SHA3_256": { "profile_id": "ALG.HMAC", "hash": "SHA3-256" },
+      "GNUTLS_MAC_SHA3_384": { "profile_id": "ALG.HMAC", "hash": "SHA3-384" },
+      "GNUTLS_MAC_SHA3_512": { "profile_id": "ALG.HMAC", "hash": "SHA3-512" }
+    },
+    "gnutls_digest_algorithm": {
+      "GNUTLS_DIG_SHA1": { "profile_id": "ALG.SHA1" },
+      "GNUTLS_DIG_SHA256": { "profile_id": "ALG.SHA256" },
+      "GNUTLS_DIG_SHA384": { "profile_id": "ALG.SHA384" },
+      "GNUTLS_DIG_SHA512": { "profile_id": "ALG.SHA512" },
+      "GNUTLS_DIG_MD5": { "profile_id": "ALG.MD5" },
+      "GNUTLS_DIG_SHA3_256": { "profile_id": "ALG.SHA256" },
+      "GNUTLS_DIG_SHA3_512": { "profile_id": "ALG.SHA512" }
+    },
+    "gnutls_pk_algorithm": {
+      "GNUTLS_PK_RSA": { "profile_id": "ALG.RSA", "pkey_family": "RSA" },
+      "GNUTLS_PK_DSA": { "profile_id": "ALG.DSA", "pkey_family": "DSA" },
+      "GNUTLS_PK_DH": { "profile_id": "ALG.DH.MODP", "pkey_family": "DH" },
+      "GNUTLS_PK_EC": { "profile_id": "ALG.ECDSA", "pkey_family": "ECC" },
+      "GNUTLS_PK_RSA_PSS": { "profile_id": "ALG.RSA.PSS", "pkey_family": "RSA-PSS" },
+      "GNUTLS_PK_ECDH_X25519": { "profile_id": "ALG.X25519", "pkey_family": "X25519", "key_bits": 256 },
+      "GNUTLS_PK_ECDH_X448": { "profile_id": "ALG.X448", "pkey_family": "X448", "key_bits": 448 },
+      "GNUTLS_PK_EDDSA_ED25519": { "profile_id": "ALG.ED25519", "pkey_family": "Ed25519", "key_bits": 256 },
+      "GNUTLS_PK_EDDSA_ED448": { "profile_id": "ALG.EDDSA", "pkey_family": "Ed448", "key_bits": 448 },
+      "GNUTLS_PK_GOST_01": { "profile_id": "ALG.GOST", "pkey_family": "GOST" },
+      "GNUTLS_PK_GOST_12_256": { "profile_id": "ALG.GOST", "pkey_family": "GOST" },
+      "GNUTLS_PK_GOST_12_512": { "profile_id": "ALG.GOST", "pkey_family": "GOST" }
+    }
+  },
+  "mappings": [
+    {
+      "api_id": "c.gnutls.gnutls_cipher_init",
+      "function": "gnutls_cipher_init",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "cipher", "key", "iv"],
+      "semantic": {
+        "operation": "init",
+        "algorithm_source": {
+          "type": "param",
+          "param": "cipher",
+          "index": 1,
+          "algid_table": "gnutls_cipher_algorithm"
+        },
+        "key": { "param": "key", "index": 2, "source": "param" },
+        "iv": { "param": "iv", "index": 3, "source": "param" },
+        "ctx": { "param": "handle", "source": "param", "index": 0, "allocator_type": "cipher" },
+        "context_writes": [
+          {
+            "object": "handle",
+            "field": "algorithm",
+            "from": { "param": "cipher", "index": 1, "source": "param" }
+          },
+          {
+            "object": "handle",
+            "field": "key",
+            "from": { "param": "key", "index": 2, "source": "param" }
+          }
+        ],
+        "comments": "GnuTLS symmetric cipher init; algo determined by cipher param (GNUTLS_CIPHER_*)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_cipher_encrypt",
+      "function": "gnutls_cipher_encrypt",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "text", "textlen"],
+      "semantic": {
+        "operation": "encrypt",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS cipher encrypt; algorithm inherited from handle context"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_cipher_encrypt2",
+      "function": "gnutls_cipher_encrypt2",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "text", "textlen", "ciphertext", "ciphertextlen"],
+      "semantic": {
+        "operation": "encrypt",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS cipher encrypt with explicit output buffer"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_cipher_decrypt",
+      "function": "gnutls_cipher_decrypt",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "text", "textlen"],
+      "semantic": {
+        "operation": "decrypt",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS cipher decrypt"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_cipher_decrypt2",
+      "function": "gnutls_cipher_decrypt2",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "text", "textlen", "cleartext", "cleartextlen"],
+      "semantic": {
+        "operation": "decrypt",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS cipher decrypt with explicit output buffer"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_aead_cipher_init",
+      "function": "gnutls_aead_cipher_init",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "cipher", "key"],
+      "semantic": {
+        "operation": "init",
+        "algorithm_source": {
+          "type": "param",
+          "param": "cipher",
+          "index": 1,
+          "algid_table": "gnutls_cipher_algorithm"
+        },
+        "key": { "param": "key", "index": 2, "source": "param" },
+        "ctx": { "param": "handle", "source": "param", "index": 0, "allocator_type": "cipher" },
+        "context_writes": [
+          {
+            "object": "handle",
+            "field": "algorithm",
+            "from": { "param": "cipher", "index": 1, "source": "param" }
+          },
+          {
+            "object": "handle",
+            "field": "key",
+            "from": { "param": "key", "index": 2, "source": "param" }
+          }
+        ],
+        "comments": "GnuTLS AEAD cipher init (AES-GCM, CHACHA20-POLY1305)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_aead_cipher_encrypt",
+      "function": "gnutls_aead_cipher_encrypt",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "nonce", "nonce_len", "auth", "auth_size", "tag_size", "ciphertext", "ciphertext_len", "text", "textlen"],
+      "semantic": {
+        "operation": "authenticated_encrypt",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "nonce": { "param": "nonce", "index": 1, "source": "param" },
+        "comments": "GnuTLS AEAD encrypt (authenticated encryption)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_aead_cipher_decrypt",
+      "function": "gnutls_aead_cipher_decrypt",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "nonce", "nonce_len", "auth", "auth_size", "tag_size", "plaintext", "plaintext_len", "ciphertext", "ciphertext_len"],
+      "semantic": {
+        "operation": "authenticated_decrypt",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "nonce": { "param": "nonce", "index": 1, "source": "param" },
+        "comments": "GnuTLS AEAD decrypt (authenticated decryption)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hmac_init",
+      "function": "gnutls_hmac_init",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["dig", "algorithm", "key", "keylen"],
+      "semantic": {
+        "operation": "init",
+        "algorithm_source": {
+          "type": "param",
+          "param": "algorithm",
+          "index": 1,
+          "algid_table": "gnutls_mac_algorithm"
+        },
+        "key": { "param": "key", "index": 2, "source": "param" },
+        "ctx": { "param": "dig", "source": "param", "index": 0, "allocator_type": "mac" },
+        "context_writes": [
+          {
+            "object": "dig",
+            "field": "algorithm",
+            "from": { "param": "algorithm", "index": 1, "source": "param" }
+          },
+          {
+            "object": "dig",
+            "field": "key",
+            "from": { "param": "key", "index": 2, "source": "param" }
+          }
+        ],
+        "comments": "GnuTLS HMAC init; algo from algorithm param (GNUTLS_MAC_*)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hmac",
+      "function": "gnutls_hmac",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "text", "textlen"],
+      "semantic": {
+        "operation": "mac_update",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS HMAC update; algorithm inherited from handle context"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hmac_output",
+      "function": "gnutls_hmac_output",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "digest"],
+      "semantic": {
+        "operation": "mac_final",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS HMAC output (finalize)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hmac_fast",
+      "function": "gnutls_hmac_fast",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["algorithm", "key", "keylen", "text", "textlen", "digest"],
+      "semantic": {
+        "profile_id": "ALG.HMAC",
+        "operation": "mac",
+        "algorithm_source": {
+          "type": "param",
+          "param": "algorithm",
+          "index": 0,
+          "algid_table": "gnutls_mac_algorithm"
+        },
+        "key": { "param": "key", "index": 1, "source": "param" },
+        "comments": "GnuTLS one-shot HMAC; algo from algorithm param"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hash_init",
+      "function": "gnutls_hash_init",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["dig", "algorithm"],
+      "semantic": {
+        "operation": "init",
+        "algorithm_source": {
+          "type": "param",
+          "param": "algorithm",
+          "index": 1,
+          "algid_table": "gnutls_digest_algorithm"
+        },
+        "ctx": { "param": "dig", "source": "param", "index": 0, "allocator_type": "digest" },
+        "context_writes": [
+          {
+            "object": "dig",
+            "field": "algorithm",
+            "from": { "param": "algorithm", "index": 1, "source": "param" }
+          }
+        ],
+        "comments": "GnuTLS hash init; algo from algorithm param (GNUTLS_DIG_*)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hash",
+      "function": "gnutls_hash",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "text", "textlen"],
+      "semantic": {
+        "operation": "hash_update",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS hash update"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hash_output",
+      "function": "gnutls_hash_output",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["handle", "digest"],
+      "semantic": {
+        "operation": "hash_final",
+        "ctx": { "param": "handle", "source": "param", "index": 0 },
+        "comments": "GnuTLS hash output (finalize)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_hash_fast",
+      "function": "gnutls_hash_fast",
+      "imports": ["gnutls/gnutls.h", "gnutls/crypto.h"],
+      "func_params": ["algorithm", "text", "textlen", "digest"],
+      "semantic": {
+        "operation": "hash",
+        "algorithm_source": {
+          "type": "param",
+          "param": "algorithm",
+          "index": 0,
+          "algid_table": "gnutls_digest_algorithm"
+        },
+        "comments": "GnuTLS one-shot hash"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_pk_generate_params",
+      "function": "gnutls_pk_generate_params",
+      "imports": ["gnutls/gnutls.h", "gnutls/abstract.h"],
+      "func_params": ["algo", "bits", "params"],
+      "semantic": {
+        "operation": "keygen_params",
+        "algorithm_source": {
+          "type": "param",
+          "param": "algo",
+          "index": 0,
+          "algid_table": "gnutls_pk_algorithm"
+        },
+        "key_bits": { "param": "bits", "index": 1, "source": "param" },
+        "comments": "GnuTLS PK parameter generation (RSA/DSA/EC/EdDSA)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_x509_privkey_generate",
+      "function": "gnutls_x509_privkey_generate",
+      "imports": ["gnutls/gnutls.h", "gnutls/x509.h"],
+      "func_params": ["key", "algo", "bits", "flags"],
+      "semantic": {
+        "operation": "keygen",
+        "algorithm_source": {
+          "type": "param",
+          "param": "algo",
+          "index": 1,
+          "algid_table": "gnutls_pk_algorithm"
+        },
+        "key_bits": { "param": "bits", "index": 2, "source": "param" },
+        "context_writes": [
+          {
+            "object": "key",
+            "field": "algorithm",
+            "from": { "param": "algo", "index": 1, "source": "param" }
+          }
+        ],
+        "comments": "GnuTLS X.509 private key generation; algo from algo param (GNUTLS_PK_*)"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_x509_privkey_export",
+      "function": "gnutls_x509_privkey_export",
+      "imports": ["gnutls/gnutls.h", "gnutls/x509.h"],
+      "func_params": ["key", "format", "output_data", "output_data_size"],
+      "semantic": {
+        "profile_id": "UTIL.KeyExport",
+        "operation": "key_export",
+        "ctx": { "param": "key", "source": "param", "index": 0 },
+        "comments": "GnuTLS X.509 private key export to DER/PEM"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_privkey_generate",
+      "function": "gnutls_privkey_generate",
+      "imports": ["gnutls/gnutls.h", "gnutls/abstract.h"],
+      "func_params": ["pkey", "pk", "bits", "flags"],
+      "semantic": {
+        "operation": "keygen",
+        "algorithm_source": {
+          "type": "param",
+          "param": "pk",
+          "index": 1,
+          "algid_table": "gnutls_pk_algorithm"
+        },
+        "key_bits": { "param": "bits", "index": 2, "source": "param" },
+        "context_writes": [
+          {
+            "object": "pkey",
+            "field": "algorithm",
+            "from": { "param": "pk", "index": 1, "source": "param" }
+          }
+        ],
+        "comments": "GnuTLS abstract private key generation; algo from pk param"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_pubkey_import_privkey",
+      "function": "gnutls_pubkey_import_privkey",
+      "imports": ["gnutls/gnutls.h", "gnutls/abstract.h"],
+      "func_params": ["key", "pkey", "usage", "flags"],
+      "semantic": {
+        "profile_id": "UTIL.KeyImport",
+        "operation": "key_import",
+        "comments": "GnuTLS public key from private key"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_sign_data",
+      "function": "gnutls_sign_data",
+      "imports": ["gnutls/gnutls.h", "gnutls/abstract.h"],
+      "func_params": ["signer", "hash", "flags", "data", "signature"],
+      "semantic": {
+        "operation": "sign",
+        "profile_id": "ALG.SIGNATURE",
+        "ctx": { "param": "signer", "source": "param", "index": 0 },
+        "comments": "GnuTLS data signing with abstract key"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_privkey_sign_data",
+      "function": "gnutls_privkey_sign_data",
+      "imports": ["gnutls/gnutls.h", "gnutls/abstract.h"],
+      "func_params": ["signer", "hash", "flags", "data", "signature"],
+      "semantic": {
+        "operation": "sign",
+        "profile_id": "ALG.SIGNATURE",
+        "ctx": { "param": "signer", "source": "param", "index": 0 },
+        "comments": "GnuTLS data signing with private key"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_pubkey_verify_data2",
+      "function": "gnutls_pubkey_verify_data2",
+      "imports": ["gnutls/gnutls.h", "gnutls/abstract.h"],
+      "func_params": ["key", "algo", "flags", "data", "signature"],
+      "semantic": {
+        "operation": "verify",
+        "profile_id": "ALG.SIGNATURE",
+        "comments": "GnuTLS signature verification"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_dh_generate_params",
+      "function": "gnutls_dh_generate_params",
+      "imports": ["gnutls/gnutls.h"],
+      "func_params": ["params", "bits"],
+      "semantic": {
+        "profile_id": "ALG.DH.MODP",
+        "operation": "keygen_params",
+        "key_bits": { "param": "bits", "index": 1, "source": "param" },
+        "comments": "GnuTLS Diffie-Hellman param generation; quantum-unsafe"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_session_get_random",
+      "function": "gnutls_session_get_random",
+      "imports": ["gnutls/gnutls.h"],
+      "func_params": ["session", "client", "server"],
+      "semantic": {
+        "profile_id": "PRIM.CSPRNG",
+        "operation": "random",
+        "comments": "GnuTLS TLS session random bytes"
+      }
+    },
+    {
+      "api_id": "c.gnutls.gnutls_rnd",
+      "function": "gnutls_rnd",
+      "imports": ["gnutls/gnutls.h"],
+      "func_params": ["level", "data", "len"],
+      "semantic": {
+        "profile_id": "PRIM.CSPRNG",
+        "operation": "random",
+        "comments": "GnuTLS random number generation (GNUTLS_RND_KEY / GNUTLS_RND_RANDOM)"
+      }
+    }
+  ]
+}

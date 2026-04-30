@@ -1,0 +1,13 @@
+{
+  "AES": "ALG.AES",
+  "SM4": "ALG.SM4",
+  "RSA-PKE": "ALG.RSA.PKE",
+  "RSA-SIG": "ALG.RSA.SIG",
+  "SM2-PKE": "ALG.SM2.PKE",
+  "SM2-SIG": "ALG.SM2.SIG",
+  "ECDH": "ALG.ECDH",
+  "ECDSA": "ALG.ECDSA",
+  "CHACHA20": "ALG.CHACHA20",
+  "HKDF": "ALG.HKDF",
+  "PBKDF2": "ALG.PBKDF2"
+}

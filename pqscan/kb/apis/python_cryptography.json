@@ -1,0 +1,2996 @@
+{
+    "version": "2.0",
+    "language": "python",
+    "library": "cryptography",
+    "mappings": [
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Cipher.__init__",
+            "function": "fernet.Cipher.__init__",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["algorithm", "mode", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "algorithm": { "from_param": "algorithm" },
+                "mode": { "from_param": "mode" },
+                "backend": { "from_param": "backend" },
+                "cipher_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Cipher.decryptor",
+            "function": "fernet.Cipher.decryptor",
+            "imports": ["cryptography.fernet"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_decryptor_init",
+                "cipher_obj": { "from_receiver": true },
+                "decryptor": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Cipher.encryptor",
+            "function": "fernet.Cipher.encryptor",
+            "imports": ["cryptography.fernet"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_encryptor_init",
+                "cipher_obj": { "from_receiver": true },
+                "encryptor": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.__init__",
+            "function": "fernet.Fernet.__init__",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["key", "backend"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_init",
+                "key": { "from_param": "key" },
+                "backend": { "from_param": "backend" },
+                "key_size": 32,
+                "authenticated": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.decrypt",
+            "function": "fernet.Fernet.decrypt",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["token", "ttl"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "token": { "from_param": "token" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt",
+                "ttl": { "from_param": "ttl" },
+                "checks_timestamp": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.decrypt_at_time",
+            "function": "fernet.Fernet.decrypt_at_time",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["token", "ttl", "current_time"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "token": { "from_param": "token" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt",
+                "ttl": { "from_param": "ttl" },
+                "current_time": { "from_param": "current_time" },
+                "checks_timestamp": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.encrypt",
+            "function": "fernet.Fernet.encrypt",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "plaintext": { "from_param": "data" },
+                "token": { "from_return": true },
+                "direction": "encrypt",
+                "includes_timestamp": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.encrypt_at_time",
+            "function": "fernet.Fernet.encrypt_at_time",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["data", "current_time"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "plaintext": { "from_param": "data" },
+                "token": { "from_return": true },
+                "direction": "encrypt",
+                "current_time": { "from_param": "current_time" },
+                "includes_timestamp": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.extract_timestamp",
+            "function": "fernet.Fernet.extract_timestamp",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["token"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "extract_timestamp",
+                "token": { "from_param": "token" },
+                "timestamp": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.Fernet.generate_key",
+            "function": "fernet.Fernet.generate_key",
+            "imports": ["cryptography.fernet"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "keygen",
+                "key": { "from_return": true },
+                "key_size": 32
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.fernet.HMAC.__init__",
+            "function": "fernet.HMAC.__init__",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_init",
+                "params": { "from_param": "args" },
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.HMAC.copy",
+            "function": "fernet.HMAC.copy",
+            "imports": ["cryptography.fernet"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_copy",
+                "mac_obj": { "from_receiver": true },
+                "mac_obj_copy": { "from_return": true },
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.HMAC.finalize",
+            "function": "fernet.HMAC.finalize",
+            "imports": ["cryptography.fernet"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "tag": { "from_return": true },
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.HMAC.update",
+            "function": "fernet.HMAC.update",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "data" },
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.HMAC.verify",
+            "function": "fernet.HMAC.verify",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["signature"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_verify",
+                "mac_obj": { "from_receiver": true },
+                "tag": { "from_param": "signature" },
+                "raises_on_failure": true,
+                "internal": true
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.__init__",
+            "function": "fernet.MultiFernet.__init__",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["fernets"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "multi_key_init",
+                "fernet_instances": { "from_param": "fernets" },
+                "multi_key": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.decrypt",
+            "function": "fernet.MultiFernet.decrypt",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["msg", "ttl"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_decrypt",
+                "multi_key": true,
+                "token": { "from_param": "msg" },
+                "ttl": { "from_param": "ttl" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.decrypt_at_time",
+            "function": "fernet.MultiFernet.decrypt_at_time",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["msg", "ttl", "current_time"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_decrypt",
+                "multi_key": true,
+                "token": { "from_param": "msg" },
+                "ttl": { "from_param": "ttl" },
+                "current_time": { "from_param": "current_time" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.encrypt",
+            "function": "fernet.MultiFernet.encrypt",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["msg"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_encrypt",
+                "multi_key": true,
+                "plaintext": { "from_param": "msg" },
+                "token": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.encrypt_at_time",
+            "function": "fernet.MultiFernet.encrypt_at_time",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["msg", "current_time"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "aead_encrypt",
+                "multi_key": true,
+                "plaintext": { "from_param": "msg" },
+                "current_time": { "from_param": "current_time" },
+                "token": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.extract_timestamp",
+            "function": "fernet.MultiFernet.extract_timestamp",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["msg"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "extract_timestamp",
+                "token": { "from_param": "msg" },
+                "timestamp": { "from_return": true },
+                "multi_key": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.fernet.MultiFernet.rotate",
+            "function": "fernet.MultiFernet.rotate",
+            "imports": ["cryptography.fernet"],
+            "func_params": ["msg"],
+            "semantic": {
+                "profile_id": "ALG.Fernet",
+                "operation": "rekey_token",
+                "multi_key": true,
+                "old_token": { "from_param": "msg" },
+                "new_token": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.BestAvailableEncryption.__init__",
+            "function": "hazmat.primitives._serialization.BestAvailableEncryption.__init__",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": ["password"],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_from_password",
+                "password_or_key": { "from_param": "password" },
+                "params": {
+                    "kdf": "library_default",
+                    "cipher": "library_default"
+                }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.KeySerializationEncryptionBuilder.__init__",
+            "function": "hazmat.primitives._serialization.KeySerializationEncryptionBuilder.__init__",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": [
+                "format",
+                "_kdf_rounds",
+                "_hmac_hash",
+                "_key_cert_algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_builder_init",
+                "format": { "from_param": "format" },
+                "kdf_rounds": { "from_param": "_kdf_rounds" },
+                "hmac_hash": { "from_param": "_hmac_hash" },
+                "key_cert_algorithm": { "from_param": "_key_cert_algorithm" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.KeySerializationEncryptionBuilder.build",
+            "function": "hazmat.primitives._serialization.KeySerializationEncryptionBuilder.build",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": ["password"],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_build",
+                "builder": { "from_receiver": true },
+                "password_or_key": { "from_param": "password" },
+                "encryption_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.KeySerializationEncryptionBuilder.hmac_hash",
+            "function": "hazmat.primitives._serialization.KeySerializationEncryptionBuilder.hmac_hash",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": ["algorithm"],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_set_hash",
+                "builder": { "from_receiver": true },
+                "hmac_hash": { "from_param": "algorithm" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.KeySerializationEncryptionBuilder.kdf_rounds",
+            "function": "hazmat.primitives._serialization.KeySerializationEncryptionBuilder.kdf_rounds",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": ["rounds"],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_set_rounds",
+                "builder": { "from_receiver": true },
+                "kdf_rounds": { "from_param": "rounds" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.KeySerializationEncryptionBuilder.key_cert_algorithm",
+            "function": "hazmat.primitives._serialization.KeySerializationEncryptionBuilder.key_cert_algorithm",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": ["algorithm"],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_set_algorithm",
+                "builder": { "from_receiver": true },
+                "key_cert_algorithm": { "from_param": "algorithm" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives._serialization.NoEncryption.__init__",
+            "function": "hazmat.primitives._serialization.NoEncryption.__init__",
+            "imports": ["cryptography.hazmat.primitives._serialization"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {
+                "profile_id": "UTIL.KDFFactory",
+                "operation": "key_encryption_none",
+                "is_encrypted": false
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.generate_parameters",
+            "function": "hazmat.primitives.asymmetric.dh.generate_parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["generator", "key_size", "backend"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "param_gen",
+                "group": "ffdhe",
+                "generator": { "from_param": "generator" },
+                "key_size": { "from_param": "key_size" },
+                "backend": { "from_param": "backend" },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParameterNumbers.parameters",
+            "function": "hazmat.primitives.asymmetric.dh.DHParameterNumbers.parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "params_from_numbers",
+                "backend": { "from_param": "backend" },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParameters.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.dh.DHParameters.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "keygen",
+                "parameters": { "from_receiver": true },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParameters.parameter_bytes",
+            "function": "hazmat.primitives.asymmetric.dh.DHParameters.parameter_bytes",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["encoding", "format"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "params_serialize",
+                "parameters": { "from_receiver": true },
+                "encoding": { "from_param": "encoding" },
+                "format": { "from_param": "format" },
+                "params_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParameters.parameter_numbers",
+            "function": "hazmat.primitives.asymmetric.dh.DHParameters.parameter_numbers",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "params_to_numbers",
+                "parameters": { "from_receiver": true },
+                "param_numbers": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParametersWithSerialization.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.dh.DHParametersWithSerialization.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "keygen",
+                "parameters": { "from_receiver": true },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParametersWithSerialization.parameter_bytes",
+            "function": "hazmat.primitives.asymmetric.dh.DHParametersWithSerialization.parameter_bytes",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["encoding", "format"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "params_serialize",
+                "parameters": { "from_receiver": true },
+                "encoding": { "from_param": "encoding" },
+                "format": { "from_param": "format" },
+                "params_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHParametersWithSerialization.parameter_numbers",
+            "function": "hazmat.primitives.asymmetric.dh.DHParametersWithSerialization.parameter_numbers",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "params_to_numbers",
+                "parameters": { "from_receiver": true },
+                "param_numbers": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKey.__init__",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKey.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {}
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKey.exchange",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKey.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKey.parameters",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKey.parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "get_params",
+                "private_key": { "from_receiver": true },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKey.private_bytes",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKey.private_bytes",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["encoding", "format", "encryption_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "private_key_serialize",
+                "private_key": { "from_receiver": true },
+                "encoding": { "from_param": "encoding" },
+                "format": { "from_param": "format" },
+                "encryption_algorithm": {
+                    "from_param": "encryption_algorithm"
+                },
+                "private_key_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKey.private_numbers",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKey.private_numbers",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "private_to_numbers",
+                "private_key": { "from_receiver": true },
+                "private_numbers": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.__init__",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {}
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.exchange",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.parameters",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "get_params",
+                "private_key": { "from_receiver": true },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.private_bytes",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.private_bytes",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["encoding", "format", "encryption_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "private_key_serialize",
+                "private_key": { "from_receiver": true },
+                "encoding": { "from_param": "encoding" },
+                "format": { "from_param": "format" },
+                "encryption_algorithm": {
+                    "from_param": "encryption_algorithm"
+                },
+                "private_key_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.private_numbers",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.private_numbers",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "private_to_numbers",
+                "private_key": { "from_receiver": true },
+                "private_numbers": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.public_key",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateKeyWithSerialization.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateNumbers.__init__",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateNumbers.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {}
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPrivateNumbers.private_key",
+            "function": "hazmat.primitives.asymmetric.dh.DHPrivateNumbers.private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "private_from_numbers",
+                "private_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicKey.parameters",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicKey.parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "get_params",
+                "public_key": { "from_receiver": true },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicKey.public_bytes",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicKey.public_bytes",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["encoding", "format"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "public_key_serialize",
+                "public_key": { "from_receiver": true },
+                "encoding": { "from_param": "encoding" },
+                "format": { "from_param": "format" },
+                "public_key_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicKey.public_numbers",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicKey.public_numbers",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "public_to_numbers",
+                "public_key": { "from_receiver": true },
+                "public_numbers": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicKeyWithSerialization.parameters",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicKeyWithSerialization.parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "get_params",
+                "public_key": { "from_receiver": true },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicKeyWithSerialization.public_bytes",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicKeyWithSerialization.public_bytes",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["encoding", "format"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "public_key_serialize",
+                "public_key": { "from_receiver": true },
+                "encoding": { "from_param": "encoding" },
+                "format": { "from_param": "format" },
+                "public_key_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicKeyWithSerialization.public_numbers",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicKeyWithSerialization.public_numbers",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "public_to_numbers",
+                "public_key": { "from_receiver": true },
+                "public_numbers": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicNumbers.__init__",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicNumbers.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {}
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dh.DHPublicNumbers.public_key",
+            "function": "hazmat.primitives.asymmetric.dh.DHPublicNumbers.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dh"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "public_from_numbers",
+                "public_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dsa.generate_parameters",
+            "function": "hazmat.primitives.asymmetric.dsa.generate_parameters",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dsa"],
+            "func_params": ["key_size", "backend"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "param_gen",
+                "key_size": { "from_param": "key_size" },
+                "backend": { "from_param": "backend" },
+                "parameters": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dsa.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.dsa.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dsa"],
+            "func_params": ["key_size", "backend"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "keygen",
+                "key_size": { "from_param": "key_size" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization.verify",
+            "function": "hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dsa"],
+            "func_params": ["signature", "data", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicNumbers.public_key",
+            "function": "hazmat.primitives.asymmetric.dsa.DSAPublicNumbers.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dsa"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "public_from_numbers",
+                "public_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.derive_private_key",
+            "function": "hazmat.primitives.asymmetric.ec.derive_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["private_value", "curve", "backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "private_from_scalar",
+                "scalar": { "from_param": "private_value" },
+                "curve": { "from_param": "curve" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.ec.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["curve", "backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "keygen",
+                "curve": { "from_param": "curve" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.exchange",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["algorithm", "peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "kex_algorithm_obj": { "from_param": "algorithm" },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.exchange",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["algorithm", "peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "kex_algorithm_obj": { "from_param": "algorithm" },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.public_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.sign",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "private_from_numbers",
+                "private_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["signature", "data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization.verify",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["signature", "data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "public_from_numbers",
+                "public_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+            "func_params": ["signature", "data"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "raises_on_failure": true
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed448.Ed448PublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.ed448.Ed448PublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+            "func_params": ["signature", "data"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "raises_on_failure": true
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.rsa.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["public_exponent", "key_size", "backend"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "keygen",
+                "public_exponent": { "from_param": "public_exponent" },
+                "key_size": { "from_param": "key_size" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.decrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKey.decrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["ciphertext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "decrypt",
+                "private_key": { "from_receiver": true },
+                "ciphertext": { "from_param": "ciphertext" },
+                "padding_scheme": { "from_param": "padding" },
+                "plaintext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["data", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.decrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.decrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["ciphertext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "decrypt",
+                "private_key": { "from_receiver": true },
+                "ciphertext": { "from_param": "ciphertext" },
+                "padding_scheme": { "from_param": "padding" },
+                "plaintext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.public_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.sign",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["data", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["backend", "unsafe_skip_rsa_key_validation"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "private_from_numbers",
+                "private_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "unsafe_skip_rsa_key_validation": {
+                    "from_param": "unsafe_skip_rsa_key_validation"
+                },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey.encrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKey.encrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["plaintext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "encrypt",
+                "public_key": { "from_receiver": true },
+                "plaintext": { "from_param": "plaintext" },
+                "padding_scheme": { "from_param": "padding" },
+                "ciphertext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization.verify",
+            "function": "hazmat.primitives.asymmetric.dsa.DSAPublicKeyWithSerialization.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dsa"],
+            "func_params": ["signature", "data", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicNumbers.public_key",
+            "function": "hazmat.primitives.asymmetric.dsa.DSAPublicNumbers.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.dsa"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "public_from_numbers",
+                "public_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.derive_private_key",
+            "function": "hazmat.primitives.asymmetric.ec.derive_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["private_value", "curve", "backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "private_from_scalar",
+                "scalar": { "from_param": "private_value" },
+                "curve": { "from_param": "curve" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.ec.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["curve", "backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "keygen",
+                "curve": { "from_param": "curve" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.exchange",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["algorithm", "peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "kex_algorithm_obj": { "from_param": "algorithm" },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.exchange",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["algorithm", "peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "kex_algorithm_obj": { "from_param": "algorithm" },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.public_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.sign",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKeyWithSerialization.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "private_from_numbers",
+                "private_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["signature", "data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization.verify",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePublicKeyWithSerialization.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["signature", "data", "signature_algorithm"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "signature_algorithm_obj": {
+                    "from_param": "signature_algorithm"
+                },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+            "function": "hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "public_from_numbers",
+                "public_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+            "func_params": ["signature", "data"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "raises_on_failure": true
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.ed448.Ed448PublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.ed448.Ed448PublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+            "func_params": ["signature", "data"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "raises_on_failure": true
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+            "function": "hazmat.primitives.asymmetric.rsa.generate_private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["public_exponent", "key_size", "backend"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "keygen",
+                "public_exponent": { "from_param": "public_exponent" },
+                "key_size": { "from_param": "key_size" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.decrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKey.decrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["ciphertext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "decrypt",
+                "private_key": { "from_receiver": true },
+                "ciphertext": { "from_param": "ciphertext" },
+                "padding_scheme": { "from_param": "padding" },
+                "plaintext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.sign",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKey.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["data", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.decrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.decrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["ciphertext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "decrypt",
+                "private_key": { "from_receiver": true },
+                "ciphertext": { "from_param": "ciphertext" },
+                "padding_scheme": { "from_param": "padding" },
+                "plaintext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.public_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.sign",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateKeyWithSerialization.sign",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["data", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "sign",
+                "private_key": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["backend", "unsafe_skip_rsa_key_validation"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "private_from_numbers",
+                "private_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "unsafe_skip_rsa_key_validation": {
+                    "from_param": "unsafe_skip_rsa_key_validation"
+                },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey.encrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKey.encrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["plaintext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "encrypt",
+                "public_key": { "from_receiver": true },
+                "plaintext": { "from_param": "plaintext" },
+                "padding_scheme": { "from_param": "padding" },
+                "ciphertext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey.recover_data_from_signature",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKey.recover_data_from_signature",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["signature", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "recover_data_from_signature",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "recovered_data": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey.verify",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKey.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["signature", "data", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.encrypt",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.encrypt",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["plaintext", "padding"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "encrypt",
+                "public_key": { "from_receiver": true },
+                "plaintext": { "from_param": "plaintext" },
+                "padding_scheme": { "from_param": "padding" },
+                "ciphertext": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.recover_data_from_signature",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.recover_data_from_signature",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["signature", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "recover_data_from_signature",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "recovered_data": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.verify",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicKeyWithSerialization.verify",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["signature", "data", "padding", "algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "verify",
+                "public_key": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "message": { "from_param": "data" },
+                "padding_scheme": { "from_param": "padding" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "raises_on_failure": true
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+            "function": "hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.rsa"],
+            "func_params": ["backend"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "public_from_numbers",
+                "public_numbers": { "from_receiver": true },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.utils.decode_dss_signature",
+            "function": "hazmat.primitives.asymmetric.utils.decode_dss_signature",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.utils"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "UTIL.DSS_SIGNATURE_CODEC",
+                "operation": "decode",
+                "signature_der": { "from_param": "data" },
+                "r_s_tuple": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.utils.encode_dss_signature",
+            "function": "hazmat.primitives.asymmetric.utils.encode_dss_signature",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.utils"],
+            "func_params": ["r", "s"],
+            "semantic": {
+                "profile_id": "UTIL.DSS_SIGNATURE_CODEC",
+                "operation": "encode",
+                "r": { "from_param": "r" },
+                "s": { "from_param": "s" },
+                "signature_der": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.x25519.X25519PrivateKey.exchange",
+            "function": "hazmat.primitives.asymmetric.x25519.X25519PrivateKey.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.x25519"],
+            "func_params": ["peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.x25519.X25519PrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.x25519.X25519PrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.x25519"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.x448.X448PrivateKey.exchange",
+            "function": "hazmat.primitives.asymmetric.x448.X448PrivateKey.exchange",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.x448"],
+            "func_params": ["peer_public_key"],
+            "semantic": {
+                "profile_id": "ALG.X448",
+                "operation": "key_agreement",
+                "private_key": { "from_receiver": true },
+                "peer_public_key": { "from_param": "peer_public_key" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.x448.X448PrivateKey.public_key",
+            "function": "hazmat.primitives.asymmetric.x448.X448PrivateKey.public_key",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.x448"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X448",
+                "operation": "pub_from_priv",
+                "private_key": { "from_receiver": true },
+                "public_key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.algorithms.AES",
+            "function": "cryptography.hazmat.primitives.ciphers.algorithms.AES",
+            "imports": ["cryptography.hazmat.primitives.ciphers.algorithms"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "cipher_algorithm_init",
+                "key": { "from_param": "key" },
+                "algorithm_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.algorithms.AES128",
+            "function": "hazmat.primitives.ciphers.algorithms.AES128",
+            "imports": ["cryptography.hazmat.primitives.ciphers.algorithms"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "cipher_algorithm_init",
+                "key": { "from_param": "key" },
+                "key_bits": 128,
+                "algorithm_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.algorithms.AES256",
+            "function": "hazmat.primitives.ciphers.algorithms.AES256",
+            "imports": ["cryptography.hazmat.primitives.ciphers.algorithms"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "cipher_algorithm_init",
+                "key": { "from_param": "key" },
+                "key_bits": 256,
+                "algorithm_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.Cipher.decryptor",
+            "function": "hazmat.primitives.ciphers.Cipher.decryptor",
+            "imports": ["cryptography.hazmat.primitives.ciphers"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CIPHER_CONTEXT_FACTORY",
+                "operation": "decryptor_factory",
+                "cipher_obj": { "from_receiver": true },
+                "decryptor_ctx": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.Cipher.encryptor",
+            "function": "hazmat.primitives.ciphers.Cipher.encryptor",
+            "imports": ["cryptography.hazmat.primitives.ciphers"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CIPHER_CONTEXT_FACTORY",
+                "operation": "encryptor_factory",
+                "cipher_obj": { "from_receiver": true },
+                "encryptor_ctx": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESCCM.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESCCM.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "CCM",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESCCM.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESCCM.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "CCM",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESCCM.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.AESCCM.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["bit_length"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "CCM",
+                "operation": "keygen",
+                "key_bits": { "from_param": "bit_length" },
+                "key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCM.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESGCM.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCM.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESGCM.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCM.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.AESGCM.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["bit_length"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM",
+                "operation": "keygen",
+                "key_bits": { "from_param": "bit_length" },
+                "key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCMSIV.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESGCMSIV.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM-SIV",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCMSIV.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESGCMSIV.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM-SIV",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCMSIV.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.AESGCMSIV.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["bit_length"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM-SIV",
+                "operation": "keygen",
+                "key_bits": { "from_param": "bit_length" },
+                "key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESOCB3.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESOCB3.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "OCB3",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESOCB3.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESOCB3.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "OCB3",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESOCB3.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.AESOCB3.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["bit_length"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "OCB3",
+                "operation": "keygen",
+                "key_bits": { "from_param": "bit_length" },
+                "key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESSIV.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESSIV.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "SIV",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESSIV.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.AESSIV.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "SIV",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.ChaCha20Poly1305.__init__",
+            "function": "hazmat.primitives.ciphers.aead.ChaCha20Poly1305.__init__",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "cipher_init",
+                "key": { "from_param": "key" },
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESGCM.__init__",
+            "function": "hazmat.primitives.ciphers.aead.AESGCM.__init__",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "GCM",
+                "operation": "aead_init",
+                "key": { "from_param": "key" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESCCM.__init__",
+            "function": "hazmat.primitives.ciphers.aead.AESCCM.__init__",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["key", "tag_length"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "CCM",
+                "operation": "aead_init",
+                "key": { "from_param": "key" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.AESSIV.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.AESSIV.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["bit_length"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "mode": "SIV",
+                "operation": "keygen",
+                "key_bits": { "from_param": "bit_length" },
+                "key": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.ChaCha20Poly1305.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.ChaCha20Poly1305.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.ChaCha20Poly1305.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.ChaCha20Poly1305.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.ChaCha20Poly1305.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.ChaCha20Poly1305.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "keygen",
+                "key_size": 32,
+                "key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.XChaCha20Poly1305.decrypt",
+            "function": "hazmat.primitives.ciphers.aead.XChaCha20Poly1305.decrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "aead_decrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "ciphertext_plus_tag": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.XChaCha20Poly1305.encrypt",
+            "function": "hazmat.primitives.ciphers.aead.XChaCha20Poly1305.encrypt",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": ["nonce", "data", "associated_data"],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "aead_encrypt",
+                "key": { "from_receiver": true },
+                "nonce": { "from_param": "nonce" },
+                "aad": { "from_param": "associated_data" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext_plus_tag": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.aead.XChaCha20Poly1305.generate_key",
+            "function": "hazmat.primitives.ciphers.aead.XChaCha20Poly1305.generate_key",
+            "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "keygen",
+                "key_size": 32,
+                "key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.base.Cipher.decryptor",
+            "function": "hazmat.primitives.ciphers.base.Cipher.decryptor",
+            "imports": ["cryptography.hazmat.primitives.ciphers.base"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CIPHER_CONTEXT_FACTORY",
+                "operation": "factory",
+                "factory_type": "cipher_decryptor",
+                "cipher_object": { "from_receiver": true },
+                "context": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.ciphers.base.Cipher.encryptor",
+            "function": "hazmat.primitives.ciphers.base.Cipher.encryptor",
+            "imports": ["cryptography.hazmat.primitives.ciphers.base"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CIPHER_CONTEXT_FACTORY",
+                "operation": "factory",
+                "factory_type": "cipher_encryptor",
+                "cipher_object": { "from_receiver": true },
+                "context": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.cmac.CMAC.__init__",
+            "function": "hazmat.primitives.cmac.CMAC.__init__",
+            "imports": ["cryptography.hazmat.primitives.cmac"],
+            "func_params": ["key", "cipher"],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_init",
+                "key": { "from_param": "key" },
+                "underlying_block_cipher": { "from_param": "cipher" },
+                "mac_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.cmac.CMAC.update",
+            "function": "hazmat.primitives.cmac.CMAC.update",
+            "imports": ["cryptography.hazmat.primitives.cmac"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "data" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.cmac.CMAC.finalize",
+            "function": "hazmat.primitives.cmac.CMAC.finalize",
+            "imports": ["cryptography.hazmat.primitives.cmac"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "tag": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.cmac.CMAC.copy",
+            "function": "hazmat.primitives.cmac.CMAC.copy",
+            "imports": ["cryptography.hazmat.primitives.cmac"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_copy",
+                "mac_obj": { "from_receiver": true },
+                "mac_obj_copy": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.cmac.CMAC.verify",
+            "function": "hazmat.primitives.cmac.CMAC.verify",
+            "imports": ["cryptography.hazmat.primitives.cmac"],
+            "func_params": ["signature"],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_verify",
+                "key": { "from_receiver": true },
+                "message": { "from_receiver": true },
+                "tag": { "from_param": "signature" },
+                "underlying_block_cipher": {
+                    "from_receiver_attr": "algorithm",
+                    "profile_resolve": "CIPHER_FROM_OBJECT"
+                }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hmac.HMAC.__init__",
+            "function": "hazmat.primitives.hmac.HMAC.__init__",
+            "imports": ["cryptography.hazmat.primitives.hmac"],
+            "func_params": ["key", "algorithm", "backend"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_init",
+                "key": { "from_param": "key" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "backend": { "from_param": "backend" },
+                "mac_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hmac.HMAC.update",
+            "function": "hazmat.primitives.hmac.HMAC.update",
+            "imports": ["cryptography.hazmat.primitives.hmac"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "data" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hmac.HMAC.finalize",
+            "function": "hazmat.primitives.hmac.HMAC.finalize",
+            "imports": ["cryptography.hazmat.primitives.hmac"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "tag": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hmac.HMAC.copy",
+            "function": "hazmat.primitives.hmac.HMAC.copy",
+            "imports": ["cryptography.hazmat.primitives.hmac"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_copy",
+                "mac_obj": { "from_receiver": true },
+                "mac_obj_copy": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hmac.HMAC.verify",
+            "function": "hazmat.primitives.hmac.HMAC.verify",
+            "imports": ["cryptography.hazmat.primitives.hmac"],
+            "func_params": ["signature"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_verify",
+                "key": { "from_receiver": true },
+                "message": { "from_receiver": true },
+                "tag": { "from_param": "signature" }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.hkdf.HKDF.__init__",
+            "function": "hazmat.primitives.kdf.hkdf.HKDF.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf.hkdf"],
+            "func_params": ["algorithm", "length", "salt", "info", "backend"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf_init",
+                "hash_algorithm": { "from_param": "algorithm" },
+                "dk_length": { "from_param": "length" },
+                "salt": { "from_param": "salt" },
+                "info": { "from_param": "info" },
+                "backend": { "from_param": "backend" },
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.hkdf.HKDF.derive",
+            "function": "hazmat.primitives.kdf.hkdf.HKDF.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf.hkdf"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf_derive",
+                "password_or_key": { "from_param": "key_material" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.hkdf.HKDFExpand.__init__",
+            "function": "hazmat.primitives.kdf.hkdf.HKDFExpand.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf.hkdf"],
+            "func_params": ["algorithm", "length", "info", "backend"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf_expand_init",
+                "hash_algorithm": { "from_param": "algorithm" },
+                "dk_length": { "from_param": "length" },
+                "info": { "from_param": "info" },
+                "backend": { "from_param": "backend" },
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.hkdf.HKDFExpand.derive",
+            "function": "hazmat.primitives.kdf.hkdf.HKDFExpand.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf.hkdf"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf_expand_derive",
+                "prk": { "from_param": "key_material" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.pbkdf2.PBKDF2HMAC.__init__",
+            "function": "hazmat.primitives.kdf.pbkdf2.PBKDF2HMAC.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf.pbkdf2"],
+            "func_params": ["algorithm", "length", "salt", "iterations", "backend"],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "kdf_init",
+                "hash_algorithm": { "from_param": "algorithm" },
+                "dk_length": { "from_param": "length" },
+                "salt": { "from_param": "salt" },
+                "iterations": { "from_param": "iterations" },
+                "backend": { "from_param": "backend" },
+                "prf": "HMAC",
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.pbkdf2.PBKDF2HMAC.derive",
+            "function": "hazmat.primitives.kdf.pbkdf2.PBKDF2HMAC.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf.pbkdf2"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "kdf_derive",
+                "password": { "from_param": "key_material" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.scrypt.Scrypt.__init__",
+            "function": "hazmat.primitives.kdf.scrypt.Scrypt.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf.scrypt"],
+            "func_params": ["salt", "length", "n", "r", "p", "backend"],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "kdf_init",
+                "salt": { "from_param": "salt" },
+                "dk_length": { "from_param": "length" },
+                "N": { "from_param": "n" },
+                "r": { "from_param": "r" },
+                "p": { "from_param": "p" },
+                "backend": { "from_param": "backend" },
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.scrypt.Scrypt.derive",
+            "function": "hazmat.primitives.kdf.scrypt.Scrypt.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf.scrypt"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "kdf_derive",
+                "password": { "from_param": "key_material" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.KeyDerivationFunction.__init__",
+            "function": "hazmat.primitives.kdf.KeyDerivationFunction.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {
+                "profile_id": "UTIL.KDF_GENERIC",
+                "operation": "kdf_init",
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.KeyDerivationFunction.derive",
+            "function": "hazmat.primitives.kdf.KeyDerivationFunction.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "UTIL.KDF_GENERIC",
+                "operation": "kdf_derive",
+                "password_or_key": { "from_param": "key_material" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.KeyDerivationFunction.verify",
+            "function": "hazmat.primitives.kdf.KeyDerivationFunction.verify",
+            "imports": ["cryptography.hazmat.primitives.kdf"],
+            "func_params": ["key_material", "expected_key"],
+            "semantic": {
+                "profile_id": "UTIL.KDF_GENERIC",
+                "operation": "kdf_verify",
+                "password_or_key": { "from_param": "key_material" },
+                "expected_key": { "from_param": "expected_key" }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.Argon2id.__init__",
+            "function": "hazmat.primitives.kdf.argon2.Argon2id.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_init",
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.Argon2id.derive",
+            "function": "hazmat.primitives.kdf.argon2.Argon2id.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_derive",
+                "password_or_key": { "from_param": "key_material" },
+                "salt": { "from_receiver": true },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.Argon2id.derive_phc_encoded",
+            "function": "hazmat.primitives.kdf.argon2.Argon2id.derive_phc_encoded",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_derive_encoded",
+                "password_or_key": { "from_param": "key_material" },
+                "salt": { "from_receiver": true },
+                "encoded_hash": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.Argon2id.verify",
+            "function": "hazmat.primitives.kdf.argon2.Argon2id.verify",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["key_material", "expected_key"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_verify",
+                "password_or_key": { "from_param": "key_material" },
+                "expected_key": { "from_param": "expected_key" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.Argon2id.verify_phc_encoded",
+            "function": "hazmat.primitives.kdf.argon2.Argon2id.verify_phc_encoded",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["key_material", "phc_encoded", "secret"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_verify_encoded",
+                "password_or_key": { "from_param": "key_material" },
+                "encoded_hash": { "from_param": "phc_encoded" },
+                "secret": { "from_param": "secret" }
+            }
+        },
+
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.KeyDerivationFunction.__init__",
+            "function": "hazmat.primitives.kdf.argon2.KeyDerivationFunction.__init__",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["args", "kwargs"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_init",
+                "kdf_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.KeyDerivationFunction.derive",
+            "function": "hazmat.primitives.kdf.argon2.KeyDerivationFunction.derive",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["key_material"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_derive",
+                "password_or_key": { "from_param": "key_material" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.kdf.argon2.KeyDerivationFunction.verify",
+            "function": "hazmat.primitives.kdf.argon2.KeyDerivationFunction.verify",
+            "imports": ["cryptography.hazmat.primitives.kdf.argon2"],
+            "func_params": ["key_material", "expected_key"],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf_verify",
+                "password_or_key": { "from_param": "key_material" },
+                "expected_key": { "from_param": "expected_key" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.Hash.__init__",
+            "function": "hazmat.primitives.hashes.Hash.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": ["algorithm", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_init",
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "backend": { "from_param": "backend" },
+                "hash_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.Hash.update",
+            "function": "hazmat.primitives.hashes.Hash.update",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_update",
+                "hash_obj": { "from_receiver": true },
+                "input_chunk": { "from_param": "data" }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.Hash.finalize",
+            "function": "hazmat.primitives.hashes.Hash.finalize",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_finalize",
+                "hash_obj": { "from_receiver": true },
+                "digest": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.Hash.copy",
+            "function": "hazmat.primitives.hashes.Hash.copy",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_copy",
+                "hash_obj": { "from_receiver": true },
+                "hash_obj_copy": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.MD5.__init__",
+            "function": "hazmat.primitives.hashes.MD5.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash_init",
+                "digest_size": 16,
+                "hash_alg_obj": { "from_return": true },
+                "security_level": "weak"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA1.__init__",
+            "function": "hazmat.primitives.hashes.SHA1.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA1",
+                "operation": "hash_init",
+                "digest_size": 20,
+                "hash_alg_obj": { "from_return": true },
+                "security_level": "weak"
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA224.__init__",
+            "function": "hazmat.primitives.hashes.SHA224.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA224",
+                "operation": "hash_init",
+                "digest_size": 28,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA256.__init__",
+            "function": "hazmat.primitives.hashes.SHA256.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA256",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA384.__init__",
+            "function": "hazmat.primitives.hashes.SHA384.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA384",
+                "operation": "hash_init",
+                "digest_size": 48,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA512.__init__",
+            "function": "hazmat.primitives.hashes.SHA512.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA512",
+                "operation": "hash_init",
+                "digest_size": 64,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA512_224.__init__",
+            "function": "hazmat.primitives.hashes.SHA512_224.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA512_224",
+                "operation": "hash_init",
+                "digest_size": 28,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA512_256.__init__",
+            "function": "hazmat.primitives.hashes.SHA512_256.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA512_256",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA3_224.__init__",
+            "function": "hazmat.primitives.hashes.SHA3_224.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_224",
+                "operation": "hash_init",
+                "digest_size": 28,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA3_256.__init__",
+            "function": "hazmat.primitives.hashes.SHA3_256.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_256",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA3_384.__init__",
+            "function": "hazmat.primitives.hashes.SHA3_384.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_384",
+                "operation": "hash_init",
+                "digest_size": 48,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHA3_512.__init__",
+            "function": "hazmat.primitives.hashes.SHA3_512.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_512",
+                "operation": "hash_init",
+                "digest_size": 64,
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHAKE128.__init__",
+            "function": "hazmat.primitives.hashes.SHAKE128.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": ["digest_size"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_init",
+                "xof": true,
+                "digest_size": { "from_param": "digest_size" },
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.SHAKE256.__init__",
+            "function": "hazmat.primitives.hashes.SHAKE256.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": ["digest_size"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_init",
+                "xof": true,
+                "digest_size": { "from_param": "digest_size" },
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.BLAKE2b.__init__",
+            "function": "hazmat.primitives.hashes.BLAKE2b.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": ["digest_size", "key", "salt", "person"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2B",
+                "operation": "hash_init",
+                "digest_size": { "from_param": "digest_size" },
+                "key": { "from_param": "key" },
+                "salt": { "from_param": "salt" },
+                "person": { "from_param": "person" },
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.hashes.BLAKE2s.__init__",
+            "function": "hazmat.primitives.hashes.BLAKE2s.__init__",
+            "imports": ["cryptography.hazmat.primitives.hashes"],
+            "func_params": ["digest_size", "key", "salt", "person"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2S",
+                "operation": "hash_init",
+                "digest_size": { "from_param": "digest_size" },
+                "key": { "from_param": "key" },
+                "salt": { "from_param": "salt" },
+                "person": { "from_param": "person" },
+                "hash_alg_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15.__init__",
+            "function": "hazmat.primitives.asymmetric.padding.PKCS1v15.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.padding"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "padding_init",
+                "padding": "PKCS1v1.5",
+                "padding_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.padding.MGF1.__init__",
+            "function": "hazmat.primitives.asymmetric.padding.MGF1.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.padding"],
+            "func_params": ["algorithm"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "mgf_init",
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "mgf_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.padding.PSS.__init__",
+            "function": "hazmat.primitives.asymmetric.padding.PSS.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.padding"],
+            "func_params": ["mgf", "salt_length"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "padding_init",
+                "padding": "PSS",
+                "mgf": { "from_param": "mgf" },
+                "salt_length": { "from_param": "salt_length" },
+                "padding_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.asymmetric.padding.OAEP.__init__",
+            "function": "hazmat.primitives.asymmetric.padding.OAEP.__init__",
+            "imports": ["cryptography.hazmat.primitives.asymmetric.padding"],
+            "func_params": ["mgf", "algorithm", "label"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "padding_init",
+                "padding": "OAEP",
+                "mgf": { "from_param": "mgf" },
+                "hash_alg_obj": { "from_param": "algorithm" },
+                "label": { "from_param": "label" },
+                "padding_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.serialization.load_pem_private_key",
+            "function": "hazmat.primitives.serialization.load_pem_private_key",
+            "imports": ["cryptography.hazmat.primitives.serialization"],
+            "func_params": ["data", "password", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_import",
+                "encoding": "PEM",
+                "key_type": "private",
+                "encoded_key": { "from_param": "data" },
+                "password": { "from_param": "password" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.serialization.load_der_private_key",
+            "function": "hazmat.primitives.serialization.load_der_private_key",
+            "imports": ["cryptography.hazmat.primitives.serialization"],
+            "func_params": ["data", "password", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_import",
+                "encoding": "DER",
+                "key_type": "private",
+                "encoded_key": { "from_param": "data" },
+                "password": { "from_param": "password" },
+                "backend": { "from_param": "backend" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.serialization.load_pem_public_key",
+            "function": "hazmat.primitives.serialization.load_pem_public_key",
+            "imports": ["cryptography.hazmat.primitives.serialization"],
+            "func_params": ["data", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_import",
+                "encoding": "PEM",
+                "key_type": "public",
+                "encoded_key": { "from_param": "data" },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.serialization.load_der_public_key",
+            "function": "hazmat.primitives.serialization.load_der_public_key",
+            "imports": ["cryptography.hazmat.primitives.serialization"],
+            "func_params": ["data", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_import",
+                "encoding": "DER",
+                "key_type": "public",
+                "encoded_key": { "from_param": "data" },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.cryptography.cryptography.hazmat.primitives.serialization.load_ssh_public_key",
+            "function": "hazmat.primitives.serialization.load_ssh_public_key",
+            "imports": ["cryptography.hazmat.primitives.serialization"],
+            "func_params": ["data", "backend"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_import",
+                "encoding": "SSH",
+                "key_type": "public",
+                "encoded_key": { "from_param": "data" },
+                "backend": { "from_param": "backend" },
+                "public_key": { "from_return": true }
+            }
+        }
+    ]
+}

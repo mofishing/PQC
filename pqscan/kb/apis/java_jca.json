@@ -1,0 +1,4919 @@
+{
+    "version": "2.0",
+    "language": "Java",
+    "library": "JCA (Java Cryptography Architecture), JCE (Java Cryptography Extension) ",
+    "description": "This API provides cryptographic operations using Java's built-in cryptography libraries, including support for post-quantum algorithms through third-party providers.",
+    "mappings": [
+        {
+            "api_id": "java.jca.java.security.MessageDigest.reset",
+            "function": "MessageDigest.reset",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_reset",
+                "digest_obj": {
+                    "from_receiver": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.update",
+            "function": "MessageDigest.update",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_update",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "input"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.update",
+            "function": "MessageDigest.update",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "input",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_update",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "input"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.update",
+            "function": "MessageDigest.update",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "inputBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_update",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "inputBuffer"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.getInstance",
+            "function": "MessageDigest.getInstance",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "digest_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.getInstance",
+            "function": "MessageDigest.getInstance",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "digest_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.getInstance",
+            "function": "MessageDigest.getInstance",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "digest_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.digest",
+            "function": "MessageDigest.digest",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_finalize",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "digest_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.digest",
+            "function": "MessageDigest.digest",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_oneshot",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "message": {
+                    "from_param": "input"
+                },
+                "digest_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.digest",
+            "function": "MessageDigest.digest",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "output",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_finalize_into_buffer",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                },
+                "written_len": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.isEqual",
+            "function": "MessageDigest.isEqual",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [
+                "a",
+                "b"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.ConstantTimeCompare",
+                "operation": "compare_digest",
+                "left": {
+                    "from_param": "a"
+                },
+                "right": {
+                    "from_param": "b"
+                },
+                "result": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.getAlgorithm",
+            "function": "MessageDigest.getAlgorithm",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_get_algorithm",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "algorithm_name": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.MessageDigest.getDigestLength",
+            "function": "MessageDigest.getDigestLength",
+            "imports": [
+                "java.security.MessageDigest"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_get_digest_length",
+                "digest_obj": {
+                    "from_receiver": true
+                },
+                "digest_length_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getInstance",
+            "function": "Signature.getInstance",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_signature_key": true
+                },
+                "signature_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getInstance",
+            "function": "Signature.getInstance",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_signature_key": true
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "signature_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getInstance",
+            "function": "Signature.getInstance",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_signature_key": true
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "signature_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initSign",
+            "function": "Signature.initSign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "privateKey"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_sign",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "private_key": {
+                    "from_param": "privateKey"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initSign",
+            "function": "Signature.initSign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "privateKey",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_sign",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "private_key": {
+                    "from_param": "privateKey"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initVerify",
+            "function": "Signature.initVerify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "publicKey"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_verify",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "public_key": {
+                    "from_param": "publicKey"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initVerify",
+            "function": "Signature.initVerify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "certificate"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_verify",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "certificate": {
+                    "from_param": "certificate"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.update",
+            "function": "Signature.update",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "signature_update",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "input"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.update",
+            "function": "Signature.update",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "input",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "signature_update",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "input"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.update",
+            "function": "Signature.update",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "inputBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "signature_update",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "inputBuffer"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.sign",
+            "function": "Signature.sign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_finalize",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "signature_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.sign",
+            "function": "Signature.sign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "output",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_finalize_into_buffer",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                },
+                "written_len": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.verify",
+            "function": "Signature.verify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "signature"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "verify_finalize",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "expected_signature": {
+                    "from_param": "signature"
+                },
+                "verify_result": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.verify",
+            "function": "Signature.verify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "signature",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "verify_finalize",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "expected_signature": {
+                    "from_param": "signature"
+                },
+                "verify_result": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getAlgorithm",
+            "function": "Signature.getAlgorithm",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_get_algorithm",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "algorithm_name": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getParameters",
+            "function": "Signature.getParameters",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_get_parameters",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameters_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.setParameter",
+            "function": "Signature.setParameter",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "set_parameters",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameters_obj": {
+                    "from_param": "params"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.setParameter",
+            "function": "Signature.setParameter",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "name",
+                "value"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "set_parameter_named",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameter_name": {
+                    "from_param": "name"
+                },
+                "parameter_value": {
+                    "from_param": "value"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getParameter",
+            "function": "Signature.getParameter",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "name"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "get_parameter_named",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameter_name": {
+                    "from_param": "name"
+                },
+                "parameter_value": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.sign",
+            "function": "Signature.sign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "outbuf",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_finalize_into_buffer",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "output_buffer": {
+                    "from_param": "outbuf"
+                },
+                "written_len": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.sign",
+            "function": "Signature.sign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "sign_finalize",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "signature_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.verify",
+            "function": "Signature.verify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "signature",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "verify_finalize",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "expected_signature": {
+                    "from_param": "signature"
+                },
+                "verify_result": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.verify",
+            "function": "Signature.verify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "signature"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "verify_finalize",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "expected_signature": {
+                    "from_param": "signature"
+                },
+                "verify_result": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getProvider",
+            "function": "Signature.getProvider",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "get_provider",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "provider_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getAlgorithm",
+            "function": "Signature.getAlgorithm",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "get_algorithm",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "algorithm_name": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initVerify",
+            "function": "Signature.initVerify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "publicKey"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_verify_public_key",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "public_key": {
+                    "from_param": "publicKey"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initVerify",
+            "function": "Signature.initVerify",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "certificate"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_verify_certificate",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "certificate": {
+                    "from_param": "certificate"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initSign",
+            "function": "Signature.initSign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "privateKey",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_sign_with_random",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "private_key": {
+                    "from_param": "privateKey"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.initSign",
+            "function": "Signature.initSign",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "privateKey"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "init_sign",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "private_key": {
+                    "from_param": "privateKey"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.setParameter",
+            "function": "Signature.setParameter",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "set_parameters",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameters_obj": {
+                    "from_param": "params"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.setParameter",
+            "function": "Signature.setParameter",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "name",
+                "value"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "set_parameter_named",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameter_name": {
+                    "from_param": "name"
+                },
+                "parameter_value": {
+                    "from_param": "value"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.Signature.getParameter",
+            "function": "Signature.getParameter",
+            "imports": [
+                "java.security.Signature"
+            ],
+            "func_params": [
+                "name"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.SignatureFactory",
+                "operation": "get_parameter_named",
+                "signature_obj": {
+                    "from_receiver": true
+                },
+                "parameter_name": {
+                    "from_param": "name"
+                },
+                "parameter_value": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getInstance",
+            "function": "KeyPairGenerator.getInstance",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "create_keypair_generator",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "keypair_gen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getInstance",
+            "function": "KeyPairGenerator.getInstance",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "create_keypair_generator",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "keypair_gen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getInstance",
+            "function": "KeyPairGenerator.getInstance",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "create_keypair_generator",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "keypair_gen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "keysize"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "init_with_keysize",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "key_bits": {
+                    "from_param": "keysize"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "keysize",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "init_with_keysize_and_random",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "key_bits": {
+                    "from_param": "keysize"
+                },
+                "random_obj": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "params",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "init_with_params_and_random",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "param_spec": {
+                    "from_param": "params"
+                },
+                "random_obj": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "init_with_params",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "param_spec": {
+                    "from_param": "params"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getProvider",
+            "function": "KeyPairGenerator.getProvider",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_provider",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "provider_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getAlgorithm",
+            "function": "KeyPairGenerator.getAlgorithm",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_algorithm",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "algorithm_name": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.generateKeyPair",
+            "function": "KeyPairGenerator.generateKeyPair",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_keypair",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "keypair_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.genKeyPair",
+            "function": "KeyPairGenerator.genKeyPair",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_keypair",
+                "keypair_gen_obj": {
+                    "from_receiver": true
+                },
+                "keypair_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getInstance",
+            "function": "KeyFactory.getInstance",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "create_key_factory",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "key_factory_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getInstance",
+            "function": "KeyFactory.getInstance",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "create_key_factory",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "key_factory_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getInstance",
+            "function": "KeyFactory.getInstance",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "create_key_factory",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_factory_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getProvider",
+            "function": "KeyFactory.getProvider",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_provider",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "provider_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getAlgorithm",
+            "function": "KeyFactory.getAlgorithm",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_algorithm",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "algorithm_name": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.generatePublic",
+            "function": "KeyFactory.generatePublic",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_public_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key_spec": {
+                    "from_param": "keySpec"
+                },
+                "public_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.generatePrivate",
+            "function": "KeyFactory.generatePrivate",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_private_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key_spec": {
+                    "from_param": "keySpec"
+                },
+                "private_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getKeySpec",
+            "function": "KeyFactory.getKeySpec",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "key",
+                "keySpecType"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_key_spec",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key_obj": {
+                    "from_param": "key"
+                },
+                "key_spec_class": {
+                    "from_param": "keySpecType"
+                },
+                "key_spec": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.translateKey",
+            "function": "KeyFactory.translateKey",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "translate_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "input_key": {
+                    "from_param": "key"
+                },
+                "translated_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "random": {
+                    "from_param": "random"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key",
+                "paramSpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "params": {
+                    "from_param": "paramSpec"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key",
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "params": {
+                    "from_param": "params"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key",
+                "paramSpec",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "params": {
+                    "from_param": "paramSpec"
+                },
+                "random": {
+                    "from_param": "random"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key",
+                "params",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "params": {
+                    "from_param": "params"
+                },
+                "random": {
+                    "from_param": "random"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.init",
+            "function": "Cipher.init",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "opmode",
+                "key",
+                "paramSpec",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "opmode": {
+                    "from_param": "opmode"
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "params": {
+                    "from_param": "paramSpec"
+                },
+                "random": {
+                    "from_param": "random"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input",
+                "inputOffset",
+                "inputLen",
+                "output"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize_into_buffer",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "input_offset": {
+                    "from_param": "inputOffset"
+                },
+                "input_length": {
+                    "from_param": "inputLen"
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize_oneshot",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "output_bytes": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "inputBuffer",
+                "outputBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize_buffer_to_buffer",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_buffer": {
+                    "from_param": "inputBuffer"
+                },
+                "output_buffer": {
+                    "from_param": "outputBuffer"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "output_bytes": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input",
+                "inputOffset",
+                "inputLen",
+                "output",
+                "outputOffset"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize_into_buffer",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "input_offset": {
+                    "from_param": "inputOffset"
+                },
+                "input_length": {
+                    "from_param": "inputLen"
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                },
+                "output_offset": {
+                    "from_param": "outputOffset"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input",
+                "inputOffset",
+                "inputLen"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize_oneshot",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "input_offset": {
+                    "from_param": "inputOffset"
+                },
+                "input_length": {
+                    "from_param": "inputLen"
+                },
+                "output_bytes": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.doFinal",
+            "function": "Cipher.doFinal",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "inputBuffer",
+                "outputBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_finalize_buffer_to_buffer",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_buffer": {
+                    "from_param": "inputBuffer"
+                },
+                "output_buffer": {
+                    "from_param": "outputBuffer"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.getInstance",
+            "function": "KeyGenerator.getInstance",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keygen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "keygen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.getInstance",
+            "function": "KeyGenerator.getInstance",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keygen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "keygen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.generateKey",
+            "function": "KeyGenerator.generateKey",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_symmetric_key",
+                "keygen_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.init",
+            "function": "KeyGenerator.init",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [
+                "keysize"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keygen_init_keysize",
+                "keygen_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "bits_param": "keysize"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.init",
+            "function": "KeyGenerator.init",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [
+                "keysize",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keygen_init_keysize_with_random",
+                "keygen_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "bits_param": "keysize"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.init",
+            "function": "KeyGenerator.init",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keygen_init_with_params",
+                "keygen_obj": {
+                    "from_receiver": true
+                },
+                "params": {
+                    "from_param": "params"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyGenerator.init",
+            "function": "KeyGenerator.init",
+            "imports": [
+                "javax.crypto.KeyGenerator"
+            ],
+            "func_params": [
+                "params",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keygen_init_with_params_random",
+                "keygen_obj": {
+                    "from_receiver": true
+                },
+                "params": {
+                    "from_param": "params"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getInstance",
+            "function": "KeyPairGenerator.getInstance",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keypairgen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "keypairgen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.getInstance",
+            "function": "KeyPairGenerator.getInstance",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keypairgen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "keypairgen_obj": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_init": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.generateKeyPair",
+            "function": "KeyPairGenerator.generateKeyPair",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_keypair",
+                "keypairgen_obj": {
+                    "from_receiver": true
+                },
+                "keypair": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.genKeyPair",
+            "function": "KeyPairGenerator.genKeyPair",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_keypair",
+                "keypairgen_obj": {
+                    "from_receiver": true
+                },
+                "keypair": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "keysize"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keypairgen_init_keysize",
+                "keypairgen_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "bits_param": "keysize"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "keysize",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keypairgen_init_keysize_with_random",
+                "keypairgen_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "bits_param": "keysize"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keypairgen_init_with_params",
+                "keypairgen_obj": {
+                    "from_receiver": true
+                },
+                "params": {
+                    "from_param": "params"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyPairGenerator.initialize",
+            "function": "KeyPairGenerator.initialize",
+            "imports": [
+                "java.security.KeyPairGenerator"
+            ],
+            "func_params": [
+                "params",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "keypairgen_init_with_params_random",
+                "keypairgen_obj": {
+                    "from_receiver": true
+                },
+                "params": {
+                    "from_param": "params"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.getInstance",
+            "function": "Mac.getInstance",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_mac_key": true
+                },
+                "mac_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.getInstance",
+            "function": "Mac.getInstance",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_mac_key": true
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "mac_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.init",
+            "function": "Mac.init",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init_with_key",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_param": "key"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.init",
+            "function": "Mac.init",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "key",
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init_with_key_params",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "params": {
+                    "from_param": "params"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.update",
+            "function": "Mac.update",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_update",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "input"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.update",
+            "function": "Mac.update",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "input",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_update",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "input"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.doFinal",
+            "function": "Mac.doFinal",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_finalize",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "mac_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.doFinal",
+            "function": "Mac.doFinal",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_oneshot",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "message": {
+                    "from_param": "input"
+                },
+                "mac_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.doFinal",
+            "function": "Mac.doFinal",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "output",
+                "outOffset"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_finalize_into_buffer",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.getMacLength",
+            "function": "Mac.getMacLength",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_get_length",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "mac_length_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.reset",
+            "function": "Mac.reset",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_reset",
+                "mac_obj": {
+                    "from_receiver": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.SecretKeyFactory.getInstance",
+            "function": "SecretKeyFactory.getInstance",
+            "imports": [
+                "javax.crypto.SecretKeyFactory"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "secretkeyfactory_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "keyfactory_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.SecretKeyFactory.getInstance",
+            "function": "SecretKeyFactory.getInstance",
+            "imports": [
+                "javax.crypto.SecretKeyFactory"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "secretkeyfactory_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "keyfactory_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.SecretKeyFactory.generateSecret",
+            "function": "SecretKeyFactory.generateSecret",
+            "imports": [
+                "javax.crypto.SecretKeyFactory"
+            ],
+            "func_params": [
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_secret_key_from_spec",
+                "keyfactory_obj": {
+                    "from_receiver": true
+                },
+                "key_spec": {
+                    "from_param": "keySpec"
+                },
+                "secret_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.SecureRandom.getInstance",
+            "function": "SecureRandom.getInstance",
+            "imports": [
+                "java.security.SecureRandom"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "rng_select_dynamic",
+                "rng_name": {
+                    "from_param": "algorithm"
+                },
+                "rng_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.SecureRandom.getInstance",
+            "function": "SecureRandom.getInstance",
+            "imports": [
+                "java.security.SecureRandom"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "rng_select_dynamic",
+                "rng_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "rng_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.SecureRandom.nextBytes",
+            "function": "SecureRandom.nextBytes",
+            "imports": [
+                "java.security.SecureRandom"
+            ],
+            "func_params": [
+                "bytes"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "generate_random_bytes",
+                "rng_obj": {
+                    "from_receiver": true
+                },
+                "output_buffer": {
+                    "from_param": "bytes"
+                },
+                "key": {
+                    "bytes": {
+                        "from_param_length": "bytes"
+                    }
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.SecureRandom.generateSeed",
+            "function": "SecureRandom.generateSeed",
+            "imports": [
+                "java.security.SecureRandom"
+            ],
+            "func_params": [
+                "numBytes"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "generate_random_seed",
+                "numBytes": {
+                    "from_param": "numBytes"
+                },
+                "seed_bytes": {
+                    "from_return": true
+                },
+                "key": {
+                    "bytes_param": "numBytes"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.getInstance",
+            "function": "KeyAgreement.getInstance",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_agreement_key": true
+                },
+                "agreement_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.getInstance",
+            "function": "KeyAgreement.getInstance",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_bits": {
+                    "from_agreement_key": true
+                },
+                "provider_name": {
+                    "from_param": "provider"
+                },
+                "agreement_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.init",
+            "function": "KeyAgreement.init",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_init",
+                "agreement_obj": {
+                    "from_receiver": true
+                },
+                "private_key": {
+                    "from_param": "key"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.init",
+            "function": "KeyAgreement.init",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "key",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_init",
+                "agreement_obj": {
+                    "from_receiver": true
+                },
+                "private_key": {
+                    "from_param": "key"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.doPhase",
+            "function": "KeyAgreement.doPhase",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "key",
+                "lastPhase"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_phase",
+                "agreement_obj": {
+                    "from_receiver": true
+                },
+                "peer_public_key": {
+                    "from_param": "key"
+                },
+                "last_phase": {
+                    "from_param": "lastPhase"
+                },
+                "intermediate_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.generateSecret",
+            "function": "KeyAgreement.generateSecret",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_derive",
+                "agreement_obj": {
+                    "from_receiver": true
+                },
+                "shared_secret": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.generateSecret",
+            "function": "KeyAgreement.generateSecret",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_derive",
+                "agreement_obj": {
+                    "from_receiver": true
+                },
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "shared_secret_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameters.getInstance",
+            "function": "AlgorithmParameters.getInstance",
+            "imports": [
+                "java.security.AlgorithmParameters"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameters.init",
+            "function": "AlgorithmParameters.init",
+            "imports": [
+                "java.security.AlgorithmParameters"
+            ],
+            "func_params": [
+                "paramSpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_init",
+                "params_obj": {
+                    "from_receiver": true
+                },
+                "param_spec": {
+                    "from_param": "paramSpec"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameters.getParameterSpec",
+            "function": "AlgorithmParameters.getParameterSpec",
+            "imports": [
+                "java.security.AlgorithmParameters"
+            ],
+            "func_params": [
+                "paramSpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_get",
+                "params_obj": {
+                    "from_receiver": true
+                },
+                "param_spec": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.GCMParameterSpec.<init>",
+            "function": "GCMParameterSpec",
+            "imports": [
+                "javax.crypto.spec.GCMParameterSpec"
+            ],
+            "func_params": [
+                "tLen",
+                "src"
+            ],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "gcm_params_init",
+                "tag_length": {
+                    "from_param": "tLen"
+                },
+                "iv": {
+                    "from_param": "src"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.IvParameterSpec.<init>",
+            "function": "IvParameterSpec",
+            "imports": [
+                "javax.crypto.spec.IvParameterSpec"
+            ],
+            "func_params": [
+                "iv"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "iv_params_init",
+                "iv": {
+                    "from_param": "iv"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.PBEParameterSpec.<init>",
+            "function": "PBEParameterSpec",
+            "imports": [
+                "javax.crypto.spec.PBEParameterSpec"
+            ],
+            "func_params": [
+                "salt",
+                "iterationCount"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "pbe_params_init",
+                "salt": {
+                    "from_param": "salt"
+                },
+                "iterations": {
+                    "from_param": "iterationCount"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DHParameterSpec.<init>",
+            "function": "DHParameterSpec",
+            "imports": [
+                "javax.crypto.spec.DHParameterSpec"
+            ],
+            "func_params": [
+                "p",
+                "g"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "dh_params_init",
+                "prime": {
+                    "from_param": "p"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DHGenParameterSpec.<init>",
+            "function": "DHGenParameterSpec",
+            "imports": [
+                "javax.crypto.spec.DHGenParameterSpec"
+            ],
+            "func_params": [
+                "primeSize",
+                "exponentSize"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "dh_gen_params_init",
+                "prime_size": {
+                    "from_param": "primeSize"
+                },
+                "exponent_size": {
+                    "from_param": "exponentSize"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.DSAParameterSpec.<init>",
+            "function": "DSAParameterSpec",
+            "imports": [
+                "java.security.spec.DSAParameterSpec"
+            ],
+            "func_params": [
+                "p",
+                "q",
+                "g"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "dsa_params_init",
+                "prime": {
+                    "from_param": "p"
+                },
+                "subprime": {
+                    "from_param": "q"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.ECParameterSpec.<init>",
+            "function": "ECParameterSpec",
+            "imports": [
+                "java.security.spec.ECParameterSpec"
+            ],
+            "func_params": [
+                "curve",
+                "g",
+                "n",
+                "h"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "ec_params_init",
+                "curve": {
+                    "from_param": "curve"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "order": {
+                    "from_param": "n"
+                },
+                "cofactor": {
+                    "from_param": "h"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.RSAKeyGenParameterSpec.<init>",
+            "function": "RSAKeyGenParameterSpec",
+            "imports": [
+                "java.security.spec.RSAKeyGenParameterSpec"
+            ],
+            "func_params": [
+                "keysize",
+                "publicExponent"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "rsa_params_init",
+                "key_bits": {
+                    "from_param": "keysize"
+                },
+                "public_exponent": {
+                    "from_param": "publicExponent"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.SecretKeySpec.<init>",
+            "function": "SecretKeySpec",
+            "imports": [
+                "javax.crypto.spec.SecretKeySpec"
+            ],
+            "func_params": [
+                "key",
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "secret_key_init_dynamic",
+                "key_bytes": {
+                    "from_param": "key"
+                },
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.SecretKeySpec.<init>",
+            "function": "SecretKeySpec",
+            "imports": [
+                "javax.crypto.spec.SecretKeySpec"
+            ],
+            "func_params": [
+                "key",
+                "offset",
+                "len",
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "secret_key_init_dynamic",
+                "key_bytes": {
+                    "from_param": "key"
+                },
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "key_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.PBEKeySpec.<init>",
+            "function": "PBEKeySpec",
+            "imports": [
+                "javax.crypto.spec.PBEKeySpec"
+            ],
+            "func_params": [
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "pbe_key_spec_init",
+                "password": {
+                    "from_param": "password"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.PBEKeySpec.<init>",
+            "function": "PBEKeySpec",
+            "imports": [
+                "javax.crypto.spec.PBEKeySpec"
+            ],
+            "func_params": [
+                "password",
+                "salt",
+                "iterationCount"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "pbe_key_spec_init",
+                "password": {
+                    "from_param": "password"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "iterations": {
+                    "from_param": "iterationCount"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.PBEKeySpec.<init>",
+            "function": "PBEKeySpec",
+            "imports": [
+                "javax.crypto.spec.PBEKeySpec"
+            ],
+            "func_params": [
+                "password",
+                "salt",
+                "iterationCount",
+                "keyLength"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "pbe_key_spec_init",
+                "password": {
+                    "from_param": "password"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "iterations": {
+                    "from_param": "iterationCount"
+                },
+                "key_bits": {
+                    "from_param": "keyLength"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.RSAPublicKeySpec.<init>",
+            "function": "RSAPublicKeySpec",
+            "imports": [
+                "java.security.spec.RSAPublicKeySpec"
+            ],
+            "func_params": [
+                "modulus",
+                "publicExponent"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "rsa_public_key_spec_init",
+                "modulus": {
+                    "from_param": "modulus"
+                },
+                "public_exponent": {
+                    "from_param": "publicExponent"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.RSAPrivateKeySpec.<init>",
+            "function": "RSAPrivateKeySpec",
+            "imports": [
+                "java.security.spec.RSAPrivateKeySpec"
+            ],
+            "func_params": [
+                "modulus",
+                "privateExponent"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "rsa_private_key_spec_init",
+                "modulus": {
+                    "from_param": "modulus"
+                },
+                "private_exponent": {
+                    "from_param": "privateExponent"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.RSAPrivateCrtKeySpec.<init>",
+            "function": "RSAPrivateCrtKeySpec",
+            "imports": [
+                "java.security.spec.RSAPrivateCrtKeySpec"
+            ],
+            "func_params": [
+                "modulus",
+                "publicExponent",
+                "privateExponent",
+                "primeP",
+                "primeQ",
+                "primeExponentP",
+                "primeExponentQ",
+                "crtCoefficient"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "rsa_private_crt_key_spec_init",
+                "modulus": {
+                    "from_param": "modulus"
+                },
+                "public_exponent": {
+                    "from_param": "publicExponent"
+                },
+                "private_exponent": {
+                    "from_param": "privateExponent"
+                },
+                "prime_p": {
+                    "from_param": "primeP"
+                },
+                "prime_q": {
+                    "from_param": "primeQ"
+                },
+                "prime_exponent_p": {
+                    "from_param": "primeExponentP"
+                },
+                "prime_exponent_q": {
+                    "from_param": "primeExponentQ"
+                },
+                "crt_coefficient": {
+                    "from_param": "crtCoefficient"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.DSAPublicKeySpec.<init>",
+            "function": "DSAPublicKeySpec",
+            "imports": [
+                "java.security.spec.DSAPublicKeySpec"
+            ],
+            "func_params": [
+                "y",
+                "p",
+                "q",
+                "g"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "dsa_public_key_spec_init",
+                "public_key": {
+                    "from_param": "y"
+                },
+                "prime": {
+                    "from_param": "p"
+                },
+                "subprime": {
+                    "from_param": "q"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.DSAPrivateKeySpec.<init>",
+            "function": "DSAPrivateKeySpec",
+            "imports": [
+                "java.security.spec.DSAPrivateKeySpec"
+            ],
+            "func_params": [
+                "x",
+                "p",
+                "q",
+                "g"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "dsa_private_key_spec_init",
+                "private_key": {
+                    "from_param": "x"
+                },
+                "prime": {
+                    "from_param": "p"
+                },
+                "subprime": {
+                    "from_param": "q"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DHPublicKeySpec.<init>",
+            "function": "DHPublicKeySpec",
+            "imports": [
+                "javax.crypto.spec.DHPublicKeySpec"
+            ],
+            "func_params": [
+                "y",
+                "p",
+                "g"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "dh_public_key_spec_init",
+                "public_key": {
+                    "from_param": "y"
+                },
+                "prime": {
+                    "from_param": "p"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DHPrivateKeySpec.<init>",
+            "function": "DHPrivateKeySpec",
+            "imports": [
+                "javax.crypto.spec.DHPrivateKeySpec"
+            ],
+            "func_params": [
+                "x",
+                "p",
+                "g"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "dh_private_key_spec_init",
+                "private_key": {
+                    "from_param": "x"
+                },
+                "prime": {
+                    "from_param": "p"
+                },
+                "generator": {
+                    "from_param": "g"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.ECPublicKeySpec.<init>",
+            "function": "ECPublicKeySpec",
+            "imports": [
+                "java.security.spec.ECPublicKeySpec"
+            ],
+            "func_params": [
+                "w",
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "ec_public_key_spec_init",
+                "public_point": {
+                    "from_param": "w"
+                },
+                "ec_params": {
+                    "from_param": "params"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.ECPrivateKeySpec.<init>",
+            "function": "ECPrivateKeySpec",
+            "imports": [
+                "java.security.spec.ECPrivateKeySpec"
+            ],
+            "func_params": [
+                "s",
+                "params"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "ec_private_key_spec_init",
+                "private_key": {
+                    "from_param": "s"
+                },
+                "ec_params": {
+                    "from_param": "params"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.X509EncodedKeySpec.<init>",
+            "function": "X509EncodedKeySpec",
+            "imports": [
+                "java.security.spec.X509EncodedKeySpec"
+            ],
+            "func_params": [
+                "encodedKey"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_decode_x509",
+                "encoded_key": {
+                    "from_param": "encodedKey"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.PKCS8EncodedKeySpec.<init>",
+            "function": "PKCS8EncodedKeySpec",
+            "imports": [
+                "java.security.spec.PKCS8EncodedKeySpec"
+            ],
+            "func_params": [
+                "encodedKey"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_decode_pkcs8",
+                "encoded_key": {
+                    "from_param": "encodedKey"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.wrap",
+            "function": "Cipher.wrap",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "key_to_wrap": {
+                    "from_param": "key"
+                },
+                "wrapped_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.unwrap",
+            "function": "Cipher.unwrap",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "wrappedKey",
+                "wrappedKeyAlgorithm",
+                "wrappedKeyType"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_unwrap",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "wrapped_key": {
+                    "from_param": "wrappedKey"
+                },
+                "algorithm_name": {
+                    "from_param": "wrappedKeyAlgorithm"
+                },
+                "unwrapped_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.getIV",
+            "function": "Cipher.getIV",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "get_iv",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "iv": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.getParameters",
+            "function": "Cipher.getParameters",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "get_params",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "params": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.generatePublic",
+            "function": "KeyFactory.generatePublic",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_public_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key_spec": {
+                    "from_param": "keySpec"
+                },
+                "public_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.generatePrivate",
+            "function": "KeyFactory.generatePrivate",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "generate_private_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key_spec": {
+                    "from_param": "keySpec"
+                },
+                "private_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.getKeySpec",
+            "function": "KeyFactory.getKeySpec",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "key",
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_key_spec",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "key_spec": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.KeyFactory.translateKey",
+            "function": "KeyFactory.translateKey",
+            "imports": [
+                "java.security.KeyFactory"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "translate_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "translated_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.getInstance",
+            "function": "Cipher.getInstance",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "transformation"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "cipher_name": {
+                    "from_param": "transformation"
+                },
+                "cipher_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.getInstance",
+            "function": "Cipher.getInstance",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "transformation",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "cipher_name": {
+                    "from_param": "transformation"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "cipher_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.getInstance",
+            "function": "Cipher.getInstance",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "transformation",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init_dynamic",
+                "cipher_name": {
+                    "from_param": "transformation"
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "cipher_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.update",
+            "function": "Cipher.update",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_update_oneshot",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "output_bytes": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.update",
+            "function": "Cipher.update",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input",
+                "inputOffset",
+                "inputLen"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_update",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "input_offset": {
+                    "from_param": "inputOffset"
+                },
+                "input_length": {
+                    "from_param": "inputLen"
+                },
+                "output_bytes": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.update",
+            "function": "Cipher.update",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input",
+                "inputOffset",
+                "inputLen",
+                "output"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_update_into_buffer",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "input_offset": {
+                    "from_param": "inputOffset"
+                },
+                "input_length": {
+                    "from_param": "inputLen"
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.update",
+            "function": "Cipher.update",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "input",
+                "inputOffset",
+                "inputLen",
+                "output",
+                "outputOffset"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_update_into_buffer_offset",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_bytes": {
+                    "from_param": "input"
+                },
+                "input_offset": {
+                    "from_param": "inputOffset"
+                },
+                "input_length": {
+                    "from_param": "inputLen"
+                },
+                "output_buffer": {
+                    "from_param": "output"
+                },
+                "output_offset": {
+                    "from_param": "outputOffset"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.update",
+            "function": "Cipher.update",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "inputBuffer",
+                "outputBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_update_buffer_to_buffer",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "input_buffer": {
+                    "from_param": "inputBuffer"
+                },
+                "output_buffer": {
+                    "from_param": "outputBuffer"
+                },
+                "output_length": {
+                    "from_return": true
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.updateAAD",
+            "function": "Cipher.updateAAD",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "src"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "aead_update_aad",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "aad": {
+                    "from_param": "src"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.updateAAD",
+            "function": "Cipher.updateAAD",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "src",
+                "offset",
+                "len"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "aead_update_aad",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "aad": {
+                    "from_param": "src"
+                },
+                "aad_offset": {
+                    "from_param": "offset"
+                },
+                "aad_length": {
+                    "from_param": "len"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Cipher.updateAAD",
+            "function": "Cipher.updateAAD",
+            "imports": [
+                "javax.crypto.Cipher"
+            ],
+            "func_params": [
+                "srcBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "aead_update_aad",
+                "cipher_obj": {
+                    "from_receiver": true
+                },
+                "aad": {
+                    "from_param": "srcBuffer"
+                },
+                "cipher_name": {
+                    "from_receiver_attr": "algorithm"
+                },
+                "mode": {
+                    "from_receiver_attr": "mode"
+                },
+                "padding": {
+                    "from_receiver_attr": "padding"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.SecretKeyFactory.getKeySpec",
+            "function": "SecretKeyFactory.getKeySpec",
+            "imports": [
+                "javax.crypto.SecretKeyFactory"
+            ],
+            "func_params": [
+                "key",
+                "keySpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "get_key_spec",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "key_spec": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.SecretKeyFactory.translateKey",
+            "function": "SecretKeyFactory.translateKey",
+            "imports": [
+                "javax.crypto.SecretKeyFactory"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "translate_key",
+                "key_factory_obj": {
+                    "from_receiver": true
+                },
+                "key": {
+                    "from_param": "key"
+                },
+                "translated_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.Mac.update",
+            "function": "Mac.update",
+            "imports": [
+                "javax.crypto.Mac"
+            ],
+            "func_params": [
+                "inputBuffer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_update",
+                "mac_obj": {
+                    "from_receiver": true
+                },
+                "message_chunk": {
+                    "from_param": "inputBuffer"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.ECGenParameterSpec.<init>",
+            "function": "ECGenParameterSpec",
+            "imports": [
+                "java.security.spec.ECGenParameterSpec"
+            ],
+            "func_params": [
+                "name"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "ec_gen_params_init",
+                "curve": {
+                    "from_param": "name"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.ChaCha20ParameterSpec.<init>",
+            "function": "ChaCha20ParameterSpec",
+            "imports": [
+                "javax.crypto.spec.ChaCha20ParameterSpec"
+            ],
+            "func_params": [
+                "nonce",
+                "counter"
+            ],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20",
+                "operation": "chacha20_params_init",
+                "nonce": {
+                    "from_param": "nonce"
+                },
+                "counter": {
+                    "from_param": "counter"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.OAEPParameterSpec.<init>",
+            "function": "OAEPParameterSpec",
+            "imports": [
+                "javax.crypto.spec.OAEPParameterSpec"
+            ],
+            "func_params": [
+                "mdName",
+                "mgfName",
+                "mgfSpec",
+                "pSrc"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "oaep_params_init",
+                "hash": {
+                    "from_param": "mdName"
+                },
+                "mgf": {
+                    "from_param": "mgfName"
+                },
+                "mgf_spec": {
+                    "from_param": "mgfSpec"
+                },
+                "p_source": {
+                    "from_param": "pSrc"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.PSSParameterSpec.<init>",
+            "function": "PSSParameterSpec",
+            "imports": [
+                "java.security.spec.PSSParameterSpec"
+            ],
+            "func_params": [
+                "mdName",
+                "mgfName",
+                "mgfSpec",
+                "saltLen",
+                "trailerField"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "pss_params_init",
+                "hash": {
+                    "from_param": "mdName"
+                },
+                "mgf": {
+                    "from_param": "mgfName"
+                },
+                "mgf_spec": {
+                    "from_param": "mgfSpec"
+                },
+                "salt_len": {
+                    "from_param": "saltLen"
+                },
+                "trailer_field": {
+                    "from_param": "trailerField"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameters.getInstance",
+            "function": "AlgorithmParameters.getInstance",
+            "imports": [
+                "java.security.AlgorithmParameters"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameters.getInstance",
+            "function": "AlgorithmParameters.getInstance",
+            "imports": [
+                "java.security.AlgorithmParameters"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.getInstance",
+            "function": "AlgorithmParameterGenerator.getInstance",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "algorithm"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "params_gen_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.getInstance",
+            "function": "AlgorithmParameterGenerator.getInstance",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "algorithm",
+                "providerName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_name": {
+                    "from_param": "providerName"
+                },
+                "params_gen_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.getInstance",
+            "function": "AlgorithmParameterGenerator.getInstance",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "algorithm",
+                "provider"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "algorithm"
+                },
+                "provider_obj": {
+                    "from_param": "provider"
+                },
+                "params_gen_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.init",
+            "function": "AlgorithmParameterGenerator.init",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "size"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init",
+                "params_gen_obj": {
+                    "from_receiver": true
+                },
+                "size": {
+                    "from_param": "size"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.init",
+            "function": "AlgorithmParameterGenerator.init",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "size",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init",
+                "params_gen_obj": {
+                    "from_receiver": true
+                },
+                "size": {
+                    "from_param": "size"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.init",
+            "function": "AlgorithmParameterGenerator.init",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "genParamSpec"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init",
+                "params_gen_obj": {
+                    "from_receiver": true
+                },
+                "param_spec": {
+                    "from_param": "genParamSpec"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.init",
+            "function": "AlgorithmParameterGenerator.init",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [
+                "genParamSpec",
+                "random"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_init",
+                "params_gen_obj": {
+                    "from_receiver": true
+                },
+                "param_spec": {
+                    "from_param": "genParamSpec"
+                },
+                "random": {
+                    "from_param": "random"
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.AlgorithmParameterGenerator.generateParameters",
+            "function": "AlgorithmParameterGenerator.generateParameters",
+            "imports": [
+                "java.security.AlgorithmParameterGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_gen_generate",
+                "params_gen_obj": {
+                    "from_receiver": true
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.KeyAgreement.generateSecret",
+            "function": "KeyAgreement.generateSecret",
+            "imports": [
+                "javax.crypto.KeyAgreement"
+            ],
+            "func_params": [
+                "sharedSecret",
+                "offset"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "key_agreement_derive_into_buffer",
+                "agreement_obj": {
+                    "from_receiver": true
+                },
+                "output_buffer": {
+                    "from_param": "sharedSecret"
+                },
+                "output_offset": {
+                    "from_param": "offset"
+                },
+                "output_length": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.MGF1ParameterSpec.<init>",
+            "function": "MGF1ParameterSpec",
+            "imports": [
+                "java.security.spec.MGF1ParameterSpec"
+            ],
+            "func_params": [
+                "mdName"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "mgf1_params_init",
+                "hash": {
+                    "from_param": "mdName"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.PSource.PSpecified.<init>",
+            "function": "PSpecified",
+            "imports": [
+                "javax.crypto.spec.PSource"
+            ],
+            "func_params": [
+                "p"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "psource_params_init",
+                "p_source": {
+                    "from_param": "p"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.RC2ParameterSpec.<init>",
+            "function": "RC2ParameterSpec",
+            "imports": [
+                "javax.crypto.spec.RC2ParameterSpec"
+            ],
+            "func_params": [
+                "effectiveKeyBits"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RC2",
+                "operation": "rc2_params_init",
+                "key_bits": {
+                    "from_param": "effectiveKeyBits"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.RC2ParameterSpec.<init>",
+            "function": "RC2ParameterSpec",
+            "imports": [
+                "javax.crypto.spec.RC2ParameterSpec"
+            ],
+            "func_params": [
+                "effectiveKeyBits",
+                "iv"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RC2",
+                "operation": "rc2_params_init",
+                "key_bits": {
+                    "from_param": "effectiveKeyBits"
+                },
+                "iv": {
+                    "from_param": "iv"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.RC5ParameterSpec.<init>",
+            "function": "RC5ParameterSpec",
+            "imports": [
+                "javax.crypto.spec.RC5ParameterSpec"
+            ],
+            "func_params": [
+                "version",
+                "rounds",
+                "wordSize"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RC5",
+                "operation": "rc5_params_init",
+                "version": {
+                    "from_param": "version"
+                },
+                "rounds": {
+                    "from_param": "rounds"
+                },
+                "word_size": {
+                    "from_param": "wordSize"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.RC5ParameterSpec.<init>",
+            "function": "RC5ParameterSpec",
+            "imports": [
+                "javax.crypto.spec.RC5ParameterSpec"
+            ],
+            "func_params": [
+                "version",
+                "rounds",
+                "wordSize",
+                "iv"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RC5",
+                "operation": "rc5_params_init",
+                "version": {
+                    "from_param": "version"
+                },
+                "rounds": {
+                    "from_param": "rounds"
+                },
+                "word_size": {
+                    "from_param": "wordSize"
+                },
+                "iv": {
+                    "from_param": "iv"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DESKeySpec.<init>",
+            "function": "DESKeySpec",
+            "imports": [
+                "javax.crypto.spec.DESKeySpec"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DES",
+                "operation": "des_key_spec_init",
+                "key_bytes": {
+                    "from_param": "key"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DESKeySpec.<init>",
+            "function": "DESKeySpec",
+            "imports": [
+                "javax.crypto.spec.DESKeySpec"
+            ],
+            "func_params": [
+                "key",
+                "offset"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DES",
+                "operation": "des_key_spec_init",
+                "key_bytes": {
+                    "from_param": "key"
+                },
+                "key_offset": {
+                    "from_param": "offset"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DESedeKeySpec.<init>",
+            "function": "DESedeKeySpec",
+            "imports": [
+                "javax.crypto.spec.DESedeKeySpec"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "ALG.3DES",
+                "operation": "desede_key_spec_init",
+                "key_bytes": {
+                    "from_param": "key"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.spec.DESedeKeySpec.<init>",
+            "function": "DESedeKeySpec",
+            "imports": [
+                "javax.crypto.spec.DESedeKeySpec"
+            ],
+            "func_params": [
+                "key",
+                "offset"
+            ],
+            "semantic": {
+                "profile_id": "ALG.3DES",
+                "operation": "desede_key_spec_init",
+                "key_bytes": {
+                    "from_param": "key"
+                },
+                "key_offset": {
+                    "from_param": "offset"
+                },
+                "key_spec_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.EdECGenParameterSpec.<init>",
+            "function": "EdECGenParameterSpec",
+            "imports": [
+                "java.security.spec.EdECGenParameterSpec"
+            ],
+            "func_params": [
+                "name"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "name"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.spec.NamedParameterSpec.<init>",
+            "function": "NamedParameterSpec",
+            "imports": [
+                "java.security.spec.NamedParameterSpec"
+            ],
+            "func_params": [
+                "stdName"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "params_init_dynamic",
+                "algorithm_name": {
+                    "from_param": "stdName"
+                },
+                "params_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.CipherInputStream.<init>",
+            "function": "CipherInputStream",
+            "imports": [
+                "javax.crypto.CipherInputStream"
+            ],
+            "func_params": [
+                "input",
+                "cipher"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_stream_init",
+                "input_stream": {
+                    "from_param": "input"
+                },
+                "cipher_obj": {
+                    "from_param": "cipher"
+                },
+                "stream_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.CipherOutputStream.<init>",
+            "function": "CipherOutputStream",
+            "imports": [
+                "javax.crypto.CipherOutputStream"
+            ],
+            "func_params": [
+                "output",
+                "cipher"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_stream_init",
+                "output_stream": {
+                    "from_param": "output"
+                },
+                "cipher_obj": {
+                    "from_param": "cipher"
+                },
+                "stream_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.DigestInputStream.<init>",
+            "function": "DigestInputStream",
+            "imports": [
+                "java.security.DigestInputStream"
+            ],
+            "func_params": [
+                "input",
+                "digest"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_stream_init",
+                "input_stream": {
+                    "from_param": "input"
+                },
+                "digest_obj": {
+                    "from_param": "digest"
+                },
+                "stream_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.java.security.DigestOutputStream.<init>",
+            "function": "DigestOutputStream",
+            "imports": [
+                "java.security.DigestOutputStream"
+            ],
+            "func_params": [
+                "output",
+                "digest"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_stream_init",
+                "output_stream": {
+                    "from_param": "output"
+                },
+                "digest_obj": {
+                    "from_param": "digest"
+                },
+                "stream_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.MacInputStream.<init>",
+            "function": "MacInputStream",
+            "imports": [
+                "javax.crypto.MacInputStream"
+            ],
+            "func_params": [
+                "input",
+                "mac"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_stream_init",
+                "input_stream": {
+                    "from_param": "input"
+                },
+                "mac_obj": {
+                    "from_param": "mac"
+                },
+                "stream_obj": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "java.jca.javax.crypto.MacOutputStream.<init>",
+            "function": "MacOutputStream",
+            "imports": [
+                "javax.crypto.MacOutputStream"
+            ],
+            "func_params": [
+                "output",
+                "mac"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_stream_init",
+                "output_stream": {
+                    "from_param": "output"
+                },
+                "mac_obj": {
+                    "from_param": "mac"
+                },
+                "stream_obj": {
+                    "from_return": true
+                }
+            }
+        }
+    ]
+}

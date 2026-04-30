@@ -1,0 +1,318 @@
+{
+    "version": "1.0",
+    "language": "java",
+    "library": "BouncyCastle",
+    "description": "BouncyCastle extension KB rules (Task 28.1) — Ed25519/Ed448/X25519/X448 KeyPairGenerators, PEM utilities, PKCS10 CSR",
+    "mappings": [
+
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.Ed25519KeyPairGenerator.generateKeyPair",
+            "function": "Ed25519KeyPairGenerator.generateKeyPair",
+            "imports": [
+                "org.bouncycastle.crypto.generators.Ed25519KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "keygen",
+                "keypair": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "comments": "Ed25519 keypair generation; quantum unsafe (NIST Round 4 note)"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.Ed25519KeyPairGenerator.init",
+            "function": "Ed25519KeyPairGenerator.init",
+            "imports": [
+                "org.bouncycastle.crypto.generators.Ed25519KeyPairGenerator"
+            ],
+            "func_params": [
+                "param"
+            ],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "keygen_init",
+                "keypair_gen_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                }
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.Ed448KeyPairGenerator.generateKeyPair",
+            "function": "Ed448KeyPairGenerator.generateKeyPair",
+            "imports": [
+                "org.bouncycastle.crypto.generators.Ed448KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EDDSA",
+                "operation": "keygen",
+                "keypair": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "comments": "Ed448 (Goldilocks) keypair generation; quantum unsafe"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.Ed448KeyPairGenerator.init",
+            "function": "Ed448KeyPairGenerator.init",
+            "imports": [
+                "org.bouncycastle.crypto.generators.Ed448KeyPairGenerator"
+            ],
+            "func_params": [
+                "param"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EDDSA",
+                "operation": "keygen_init",
+                "keypair_gen_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                }
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.X25519KeyPairGenerator.generateKeyPair",
+            "function": "X25519KeyPairGenerator.generateKeyPair",
+            "imports": [
+                "org.bouncycastle.crypto.generators.X25519KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "keygen",
+                "key_bits": 256,
+                "keypair": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "comments": "X25519 ECDH keypair generation; quantum unsafe"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.X25519KeyPairGenerator.init",
+            "function": "X25519KeyPairGenerator.init",
+            "imports": [
+                "org.bouncycastle.crypto.generators.X25519KeyPairGenerator"
+            ],
+            "func_params": [
+                "param"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "keygen_init",
+                "key_bits": 256,
+                "keypair_gen_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                }
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.X448KeyPairGenerator.generateKeyPair",
+            "function": "X448KeyPairGenerator.generateKeyPair",
+            "imports": [
+                "org.bouncycastle.crypto.generators.X448KeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X448",
+                "operation": "keygen",
+                "key_bits": 448,
+                "keypair": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "comments": "X448 (Goldilocks) ECDH keypair generation; quantum unsafe"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.X448KeyPairGenerator.init",
+            "function": "X448KeyPairGenerator.init",
+            "imports": [
+                "org.bouncycastle.crypto.generators.X448KeyPairGenerator"
+            ],
+            "func_params": [
+                "param"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X448",
+                "operation": "keygen_init",
+                "key_bits": 448,
+                "keypair_gen_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                }
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.ECKeyPairGenerator.generateKeyPair",
+            "function": "ECKeyPairGenerator.generateKeyPair",
+            "imports": [
+                "org.bouncycastle.crypto.generators.ECKeyPairGenerator"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "keygen",
+                "keypair": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "comments": "EC keypair generation (ECDSA/ECDH); quantum unsafe"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.ECKeyPairGenerator.init",
+            "function": "ECKeyPairGenerator.init",
+            "imports": [
+                "org.bouncycastle.crypto.generators.ECKeyPairGenerator"
+            ],
+            "func_params": [
+                "param"
+            ],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "keygen_init",
+                "keypair_gen_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                }
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.ECDHBasicAgreement.calculateAgreement",
+            "function": "ECDHBasicAgreement.calculateAgreement",
+            "imports": [
+                "org.bouncycastle.crypto.agreement.ECDHBasicAgreement"
+            ],
+            "func_params": [
+                "pubKey"
+            ],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "dh",
+                "peer_key": {
+                    "param": "pubKey",
+                    "source": "param",
+                    "index": 0
+                },
+                "comments": "ECDH basic agreement; quantum unsafe"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.ECDHBasicAgreement.init",
+            "function": "ECDHBasicAgreement.init",
+            "imports": [
+                "org.bouncycastle.crypto.agreement.ECDHBasicAgreement"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.openssl.PEMParser.readObject",
+            "function": "PEMParser.readObject",
+            "imports": [
+                "org.bouncycastle.openssl.PEMParser"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.PEMRead",
+                "operation": "key_import",
+                "comments": "Reads PEM object; algorithm determined by PEM header (RSA/EC/Ed25519)"
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter.getKeyPair",
+            "function": "JcaPEMKeyConverter.getKeyPair",
+            "imports": [
+                "org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter"
+            ],
+            "func_params": [
+                "keyPair"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.PEMKeyConvert",
+                "operation": "key_import",
+                "comments": "Converts PEMKeyPair to JCA KeyPair; algorithm from PEM content"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter.getPrivateKey",
+            "function": "JcaPEMKeyConverter.getPrivateKey",
+            "imports": [
+                "org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter"
+            ],
+            "func_params": [
+                "keyInfo"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.PEMKeyConvert",
+                "operation": "key_import",
+                "comments": "Converts PrivateKeyInfo to JCA PrivateKey; algorithm from ASN.1 OID"
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter.getPublicKey",
+            "function": "JcaPEMKeyConverter.getPublicKey",
+            "imports": [
+                "org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter"
+            ],
+            "func_params": [
+                "keyInfo"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.PEMKeyConvert",
+                "operation": "key_import",
+                "comments": "Converts SubjectPublicKeyInfo to JCA PublicKey; algorithm from ASN.1 OID"
+            }
+        },
+
+        {
+            "api_id": "java.bc.org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder.build",
+            "function": "JcaPKCS10CertificationRequestBuilder.build",
+            "imports": [
+                "org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder"
+            ],
+            "func_params": [
+                "signer"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.PKCS10CSR",
+                "operation": "csr_create",
+                "comments": "Creates PKCS#10 CSR; algorithm from ContentSigner"
+            }
+        }
+    ]
+}

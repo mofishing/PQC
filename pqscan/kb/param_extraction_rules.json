@@ -1,0 +1,320 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "参数提取规则配置",
+  "description": "定义如何从函数调用中提取密钥大小等参数",
+  "version": "1.0",
+  
+  "rules": [
+    {
+      "rule_id": "c.aes_set_encrypt_key",
+      "pattern": "AES_set_encrypt_key",
+      "language": "c",
+      "description": "AES密钥设置: int AES_set_encrypt_key(const unsigned char *userKey, const int bits, AES_KEY *key)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "bits",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.aes_set_decrypt_key",
+      "pattern": "AES_set_decrypt_key",
+      "language": "c",
+      "description": "AES密钥设置(解密)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "bits",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.rc4_set_key",
+      "pattern": "RC4_set_key",
+      "language": "c",
+      "description": "RC4密钥设置: void RC4_set_key(RC4_KEY *key, int len, const unsigned char *data)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "len",
+        "unit": "bytes",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.des_set_key",
+      "pattern": "DES_set_key",
+      "language": "c",
+      "description": "DES密钥设置: int DES_set_key(const_DES_cblock *key, DES_key_schedule *schedule)",
+      "extraction": {
+        "fixed_value": 56,
+        "unit": "bits",
+        "note": "DES固定56位有效密钥"
+      }
+    },
+    {
+      "rule_id": "c.camellia_set_key",
+      "pattern": "Camellia_set_key",
+      "language": "c",
+      "description": "Camellia密钥设置: int Camellia_set_key(const unsigned char *userKey, const int bits, CAMELLIA_KEY *key)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "bits",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.cast_set_key",
+      "pattern": "CAST_set_key",
+      "language": "c",
+      "description": "CAST密钥设置: void CAST_set_key(CAST_KEY *key, int len, const unsigned char *data)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "len",
+        "unit": "bytes",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.evp_digestsigninit",
+      "pattern": "EVP_DigestSignInit",
+      "language": "c",
+      "description": "签名初始化: int EVP_DigestSignInit(EVP_MD_CTX *ctx, EVP_PKEY_CTX **pctx, const EVP_MD *type, ENGINE *e, EVP_PKEY *pkey)",
+      "extraction": {
+        "param_index": 2,
+        "param_name": "type",
+        "unit": "bits",
+        "extract_type": "hash_function",
+        "note": "提取哈希函数名，然后查询其输出大小"
+      }
+    },
+    {
+      "rule_id": "c.evp_digestverifyinit",
+      "pattern": "EVP_DigestVerifyInit",
+      "language": "c",
+      "description": "验签初始化",
+      "extraction": {
+        "param_index": 2,
+        "param_name": "type",
+        "unit": "bits",
+        "extract_type": "hash_function"
+      }
+    },
+    {
+      "rule_id": "c.evp_digestinit_ex",
+      "pattern": "EVP_DigestInit_ex",
+      "language": "c",
+      "description": "摘要初始化: int EVP_DigestInit_ex(EVP_MD_CTX *ctx, const EVP_MD *type, ENGINE *impl)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "type",
+        "unit": "bits",
+        "extract_type": "hash_function"
+      }
+    },
+    {
+      "rule_id": "c.evp_encryptinit_ex",
+      "pattern": "EVP_EncryptInit_ex",
+      "language": "c",
+      "description": "加密初始化: int EVP_EncryptInit_ex(EVP_CIPHER_CTX *ctx, const EVP_CIPHER *type, ENGINE *impl, const unsigned char *key, const unsigned char *iv)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "type",
+        "unit": "bits",
+        "extract_type": "cipher_function"
+      }
+    },
+    {
+      "rule_id": "c.evp_decryptinit_ex",
+      "pattern": "EVP_DecryptInit_ex",
+      "language": "c",
+      "description": "解密初始化",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "type",
+        "unit": "bits",
+        "extract_type": "cipher_function"
+      }
+    },
+    {
+      "rule_id": "c.evp_pkey_ctx_set_rsa_keygen_bits",
+      "pattern": "EVP_PKEY_CTX_set_rsa_keygen_bits",
+      "language": "c",
+      "description": "RSA密钥生成位数设置: int EVP_PKEY_CTX_set_rsa_keygen_bits(EVP_PKEY_CTX *ctx, int mbits)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "mbits",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.evp_pkey_ctx_set_ec_paramgen_curve_nid",
+      "pattern": "EVP_PKEY_CTX_set_ec_paramgen_curve_nid",
+      "language": "c",
+      "description": "EC曲线参数设置: int EVP_PKEY_CTX_set_ec_paramgen_curve_nid(EVP_PKEY_CTX *ctx, int nid)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "nid",
+        "unit": "bits",
+        "extract_type": "ec_curve_nid"
+      }
+    },
+    {
+      "rule_id": "c.evp_pkey_new_id",
+      "pattern": "EVP_PKEY_new_id",
+      "language": "c",
+      "description": "密钥对象创建: EVP_PKEY *EVP_PKEY_new_id(int type, ENGINE *e)",
+      "extraction": {
+        "param_index": 0,
+        "param_name": "type",
+        "unit": "bits",
+        "extract_type": "pkey_algorithm_id"
+      }
+    },
+    {
+      "rule_id": "c.evp_pkey_ctx_new_id",
+      "pattern": "EVP_PKEY_CTX_new_id",
+      "language": "c",
+      "description": "密钥上下文创建: EVP_PKEY_CTX *EVP_PKEY_CTX_new_id(int id, ENGINE *e)",
+      "extraction": {
+        "param_index": 0,
+        "param_name": "id",
+        "unit": "bits",
+        "extract_type": "pkey_algorithm_id"
+      }
+    },
+    {
+      "rule_id": "c.dh_generate_parameters_ex",
+      "pattern": "DH_generate_parameters_ex",
+      "language": "c",
+      "description": "DH参数生成: int DH_generate_parameters_ex(DH *dh, int prime_len, int generator, BN_GENCB *cb)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "prime_len",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.evp_pkey_ctx_set_hkdf_md",
+      "pattern": "EVP_PKEY_CTX_set_hkdf_md",
+      "language": "c",
+      "description": "HKDF哈希函数设置: int EVP_PKEY_CTX_set_hkdf_md(EVP_PKEY_CTX *pctx, const EVP_MD *md)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "md",
+        "unit": "bits",
+        "extract_type": "hash_function"
+      }
+    },
+    {
+      "rule_id": "c.dsa_generate_parameters_ex",
+      "pattern": "DSA_generate_parameters_ex",
+      "language": "c",
+      "description": "DSA参数生成: int DSA_generate_parameters_ex(DSA *dsa, int bits, ...)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "bits",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.rsa_generate_key_ex",
+      "pattern": "RSA_generate_key_ex",
+      "language": "c",
+      "description": "RSA密钥生成: int RSA_generate_key_ex(RSA *rsa, int bits, BIGNUM *e, BN_GENCB *cb)",
+      "extraction": {
+        "param_index": 1,
+        "param_name": "bits",
+        "unit": "bits",
+        "extract_type": "integer"
+      }
+    },
+    {
+      "rule_id": "c.ec_key_new_by_curve_name",
+      "pattern": "EC_KEY_new_by_curve_name",
+      "language": "c",
+      "description": "EC密钥创建: EC_KEY *EC_KEY_new_by_curve_name(int nid)",
+      "extraction": {
+        "param_index": 0,
+        "param_name": "nid",
+        "unit": "bits",
+        "extract_type": "ec_curve_nid"
+      }
+    }
+  ],
+  
+  "extract_types": {
+    "integer": {
+      "description": "直接提取整数值",
+      "example": "128, 256, 2048"
+    },
+    "hash_function": {
+      "description": "提取哈希函数名，查询crypto_constants.HASH_OUTPUT_BITS",
+      "example": "EVP_sha256() -> 256"
+    },
+    "cipher_function": {
+      "description": "提取密码函数名，查询crypto_constants.CIPHER_KEY_BITS",
+      "example": "EVP_aes_128_cbc() -> 128"
+    },
+    "fixed_algorithm": {
+      "description": "固定参数的算法函数，从函数名提取密钥长度和算法名",
+      "example": "EVP_aes_256_cbc() -> algorithm=AES-256-CBC, key_bits=256",
+      "pattern_rules": [
+        {
+          "pattern": "^EVP_aes_(\\d+)_(\\w+)$",
+          "algorithm_template": "AES-{bits}-{mode}",
+          "key_bits_group": 1,
+          "mode_group": 2,
+          "valid_bits": [128, 192, 256]
+        },
+        {
+          "pattern": "^EVP_des_ede3_(\\w+)$",
+          "algorithm_template": "3DES-{mode}",
+          "key_bits": 168,
+          "mode_group": 1
+        },
+        {
+          "pattern": "^EVP_des_(\\w+)$",
+          "algorithm_template": "DES-{mode}",
+          "key_bits": 56,
+          "mode_group": 1
+        },
+        {
+          "pattern": "^EVP_sm4_(\\w+)$",
+          "algorithm_template": "SM4-{mode}",
+          "key_bits": 128,
+          "mode_group": 1
+        },
+        {
+          "pattern": "^EVP_aria_(\\d+)_(\\w+)$",
+          "algorithm_template": "ARIA-{bits}-{mode}",
+          "key_bits_group": 1,
+          "mode_group": 2,
+          "valid_bits": [128, 192, 256]
+        },
+        {
+          "pattern": "^EVP_chacha20$",
+          "algorithm": "ChaCha20",
+          "key_bits": 256
+        },
+        {
+          "pattern": "^EVP_chacha20_poly1305$",
+          "algorithm": "ChaCha20-Poly1305",
+          "key_bits": 256
+        }
+      ]
+    },
+    "ec_curve_nid": {
+      "description": "提取EC曲线NID，查询crypto_constants.EC_CURVE_BITS",
+      "example": "NID_X9_62_prime256v1 -> 256"
+    },
+    "pkey_algorithm_id": {
+      "description": "提取算法ID，查询固定值",
+      "example": "EVP_PKEY_X25519 -> 256"
+    }
+  }
+}

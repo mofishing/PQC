@@ -1,0 +1,324 @@
+{
+  "version": "1.1",
+  "language": "python",
+  "mappings": [
+    {
+      "rule_id": "ALG.AES",
+      "api": {
+        "imports": ["Crypto.Cipher"],
+        "symbols": ["AES.new", "Crypto.Cipher.AES.new"]
+      },
+      "params": {
+        "key_bits": {
+          "allow": [256],
+          "severity_if_not_allow": "high"
+        },
+        "mode": {
+          "disallow": ["MODE_ECB"],
+          "allow": ["MODE_GCM", "MODE_CBC", "MODE_OFB", "MODE_CFB", "MODE_CTR"],
+          "severity_if_disallow": "high",
+          "severity_if_not_allow": "medium"
+        }
+      },
+      "status": "unknown"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+        "symbols": ["AESGCM", "AESCCM", "AESSIV"]
+      },
+      "status": "unknown"
+    }, {
+      "rule_id": "ALG.CHACHA20",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.ciphers.aead"],
+        "symbols": ["ChaCha20Poly1305"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.CHACHA20",
+      "api": {
+        "imports": ["Crypto.Cipher.ChaCha20"],
+        "symbols": ["ChaCha20"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SALSA20",
+      "api": {
+        "imports": ["Crypto.Cipher.Salsa20"],
+        "symbols": ["Salsa20"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SHA256",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["sha256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA384",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["sha384"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA512",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["sha512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA3_256",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["sha3_256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA3_512",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["sha3_512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHAKE",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["shake_128", "shake_256"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.BLAKE2B",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["blake2b"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.BLAKE2S",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["blake2s"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.BLAKE3",
+      "api": {
+        "imports": ["blake3"],
+        "symbols": ["blake3", "Hasher"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.MD5",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["md5"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.SHA1",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["sha1"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.HMAC.SHA256",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.hmac", "cryptography.hazmat.primitives.hashes"],
+        "symbols": ["HMAC", "SHA256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HMAC.SHA512",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.hmac", "cryptography.hazmat.primitives.hashes"],
+        "symbols": ["HMAC", "SHA512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HMAC.SHA3",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.kmac"],
+        "symbols": ["KMAC128", "KMAC256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.AES.CMAC",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.cmac", "cryptography.hazmat.primitives.ciphers.algorithms"],
+        "symbols": ["CMAC", "AES"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HKDF",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.kdf.hkdf", "cryptography.hazmat.primitives.hashes"],
+        "symbols": ["HKDF", "SHA256", "SHA384", "SHA512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.PBKDF2",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.kdf.pbkdf2", "cryptography.hazmat.primitives.hashes"],
+        "symbols": ["PBKDF2HMAC", "SHA256", "SHA512"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SCRYPT",
+      "api": {
+        "imports": ["hashlib"],
+        "symbols": ["scrypt"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.PKE",
+      "api": {
+        "imports": [
+          "cryptography.hazmat.primitives.asymmetric.padding", "cryptography.hazmat.primitives.hashes", "cryptography.hazmat.primitives.asymmetric.rsa"
+        ],
+        "symbols": ["OAEP", "MGF1", "encrypt", "decrypt"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.PKE",
+      "api": {
+        "imports": ["Crypto.Cipher.PKCS1_OAEP"],
+        "symbols": ["PKCS1_OAEP"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.SIG",
+      "api": {
+        "imports": [
+          "cryptography.hazmat.primitives.asymmetric.padding", "cryptography.hazmat.primitives.asymmetric.rsa", "cryptography.hazmat.primitives.hashes"
+        ],
+        "symbols": ["PSS", "MGF1", "sign", "verify"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.SIG",
+      "api": {
+        "imports": ["Crypto.Signature.pss"],
+        "symbols": ["pss"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.PKE",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.padding"],
+        "symbols": ["PKCS1v15"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.RSA.SIG",
+      "api": {
+        "imports": ["Crypto.Signature.pkcs1_15"],
+        "symbols": ["pkcs1_15"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.ECDH",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+        "symbols": ["ECDH", "exchange"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.ECDSA",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.ec"],
+        "symbols": ["sign", "verify", "SECP256R1", "SECP384R1"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.EDDSA",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.ed25519"],
+        "symbols": ["Ed25519PrivateKey", "Ed25519PublicKey", "sign", "verify"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.EDDSA",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.ed448"],
+        "symbols": ["Ed448PrivateKey", "Ed448PublicKey"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.ECDH",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.x25519"],
+        "symbols": ["X25519PrivateKey", "X25519PublicKey"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.ECDH",
+      "api": {
+        "imports": ["cryptography.hazmat.primitives.asymmetric.x448"],
+        "symbols": ["X448PrivateKey", "X448PublicKey"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SM4",
+      "api": {
+        "imports": ["Crypto.Cipher.SM4"],
+        "symbols": ["SM4"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM3",
+      "api": {
+        "imports": ["Crypto.Hash.SM3"],
+        "symbols": ["SM3"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SM2.SIG",
+      "api": {
+        "imports": ["gmssl.sm2"],
+        "symbols": ["CryptSM2", "sign", "verify"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM2.PKE",
+      "api": {
+        "imports": ["gmssl.sm2"],
+        "symbols": ["CryptSM2", "encrypt", "decrypt"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.XSALSA20_POLY1305",
+      "api": {
+        "imports": ["nacl.secret"],
+        "symbols": ["SecretBox"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.XSALSA20_POLY1305",
+      "api": {
+        "imports": ["nacl.public"],
+        "symbols": ["Box", "SealedBox"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.XCHACHA20_POLY1305",
+      "api": {
+        "imports": ["nacl.bindings"],
+        "symbols": ["crypto_aead_xchacha20poly1305_ietf_encrypt", "crypto_aead_xchacha20poly1305_ietf_decrypt"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "PRIM.CSPRNG",
+      "api": {
+        "imports": ["secrets", "os"],
+        "symbols": ["token_bytes", "urandom"]
+      },
+      "status": "safe"
+    }
+  ]
+}

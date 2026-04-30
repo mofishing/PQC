@@ -1,0 +1,367 @@
+{
+    "version": "1.5",
+    "language": "go",
+    "mappings": [
+        {
+            "rule_id": "ALG.AES",
+            "api": {
+                "imports": ["crypto/aes", "crypto/cipher"],
+                "symbols": [
+                    "aes.NewCipher",
+                    "cipher.NewGCM",
+                    "cipher.NewCTR",
+                    "cipher.NewCBCEncrypter",
+                    "cipher.NewCBCDecrypter"
+                ]
+            },
+            "bind_map": {
+                "cipher.NewGCM": {
+                    "mode": "GCM"
+                },
+                "cipher.NewCTR": {
+                    "mode": "CTR"
+                },
+                "cipher.NewCBCEncrypter": {
+                    "mode": "CBC"
+                },
+                "cipher.NewCBCDecrypter": {
+                    "mode": "CBC"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "severity_if_not_allow": "high"
+                },
+                "mode": {
+                    "disallow": ["CBC", "ECB"],
+                    "allow": ["GCM", "CTR"],
+                    "severity_if_disallow": "high",
+                    "severity_if_not_allow": "medium"
+                }
+            }
+        },
+        {
+            "rule_id": "ALG.CHACHA20",
+            "api": {
+                "imports": ["crypto/chacha20poly1305"],
+                "symbols": ["New", "NewX"]
+            },
+            "bind": {
+                "aead": "Poly1305"
+            }
+        },
+        {
+            "rule_id": "ALG.CHACHA20",
+            "api": {
+                "imports": ["golang.org/x/crypto/chacha20"],
+                "symbols": ["NewUnauthenticatedCipher"]
+            }
+        },
+        {
+            "rule_id": "ALG.HMAC.SHA256",
+            "api": {
+                "imports": ["crypto/hmac"],
+                "symbols": ["New", "Sum"]
+            }
+        },
+        {
+            "rule_id": "ALG.SHA256",
+            "api": {
+                "imports": ["crypto/sha256"],
+                "symbols": ["New", "Sum256"]
+            }
+        },
+        {
+            "rule_id": "ALG.SHA512",
+            "api": {
+                "imports": ["crypto/sha512"],
+                "symbols": ["New", "Sum512"]
+            }
+        },
+        {
+            "rule_id": "ALG.SHA3_256",
+            "api": {
+                "imports": ["golang.org/x/crypto/sha3"],
+                "symbols": ["New256", "Sum256"]
+            }
+        },
+        {
+            "rule_id": "ALG.BLAKE2B",
+            "api": {
+                "imports": ["golang.org/x/crypto/blake2b"],
+                "symbols": ["New512", "Sum512"]
+            },
+            "bind": {
+                "digest_bits": 512
+            }
+        },
+        {
+            "rule_id": "ALG.BLAKE2S",
+            "api": {
+                "imports": ["golang.org/x/crypto/blake2s"],
+                "symbols": ["New256", "Sum256"]
+            },
+            "bind": {
+                "digest_bits": 256
+            }
+        },
+        {
+            "rule_id": "ALG.RC4",
+            "api": {
+                "imports": ["crypto/rc4"],
+                "symbols": ["NewCipher"]
+            }
+        },
+        {
+            "rule_id": "ALG.DES",
+            "api": {
+                "imports": ["crypto/des"],
+                "symbols": ["NewCipher"]
+            }
+        },
+        {
+            "rule_id": "ALG.3DES",
+            "api": {
+                "imports": ["crypto/des"],
+                "symbols": ["NewTripleDESCipher"]
+            }
+        },
+        {
+            "rule_id": "ALG.RSA.PKE",
+            "api": {
+                "imports": ["crypto/rsa"],
+                "symbols": ["EncryptOAEP", "DecryptOAEP"]
+            },
+            "bind": {
+                "padding": "OAEP"
+            }
+        },
+        {
+            "rule_id": "ALG.RSA.SIG",
+            "api": {
+                "imports": ["crypto/rsa"],
+                "symbols": [
+                    "SignPSS",
+                    "VerifyPSS",
+                    "SignPKCS1v15",
+                    "VerifyPKCS1v15"
+                ]
+            },
+            "bind_map": {
+                "SignPSS": {
+                    "padding": "PSS"
+                },
+                "VerifyPSS": {
+                    "padding": "PSS"
+                },
+                "SignPKCS1v15": {
+                    "padding": "PKCS1v15"
+                },
+                "VerifyPKCS1v15": {
+                    "padding": "PKCS1v15"
+                }
+            }
+        },
+        {
+            "rule_id": "ALG.RSA.PKE",
+            "api": {
+                "imports": ["crypto/rsa"],
+                "symbols": ["EncryptPKCS1v15", "DecryptPKCS1v15"]
+            },
+            "bind": {
+                "padding": "PKCS1v15"
+            }
+        },
+        {
+            "rule_id": "ALG.ECDSA",
+            "api": {
+                "imports": ["crypto/ecdsa"],
+                "symbols": ["GenerateKey", "Sign", "Verify"]
+            },
+            "params": {
+                "key_bits": {}
+            }
+        },
+        {
+            "rule_id": "ALG.ECDH",
+            "api": {
+                "imports": ["crypto/ecdh"],
+                "symbols": [
+                    "P256",
+                    "P384",
+                    "P521",
+                    "X25519",
+                    "GenerateKey",
+                    "ECDH"
+                ]
+            },
+            "bind_map": {
+                "P256": {
+                    "curves": "P-256"
+                },
+                "P384": {
+                    "curves": "secp384r1"
+                },
+                "P521": {
+                    "curves": "P-521"
+                },
+                "X25519": {
+                    "curves": "X25519"
+                }
+            },
+            "params": {
+                "key_bits": {}
+            }
+        },
+        {
+            "rule_id": "ALG.MD5",
+            "api": {
+                "imports": ["crypto/md5"],
+                "symbols": ["New", "Sum"]
+            }
+        },
+        {
+            "rule_id": "ALG.SHA1",
+            "api": {
+                "imports": ["crypto/sha1"],
+                "symbols": ["New", "Sum"]
+            }
+        },
+        {
+            "rule_id": "ALG.EDDSA",
+            "api": {
+                "imports": ["crypto/ed25519"],
+                "symbols": ["GenerateKey", "NewKeyFromSeed", "Sign", "Verify"]
+            },
+            "bind": {
+                "curves": "Ed25519"
+            }
+        },
+        {
+            "rule_id": "ALG.EDDSA",
+            "api": {
+                "imports": ["golang.org/x/crypto/ed25519"],
+                "symbols": ["Sign", "Verify"]
+            },
+            "bind": {
+                "curves": "Ed25519"
+            }
+        },
+        {
+            "rule_id": "PRIM.CSPRNG",
+            "api": {
+                "imports": ["crypto/rand"],
+                "symbols": ["Read"]
+            }
+        },
+        {
+            "rule_id": "ALG.PBKDF2",
+            "api": {
+                "imports": ["golang.org/x/crypto/pbkdf2"],
+                "symbols": ["Key"]
+            }
+        },
+        {
+            "rule_id": "ALG.HKDF",
+            "api": {
+                "imports": ["golang.org/x/crypto/hkdf"],
+                "symbols": ["New"]
+            }
+        },
+        {
+            "rule_id": "ALG.BCRYPT",
+            "api": {
+                "imports": ["golang.org/x/crypto/bcrypt"],
+                "symbols": ["GenerateFromPassword", "CompareHashAndPassword"]
+            }
+        },
+        {
+            "rule_id": "ALG.XSALSA20_POLY1305",
+            "api": {
+                "imports": ["golang.org/x/crypto/nacl/secretbox"],
+                "symbols": ["Seal", "Open"]
+            }
+        },
+        {
+            "rule_id": "ALG.AES",
+            "api": {
+                "imports": [
+                    "github.com/google/tink/go/aead",
+                    "github.com/google/tink/go/keyset"
+                ],
+                "symbols": ["New", "NewHandle", "AES256GCMKeyTemplate"]
+            },
+            "bind": {
+                "mode": "GCM",
+                "key_bits": 256
+            }
+        },
+        {
+            "rule_id": "ALG.AES",
+            "api": {
+                "imports": [
+                    "github.com/google/tink/go/aead",
+                    "github.com/google/tink/go/keyset"
+                ],
+                "symbols": ["New", "NewHandle"]
+            },
+            "bind": {
+                "mode": "GCM-SIV"
+            }
+        },
+        {
+            "rule_id": "ALG.EDDSA",
+            "api": {
+                "imports": ["github.com/google/tink/go/signature"],
+                "symbols": ["NewSigner", "NewVerifier", "ED25519KeyTemplate"]
+            },
+            "bind": {
+                "curves": "Ed25519"
+            }
+        },
+        {
+            "rule_id": "ALG.KYBER",
+            "api": {
+                "imports": [
+                    "github.com/cloudflare/circl/kem/kyber",
+                    "github.com/pq-crystals/kyber-go"
+                ],
+                "symbols": [
+                    "GenerateKeyPair",
+                    "Encapsulate",
+                    "Decapsulate",
+                    "Keygen"
+                ]
+            }
+        },
+        {
+            "rule_id": "ALG.HPKE",
+            "api": {
+                "imports": ["github.com/cloudflare/circl/hpke"],
+                "symbols": ["SetupBaseS", "Seal", "Open"]
+            }
+        },
+        {
+            "rule_id": "ALG.AES.CMAC",
+            "api": {
+                "imports": ["github.com/aead/cmac"],
+                "symbols": ["New"]
+            }
+        }
+    ],
+    "aliases": {
+        "curves": {
+            "P256": "P-256",
+            "P-256": "P-256",
+            "secp256r1": "P-256",
+            "P384": "secp384r1",
+            "secp384r1": "secp384r1",
+            "P521": "P-521",
+            "P-521": "P-521",
+            "X25519": "X25519",
+            "Ed25519": "Ed25519",
+            "Ed448": "Ed448"
+        }
+    }
+}

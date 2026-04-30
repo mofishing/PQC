@@ -1,0 +1,467 @@
+{
+  "version": "1.0",
+  "description": "Cryptographic constants mapping for parameter value inference",
+  "constants": {
+    "evp_pkey_type": {
+      "description": "EVP_PKEY algorithm type constants to key size mapping",
+      "mappings": [
+        {
+          "constant": "EVP_PKEY_X25519",
+          "value": 408,
+          "key_bits": 256,
+          "algorithm": "X25519",
+          "type": "key_exchange"
+        },
+        {
+          "constant": "EVP_PKEY_ED25519",
+          "value": 1087,
+          "key_bits": 256,
+          "algorithm": "Ed25519",
+          "type": "signature"
+        },
+        {
+          "constant": "EVP_PKEY_X448",
+          "value": 1034,
+          "key_bits": 448,
+          "algorithm": "X448",
+          "type": "key_exchange"
+        },
+        {
+          "constant": "EVP_PKEY_ED448",
+          "value": 1088,
+          "key_bits": 448,
+          "algorithm": "Ed448",
+          "type": "signature"
+        },
+        {
+          "constant": "EVP_PKEY_SM2",
+          "value": 1172,
+          "key_bits": 256,
+          "algorithm": "SM2",
+          "type": "signature"
+        },
+        {
+          "constant": "EVP_PKEY_SCRYPT",
+          "value": 973,
+          "key_bits": 256,
+          "algorithm": "Scrypt",
+          "type": "kdf",
+          "note": "Key size depends on output length parameter, defaulting to 256"
+        },
+        {
+          "constant": "EVP_PKEY_HKDF",
+          "value": 1036,
+          "key_bits": 256,
+          "algorithm": "HKDF",
+          "type": "kdf",
+          "note": "Output length is variable, inferred from EVP_PKEY_CTX_set_hkdf_md parameter"
+        },
+        {
+          "constant": "EVP_PKEY_POLY1305",
+          "value": 1061,
+          "key_bits": 256,
+          "algorithm": "Poly1305",
+          "type": "mac"
+        },
+        {
+          "constant": "EVP_PKEY_SIPHASH",
+          "value": 1062,
+          "key_bits": 128,
+          "algorithm": "SipHash",
+          "type": "mac"
+        }
+      ]
+    },
+    "dsa_parameter_constants": {
+      "description": "DSA parameter size constants (Python cryptography library)",
+      "note": "Format: L{KeyBits}N{SubgroupBits} where L is key size, N is subgroup size",
+      "mappings": [
+        {
+          "constant": "dsa.L1024N160",
+          "key_bits": 1024,
+          "subgroup_bits": 160,
+          "algorithm": "DSA",
+          "security_level": "legacy"
+        },
+        {
+          "constant": "dsa.L2048N224",
+          "key_bits": 2048,
+          "subgroup_bits": 224,
+          "algorithm": "DSA",
+          "security_level": "112-bit"
+        },
+        {
+          "constant": "dsa.L2048N256",
+          "key_bits": 2048,
+          "subgroup_bits": 256,
+          "algorithm": "DSA",
+          "security_level": "128-bit"
+        },
+        {
+          "constant": "dsa.L3072N256",
+          "key_bits": 3072,
+          "subgroup_bits": 256,
+          "algorithm": "DSA",
+          "security_level": "128-bit"
+        }
+      ]
+    },
+    "ec_curve_nid": {
+      "description": "EC curve NID constants to key size mapping",
+      "note": "This extends the EC_CURVE_BITS in crypto_constants.py",
+      "mappings": [
+        {
+          "constant": "NID_X9_62_prime192v1",
+          "curve_name": "prime192v1",
+          "key_bits": 192
+        },
+        {
+          "constant": "NID_X9_62_prime256v1",
+          "curve_name": "prime256v1",
+          "key_bits": 256
+        },
+        {
+          "constant": "NID_secp224r1",
+          "curve_name": "secp224r1",
+          "key_bits": 224
+        },
+        {
+          "constant": "NID_secp256k1",
+          "curve_name": "secp256k1",
+          "key_bits": 256,
+          "note": "Bitcoin curve"
+        },
+        {
+          "constant": "NID_secp384r1",
+          "curve_name": "secp384r1",
+          "key_bits": 384
+        },
+        {
+          "constant": "NID_secp521r1",
+          "curve_name": "secp521r1",
+          "key_bits": 521
+        },
+        {
+          "constant": "NID_sm2",
+          "curve_name": "sm2",
+          "key_bits": 256
+        }
+      ]
+    },
+    "hash_algorithm": {
+      "description": "Hash algorithm function names to output size mapping",
+      "mappings": [
+        {
+          "function": "EVP_sha1",
+          "output_bits": 160,
+          "algorithm": "SHA-1"
+        },
+        {
+          "function": "EVP_sha224",
+          "output_bits": 224,
+          "algorithm": "SHA-224"
+        },
+        {
+          "function": "EVP_sha256",
+          "output_bits": 256,
+          "algorithm": "SHA-256"
+        },
+        {
+          "function": "EVP_sha384",
+          "output_bits": 384,
+          "algorithm": "SHA-384"
+        },
+        {
+          "function": "EVP_sha512",
+          "output_bits": 512,
+          "algorithm": "SHA-512"
+        },
+        {
+          "function": "EVP_sha3_224",
+          "output_bits": 224,
+          "algorithm": "SHA3-224"
+        },
+        {
+          "function": "EVP_sha3_256",
+          "output_bits": 256,
+          "algorithm": "SHA3-256"
+        },
+        {
+          "function": "EVP_sha3_384",
+          "output_bits": 384,
+          "algorithm": "SHA3-384"
+        },
+        {
+          "function": "EVP_sha3_512",
+          "output_bits": 512,
+          "algorithm": "SHA3-512"
+        },
+        {
+          "function": "EVP_sm3",
+          "output_bits": 256,
+          "algorithm": "SM3"
+        },
+        {
+          "function": "EVP_md5",
+          "output_bits": 128,
+          "algorithm": "MD5"
+        },
+        {
+          "function": "EVP_md4",
+          "output_bits": 128,
+          "algorithm": "MD4"
+        },
+        {
+          "function": "EVP_blake2b512",
+          "output_bits": 512,
+          "algorithm": "BLAKE2b"
+        },
+        {
+          "function": "EVP_blake2s256",
+          "output_bits": 256,
+          "algorithm": "BLAKE2s"
+        },
+        {
+          "function": "EVP_shake128",
+          "output_bits": 128,
+          "algorithm": "SHAKE128"
+        },
+        {
+          "function": "EVP_shake256",
+          "output_bits": 256,
+          "algorithm": "SHAKE256"
+        }
+      ]
+    },
+    "hash_name": {
+      "description": "Hash algorithm name strings to output size mapping (case-insensitive)",
+      "note": "For use with string-based algorithm identifiers",
+      "mappings": [
+        {"name": "sha1", "output_bits": 160},
+        {"name": "sha-1", "output_bits": 160},
+        {"name": "sha224", "output_bits": 224},
+        {"name": "sha-224", "output_bits": 224},
+        {"name": "sha256", "output_bits": 256},
+        {"name": "sha-256", "output_bits": 256},
+        {"name": "sha384", "output_bits": 384},
+        {"name": "sha-384", "output_bits": 384},
+        {"name": "sha512", "output_bits": 512},
+        {"name": "sha-512", "output_bits": 512},
+        {"name": "sha512-224", "output_bits": 224},
+        {"name": "sha512-256", "output_bits": 256},
+        {"name": "sha3-224", "output_bits": 224},
+        {"name": "sha3-256", "output_bits": 256},
+        {"name": "sha3-384", "output_bits": 384},
+        {"name": "sha3-512", "output_bits": 512},
+        {"name": "sha3_224", "output_bits": 224},
+        {"name": "sha3_256", "output_bits": 256},
+        {"name": "sha3_384", "output_bits": 384},
+        {"name": "sha3_512", "output_bits": 512},
+        {"name": "shake128", "output_bits": 128},
+        {"name": "shake256", "output_bits": 256},
+        {"name": "md5", "output_bits": 128},
+        {"name": "md4", "output_bits": 128},
+        {"name": "md2", "output_bits": 128},
+        {"name": "ripemd160", "output_bits": 160},
+        {"name": "ripemd-160", "output_bits": 160},
+        {"name": "sm3", "output_bits": 256},
+        {"name": "blake2b", "output_bits": 512},
+        {"name": "blake2s", "output_bits": 256},
+        {"name": "blake2b-512", "output_bits": 512},
+        {"name": "blake2s-256", "output_bits": 256},
+        {"name": "whirlpool", "output_bits": 512}
+      ]
+    },
+    "cipher_function": {
+      "description": "Symmetric cipher function names (EVP_xxx) to key size and algorithm mapping",
+      "note": "For use with OpenSSL/GmSSL/Tongsuo EVP_xxx() cipher functions",
+      "mappings": [
+        {"function": "EVP_aes_128_ecb", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_cbc", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_cfb", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_ofb", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_ctr", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_gcm", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_ccm", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_xts", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_128_wrap", "key_bits": 128, "algorithm": "AES"},
+        {"function": "EVP_aes_192_ecb", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_cbc", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_cfb", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_ofb", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_ctr", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_gcm", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_ccm", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_192_wrap", "key_bits": 192, "algorithm": "AES"},
+        {"function": "EVP_aes_256_ecb", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_cbc", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_cfb", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_ofb", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_ctr", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_gcm", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_ccm", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_xts", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aes_256_wrap", "key_bits": 256, "algorithm": "AES"},
+        {"function": "EVP_aria_128_ecb", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_128_cbc", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_128_cfb", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_128_ofb", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_128_ctr", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_128_gcm", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_128_ccm", "key_bits": 128, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_ecb", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_cbc", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_cfb", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_ofb", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_ctr", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_gcm", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_192_ccm", "key_bits": 192, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_ecb", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_cbc", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_cfb", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_ofb", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_ctr", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_gcm", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_aria_256_ccm", "key_bits": 256, "algorithm": "ARIA"},
+        {"function": "EVP_camellia_128_ecb", "key_bits": 128, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_128_cbc", "key_bits": 128, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_128_cfb", "key_bits": 128, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_128_ofb", "key_bits": 128, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_128_ctr", "key_bits": 128, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_192_ecb", "key_bits": 192, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_192_cbc", "key_bits": 192, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_192_cfb", "key_bits": 192, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_192_ofb", "key_bits": 192, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_192_ctr", "key_bits": 192, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_256_ecb", "key_bits": 256, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_256_cbc", "key_bits": 256, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_256_cfb", "key_bits": 256, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_256_ofb", "key_bits": 256, "algorithm": "CAMELLIA"},
+        {"function": "EVP_camellia_256_ctr", "key_bits": 256, "algorithm": "CAMELLIA"},
+        {"function": "EVP_sm4_ecb", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_sm4_cbc", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_sm4_cfb", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_sm4_ofb", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_sm4_ctr", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_sm4_gcm", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_sm4_ccm", "key_bits": 128, "algorithm": "SM4"},
+        {"function": "EVP_chacha20", "key_bits": 256, "algorithm": "CHACHA20"},
+        {"function": "EVP_chacha20_poly1305", "key_bits": 256, "algorithm": "CHACHA20-POLY1305"},
+        {"function": "EVP_des_ecb", "key_bits": 56, "algorithm": "DES"},
+        {"function": "EVP_des_cbc", "key_bits": 56, "algorithm": "DES"},
+        {"function": "EVP_des_cfb", "key_bits": 56, "algorithm": "DES"},
+        {"function": "EVP_des_ofb", "key_bits": 56, "algorithm": "DES"},
+        {"function": "EVP_des_ede_ecb", "key_bits": 112, "algorithm": "DES-EDE"},
+        {"function": "EVP_des_ede_cbc", "key_bits": 112, "algorithm": "DES-EDE"},
+        {"function": "EVP_des_ede3_ecb", "key_bits": 168, "algorithm": "3DES"},
+        {"function": "EVP_des_ede3_cbc", "key_bits": 168, "algorithm": "3DES"},
+        {"function": "EVP_des_ede3_cfb", "key_bits": 168, "algorithm": "3DES"},
+        {"function": "EVP_des_ede3_ofb", "key_bits": 168, "algorithm": "3DES"},
+        {"function": "EVP_rc4", "key_bits": 128, "algorithm": "RC4"},
+        {"function": "EVP_rc2_ecb", "key_bits": 128, "algorithm": "RC2"},
+        {"function": "EVP_rc2_cbc", "key_bits": 128, "algorithm": "RC2"},
+        {"function": "EVP_bf_ecb", "key_bits": 128, "algorithm": "BLOWFISH"},
+        {"function": "EVP_bf_cbc", "key_bits": 128, "algorithm": "BLOWFISH"},
+        {"function": "EVP_bf_cfb", "key_bits": 128, "algorithm": "BLOWFISH"},
+        {"function": "EVP_bf_ofb", "key_bits": 128, "algorithm": "BLOWFISH"},
+        {"function": "EVP_cast5_ecb", "key_bits": 128, "algorithm": "CAST5"},
+        {"function": "EVP_cast5_cbc", "key_bits": 128, "algorithm": "CAST5"},
+        {"function": "EVP_cast5_cfb", "key_bits": 128, "algorithm": "CAST5"},
+        {"function": "EVP_cast5_ofb", "key_bits": 128, "algorithm": "CAST5"},
+        {"function": "EVP_seed_ecb", "key_bits": 128, "algorithm": "SEED"},
+        {"function": "EVP_seed_cbc", "key_bits": 128, "algorithm": "SEED"},
+        {"function": "EVP_seed_cfb", "key_bits": 128, "algorithm": "SEED"},
+        {"function": "EVP_seed_ofb", "key_bits": 128, "algorithm": "SEED"}
+      ]
+    },
+    "cipher_name": {
+      "description": "Symmetric cipher algorithm name strings to key size mapping (case-insensitive)",
+      "note": "For use with string-based cipher identifiers",
+      "mappings": [
+        {"name": "aes-128", "key_bits": 128},
+        {"name": "aes-192", "key_bits": 192},
+        {"name": "aes-256", "key_bits": 256},
+        {"name": "aes128", "key_bits": 128},
+        {"name": "aes192", "key_bits": 192},
+        {"name": "aes256", "key_bits": 256},
+        {"name": "des", "key_bits": 56},
+        {"name": "des-ecb", "key_bits": 56},
+        {"name": "des-cbc", "key_bits": 56},
+        {"name": "des-cfb", "key_bits": 56},
+        {"name": "des-ofb", "key_bits": 56},
+        {"name": "des-ede", "key_bits": 112},
+        {"name": "des-ede3", "key_bits": 168},
+        {"name": "des3", "key_bits": 168},
+        {"name": "3des", "key_bits": 168},
+        {"name": "tripledes", "key_bits": 168},
+        {"name": "aria-128", "key_bits": 128},
+        {"name": "aria-192", "key_bits": 192},
+        {"name": "aria-256", "key_bits": 256},
+        {"name": "aria128", "key_bits": 128},
+        {"name": "aria192", "key_bits": 192},
+        {"name": "aria256", "key_bits": 256},
+        {"name": "camellia-128", "key_bits": 128},
+        {"name": "camellia-192", "key_bits": 192},
+        {"name": "camellia-256", "key_bits": 256},
+        {"name": "camellia128", "key_bits": 128},
+        {"name": "camellia192", "key_bits": 192},
+        {"name": "camellia256", "key_bits": 256},
+        {"name": "chacha20", "key_bits": 256},
+        {"name": "chacha20-poly1305", "key_bits": 256},
+        {"name": "salsa20", "key_bits": 256},
+        {"name": "sm4", "key_bits": 128},
+        {"name": "sm1", "key_bits": 128},
+        {"name": "rc4", "key_bits": 128},
+        {"name": "rc2", "key_bits": 128},
+        {"name": "rc5", "key_bits": 128},
+        {"name": "blowfish", "key_bits": 128},
+        {"name": "bf", "key_bits": 128},
+        {"name": "cast5", "key_bits": 128},
+        {"name": "cast-128", "key_bits": 128},
+        {"name": "seed", "key_bits": 128}
+      ]
+    },
+    "ec_curve_name": {
+      "description": "Elliptic curve name strings to key size mapping (case-insensitive)",
+      "note": "For use with string-based curve identifiers",
+      "mappings": [
+        {"name": "p-192", "key_bits": 192},
+        {"name": "p-224", "key_bits": 224},
+        {"name": "p-256", "key_bits": 256},
+        {"name": "p-384", "key_bits": 384},
+        {"name": "p-521", "key_bits": 521},
+        {"name": "p192", "key_bits": 192},
+        {"name": "p224", "key_bits": 224},
+        {"name": "p256", "key_bits": 256},
+        {"name": "p384", "key_bits": 384},
+        {"name": "p521", "key_bits": 521},
+        {"name": "secp192r1", "key_bits": 192},
+        {"name": "secp224r1", "key_bits": 224},
+        {"name": "secp256r1", "key_bits": 256},
+        {"name": "secp384r1", "key_bits": 384},
+        {"name": "secp521r1", "key_bits": 521},
+        {"name": "secp256k1", "key_bits": 256},
+        {"name": "prime192v1", "key_bits": 192},
+        {"name": "prime256v1", "key_bits": 256},
+        {"name": "x9_62_prime192v1", "key_bits": 192},
+        {"name": "x9_62_prime256v1", "key_bits": 256},
+        {"name": "sect163k1", "key_bits": 163},
+        {"name": "sect233k1", "key_bits": 233},
+        {"name": "sect283k1", "key_bits": 283},
+        {"name": "sect409k1", "key_bits": 409},
+        {"name": "sect571k1", "key_bits": 571},
+        {"name": "brainpoolp256r1", "key_bits": 256},
+        {"name": "brainpoolp384r1", "key_bits": 384},
+        {"name": "brainpoolp512r1", "key_bits": 512},
+        {"name": "curve25519", "key_bits": 256},
+        {"name": "x25519", "key_bits": 256},
+        {"name": "ed25519", "key_bits": 256},
+        {"name": "curve448", "key_bits": 448},
+        {"name": "x448", "key_bits": 448},
+        {"name": "ed448", "key_bits": 448},
+        {"name": "sm2", "key_bits": 256},
+        {"name": "sm2p256v1", "key_bits": 256}
+      ]
+    }
+  }
+}

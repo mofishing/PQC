@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "description": "自动派生的 c 封装契约",
+  "language": "c",
+  "wrappers": [
+    {
+      "api_id": "drv.c.mylib.my_rsa_keygen",
+      "language": "c",
+      "function": "my_rsa_keygen",
+      "func_params": [
+        "keylen"
+      ],
+      "semantic": {
+        "profile_id": "ALG.RSA.PKE",
+        "key_bits": {
+          "from_param": "keylen",
+          "transform": "*8"
+        }
+      },
+      "derived_meta": {
+        "source": "auto",
+        "wraps": [
+          "RSA_generate_key"
+        ],
+        "infer_depth": 1,
+        "confidence": "confirmed",
+        "propagation": {
+          "local_sink_calls": [
+            {
+              "callee": "RSA_generate_key",
+              "line": 10
+            }
+          ],
+          "key_input_sources": {
+            "key_bits": "(Param(keylen) * 8)"
+          }
+        }
+      },
+      "library": "mylib"
+    }
+  ],
+  "library": "mylib_test"
+}

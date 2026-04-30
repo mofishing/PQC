@@ -1,0 +1,2636 @@
+{
+    "version": "2.0",
+    "language": "Java",
+    "library": "Bouncy Castle",
+    "description": "Bouncy Castle Crypto APIs for Java, including post-quantum cryptography support (Kyber, Dilithium, SPHINCS+, Falcon, etc.)",
+    "mappings": [
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA256Digest.update",
+            "function": "SHA256Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHA256Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHA256",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA256Digest.doFinal",
+            "function": "SHA256Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHA256Digest"],
+            "func_params": ["output", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SHA256",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "output" },
+                "written_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA3Digest.update",
+            "function": "SHA3Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHA3Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHA3_256",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA3Digest.doFinal",
+            "function": "SHA3Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHA3Digest"],
+            "func_params": ["output", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SHA3_256",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "output" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerator.generateKeyPair",
+            "function": "KyberKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.KYBER",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerator.init",
+            "function": "KyberKeyPairGenerator.init",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.kyber.KyberKeyPairGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.KYBER",
+                "operation": "keygen_init",
+                "keypair_gen_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMGenerator.generateEncapsulated",
+            "function": "KyberKEMGenerator.generateEncapsulated",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMGenerator"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.KYBER",
+                "operation": "kem_encaps",
+                "kem_obj": { "from_receiver": true },
+                "public_key": { "from_param": "key" },
+                "ciphertext_and_shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMExtractor.extractSecret",
+            "function": "KyberKEMExtractor.extractSecret",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.kyber.KyberKEMExtractor"],
+            "func_params": ["encapsulation"],
+            "semantic": {
+                "profile_id": "ALG.KYBER",
+                "operation": "kem_decaps",
+                "kem_obj": { "from_receiver": true },
+                "ciphertext": { "from_param": "encapsulation" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumKeyPairGenerator.generateKeyPair",
+            "function": "DilithiumKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DILITHIUM",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumKeyPairGenerator.init",
+            "function": "DilithiumKeyPairGenerator.init",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumKeyPairGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.DILITHIUM",
+                "operation": "keygen_init",
+                "keypair_gen_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumSigner.generateSignature",
+            "function": "DilithiumSigner.generateSignature",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumSigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.DILITHIUM",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumSigner.verifySignature",
+            "function": "DilithiumSigner.verifySignature",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumSigner"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.DILITHIUM",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumSigner.init",
+            "function": "DilithiumSigner.init",
+            "imports": ["org.bouncycastle.pqc.crypto.crystals.dilithium.DilithiumSigner"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.DILITHIUM",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "key": { "from_param": "param" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyPairGenerator.generateKeyPair",
+            "function": "SPHINCSPlusKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SPHINCS_PLUS",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusSigner.generateSignature",
+            "function": "SPHINCSPlusSigner.generateSignature",
+            "imports": ["org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusSigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.SPHINCS_PLUS",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusSigner.verifySignature",
+            "function": "SPHINCSPlusSigner.verifySignature",
+            "imports": ["org.bouncycastle.pqc.crypto.sphincsplus.SPHINCSPlusSigner"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.SPHINCS_PLUS",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.falcon.FalconKeyPairGenerator.generateKeyPair",
+            "function": "FalconKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.falcon.FalconKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.FALCON",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.falcon.FalconSigner.generateSignature",
+            "function": "FalconSigner.generateSignature",
+            "imports": ["org.bouncycastle.pqc.crypto.falcon.FalconSigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.FALCON",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.falcon.FalconSigner.verifySignature",
+            "function": "FalconSigner.verifySignature",
+            "imports": ["org.bouncycastle.pqc.crypto.falcon.FalconSigner"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.FALCON",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.AESEngine.init",
+            "function": "AESEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.AESEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.AESEngine.processBlock",
+            "function": "AESEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.AESEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMBlockCipher.init",
+            "function": "GCMBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.GCMBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMBlockCipher.processBytes",
+            "function": "GCMBlockCipher.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.GCMBlockCipher"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_update",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMBlockCipher.doFinal",
+            "function": "GCMBlockCipher.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.GCMBlockCipher"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.HMac.init",
+            "function": "HMac.init",
+            "imports": ["org.bouncycastle.crypto.macs.HMac"],
+            "func_params": ["params"],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init",
+                "mac_obj": { "from_receiver": true },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.HMac.update",
+            "function": "HMac.update",
+            "imports": ["org.bouncycastle.crypto.macs.HMac"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "in" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.HMac.doFinal",
+            "function": "HMac.doFinal",
+            "imports": ["org.bouncycastle.crypto.macs.HMac"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.RSAKeyPairGenerator.generateKeyPair",
+            "function": "RSAKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.crypto.generators.RSAKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.RSAKeyPairGenerator.init",
+            "function": "RSAKeyPairGenerator.init",
+            "imports": ["org.bouncycastle.crypto.generators.RSAKeyPairGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "keygen_init",
+                "keypair_gen_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.RSADigestSigner.init",
+            "function": "RSADigestSigner.init",
+            "imports": ["org.bouncycastle.crypto.signers.RSADigestSigner"],
+            "func_params": ["forSigning", "parameters"],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "key": { "from_param": "parameters" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.RSADigestSigner.generateSignature",
+            "function": "RSADigestSigner.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.RSADigestSigner"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.RSADigestSigner.verifySignature",
+            "function": "RSADigestSigner.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.RSADigestSigner"],
+            "func_params": ["signature"],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.ECKeyPairGenerator.generateKeyPair",
+            "function": "ECKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.crypto.generators.ECKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.ECDSASigner.generateSignature",
+            "function": "ECDSASigner.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.ECDSASigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.ECDSASigner.verifySignature",
+            "function": "ECDSASigner.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.ECDSASigner"],
+            "func_params": ["message", "r", "s"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature_r": { "from_param": "r" },
+                "signature_s": { "from_param": "s" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.ECDHBasicAgreement.calculateAgreement",
+            "function": "ECDHBasicAgreement.calculateAgreement",
+            "imports": ["org.bouncycastle.crypto.agreement.ECDHBasicAgreement"],
+            "func_params": ["pubKey"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "agreement_obj": { "from_receiver": true },
+                "peer_public_key": { "from_param": "pubKey" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.ECDHBasicAgreement.init",
+            "function": "ECDHBasicAgreement.init",
+            "imports": ["org.bouncycastle.crypto.agreement.ECDHBasicAgreement"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement_init",
+                "agreement_obj": { "from_receiver": true },
+                "private_key": { "from_param": "key" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.jcajce.provider.BouncyCastlePQCProvider.<init>",
+            "function": "BouncyCastlePQCProvider",
+            "imports": ["org.bouncycastle.jcajce.provider.BouncyCastlePQCProvider"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "provider_init",
+                "provider_obj": { "from_return": true }
+            }
+        }
+,
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed25519Signer.generateSignature",
+            "function": "Ed25519Signer.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.Ed25519Signer"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed25519Signer.verifySignature",
+            "function": "Ed25519Signer.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.Ed25519Signer"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.X25519Agreement.calculateAgreement",
+            "function": "X25519Agreement.calculateAgreement",
+            "imports": ["org.bouncycastle.crypto.agreement.X25519Agreement"],
+            "func_params": ["pubKey"],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_agreement",
+                "agreement_obj": { "from_receiver": true },
+                "peer_public_key": { "from_param": "pubKey" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.X25519Agreement.init",
+            "function": "X25519Agreement.init",
+            "imports": ["org.bouncycastle.crypto.agreement.X25519Agreement"],
+            "func_params": ["privateKey"],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_agreement_init",
+                "agreement_obj": { "from_receiver": true },
+                "private_key": { "from_param": "privateKey" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.ChaCha20Poly1305.init",
+            "function": "ChaCha20Poly1305.init",
+            "imports": ["org.bouncycastle.crypto.modes.ChaCha20Poly1305"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.ChaCha20Poly1305.processBytes",
+            "function": "ChaCha20Poly1305.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.ChaCha20Poly1305"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "aead_process",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.ChaCha20Poly1305.doFinal",
+            "function": "ChaCha20Poly1305.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.ChaCha20Poly1305"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator.generateDerivedParameters",
+            "function": "PKCS5S2ParametersGenerator.generateDerivedParameters",
+            "imports": ["org.bouncycastle.crypto.generators.PKCS5S2ParametersGenerator"],
+            "func_params": ["password", "salt", "iterations", "keySize"],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "kdf_derive",
+                "password": { "from_param": "password" },
+                "salt": { "from_param": "salt" },
+                "iterations": { "from_param": "iterations" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.Argon2BytesGenerator.generateBytes",
+            "function": "Argon2BytesGenerator.generateBytes",
+            "imports": ["org.bouncycastle.crypto.generators.Argon2BytesGenerator"],
+            "func_params": ["output", "offset", "length"],
+            "semantic": {
+                "profile_id": "ALG.ARGON2",
+                "operation": "kdf_derive",
+                "output_buffer": { "from_param": "output" },
+                "derived_key_len": { "from_param": "length" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.SCrypt.generate",
+            "function": "SCrypt.generate",
+            "imports": ["org.bouncycastle.crypto.generators.SCrypt"],
+            "func_params": ["password", "salt", "N", "r", "p", "dkLen"],
+            "semantic": {
+                "profile_id": "ALG.SCRYPT",
+                "operation": "kdf_derive",
+                "password": { "from_param": "password" },
+                "salt": { "from_param": "salt" },
+                "params": { "from_param": "N" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SM3Digest.update",
+            "function": "SM3Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SM3Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SM3Digest.doFinal",
+            "function": "SM3Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SM3Digest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.SM4Engine.init",
+            "function": "SM4Engine.init",
+            "imports": ["org.bouncycastle.crypto.engines.SM4Engine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.SM4Engine.processBlock",
+            "function": "SM4Engine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.SM4Engine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.Blake2bDigest.update",
+            "function": "Blake2bDigest.update",
+            "imports": ["org.bouncycastle.crypto.digests.Blake2bDigest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2B",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.Blake2bDigest.doFinal",
+            "function": "Blake2bDigest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.Blake2bDigest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2B",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.Blake2sDigest.update",
+            "function": "Blake2sDigest.update",
+            "imports": ["org.bouncycastle.crypto.digests.Blake2sDigest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2S",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.Blake2sDigest.doFinal",
+            "function": "Blake2sDigest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.Blake2sDigest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2S",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHAKEDigest.update",
+            "function": "SHAKEDigest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHAKEDigest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHAKEDigest.doFinal",
+            "function": "SHAKEDigest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHAKEDigest"],
+            "func_params": ["out", "outOff", "outLen"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "output_len": { "from_param": "outLen" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.HKDFBytesGenerator.generateBytes",
+            "function": "HKDFBytesGenerator.generateBytes",
+            "imports": ["org.bouncycastle.crypto.generators.HKDFBytesGenerator"],
+            "func_params": ["out", "outOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf_derive",
+                "output_buffer": { "from_param": "out" },
+                "derived_key_len": { "from_param": "len" },
+                "bytes_generated": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.HKDFBytesGenerator.init",
+            "function": "HKDFBytesGenerator.init",
+            "imports": ["org.bouncycastle.crypto.generators.HKDFBytesGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf_init",
+                "kdf_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.ntru.NTRUKeyPairGenerator.generateKeyPair",
+            "function": "NTRUKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.ntru.NTRUKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.NTRU",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionOperator.encrypt",
+            "function": "NTRUEncryptionOperator.encrypt",
+            "imports": ["org.bouncycastle.pqc.crypto.ntru.NTRUEncryptionOperator"],
+            "func_params": ["plaintext"],
+            "semantic": {
+                "profile_id": "ALG.NTRU",
+                "operation": "encrypt",
+                "plaintext": { "from_param": "plaintext" },
+                "ciphertext": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.cmce.CMCEKeyPairGenerator.generateKeyPair",
+            "function": "CMCEKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.cmce.CMCEKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.CLASSIC.MCELIECE",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.cmce.CMCEKEMGenerator.generateEncapsulated",
+            "function": "CMCEKEMGenerator.generateEncapsulated",
+            "imports": ["org.bouncycastle.pqc.crypto.cmce.CMCEKEMGenerator"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.CLASSIC.MCELIECE",
+                "operation": "kem_encaps",
+                "kem_obj": { "from_receiver": true },
+                "public_key": { "from_param": "key" },
+                "ciphertext_and_shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.cmce.CMCEKEMExtractor.extractSecret",
+            "function": "CMCEKEMExtractor.extractSecret",
+            "imports": ["org.bouncycastle.pqc.crypto.cmce.CMCEKEMExtractor"],
+            "func_params": ["encapsulation"],
+            "semantic": {
+                "profile_id": "ALG.CLASSIC.MCELIECE",
+                "operation": "kem_decaps",
+                "kem_obj": { "from_receiver": true },
+                "ciphertext": { "from_param": "encapsulation" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.DSAKeyPairGenerator.generateKeyPair",
+            "function": "DSAKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.crypto.generators.DSAKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.DSASigner.generateSignature",
+            "function": "DSASigner.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.DSASigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.DSASigner.verifySignature",
+            "function": "DSASigner.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.DSASigner"],
+            "func_params": ["message", "r", "s"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature_r": { "from_param": "r" },
+                "signature_s": { "from_param": "s" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.TwofishEngine.init",
+            "function": "TwofishEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.TwofishEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.TWOFISH",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.TwofishEngine.processBlock",
+            "function": "TwofishEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.TwofishEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.TWOFISH",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.CamelliaEngine.init",
+            "function": "CamelliaEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.CamelliaEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.CAMELLIA",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.CamelliaEngine.processBlock",
+            "function": "CamelliaEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.CamelliaEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.CAMELLIA",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.ARIAEngine.init",
+            "function": "ARIAEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.ARIAEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.ARIA",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.ARIAEngine.processBlock",
+            "function": "ARIAEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.ARIAEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.ARIA",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.BlowfishEngine.init",
+            "function": "BlowfishEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.BlowfishEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.BLOWFISH",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.BlowfishEngine.processBlock",
+            "function": "BlowfishEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.BlowfishEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.BLOWFISH",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.DESEngine.init",
+            "function": "DESEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.DESEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.DES",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.DESEngine.processBlock",
+            "function": "DESEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.DESEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.DES",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.DESedeEngine.init",
+            "function": "DESedeEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.DESedeEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.3DES",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.DESedeEngine.processBlock",
+            "function": "DESedeEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.DESedeEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.3DES",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RC4Engine.init",
+            "function": "RC4Engine.init",
+            "imports": ["org.bouncycastle.crypto.engines.RC4Engine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.RC4",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RC4Engine.processBytes",
+            "function": "RC4Engine.processBytes",
+            "imports": ["org.bouncycastle.crypto.engines.RC4Engine"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.RC4",
+                "operation": "cipher_process",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.Salsa20Engine.init",
+            "function": "Salsa20Engine.init",
+            "imports": ["org.bouncycastle.crypto.engines.Salsa20Engine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.SALSA20",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.Salsa20Engine.processBytes",
+            "function": "Salsa20Engine.processBytes",
+            "imports": ["org.bouncycastle.crypto.engines.Salsa20Engine"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SALSA20",
+                "operation": "cipher_process",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.ChaCha7539Engine.init",
+            "function": "ChaCha7539Engine.init",
+            "imports": ["org.bouncycastle.crypto.engines.ChaCha7539Engine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.ChaCha7539Engine.processBytes",
+            "function": "ChaCha7539Engine.processBytes",
+            "imports": ["org.bouncycastle.crypto.engines.ChaCha7539Engine"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20",
+                "operation": "cipher_process",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSKeyPairGenerator.generateKeyPair",
+            "function": "XMSSKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.XMSS",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSSigner.generateSignature",
+            "function": "XMSSSigner.generateSignature",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSSigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.XMSS",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSSigner.verifySignature",
+            "function": "XMSSSigner.verifySignature",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSSigner"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.XMSS",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.DHBasicAgreement.calculateAgreement",
+            "function": "DHBasicAgreement.calculateAgreement",
+            "imports": ["org.bouncycastle.crypto.agreement.DHBasicAgreement"],
+            "func_params": ["pubKey"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "key_agreement",
+                "agreement_obj": { "from_receiver": true },
+                "peer_public_key": { "from_param": "pubKey" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.DHBasicAgreement.init",
+            "function": "DHBasicAgreement.init",
+            "imports": ["org.bouncycastle.crypto.agreement.DHBasicAgreement"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.DH",
+                "operation": "key_agreement_init",
+                "agreement_obj": { "from_receiver": true },
+                "private_key": { "from_param": "key" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.SM2Signer.generateSignature",
+            "function": "SM2Signer.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.SM2Signer"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.SM2.SIG",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.SM2Signer.verifySignature",
+            "function": "SM2Signer.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.SM2Signer"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.SM2.SIG",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.SM2Signer.init",
+            "function": "SM2Signer.init",
+            "imports": ["org.bouncycastle.crypto.signers.SM2Signer"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.SM2.SIG",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "params": { "from_param": "param" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.SM2Engine.processBlock",
+            "function": "SM2Engine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.SM2Engine"],
+            "func_params": ["in", "inOff", "inLen"],
+            "semantic": {
+                "profile_id": "ALG.SM2.PKE",
+                "operation": "encrypt_decrypt",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.SM2Engine.init",
+            "function": "SM2Engine.init",
+            "imports": ["org.bouncycastle.crypto.engines.SM2Engine"],
+            "func_params": ["forEncryption", "param"],
+            "semantic": {
+                "profile_id": "ALG.SM2.PKE",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "params": { "from_param": "param" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.Poly1305.init",
+            "function": "Poly1305.init",
+            "imports": ["org.bouncycastle.crypto.macs.Poly1305"],
+            "func_params": ["params"],
+            "semantic": {
+                "profile_id": "ALG.POLY1305",
+                "operation": "mac_init",
+                "mac_obj": { "from_receiver": true },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.Poly1305.update",
+            "function": "Poly1305.update",
+            "imports": ["org.bouncycastle.crypto.macs.Poly1305"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.POLY1305",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "in" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.Poly1305.doFinal",
+            "function": "Poly1305.doFinal",
+            "imports": ["org.bouncycastle.crypto.macs.Poly1305"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.POLY1305",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "mac_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.CMac.init",
+            "function": "CMac.init",
+            "imports": ["org.bouncycastle.crypto.macs.CMac"],
+            "func_params": ["params"],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_init",
+                "mac_obj": { "from_receiver": true },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.CMac.update",
+            "function": "CMac.update",
+            "imports": ["org.bouncycastle.crypto.macs.CMac"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "in" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.CMac.doFinal",
+            "function": "CMac.doFinal",
+            "imports": ["org.bouncycastle.crypto.macs.CMac"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "mac_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.GMac.init",
+            "function": "GMac.init",
+            "imports": ["org.bouncycastle.crypto.macs.GMac"],
+            "func_params": ["params"],
+            "semantic": {
+                "profile_id": "ALG.GMAC.AES",
+                "operation": "mac_init",
+                "mac_obj": { "from_receiver": true },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.GMac.update",
+            "function": "GMac.update",
+            "imports": ["org.bouncycastle.crypto.macs.GMac"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.GMAC.AES",
+                "operation": "mac_update",
+                "mac_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "in" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.macs.GMac.doFinal",
+            "function": "GMac.doFinal",
+            "imports": ["org.bouncycastle.crypto.macs.GMac"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.GMAC.AES",
+                "operation": "mac_finalize",
+                "mac_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "mac_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CBCBlockCipher.init",
+            "function": "CBCBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.CBCBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CBCBlockCipher.processBlock",
+            "function": "CBCBlockCipher.processBlock",
+            "imports": ["org.bouncycastle.crypto.modes.CBCBlockCipher"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CTRModeCipher.init",
+            "function": "CTRModeCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.CTRModeCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CTRModeCipher.processBlock",
+            "function": "CTRModeCipher.processBlock",
+            "imports": ["org.bouncycastle.crypto.modes.CTRModeCipher"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CCMBlockCipher.init",
+            "function": "CCMBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.CCMBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CCMBlockCipher.processBytes",
+            "function": "CCMBlockCipher.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.CCMBlockCipher"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "aead_process",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.CCMBlockCipher.doFinal",
+            "function": "CCMBlockCipher.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.CCMBlockCipher"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.generators.BCrypt.generate",
+            "function": "BCrypt.generate",
+            "imports": ["org.bouncycastle.crypto.generators.BCrypt"],
+            "func_params": ["password", "salt", "cost"],
+            "semantic": {
+                "profile_id": "ALG.BCRYPT",
+                "operation": "kdf_derive",
+                "password": { "from_param": "password" },
+                "salt": { "from_param": "salt" },
+                "cost": { "from_param": "cost" },
+                "derived_key": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.RIPEMD160Digest.update",
+            "function": "RIPEMD160Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.RIPEMD160Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.RIPEMD160",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.RIPEMD160Digest.doFinal",
+            "function": "RIPEMD160Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.RIPEMD160Digest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.RIPEMD160",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.WhirlpoolDigest.update",
+            "function": "WhirlpoolDigest.update",
+            "imports": ["org.bouncycastle.crypto.digests.WhirlpoolDigest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.WHIRLPOOL",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.WhirlpoolDigest.doFinal",
+            "function": "WhirlpoolDigest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.WhirlpoolDigest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.WHIRLPOOL",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.KeccakDigest.update",
+            "function": "KeccakDigest.update",
+            "imports": ["org.bouncycastle.crypto.digests.KeccakDigest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.KECCAK-256",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.KeccakDigest.doFinal",
+            "function": "KeccakDigest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.KeccakDigest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.KECCAK-256",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.MD5Digest.update",
+            "function": "MD5Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.MD5Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.MD5Digest.doFinal",
+            "function": "MD5Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.MD5Digest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA1Digest.update",
+            "function": "SHA1Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHA1Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHA1",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA1Digest.doFinal",
+            "function": "SHA1Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHA1Digest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SHA1",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA384Digest.update",
+            "function": "SHA384Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHA384Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHA384",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA384Digest.doFinal",
+            "function": "SHA384Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHA384Digest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SHA384",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA512Digest.update",
+            "function": "SHA512Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHA512Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHA512",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA512Digest.doFinal",
+            "function": "SHA512Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHA512Digest"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SHA512",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "out" },
+                "written_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.IDEAEngine.init",
+            "function": "IDEAEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.IDEAEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.IDEA",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.IDEAEngine.processBlock",
+            "function": "IDEAEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.IDEAEngine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.IDEA",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.CAST5Engine.init",
+            "function": "CAST5Engine.init",
+            "imports": ["org.bouncycastle.crypto.engines.CAST5Engine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.CAST5",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.CAST5Engine.processBlock",
+            "function": "CAST5Engine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.CAST5Engine"],
+            "func_params": ["in", "inOff", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.CAST5",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed448Signer.generateSignature",
+            "function": "Ed448Signer.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.Ed448Signer"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed448Signer.verifySignature",
+            "function": "Ed448Signer.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.Ed448Signer"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.X448Agreement.calculateAgreement",
+            "function": "X448Agreement.calculateAgreement",
+            "imports": ["org.bouncycastle.crypto.agreement.X448Agreement"],
+            "func_params": ["pubKey"],
+            "semantic": {
+                "profile_id": "ALG.X448",
+                "operation": "key_agreement",
+                "agreement_obj": { "from_receiver": true },
+                "peer_public_key": { "from_param": "pubKey" },
+                "shared_secret": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.agreement.X448Agreement.init",
+            "function": "X448Agreement.init",
+            "imports": ["org.bouncycastle.crypto.agreement.X448Agreement"],
+            "func_params": ["privateKey"],
+            "semantic": {
+                "profile_id": "ALG.X448",
+                "operation": "key_agreement_init",
+                "agreement_obj": { "from_receiver": true },
+                "private_key": { "from_param": "privateKey" }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.prng.SP800SecureRandomBuilder.buildHash",
+            "function": "SP800SecureRandomBuilder.buildHash",
+            "imports": ["org.bouncycastle.crypto.prng.SP800SecureRandomBuilder"],
+            "func_params": ["digest", "nonce", "personalizationString"],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "drbg_hash_init",
+                "digest": { "from_param": "digest" },
+                "nonce": { "from_param": "nonce" },
+                "personalization": { "from_param": "personalizationString" },
+                "rng_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.prng.SP800SecureRandomBuilder.buildHMAC",
+            "function": "SP800SecureRandomBuilder.buildHMAC",
+            "imports": ["org.bouncycastle.crypto.prng.SP800SecureRandomBuilder"],
+            "func_params": ["hMac", "nonce", "personalizationString"],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "drbg_hmac_init",
+                "hmac": { "from_param": "hMac" },
+                "nonce": { "from_param": "nonce" },
+                "personalization": { "from_param": "personalizationString" },
+                "rng_obj": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.prng.SP800SecureRandomBuilder.buildCTR",
+            "function": "SP800SecureRandomBuilder.buildCTR",
+            "imports": ["org.bouncycastle.crypto.prng.SP800SecureRandomBuilder"],
+            "func_params": ["cipher", "keySizeInBits", "nonce", "personalizationString"],
+            "semantic": {
+                "profile_id": "UTIL.RNGFactory",
+                "operation": "drbg_ctr_init",
+                "cipher": { "from_param": "cipher" },
+                "key_bits": { "from_param": "keySizeInBits" },
+                "nonce": { "from_param": "nonce" },
+                "personalization": { "from_param": "personalizationString" },
+                "rng_obj": { "from_return": true }
+            }
+        },
+        
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.util.PrivateKeyFactory.createKey",
+            "function": "PrivateKeyFactory.createKey",
+            "imports": ["org.bouncycastle.crypto.util.PrivateKeyFactory"],
+            "func_params": ["keyInfoData"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "decode_private_key",
+                "encoded_key": { "from_param": "keyInfoData" },
+                "private_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.util.PublicKeyFactory.createKey",
+            "function": "PublicKeyFactory.createKey",
+            "imports": ["org.bouncycastle.crypto.util.PublicKeyFactory"],
+            "func_params": ["keyInfoData"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "decode_public_key",
+                "encoded_key": { "from_param": "keyInfoData" },
+                "public_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.util.PrivateKeyInfoFactory.createPrivateKeyInfo",
+            "function": "PrivateKeyInfoFactory.createPrivateKeyInfo",
+            "imports": ["org.bouncycastle.crypto.util.PrivateKeyInfoFactory"],
+            "func_params": ["privateKey"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "encode_private_key",
+                "private_key": { "from_param": "privateKey" },
+                "encoded_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo",
+            "function": "SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo",
+            "imports": ["org.bouncycastle.crypto.util.SubjectPublicKeyInfoFactory"],
+            "func_params": ["publicKey"],
+            "semantic": {
+                "profile_id": "UTIL.KeyFactory",
+                "operation": "encode_public_key",
+                "public_key": { "from_param": "publicKey" },
+                "encoded_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RSAEngine.init",
+            "function": "RSAEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.RSAEngine"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RSAEngine.processBlock",
+            "function": "RSAEngine.processBlock",
+            "imports": ["org.bouncycastle.crypto.engines.RSAEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "output_bytes": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.encodings.OAEPEncoding.init",
+            "function": "OAEPEncoding.init",
+            "imports": ["org.bouncycastle.crypto.encodings.OAEPEncoding"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" },
+                "padding": { "value": "OAEP" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.encodings.OAEPEncoding.processBlock",
+            "function": "OAEPEncoding.processBlock",
+            "imports": ["org.bouncycastle.crypto.encodings.OAEPEncoding"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "output_bytes": { "from_return": true },
+                "padding": { "value": "OAEP" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.encodings.PKCS1Encoding.init",
+            "function": "PKCS1Encoding.init",
+            "imports": ["org.bouncycastle.crypto.encodings.PKCS1Encoding"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "cipher_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" },
+                "padding": { "value": "PKCS1v15" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.encodings.PKCS1Encoding.processBlock",
+            "function": "PKCS1Encoding.processBlock",
+            "imports": ["org.bouncycastle.crypto.encodings.PKCS1Encoding"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.RSA.PKE",
+                "operation": "cipher_process_block",
+                "cipher_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "output_bytes": { "from_return": true },
+                "padding": { "value": "PKCS1v15" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.PSSSigner.init",
+            "function": "PSSSigner.init",
+            "imports": ["org.bouncycastle.crypto.signers.PSSSigner"],
+            "func_params": ["forSigning", "parameters"],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "key": { "from_param": "parameters" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.PSSSigner.update",
+            "function": "PSSSigner.update",
+            "imports": ["org.bouncycastle.crypto.signers.PSSSigner"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "signature_update",
+                "signer_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" },
+                "message_offset": { "from_param": "inOff" },
+                "message_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.PSSSigner.generateSignature",
+            "function": "PSSSigner.generateSignature",
+            "imports": ["org.bouncycastle.crypto.signers.PSSSigner"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.PSSSigner.verifySignature",
+            "function": "PSSSigner.verifySignature",
+            "imports": ["org.bouncycastle.crypto.signers.PSSSigner"],
+            "func_params": ["signature"],
+            "semantic": {
+                "profile_id": "ALG.RSA.SIG",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA224Digest.update",
+            "function": "SHA224Digest.update",
+            "imports": ["org.bouncycastle.crypto.digests.SHA224Digest"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.SHA224",
+                "operation": "hash_update",
+                "digest_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.digests.SHA224Digest.doFinal",
+            "function": "SHA224Digest.doFinal",
+            "imports": ["org.bouncycastle.crypto.digests.SHA224Digest"],
+            "func_params": ["output", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.SHA224",
+                "operation": "hash_finalize",
+                "digest_obj": { "from_receiver": true },
+                "output_buffer": { "from_param": "output" },
+                "written_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed25519Signer.init",
+            "function": "Ed25519Signer.init",
+            "imports": ["org.bouncycastle.crypto.signers.Ed25519Signer"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed25519Signer.update",
+            "function": "Ed25519Signer.update",
+            "imports": ["org.bouncycastle.crypto.signers.Ed25519Signer"],
+            "func_params": ["input"],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "signature_update",
+                "signer_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed25519Signer.update",
+            "function": "Ed25519Signer.update",
+            "imports": ["org.bouncycastle.crypto.signers.Ed25519Signer"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "signature_update",
+                "signer_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" },
+                "message_offset": { "from_param": "inOff" },
+                "message_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed448Signer.init",
+            "function": "Ed448Signer.init",
+            "imports": ["org.bouncycastle.crypto.signers.Ed448Signer"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed448Signer.update",
+            "function": "Ed448Signer.update",
+            "imports": ["org.bouncycastle.crypto.signers.Ed448Signer"],
+            "func_params": ["input"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "signature_update",
+                "signer_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.signers.Ed448Signer.update",
+            "function": "Ed448Signer.update",
+            "imports": ["org.bouncycastle.crypto.signers.Ed448Signer"],
+            "func_params": ["input", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.Ed448",
+                "operation": "signature_update",
+                "signer_obj": { "from_receiver": true },
+                "message_chunk": { "from_param": "input" },
+                "message_offset": { "from_param": "inOff" },
+                "message_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSKeyPairGenerator.init",
+            "function": "XMSSKeyPairGenerator.init",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSKeyPairGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.XMSS",
+                "operation": "keygen_init",
+                "keypair_gen_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSSigner.init",
+            "function": "XMSSSigner.init",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSSigner"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.XMSS",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSMTKeyPairGenerator.generateKeyPair",
+            "function": "XMSSMTKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSMTKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.XMSSMT",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSMTKeyPairGenerator.init",
+            "function": "XMSSMTKeyPairGenerator.init",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSMTKeyPairGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.XMSSMT",
+                "operation": "keygen_init",
+                "keypair_gen_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSMTSigner.generateSignature",
+            "function": "XMSSMTSigner.generateSignature",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSMTSigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.XMSSMT",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSMTSigner.verifySignature",
+            "function": "XMSSMTSigner.verifySignature",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSMTSigner"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.XMSSMT",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.xmss.XMSSMTSigner.init",
+            "function": "XMSSMTSigner.init",
+            "imports": ["org.bouncycastle.pqc.crypto.xmss.XMSSMTSigner"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.XMSSMT",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator.generateKeyPair",
+            "function": "RainbowKeyPairGenerator.generateKeyPair",
+            "imports": ["org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.RAINBOW",
+                "operation": "keygen",
+                "keypair_gen_obj": { "from_receiver": true },
+                "keypair": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator.init",
+            "function": "RainbowKeyPairGenerator.init",
+            "imports": ["org.bouncycastle.pqc.crypto.rainbow.RainbowKeyPairGenerator"],
+            "func_params": ["param"],
+            "semantic": {
+                "profile_id": "ALG.RAINBOW",
+                "operation": "keygen_init",
+                "keypair_gen_obj": { "from_receiver": true },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.rainbow.RainbowSigner.generateSignature",
+            "function": "RainbowSigner.generateSignature",
+            "imports": ["org.bouncycastle.pqc.crypto.rainbow.RainbowSigner"],
+            "func_params": ["message"],
+            "semantic": {
+                "profile_id": "ALG.RAINBOW",
+                "operation": "sign",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.rainbow.RainbowSigner.verifySignature",
+            "function": "RainbowSigner.verifySignature",
+            "imports": ["org.bouncycastle.pqc.crypto.rainbow.RainbowSigner"],
+            "func_params": ["message", "signature"],
+            "semantic": {
+                "profile_id": "ALG.RAINBOW",
+                "operation": "verify",
+                "signer_obj": { "from_receiver": true },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "signature" },
+                "verify_result": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.pqc.crypto.rainbow.RainbowSigner.init",
+            "function": "RainbowSigner.init",
+            "imports": ["org.bouncycastle.pqc.crypto.rainbow.RainbowSigner"],
+            "func_params": ["forSigning", "param"],
+            "semantic": {
+                "profile_id": "ALG.RAINBOW",
+                "operation": "sign_init",
+                "signer_obj": { "from_receiver": true },
+                "for_signing": { "from_param": "forSigning" },
+                "params": { "from_param": "param" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.EAXBlockCipher.init",
+            "function": "EAXBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.EAXBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.EAXBlockCipher.processBytes",
+            "function": "EAXBlockCipher.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.EAXBlockCipher"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_process",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.EAXBlockCipher.doFinal",
+            "function": "EAXBlockCipher.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.EAXBlockCipher"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.EAXBlockCipher.processAADBytes",
+            "function": "EAXBlockCipher.processAADBytes",
+            "imports": ["org.bouncycastle.crypto.modes.EAXBlockCipher"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_update_aad",
+                "aead_obj": { "from_receiver": true },
+                "aad": { "from_param": "in" },
+                "aad_offset": { "from_param": "inOff" },
+                "aad_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.OCBBlockCipher.init",
+            "function": "OCBBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.OCBBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.OCBBlockCipher.processBytes",
+            "function": "OCBBlockCipher.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.OCBBlockCipher"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_process",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.OCBBlockCipher.doFinal",
+            "function": "OCBBlockCipher.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.OCBBlockCipher"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.OCBBlockCipher.processAADBytes",
+            "function": "OCBBlockCipher.processAADBytes",
+            "imports": ["org.bouncycastle.crypto.modes.OCBBlockCipher"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_update_aad",
+                "aead_obj": { "from_receiver": true },
+                "aad": { "from_param": "in" },
+                "aad_offset": { "from_param": "inOff" },
+                "aad_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMSIVBlockCipher.init",
+            "function": "GCMSIVBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.GCMSIVBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMSIVBlockCipher.processBytes",
+            "function": "GCMSIVBlockCipher.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.GCMSIVBlockCipher"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_process",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMSIVBlockCipher.doFinal",
+            "function": "GCMSIVBlockCipher.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.GCMSIVBlockCipher"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.GCMSIVBlockCipher.processAADBytes",
+            "function": "GCMSIVBlockCipher.processAADBytes",
+            "imports": ["org.bouncycastle.crypto.modes.GCMSIVBlockCipher"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_update_aad",
+                "aead_obj": { "from_receiver": true },
+                "aad": { "from_param": "in" },
+                "aad_offset": { "from_param": "inOff" },
+                "aad_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.SIVBlockCipher.init",
+            "function": "SIVBlockCipher.init",
+            "imports": ["org.bouncycastle.crypto.modes.SIVBlockCipher"],
+            "func_params": ["forEncryption", "params"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_init",
+                "aead_obj": { "from_receiver": true },
+                "for_encryption": { "from_param": "forEncryption" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.SIVBlockCipher.processBytes",
+            "function": "SIVBlockCipher.processBytes",
+            "imports": ["org.bouncycastle.crypto.modes.SIVBlockCipher"],
+            "func_params": ["in", "inOff", "len", "out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_process",
+                "aead_obj": { "from_receiver": true },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.SIVBlockCipher.doFinal",
+            "function": "SIVBlockCipher.doFinal",
+            "imports": ["org.bouncycastle.crypto.modes.SIVBlockCipher"],
+            "func_params": ["out", "outOff"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_finalize",
+                "aead_obj": { "from_receiver": true },
+                "output": { "from_param": "out" },
+                "output_len": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.modes.SIVBlockCipher.processAADBytes",
+            "function": "SIVBlockCipher.processAADBytes",
+            "imports": ["org.bouncycastle.crypto.modes.SIVBlockCipher"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "aead_update_aad",
+                "aead_obj": { "from_receiver": true },
+                "aad": { "from_param": "in" },
+                "aad_offset": { "from_param": "inOff" },
+                "aad_length": { "from_param": "len" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RFC3394WrapEngine.init",
+            "function": "RFC3394WrapEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.RFC3394WrapEngine"],
+            "func_params": ["forWrapping", "params"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_wrapping": { "from_param": "forWrapping" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RFC3394WrapEngine.wrap",
+            "function": "RFC3394WrapEngine.wrap",
+            "imports": ["org.bouncycastle.crypto.engines.RFC3394WrapEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap",
+                "cipher_obj": { "from_receiver": true },
+                "key_to_wrap": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "wrapped_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RFC3394WrapEngine.unwrap",
+            "function": "RFC3394WrapEngine.unwrap",
+            "imports": ["org.bouncycastle.crypto.engines.RFC3394WrapEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_unwrap",
+                "cipher_obj": { "from_receiver": true },
+                "wrapped_key": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "unwrapped_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RFC5649WrapEngine.init",
+            "function": "RFC5649WrapEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.RFC5649WrapEngine"],
+            "func_params": ["forWrapping", "params"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_wrapping": { "from_param": "forWrapping" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RFC5649WrapEngine.wrap",
+            "function": "RFC5649WrapEngine.wrap",
+            "imports": ["org.bouncycastle.crypto.engines.RFC5649WrapEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap",
+                "cipher_obj": { "from_receiver": true },
+                "key_to_wrap": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "wrapped_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.RFC5649WrapEngine.unwrap",
+            "function": "RFC5649WrapEngine.unwrap",
+            "imports": ["org.bouncycastle.crypto.engines.RFC5649WrapEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_unwrap",
+                "cipher_obj": { "from_receiver": true },
+                "wrapped_key": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "unwrapped_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.AESWrapEngine.init",
+            "function": "AESWrapEngine.init",
+            "imports": ["org.bouncycastle.crypto.engines.AESWrapEngine"],
+            "func_params": ["forWrapping", "params"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap_init",
+                "cipher_obj": { "from_receiver": true },
+                "for_wrapping": { "from_param": "forWrapping" },
+                "key": { "from_param": "params" }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.AESWrapEngine.wrap",
+            "function": "AESWrapEngine.wrap",
+            "imports": ["org.bouncycastle.crypto.engines.AESWrapEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_wrap",
+                "cipher_obj": { "from_receiver": true },
+                "key_to_wrap": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "wrapped_key": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "java.bc.org.bouncycastle.crypto.engines.AESWrapEngine.unwrap",
+            "function": "AESWrapEngine.unwrap",
+            "imports": ["org.bouncycastle.crypto.engines.AESWrapEngine"],
+            "func_params": ["in", "inOff", "len"],
+            "semantic": {
+                "profile_id": "UTIL.CipherFactory",
+                "operation": "key_unwrap",
+                "cipher_obj": { "from_receiver": true },
+                "wrapped_key": { "from_param": "in" },
+                "input_offset": { "from_param": "inOff" },
+                "input_length": { "from_param": "len" },
+                "unwrapped_key": { "from_return": true }
+            }
+        }
+    ]
+}

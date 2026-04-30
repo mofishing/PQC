@@ -1,0 +1,1948 @@
+{
+    "version": "2.0",
+    "language": "python",
+    "librarys": "PyNaCl",
+    "mappings": [
+        {
+            "api_id": "py.pynacl.nacl.secret.Aead.__init__",
+            "function": "nacl.secret.Aead.__init__",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "aead_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "nonce_size": 24,
+                "aad_supported": true,
+                "authenticated": true,
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.Aead.decrypt",
+            "function": "nacl.secret.Aead.decrypt",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "ciphertext",
+                "aad",
+                "nonce",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "aead_decrypt",
+                "key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 2
+                },
+                "aad": {
+                    "param": "aad",
+                    "source": "param",
+                    "index": 1
+                },
+                "ciphertext_plus_tag": {
+                    "param": "ciphertext",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "decrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.Aead.encode",
+            "function": "nacl.secret.Aead.encode",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "key_export",
+                "key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.Aead.encrypt",
+            "function": "nacl.secret.Aead.encrypt",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "plaintext",
+                "aad",
+                "nonce",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "operation": "aead_encrypt",
+                "key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 2
+                },
+                "aad": {
+                    "param": "aad",
+                    "source": "param",
+                    "index": 1
+                },
+                "plaintext": {
+                    "param": "plaintext",
+                    "source": "param",
+                    "index": 0
+                },
+                "ciphertext_plus_tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "encrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.SecretBox.__init__",
+            "function": "nacl.secret.SecretBox",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XSALSA20_POLY1305",
+                "operation": "aead_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "nonce_size": 24,
+                "authenticated": true,
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.SecretBox.decrypt",
+            "function": "nacl.secret.SecretBox.decrypt",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "ciphertext",
+                "nonce",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XSALSA20_POLY1305",
+                "operation": "aead_decrypt",
+                "key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 1
+                },
+                "ciphertext_plus_tag": {
+                    "param": "ciphertext",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "decrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.SecretBox.encode",
+            "function": "nacl.secret.SecretBox.encode",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XSALSA20_POLY1305",
+                "operation": "key_export",
+                "key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.secret.SecretBox.encrypt",
+            "function": "nacl.secret.SecretBox.encrypt",
+            "imports": [
+                "nacl.secret"
+            ],
+            "func_params": [
+                "plaintext",
+                "nonce",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.XSALSA20_POLY1305",
+                "operation": "aead_encrypt",
+                "key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 1
+                },
+                "plaintext": {
+                    "param": "plaintext",
+                    "source": "param",
+                    "index": 0
+                },
+                "ciphertext_plus_tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "encrypt",
+                "description": "function SecretBox.decrypt decrypts the given ciphertext using the XSalsa20-Poly1305 algorithm. key is obtained from the SecretBox instance(class init: SecretBox(key)), nonce is provided as a parameter, and the resulting plaintext is returned.",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.Box.__init__",
+            "function": "nacl.public.Box.__init__",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "private_key",
+                "public_key"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "dh_aead_init",
+                "private_key": {
+                    "param": "private_key",
+                    "source": "param",
+                    "index": 0
+                },
+                "public_key": {
+                    "param": "public_key",
+                    "source": "param",
+                    "index": 1
+                },
+                "nonce_size": 24,
+                "authenticated": true
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.Box.decode",
+            "function": "nacl.public.Box.decode",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "encoded",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "key_import",
+                "encoded_keypair": {
+                    "param": "encoded",
+                    "source": "param",
+                    "index": 0
+                },
+                "box": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.Box.decrypt",
+            "function": "nacl.public.Box.decrypt",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "ciphertext",
+                "nonce",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "aead_decrypt",
+                "shared_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 1
+                },
+                "ciphertext_plus_tag": {
+                    "param": "ciphertext",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "decrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "shared_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.Box.encode",
+            "function": "nacl.public.Box.encode",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "key_export",
+                "private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "public_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_keypair": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.Box.encrypt",
+            "function": "nacl.public.Box.encrypt",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "plaintext",
+                "nonce",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "aead_encrypt",
+                "shared_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 1
+                },
+                "plaintext": {
+                    "param": "plaintext",
+                    "source": "param",
+                    "index": 0
+                },
+                "ciphertext_plus_tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "encrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "shared_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.Box.shared_key",
+            "function": "nacl.public.Box.shared_key",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "dh_shared_key",
+                "private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "public_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "shared_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.PrivateKey.__init__",
+            "function": "nacl.public.PrivateKey.__init__",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "private_key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_import",
+                "private_key": {
+                    "param": "private_key",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.PrivateKey.encode",
+            "function": "nacl.public.PrivateKey.encode",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_export",
+                "private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.PrivateKey.from_seed",
+            "function": "nacl.public.PrivateKey.from_seed",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "seed",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "keygen_from_seed",
+                "seed": {
+                    "param": "seed",
+                    "source": "param",
+                    "index": 0
+                },
+                "private_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.PrivateKey.generate",
+            "function": "nacl.public.PrivateKey.generate",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "keygen",
+                "private_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.PublicKey.__init__",
+            "function": "nacl.public.PublicKey.__init__",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "public_key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_import",
+                "public_key": {
+                    "param": "public_key",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.PublicKey.encode",
+            "function": "nacl.public.PublicKey.encode",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "key_export",
+                "public_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.SealedBox.__init__",
+            "function": "nacl.public.SealedBox.__init__",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "recipient_key"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "kem_init",
+                "recipient_key": {
+                    "param": "recipient_key",
+                    "source": "param",
+                    "index": 0
+                },
+                "ephemeral_keypair_internal": true
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.SealedBox.decrypt",
+            "function": "nacl.public.SealedBox.decrypt",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "ciphertext",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "kem_decrypt",
+                "recipient_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "sealed_ciphertext": {
+                    "param": "ciphertext",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "recipient_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.SealedBox.encode",
+            "function": "nacl.public.SealedBox.encode",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "key_export",
+                "recipient_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "recipient_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.public.SealedBox.encrypt",
+            "function": "nacl.public.SealedBox.encrypt",
+            "imports": [
+                "nacl.public"
+            ],
+            "func_params": [
+                "plaintext",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+                "operation": "kem_encrypt",
+                "recipient_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "plaintext",
+                    "source": "param",
+                    "index": 0
+                },
+                "sealed_ciphertext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "recipient_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.SigningKey.__init__",
+            "function": "nacl.signing.SigningKey.__init__",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [
+                "seed",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "keygen_from_seed",
+                "seed": {
+                    "param": "seed",
+                    "source": "param",
+                    "index": 0
+                },
+                "private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "key_bits": 256,
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "seed",
+                        "from": {
+                            "param": "seed",
+                            "source": "param",
+                            "index": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.SigningKey.encode",
+            "function": "nacl.signing.SigningKey.encode",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "key_export",
+                "private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.SigningKey.generate",
+            "function": "nacl.signing.SigningKey.generate",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ED25519",
+                "operation": "keygen",
+                "seed_source": "CSPRNG",
+                "private_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.SigningKey.sign",
+            "function": "nacl.signing.SigningKey.sign",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [
+                "message",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "sign",
+                "direction": "sign",
+                "private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "message": {
+                    "param": "message",
+                    "source": "param",
+                    "index": 0
+                },
+                "signed_message": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "padding"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "digest"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "salt"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.SigningKey.to_curve25519_private_key",
+            "function": "nacl.signing.SigningKey.to_curve25519_private_key",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "convert_key",
+                "from_profile": "ALG.Ed25519",
+                "to_profile": "ALG.X25519",
+                "source_private_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "private_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "source_private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.VerifyKey.__init__",
+            "function": "nacl.signing.VerifyKey.__init__",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [
+                "key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "key_import",
+                "public_key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.VerifyKey.encode",
+            "function": "nacl.signing.VerifyKey.encode",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "key_export",
+                "public_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "encoded_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.VerifyKey.to_curve25519_public_key",
+            "function": "nacl.signing.VerifyKey.to_curve25519_public_key",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "convert_key",
+                "from_profile": "ALG.Ed25519",
+                "to_profile": "ALG.X25519",
+                "source_public_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "public_key": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "source_public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.signing.VerifyKey.verify",
+            "function": "nacl.signing.VerifyKey.verify",
+            "imports": [
+                "nacl.signing"
+            ],
+            "func_params": [
+                "smessage",
+                "signature",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "verify",
+                "direction": "verify",
+                "public_key": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "signed_message": {
+                    "param": "smessage",
+                    "source": "param",
+                    "index": 0
+                },
+                "signature": {
+                    "param": "signature",
+                    "source": "param",
+                    "index": 1
+                },
+                "message": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "padding"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "digest"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "salt"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.verify",
+            "function": "pwhash.verify",
+            "imports": [
+                "nacl.pwhash"
+            ],
+            "func_params": [
+                "password_hash",
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PWHASH",
+                "operation": "verify",
+                "password_hash": {
+                    "param": "password_hash",
+                    "source": "param",
+                    "index": 0
+                },
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "algorithm_in_hash": true,
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash._argon2.verify",
+            "function": "pwhash._argon2.verify",
+            "imports": [
+                "nacl.pwhash._argon2"
+            ],
+            "func_params": [
+                "password_hash",
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2",
+                "operation": "verify",
+                "password_hash": {
+                    "param": "password_hash",
+                    "source": "param",
+                    "index": 0
+                },
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "algorithm_in_hash": true,
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.argon2id.kdf",
+            "function": "pwhash.argon2id.kdf",
+            "imports": [
+                "nacl.pwhash.argon2id"
+            ],
+            "func_params": [
+                "size",
+                "password",
+                "salt",
+                "opslimit",
+                "memlimit",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 2
+                },
+                "dk_length": {
+                    "param": "size",
+                    "source": "param",
+                    "index": 0
+                },
+                "opslimit": {
+                    "param": "opslimit",
+                    "source": "param",
+                    "index": 3
+                },
+                "memlimit": {
+                    "param": "memlimit",
+                    "source": "param",
+                    "index": 4
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.argon2id.str",
+            "function": "pwhash.argon2id.str",
+            "imports": [
+                "nacl.pwhash.argon2id"
+            ],
+            "func_params": [
+                "password",
+                "opslimit",
+                "memlimit"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "password_hash",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 0
+                },
+                "opslimit": {
+                    "param": "opslimit",
+                    "source": "param",
+                    "index": 1
+                },
+                "memlimit": {
+                    "param": "memlimit",
+                    "source": "param",
+                    "index": 2
+                },
+                "password_hash": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.argon2id.verify",
+            "function": "pwhash.argon2id.verify",
+            "imports": [
+                "nacl.pwhash.argon2id"
+            ],
+            "func_params": [
+                "password_hash",
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2id",
+                "operation": "verify",
+                "password_hash": {
+                    "param": "password_hash",
+                    "source": "param",
+                    "index": 0
+                },
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "algorithm_in_hash": true,
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.argon2i.kdf",
+            "function": "pwhash.argon2i.kdf",
+            "imports": [
+                "nacl.pwhash.argon2i"
+            ],
+            "func_params": [
+                "size",
+                "password",
+                "salt",
+                "opslimit",
+                "memlimit",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2i",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 2
+                },
+                "dk_length": {
+                    "param": "size",
+                    "source": "param",
+                    "index": 0
+                },
+                "opslimit": {
+                    "param": "opslimit",
+                    "source": "param",
+                    "index": 3
+                },
+                "memlimit": {
+                    "param": "memlimit",
+                    "source": "param",
+                    "index": 4
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.argon2i.str",
+            "function": "pwhash.argon2i.str",
+            "imports": [
+                "nacl.pwhash.argon2i"
+            ],
+            "func_params": [
+                "password",
+                "opslimit",
+                "memlimit"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2i",
+                "operation": "password_hash",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 0
+                },
+                "opslimit": {
+                    "param": "opslimit",
+                    "source": "param",
+                    "index": 1
+                },
+                "memlimit": {
+                    "param": "memlimit",
+                    "source": "param",
+                    "index": 2
+                },
+                "password_hash": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.argon2i.verify",
+            "function": "pwhash.argon2i.verify",
+            "imports": [
+                "nacl.pwhash.argon2i"
+            ],
+            "func_params": [
+                "password_hash",
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2i",
+                "operation": "verify",
+                "password_hash": {
+                    "param": "password_hash",
+                    "source": "param",
+                    "index": 0
+                },
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "algorithm_in_hash": true,
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.scrypt.kdf",
+            "function": "pwhash.scrypt.kdf",
+            "imports": [
+                "nacl.pwhash.scrypt"
+            ],
+            "func_params": [
+                "size",
+                "password",
+                "salt",
+                "opslimit",
+                "memlimit",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 2
+                },
+                "dk_length": {
+                    "param": "size",
+                    "source": "param",
+                    "index": 0
+                },
+                "opslimit": {
+                    "param": "opslimit",
+                    "source": "param",
+                    "index": 3
+                },
+                "memlimit": {
+                    "param": "memlimit",
+                    "source": "param",
+                    "index": 4
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.scrypt.str",
+            "function": "pwhash.scrypt.str",
+            "imports": [
+                "nacl.pwhash.scrypt"
+            ],
+            "func_params": [
+                "password",
+                "opslimit",
+                "memlimit"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "password_hash",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 0
+                },
+                "opslimit": {
+                    "param": "opslimit",
+                    "source": "param",
+                    "index": 1
+                },
+                "memlimit": {
+                    "param": "memlimit",
+                    "source": "param",
+                    "index": 2
+                },
+                "password_hash": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.pwhash.scrypt.verify",
+            "function": "pwhash.scrypt.verify",
+            "imports": [
+                "nacl.pwhash.scrypt"
+            ],
+            "func_params": [
+                "password_hash",
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "verify",
+                "password_hash": {
+                    "param": "password_hash",
+                    "source": "param",
+                    "index": 0
+                },
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.blake2b",
+            "function": "hash.blake2b",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "data",
+                "digest_size",
+                "key",
+                "salt",
+                "person",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 2
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 3
+                },
+                "personalization": {
+                    "param": "person",
+                    "source": "param",
+                    "index": 4
+                },
+                "supports_keyed_mac": true,
+                "supports_kdf": true,
+                "digest_bits": {
+                    "param": "digest_size",
+                    "source": "param",
+                    "index": 1,
+                    "unit": "bytes",
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.generichash",
+            "function": "hash.generichash",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "data",
+                "digest_size",
+                "key",
+                "salt",
+                "person",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 2
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 3
+                },
+                "personalization": {
+                    "param": "person",
+                    "source": "param",
+                    "index": 4
+                },
+                "is_alias_of_blake2b": true,
+                "digest_bits": {
+                    "param": "digest_size",
+                    "source": "param",
+                    "index": 1,
+                    "unit": "bytes",
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.sha256",
+            "function": "hash.sha256",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "message",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-256",
+                "operation": "hash",
+                "input": {
+                    "param": "message",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.sha512",
+            "function": "hash.sha512",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "message",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-512",
+                "operation": "hash",
+                "input": {
+                    "param": "message",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "digest_bits": 512
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.shorthash",
+            "function": "hash.shorthash",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "message",
+                "key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SipHash-2-4",
+                "operation": "mac",
+                "message": {
+                    "param": "message",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 1
+                },
+                "tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "tag_size": 8,
+                "security_level": "non_collision_resistant"
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.siphash24",
+            "function": "hash.siphash24",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "message",
+                "key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SipHash-2-4",
+                "operation": "mac",
+                "message": {
+                    "param": "message",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 1
+                },
+                "tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.hash.siphashx24",
+            "function": "hash.siphashx24",
+            "imports": [
+                "nacl.hash"
+            ],
+            "func_params": [
+                "message",
+                "key",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SipHashx-2-4",
+                "operation": "mac",
+                "message": {
+                    "param": "message",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 1
+                },
+                "tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.utils.bytes_as_string",
+            "function": "nacl.utils.bytes_as_string",
+            "imports": [
+                "nacl.utils"
+            ],
+            "func_params": [
+                "bytes_in"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.Encoding",
+                "operation": "bytes_to_string",
+                "bytes": {
+                    "param": "bytes_in",
+                    "source": "param",
+                    "index": 0
+                },
+                "string": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.utils.random",
+            "function": "nacl.utils.random",
+            "imports": [
+                "nacl.utils"
+            ],
+            "func_params": [
+                "size"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes",
+                "size": {
+                    "param": "size",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true,
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pynacl.nacl.utils.randombytes_deterministic",
+            "function": "nacl.utils.randombytes_deterministic",
+            "imports": [
+                "nacl.utils"
+            ],
+            "func_params": [
+                "size",
+                "seed",
+                "encoder"
+            ],
+            "semantic": {
+                "profile_id": "RNG.DRBG",
+                "operation": "random_bytes_deterministic",
+                "size": {
+                    "param": "size",
+                    "source": "param",
+                    "index": 0
+                },
+                "seed": {
+                    "param": "seed",
+                    "source": "param",
+                    "index": 1
+                },
+                "cryptographically_secure": true,
+                "deterministic": true,
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        }
+    ]
+}

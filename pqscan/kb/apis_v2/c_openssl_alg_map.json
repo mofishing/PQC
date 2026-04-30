@@ -1,0 +1,34 @@
+{
+    "openssl_evp_cipher_map": {
+        "EVP_aes_128_gcm": {
+            "family": "AES",
+            "key_bits": 128,
+            "mode": "GCM"
+        },
+        "EVP_aes_192_gcm": {
+            "family": "AES",
+            "key_bits": 192,
+            "mode": "GCM"
+        },
+        "EVP_aes_256_gcm": {
+            "family": "AES",
+            "key_bits": 256,
+            "mode": "GCM"
+        },
+        "EVP_aes_256_cbc": {
+            "family": "AES",
+            "key_bits": 256,
+            "mode": "CBC"
+        },
+        "EVP_sm4_gcm": {
+            "family": "SM4",
+            "key_bits": 128,
+            "mode": "GCM"
+        },
+        "EVP_sm4_cbc": {
+            "family": "SM4",
+            "key_bits": 128,
+            "mode": "CBC"
+        }
+    }
+}

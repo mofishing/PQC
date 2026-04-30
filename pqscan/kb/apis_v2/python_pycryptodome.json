@@ -1,0 +1,1175 @@
+{
+    "version": "2.0",
+    "language": "python",
+    "library": "pycryptodome",
+    "mappings": [
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.AES.new",
+            "function": "Crypto.Cipher.AES.new",
+            "imports": [
+                "Crypto.Cipher.AES",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "mode",
+                "iv",
+                "nonce",
+                "segment_size",
+                "mac_len",
+                "assoc_len",
+                "initial_value",
+                "nonce",
+                "counter"
+            ],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "operation": "cipher_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "mode": {
+                    "param": "mode",
+                    "source": "param",
+                    "index": 1
+                },
+                "iv": {
+                    "param": "iv",
+                    "source": "param",
+                    "index": 2
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 8
+                },
+                "cipher_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.DES.new",
+            "function": "Crypto.Cipher.DES.new",
+            "imports": [
+                "Crypto.Cipher.DES",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "mode",
+                "iv",
+                "nonce",
+                "segment_size",
+                "mac_len",
+                "assoc_len",
+                "initial_value",
+                "nonce",
+                "counter"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DES",
+                "operation": "cipher_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "mode": {
+                    "param": "mode",
+                    "source": "param",
+                    "index": 1
+                },
+                "iv": {
+                    "param": "iv",
+                    "source": "param",
+                    "index": 2
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 8
+                },
+                "cipher_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.DES3.new",
+            "function": "Crypto.Cipher.DES3.new",
+            "imports": [
+                "Crypto.Cipher.DES3",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "mode",
+                "iv",
+                "nonce",
+                "segment_size",
+                "mac_len",
+                "assoc_len",
+                "initial_value",
+                "nonce",
+                "counter"
+            ],
+            "semantic": {
+                "profile_id": "ALG.3DES",
+                "operation": "cipher_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "mode": {
+                    "param": "mode",
+                    "source": "param",
+                    "index": 1
+                },
+                "iv": {
+                    "param": "iv",
+                    "source": "param",
+                    "index": 2
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 8
+                },
+                "cipher_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.PublicKey.RSA.generate",
+            "function": "Crypto.PublicKey.RSA.generate",
+            "imports": [
+                "Crypto.PublicKey.RSA",
+                "Crypto.PublicKey"
+            ],
+            "func_params": [
+                "bits",
+                "randfunc",
+                "e"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "keygen",
+                "public_exponent": {
+                    "param": "e",
+                    "source": "param",
+                    "index": 2
+                },
+                "randfunc": {
+                    "param": "randfunc",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key_bits": {
+                    "param": "bits",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.PublicKey.DSA.generate",
+            "function": "Crypto.PublicKey.DSA.generate",
+            "imports": [
+                "Crypto.PublicKey.DSA",
+                "Crypto.PublicKey"
+            ],
+            "func_params": [
+                "bits",
+                "randfunc",
+                "domain"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "keygen",
+                "randfunc": {
+                    "param": "randfunc",
+                    "source": "param",
+                    "index": 1
+                },
+                "domain": {
+                    "param": "domain",
+                    "source": "param",
+                    "index": 2
+                },
+                "key_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key_bits": {
+                    "param": "bits",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.PublicKey.ECC.generate",
+            "function": "Crypto.PublicKey.ECC.generate",
+            "imports": [
+                "Crypto.PublicKey.ECC",
+                "Crypto.PublicKey"
+            ],
+            "func_params": [
+                "curve",
+                "randfunc"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "keygen",
+                "curve": {
+                    "param": "curve",
+                    "source": "param",
+                    "index": 0
+                },
+                "randfunc": {
+                    "param": "randfunc",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.MD5.new",
+            "function": "Crypto.Hash.MD5.new",
+            "imports": [
+                "Crypto.Hash.MD5",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "security_level": "weak",
+                "digest_bits": 128
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA1.new",
+            "function": "Crypto.Hash.SHA1.new",
+            "imports": [
+                "Crypto.Hash.SHA1",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA1",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "security_level": "weak",
+                "digest_bits": 160
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA256.new",
+            "function": "Crypto.Hash.SHA256.new",
+            "imports": [
+                "Crypto.Hash.SHA256",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA256",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA512.new",
+            "function": "Crypto.Hash.SHA512.new",
+            "imports": [
+                "Crypto.Hash.SHA512",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA512",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 512
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Protocol.KDF.PBKDF2",
+            "function": "Crypto.Protocol.KDF.PBKDF2",
+            "imports": [
+                "Crypto.Protocol.KDF",
+                "Crypto.Protocol"
+            ],
+            "func_params": [
+                "password",
+                "salt",
+                "dkLen",
+                "count",
+                "prf",
+                "hmac_hash_module"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 0
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 1
+                },
+                "dk_length": {
+                    "param": "dkLen",
+                    "source": "param",
+                    "index": 2
+                },
+                "iterations": {
+                    "param": "count",
+                    "source": "param",
+                    "index": 3
+                },
+                "prf": {
+                    "param": "prf",
+                    "source": "param",
+                    "index": 4
+                },
+                "hash": {
+                    "param": "hmac_hash_module",
+                    "source": "param",
+                    "index": 5
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.ChaCha20.new",
+            "function": "Crypto.Cipher.ChaCha20.new",
+            "imports": [
+                "Crypto.Cipher.ChaCha20",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "nonce"
+            ],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20",
+                "operation": "cipher_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.ChaCha20_Poly1305.new",
+            "function": "Crypto.Cipher.ChaCha20_Poly1305.new",
+            "imports": [
+                "Crypto.Cipher.ChaCha20_Poly1305",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "nonce"
+            ],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "operation": "aead_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "nonce": {
+                    "param": "nonce",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Protocol.KDF.scrypt",
+            "function": "Crypto.Protocol.KDF.scrypt",
+            "imports": [
+                "Crypto.Protocol.KDF",
+                "Crypto.Protocol"
+            ],
+            "func_params": [
+                "password",
+                "salt",
+                "key_len",
+                "N",
+                "r",
+                "p",
+                "num_keys"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 0
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 1
+                },
+                "dk_length": {
+                    "param": "key_len",
+                    "source": "param",
+                    "index": 2
+                },
+                "N": {
+                    "param": "N",
+                    "source": "param",
+                    "index": 3
+                },
+                "r": {
+                    "param": "r",
+                    "source": "param",
+                    "index": 4
+                },
+                "p": {
+                    "param": "p",
+                    "source": "param",
+                    "index": 5
+                },
+                "num_keys": {
+                    "param": "num_keys",
+                    "source": "param",
+                    "index": 6
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Protocol.KDF.HKDF",
+            "function": "Crypto.Protocol.KDF.HKDF",
+            "imports": [
+                "Crypto.Protocol.KDF",
+                "Crypto.Protocol"
+            ],
+            "func_params": [
+                "master",
+                "key_len",
+                "salt",
+                "hashmod",
+                "num_keys",
+                "context"
+            ],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "operation": "kdf",
+                "master_key": {
+                    "param": "master",
+                    "source": "param",
+                    "index": 0
+                },
+                "dk_length": {
+                    "param": "key_len",
+                    "source": "param",
+                    "index": 1
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 2
+                },
+                "hash": {
+                    "param": "hashmod",
+                    "source": "param",
+                    "index": 3
+                },
+                "num_keys": {
+                    "param": "num_keys",
+                    "source": "param",
+                    "index": 4
+                },
+                "context": {
+                    "param": "context",
+                    "source": "param",
+                    "index": 5
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Random.get_random_bytes",
+            "function": "Crypto.Random.get_random_bytes",
+            "imports": [
+                "Crypto.Random"
+            ],
+            "func_params": [
+                "n"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes",
+                "size": {
+                    "param": "n",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true,
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.PublicKey.RSA.import_key",
+            "function": "Crypto.PublicKey.RSA.import_key",
+            "imports": [
+                "Crypto.PublicKey.RSA",
+                "Crypto.PublicKey"
+            ],
+            "func_params": [
+                "extern_key",
+                "passphrase"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "key_import",
+                "encoded_key": {
+                    "param": "extern_key",
+                    "source": "param",
+                    "index": 0
+                },
+                "passphrase": {
+                    "param": "passphrase",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.PublicKey.DSA.import_key",
+            "function": "Crypto.PublicKey.DSA.import_key",
+            "imports": [
+                "Crypto.PublicKey.DSA",
+                "Crypto.PublicKey"
+            ],
+            "func_params": [
+                "extern_key",
+                "passphrase"
+            ],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "key_import",
+                "encoded_key": {
+                    "param": "extern_key",
+                    "source": "param",
+                    "index": 0
+                },
+                "passphrase": {
+                    "param": "passphrase",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.PublicKey.ECC.import_key",
+            "function": "Crypto.PublicKey.ECC.import_key",
+            "imports": [
+                "Crypto.PublicKey.ECC",
+                "Crypto.PublicKey"
+            ],
+            "func_params": [
+                "extern_key",
+                "passphrase"
+            ],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "key_import",
+                "encoded_key": {
+                    "param": "extern_key",
+                    "source": "param",
+                    "index": 0
+                },
+                "passphrase": {
+                    "param": "passphrase",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA224.new",
+            "function": "Crypto.Hash.SHA224.new",
+            "imports": [
+                "Crypto.Hash.SHA224",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA224",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 224
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA384.new",
+            "function": "Crypto.Hash.SHA384.new",
+            "imports": [
+                "Crypto.Hash.SHA384",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA384",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 384
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA3_224.new",
+            "function": "Crypto.Hash.SHA3_224.new",
+            "imports": [
+                "Crypto.Hash.SHA3_224",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3_224",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 224
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA3_256.new",
+            "function": "Crypto.Hash.SHA3_256.new",
+            "imports": [
+                "Crypto.Hash.SHA3_256",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3_256",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA3_384.new",
+            "function": "Crypto.Hash.SHA3_384.new",
+            "imports": [
+                "Crypto.Hash.SHA3_384",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3_384",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 384
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHA3_512.new",
+            "function": "Crypto.Hash.SHA3_512.new",
+            "imports": [
+                "Crypto.Hash.SHA3_512",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3_512",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 512
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHAKE128.new",
+            "function": "Crypto.Hash.SHAKE128.new",
+            "imports": [
+                "Crypto.Hash.SHAKE128",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_init",
+                "xof": true,
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.SHAKE256.new",
+            "function": "Crypto.Hash.SHAKE256.new",
+            "imports": [
+                "Crypto.Hash.SHAKE256",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_init",
+                "xof": true,
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.BLAKE2b.new",
+            "function": "Crypto.Hash.BLAKE2b.new",
+            "imports": [
+                "Crypto.Hash.BLAKE2b",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data",
+                "digest_bytes",
+                "key",
+                "salt",
+                "person"
+            ],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2B",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 2
+                },
+                "digest_bits": {
+                    "param": "digest_bytes",
+                    "source": "param",
+                    "index": 1,
+                    "unit": "bytes",
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.BLAKE2s.new",
+            "function": "Crypto.Hash.BLAKE2s.new",
+            "imports": [
+                "Crypto.Hash.BLAKE2s",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data",
+                "digest_bytes",
+                "key",
+                "salt",
+                "person"
+            ],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2S",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 2
+                },
+                "digest_bits": {
+                    "param": "digest_bytes",
+                    "source": "param",
+                    "index": 1,
+                    "unit": "bytes",
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.RIPEMD160.new",
+            "function": "Crypto.Hash.RIPEMD160.new",
+            "imports": [
+                "Crypto.Hash.RIPEMD160",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RIPEMD160",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 160
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.HMAC.new",
+            "function": "Crypto.Hash.HMAC.new",
+            "imports": [
+                "Crypto.Hash.HMAC",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "key",
+                "msg",
+                "digestmod"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init_dynamic",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 1
+                },
+                "hash": {
+                    "param": "digestmod",
+                    "source": "param",
+                    "index": 2
+                },
+                "mac_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Hash.CMAC.new",
+            "function": "Crypto.Hash.CMAC.new",
+            "imports": [
+                "Crypto.Hash.CMAC",
+                "Crypto.Hash"
+            ],
+            "func_params": [
+                "key",
+                "msg",
+                "ciphermod"
+            ],
+            "semantic": {
+                "profile_id": "ALG.CMAC",
+                "operation": "mac_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 1
+                },
+                "underlying_block_cipher": {
+                    "param": "ciphermod",
+                    "source": "param",
+                    "index": 2
+                },
+                "mac_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.PKCS1_OAEP.new",
+            "function": "Crypto.Cipher.PKCS1_OAEP.new",
+            "imports": [
+                "Crypto.Cipher.PKCS1_OAEP",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "hashAlgo",
+                "mgfunc",
+                "label",
+                "randfunc"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "cipher_init",
+                "padding": "OAEP",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "hash": {
+                    "param": "hashAlgo",
+                    "source": "param",
+                    "index": 1
+                },
+                "mgf": {
+                    "param": "mgfunc",
+                    "source": "param",
+                    "index": 2
+                },
+                "label": {
+                    "param": "label",
+                    "source": "param",
+                    "index": 3
+                },
+                "rng": {
+                    "param": "randfunc",
+                    "source": "param",
+                    "index": 4
+                },
+                "cipher_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Cipher.PKCS1_v1_5.new",
+            "function": "Crypto.Cipher.PKCS1_v1_5.new",
+            "imports": [
+                "Crypto.Cipher.PKCS1_v1_5",
+                "Crypto.Cipher"
+            ],
+            "func_params": [
+                "key",
+                "randfunc"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "cipher_init",
+                "padding": "PKCS1v1.5",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "rng": {
+                    "param": "randfunc",
+                    "source": "param",
+                    "index": 1
+                },
+                "cipher_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Signature.pkcs1_15.new",
+            "function": "Crypto.Signature.pkcs1_15.new",
+            "imports": [
+                "Crypto.Signature.pkcs1_15",
+                "Crypto.Signature"
+            ],
+            "func_params": [
+                "key"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "signer_init",
+                "padding": "PKCS1v1.5",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "signer_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.pycryptodome.Crypto.Signature.pss.new",
+            "function": "Crypto.Signature.pss.new",
+            "imports": [
+                "Crypto.Signature.pss",
+                "Crypto.Signature"
+            ],
+            "func_params": [
+                "key",
+                "mgfunc",
+                "salt_bytes",
+                "rand_func"
+            ],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "signer_init",
+                "padding": "PSS",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "mgf": {
+                    "param": "mgfunc",
+                    "source": "param",
+                    "index": 1
+                },
+                "salt_length": {
+                    "param": "salt_bytes",
+                    "source": "param",
+                    "index": 2
+                },
+                "rng": {
+                    "param": "rand_func",
+                    "source": "param",
+                    "index": 3
+                },
+                "signer_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        }
+    ]
+}

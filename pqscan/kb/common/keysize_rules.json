@@ -1,0 +1,303 @@
+{
+  "version": "2.1",
+  "description": "Keysize inference rules - patterns, context hints, and profile defaults (exact matches are in apis/*.json)",
+  
+  "profile_defaults": {
+    "description": "Default key sizes for algorithms when no explicit size is specified",
+    "comment": "Used when profile_id is present in semantic but no key_bits/digest_size field",
+    "mappings": {
+      "SM4": {"key_bits": 128, "key_bytes": 16},
+      "SM3": {"key_bits": 256, "key_bytes": 32},
+      "DES": {"key_bits": 56, "key_bytes": 7, "comment": "Single DES (not 3DES)"},
+      "3DES": {"key_bits": 168, "key_bytes": 21},
+      "DES_EDE": {"key_bits": 168, "key_bytes": 21, "comment": "Triple DES EDE mode"},
+      "DES_EDE3": {"key_bits": 168, "key_bytes": 21, "comment": "Triple DES EDE3 mode"},
+      "ChaCha20": {"key_bits": 256, "key_bytes": 32},
+      "RC4": {"key_bits": 128, "key_bytes": 16, "comment": "Typical RC4, but variable"},
+      "ARIA": {"key_bits": 128, "key_bytes": 16, "comment": "Default ARIA-128"},
+      "ZUC": {"key_bits": 128, "key_bytes": 16},
+      "ZUC256": {"key_bits": 256, "key_bytes": 32}
+    }
+  },
+  
+  "curve_mappings": {
+    "description": "Elliptic curve name to key size mappings",
+    "comment": "Used for ECDSA/ECDH curve-based key size inference",
+    "curves": {
+      "elliptic.P224": 224,
+      "elliptic.P256": 256,
+      "elliptic.P384": 384,
+      "elliptic.P521": 521,
+      "ecdh.P256": 256,
+      "ecdh.P384": 384,
+      "ecdh.P521": 521,
+      "P-224": 224,
+      "P-256": 256,
+      "P-384": 384,
+      "P-521": 521,
+      "secp256r1": 256,
+      "secp384r1": 384,
+      "secp521r1": 521,
+      "secp256k1": 256
+    }
+  },
+  
+  "fixed_algorithms": {
+    "description": "Algorithms with fixed key sizes (language-specific)",
+    "comment": "Format: 'pkg.member' or tuple format for exact matching",
+    "go": {
+      "ed25519.GenerateKey": {"key_bits": 256, "priv_bytes": 64, "pub_bytes": 32, "strength_bits": 128},
+      "ecdh.X25519": {"key_bits": 255, "priv_bytes": 32, "pub_bytes": 32, "strength_bits": 128},
+      "chacha20poly1305.New": {"key_bits": 256, "key_bytes": 32},
+      "chacha20poly1305.NewX": {"key_bits": 256, "key_bytes": 32},
+      "chacha20.NewUnauthenticatedCipher": {"key_bits": 256, "key_bytes": 32}
+    },
+    "c": {
+      "ChaCha20_Init": {"key_bits": 256, "key_bytes": 32},
+      "X25519_keypair": {"key_bits": 256, "priv_bytes": 32, "pub_bytes": 32},
+      "Ed25519_sign": {"key_bits": 256, "priv_bytes": 64, "pub_bytes": 32}
+    }
+  },
+  "context_hints": {
+    "description": "Hints for APIs that need parameter extraction or context tracing",
+    "comment": "These guide the semantic analyzer on HOW to extract key sizes, not the values themselves",
+    
+    "parameter_extraction_hints": {
+      "description": "Visual hints for developers - actual extraction is done by semantic.key.bits_param in apis/*.json",
+      "examples": {
+        "AES_set_encrypt_key": "AES_set_encrypt_key(key, 128|192|256, &ctx) - param[1] is bits",
+        "Camellia_set_key": "Camellia_set_key(key, 128|192|256, &ctx) - param[1] is bits",
+        "BF_set_key": "BF_set_key(&key, len_bytes, data) - param[1] is bytes, typically 16",
+        "RC4_set_key": "RC4_set_key(&key, len_bytes, data) - param[1] is bytes, variable",
+        "CAST_set_key": "CAST_set_key(&key, len_bytes, data) - param[1] is bytes, 5-16",
+        "EVP_PKEY_CTX_set_rsa_keygen_bits": "EVP_PKEY_CTX_set_rsa_keygen_bits(ctx, 2048|3072|4096)",
+        "DH_generate_parameters_ex": "DH_generate_parameters_ex(dh, 2048|3072, ...)",
+        "RSA_generate_key_ex": "RSA_generate_key_ex(rsa, 2048|3072|4096, ...)"
+      }
+    },
+    
+    "context_tracing_hints": {
+      "description": "Visual hints for context tracing - actual tracing is done by semantic.ctx in apis/*.json",
+      "examples": {
+        "AES_encrypt": "Traces back to AES_set_encrypt_key() via AES_KEY context",
+        "AES_decrypt": "Traces back to AES_set_decrypt_key() via AES_KEY context",
+        "AES_cbc_encrypt": "Traces back to AES_set_*_key() via AES_KEY context",
+        "BF_cbc_encrypt": "Traces back to BF_set_key() via BF_KEY context",
+        "RC4": "Traces back to RC4_set_key() via RC4_KEY context",
+        "Camellia_encrypt": "Traces back to Camellia_set_key() via CAMELLIA_KEY context"
+      }
+    },
+    
+    "algorithm_dependent_hints": {
+      "description": "Visual hints for algorithm-dependent APIs - actual extraction via semantic.algorithm_source",
+      "examples": {
+        "EVP_PKEY_CTX_set_ec_paramgen_curve_nid": "Depends on curve NID: P-256 (256), P-384 (384), P-521 (521)",
+        "EVP_PKEY_CTX_new_id": "Depends on: EVP_PKEY_X25519 (256), EVP_PKEY_SM2 (256)",
+        "HMAC": "Output size from hash: EVP_sha256() -> 256, EVP_sha512() -> 512",
+        "PKCS5_PBKDF2_HMAC": "Typically derives keys matching hash output size",
+        "EVP_PKEY_CTX_set_hkdf_md": "HKDF derives keys based on hash function",
+        "EVP_EncryptInit_ex": "Depends on cipher: EVP_aes_256_gcm() -> 256",
+        "EVP_DigestSignInit": "Digest algorithm determines hash size"
+      }
+    }
+  },
+  
+  "regex_patterns": [
+    {
+      "id": "variable_key_algorithms",
+      "description": "Algorithms with variable key sizes should not be inferred from function name alone",
+      "type": "exclusion",
+      "priority": 0,
+      "pattern": "(bf|blowfish|rc4|rc2|cast|camellia|aria)_set_key",
+      "case_sensitive": false,
+      "action": "skip",
+      "reason": "Key size determined by parameter, not function name"
+    },
+    {
+      "id": "3des_priority",
+      "description": "3DES must be matched before generic DES",
+      "type": "fixed_size",
+      "priority": 100,
+      "pattern": "(des_ede3|3des|tripledes|des3)",
+      "case_sensitive": false,
+      "key_bits": 168,
+      "algorithm": "3DES"
+    },
+    {
+      "id": "sha3_pattern",
+      "description": "SHA3 with explicit bit size",
+      "type": "extract_numeric",
+      "priority": 90,
+      "pattern": "sha3[-_](\\d+)",
+      "case_sensitive": false,
+      "extract_group": 1,
+      "algorithm_family": "SHA3",
+      "note": "Requires separator to avoid matching sha384"
+    },
+    {
+      "id": "evp_cipher_keysize",
+      "description": "EVP cipher functions with key size in name: EVP_aes_128_cbc",
+      "type": "extract_numeric",
+      "priority": 80,
+      "pattern": "(aes|aria|camellia|sm4)[-_](\\d+)[-_]",
+      "case_sensitive": false,
+      "extract_group": 2,
+      "algorithm_family": "symmetric_cipher"
+    },
+    {
+      "id": "hash_with_bits",
+      "description": "Hash functions with bit size: sha256, blake2b512",
+      "type": "extract_numeric",
+      "priority": 70,
+      "pattern": "(sha|md|blake2[bs]?)[-_]?(\\d{3}|\\d{2})",
+      "case_sensitive": false,
+      "extract_group": 2,
+      "algorithm_family": "hash",
+      "note": "Matches 3 digits first (e.g., 384, 512), then 2 digits (e.g., 56)"
+    },
+    {
+      "id": "rsa_keysize",
+      "description": "RSA with explicit key size: RSA_2048, rsa_4096",
+      "type": "extract_numeric",
+      "priority": 60,
+      "pattern": "rsa[-_](\\d{3,4})",
+      "case_sensitive": false,
+      "extract_group": 1,
+      "algorithm_family": "RSA"
+    },
+    {
+      "id": "ec_curve_bits",
+      "description": "EC curves with bit size: P256, secp384r1",
+      "type": "extract_numeric",
+      "priority": 50,
+      "pattern": "(P|secp|prime)[-_]?(\\d+)",
+      "case_sensitive": false,
+      "extract_group": 2,
+      "exclusions": ["rsa"],
+      "algorithm_family": "elliptic_curve"
+    },
+    {
+      "id": "curve25519_family",
+      "description": "Curve25519 family (fallback if not in exact_mappings)",
+      "type": "fixed_size",
+      "priority": 85,
+      "pattern": "(x25519|ed25519|curve25519)",
+      "case_sensitive": false,
+      "key_bits": 256,
+      "algorithm": "Curve25519"
+    },
+    {
+      "id": "curve448_family",
+      "description": "Curve448 family (fallback if not in exact_mappings)",
+      "type": "fixed_size",
+      "priority": 85,
+      "pattern": "(x448|ed448|curve448)",
+      "case_sensitive": false,
+      "key_bits": 448,
+      "algorithm": "Curve448"
+    },
+    {
+      "id": "des_standard",
+      "description": "Standard DES (56-bit effective key)",
+      "type": "fixed_size",
+      "priority": 40,
+      "pattern": "des(?!_ede|3)",
+      "case_sensitive": false,
+      "key_bits": 56,
+      "algorithm": "DES",
+      "note": "Negative lookahead to exclude DES-EDE/3DES"
+    },
+    {
+      "id": "sm4_fixed",
+      "description": "SM4 Chinese cipher (128-bit)",
+      "type": "fixed_size",
+      "priority": 75,
+      "pattern": "sm4(?![-_]\\d)",
+      "case_sensitive": false,
+      "key_bits": 128,
+      "algorithm": "SM4"
+    },
+    {
+      "id": "chacha20",
+      "description": "ChaCha20 stream cipher (256-bit)",
+      "type": "fixed_size",
+      "priority": 75,
+      "pattern": "chacha20",
+      "case_sensitive": false,
+      "key_bits": 256,
+      "algorithm": "ChaCha20"
+    },
+    {
+      "id": "sha1_fixed",
+      "description": "SHA-1 hash (160-bit output)",
+      "type": "fixed_size",
+      "priority": 76,
+      "pattern": "sha1(?![-_]\\d)",
+      "case_sensitive": false,
+      "key_bits": 160,
+      "algorithm": "SHA-1",
+      "note": "Negative lookahead to avoid sha1_256 variants"
+    },
+    {
+      "id": "md5_fixed",
+      "description": "MD5 hash (128-bit output)",
+      "type": "fixed_size",
+      "priority": 76,
+      "pattern": "md5(?![-_]\\d)",
+      "case_sensitive": false,
+      "key_bits": 128,
+      "algorithm": "MD5"
+    }
+  ],
+  
+  "preprocessing": {
+    "description": "Common transformations before pattern matching",
+    "remove_prefixes": [
+      "EVP_",
+      "EVP_PKEY_",
+      "PEM_",
+      "OBJ_",
+      "NID_"
+    ],
+    "remove_suffixes": [
+      "_Init",
+      "_Update",
+      "_Final",
+      "_CTX",
+      "_new",
+      "_free",
+      "_set_key",
+      "_encrypt",
+      "_decrypt",
+      "_sign",
+      "_verify",
+      "_keygen",
+      "_keypair",
+      "_cbc",
+      "_ecb",
+      "_gcm",
+      "_ccm",
+      "_ofb",
+      "_cfb",
+      "_ctr",
+      "_xts"
+    ]
+  },
+  
+  "fallback": {
+    "description": "If no exact match or pattern matches, try crypto_constants lookup",
+    "enabled": true,
+    "methods": [
+      "crypto_constants.get_hash_output_bits",
+      "crypto_constants.get_cipher_key_bits",
+      "crypto_constants.get_ec_curve_bits"
+    ]
+  },
+  
+  "validation": {
+    "description": "Common valid key sizes for sanity checking",
+    "symmetric": [40, 56, 64, 80, 112, 128, 168, 192, 256, 384, 512],
+    "hash_output": [128, 160, 224, 256, 384, 512],
+    "asymmetric": [256, 384, 448, 521, 1024, 2048, 3072, 4096, 7680, 8192, 15360]
+  }
+}

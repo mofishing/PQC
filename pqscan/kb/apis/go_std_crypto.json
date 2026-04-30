@@ -1,0 +1,3986 @@
+{
+    "version": "2.0",
+    "language": "go",
+    "libraries": "crypto, x/crypto",
+    "mappings": [
+        {
+            "api_id": "go.std.crypto.aes.NewCipher",
+            "function": "aes.NewCipher",
+            "imports": ["crypto/aes"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.AES",
+                "key": {
+                    "from_param": "key"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewGCM",
+            "function": "cipher.NewGCM",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "GCM",
+                "key": {
+                    "from_param": "block"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewGCMWithNonceSize",
+            "function": "cipher.NewGCMWithNonceSize",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "nonceSize"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "GCM",
+                "key": {
+                    "from_param": "block"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewGCMWithRandomNonce",
+            "function": "cipher.NewGCMWithRandomNonce",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "GCM",
+                "key": {
+                    "from_param": "block"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewGCMWithTagSize",
+            "function": "cipher.NewGCMWithTagSize",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "tagSize"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "GCM",
+                "key": {
+                    "from_param": "block"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewCBCEncrypter",
+            "function": "cipher.NewCBCEncrypter",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "iv"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "CBC",
+                "key": {
+                    "from_param": "block"
+                },
+                "iv": {
+                    "from_param": "iv"
+                },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewCBCDecrypter",
+            "function": "cipher.NewCBCDecrypter",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "iv"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "CBC",
+                "key": {
+                    "from_param": "block"
+                },
+                "iv": {
+                    "from_param": "iv"
+                },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewCFBEncrypter",
+            "function": "cipher.NewCFBEncrypter",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "iv"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "CFB",
+                "key": {
+                    "from_param": "block"
+                },
+                "iv": {
+                    "from_param": "iv"
+                },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewCFBDecrypter",
+            "function": "cipher.NewCFBDecrypter",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "iv"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "CFB",
+                "key": {
+                    "from_param": "block"
+                },
+                "iv": {
+                    "from_param": "iv"
+                },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.cipher.NewCTR",
+            "function": "cipher.NewCTR",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "iv"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "CTR",
+                "key": {
+                    "from_param": "block"
+                },
+                "iv": {
+                    "from_param": "iv"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto/cipher.NewOFB",
+            "function": "cipher.NewOFB",
+            "imports": ["crypto/cipher"],
+            "func_params": ["block", "iv"],
+            "semantic": {
+                "profile_id": {
+                    "from_param": "block"
+                },
+                "mode": "OFB",
+                "key": {
+                    "from_param": "block"
+                },
+                "iv": {
+                    "from_param": "iv"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.des.NewCipher",
+            "function": "des.NewCipher",
+            "imports": ["crypto/des"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.DES",
+                "key": {
+                    "from_param": "key"
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.des.NewTripleDESCipher",
+            "function": "des.NewTripleDESCipher",
+            "imports": ["crypto/des"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.3DES",
+                "key": {
+                    "from_param": "key"
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.dsa.GenerateKey",
+            "function": "dsa.GenerateKey",
+            "imports": ["crypto/dsa"],
+            "func_params": ["privateKey", "rand"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "role": "keygen",
+                "key": {
+                    "from_param": "privateKey"
+                },
+                "privkey": {
+                    "from_return": true
+                }
+            },
+            "key_bits": {}
+        },
+        {
+            "api_id": "go.std.crypto.dsa.GenerateParameters",
+            "function": "dsa.GenerateParameters",
+            "imports": ["crypto/dsa"],
+            "func_params": ["params", "rand", "sizes"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "role": "param_gen",
+                "security_level": "legacy",
+                "key_bits_param": {
+                    "from_param": "sizes"
+                }
+            },
+            "key_bits": {}
+        },
+        {
+            "api_id": "go.std.crypto.dsa.Sign",
+            "function": "dsa.Sign",
+            "imports": ["crypto/dsa"],
+            "func_params": ["rand", "priv", "hash"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "sign",
+                "hash_input": {
+                    "from_param": "hash"
+                },
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.dsa.Verify",
+            "function": "dsa.Verify",
+            "imports": ["crypto/dsa"],
+            "func_params": ["pub", "hash", "r", "s"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "verify",
+                "hash_input": {
+                    "from_param": "hash"
+                },
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdsa.GenerateKey",
+            "function": "ecdsa.GenerateKey",
+            "imports": ["crypto/ecdsa", "crypto/elliptic"],
+            "func_params": ["curve", "rand"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "role": "keygen",
+                "curve": {
+                    "from_param": "curve"
+                },
+                "privkey": {
+                    "from_return": true
+                },
+                "key_bits": {
+                    "from_param": "curve"
+                }
+            },
+            "key_bits": {}
+        },
+        {
+            "api_id": "go.std.crypto.ecdsa.Sign",
+            "function": "ecdsa.Sign",
+            "imports": ["crypto/ecdsa"],
+            "func_params": ["rand", "priv", "hash"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "sign",
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "hash_input": {
+                    "from_param": "hash"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdsa.Verify",
+            "function": "ecdsa.Verify",
+            "imports": ["crypto/ecdsa"],
+            "func_params": ["pub", "hash", "r", "s"],
+            "semantic": {
+                "profile_id": "ALG.ECDSA",
+                "operation": "verify",
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "hash_input": {
+                    "from_param": "hash"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.P224",
+            "function": "elliptic.P224",
+            "imports": ["crypto/elliptic"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "curve": "P-224",
+                "key_bits": 224
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.P256",
+            "function": "elliptic.P256",
+            "imports": ["crypto/elliptic"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "curve": "P-256",
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.P384",
+            "function": "elliptic.P384",
+            "imports": ["crypto/elliptic"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "curve": "P-384",
+                "key_bits": 384
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.P521",
+            "function": "elliptic.P521",
+            "imports": ["crypto/elliptic"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "curve": "P-521",
+                "key_bits": 521
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.GenerateKey",
+            "function": "elliptic.GenerateKey",
+            "imports": ["crypto/elliptic"],
+            "func_params": ["curve", "rand"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "keygen",
+                "curve": {
+                    "from_param": "curve"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                },
+                "pubkey_x": {
+                    "from_return_index": 1
+                },
+                "pubkey_y": {
+                    "from_return_index": 2
+                },
+                "key_bits": {
+                    "from_param": "curve"
+                }
+            },
+            "key_bits": {}
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.ScalarBaseMult",
+            "function": "elliptic.Curve.ScalarBaseMult",
+            "imports": ["crypto/elliptic"],
+            "func_params": ["curve", "k"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "scalar_mult_base",
+                "scalar": {
+                    "from_param": "k"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.ScalarMult",
+            "function": "elliptic.Curve.ScalarMult",
+            "imports": ["crypto/elliptic"],
+            "func_params": ["curve", "Bx", "By", "k"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "peer_pubkey_x": {
+                    "from_param": "Bx"
+                },
+                "peer_pubkey_y": {
+                    "from_param": "By"
+                },
+                "scalar": {
+                    "from_param": "k"
+                },
+                "shared_secret_point": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.Marshal",
+            "function": "elliptic.Marshal",
+            "imports": ["crypto/elliptic"],
+            "func_params": ["curve", "x", "y"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "pubkey_encode",
+                "curve": {
+                    "from_param": "curve"
+                },
+                "pubkey_x": {
+                    "from_param": "x"
+                },
+                "pubkey_y": {
+                    "from_param": "y"
+                },
+                "encoded_pubkey": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.elliptic.Unmarshal",
+            "function": "elliptic.Unmarshal",
+            "imports": ["crypto/elliptic"],
+            "func_params": ["curve", "data"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "pubkey_decode",
+                "curve": {
+                    "from_param": "curve"
+                },
+                "encoded_pubkey": {
+                    "from_param": "data"
+                },
+                "pubkey_x": {
+                    "from_return_index": 0
+                },
+                "pubkey_y": {
+                    "from_return_index": 1
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ed25519.GenerateKey",
+            "function": "ed25519.GenerateKey",
+            "imports": ["crypto/ed25519"],
+            "func_params": ["rand"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "keygen",
+                "returns": {
+                    "public_key_index": 0,
+                    "private_key_index": 1
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ed25519.Sign",
+            "function": "ed25519.Sign",
+            "imports": ["crypto/ed25519"],
+            "func_params": ["privateKey", "message"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "direction": "sign",
+                "private_key": { "from_param": "privateKey" },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ed25519.Verify",
+            "function": "ed25519.Verify",
+            "imports": ["crypto/ed25519"],
+            "func_params": ["publicKey", "message", "sig"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "direction": "verify",
+                "public_key": { "from_param": "publicKey" },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "sig" }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ed25519.PrivateKey.NewKeyFromSeed",
+            "function": "ed25519.PrivateKey.NewKeyFromSeed",
+            "imports": ["crypto/ed25519"],
+            "func_params": ["seed"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "derive_private_key",
+                "seed": { "from_param": "seed" },
+                "private_key": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ed25519.PrivateKey.Sign",
+            "function": "ed25519.PrivateKey.Sign",
+            "imports": ["crypto/ed25519"],
+            "func_params": ["priv", "rand", "message", "opts"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "direction": "sign",
+                "private_key": { "from_param": "priv" },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.P256",
+            "function": "ecdh.P256",
+            "imports": ["crypto/ecdh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "curve": "P-256",
+                "curve_type": "NIST",
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.P384",
+            "function": "ecdh.P384",
+            "imports": ["crypto/ecdh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "curve": "P-384",
+                "curve_type": "NIST",
+                "key_bits": 384
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.P521",
+            "function": "ecdh.P521",
+            "imports": ["crypto/ecdh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "curve": "P-521",
+                "curve_type": "NIST",
+                "key_bits": 521
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.X25519",
+            "function": "ecdh.X25519",
+            "imports": ["crypto/ecdh"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "curve": "X25519",
+                "curve_type": "Montgomery",
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.Curve.GenerateKey",
+            "function": "ecdh.Curve.GenerateKey",
+            "imports": ["crypto/ecdh"],
+            "func_params": ["rand"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "keygen",
+                "curve": {
+                    "from_receiver": true
+                },
+                "privkey": {
+                    "from_return_index": 0
+                }
+            },
+            "key_bits": {}
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.Curve.NewPrivateKey",
+            "function": "ecdh.Curve.NewPrivateKey",
+            "imports": ["crypto/ecdh"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_import",
+                "curve": {
+                    "from_receiver": true
+                },
+                "privkey_bytes": {
+                    "from_param": "key"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.Curve.NewPublicKey",
+            "function": "ecdh.Curve.NewPublicKey",
+            "imports": ["crypto/ecdh"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_import",
+                "curve": {
+                    "from_receiver": true
+                },
+                "pubkey_bytes": {
+                    "from_param": "key"
+                },
+                "pubkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.ecdh.PrivateKey.ECDH",
+            "function": "ecdh.PrivateKey.ECDH",
+            "imports": ["crypto/ecdh"],
+            "func_params": ["priv", "remotePublic"],
+            "semantic": {
+                "profile_id": "ALG.ECDH",
+                "operation": "key_agreement",
+                "privkey": {
+                    "from_receiver": true
+                },
+                "peer_pubkey": {
+                    "from_param": "remotePublic"
+                },
+                "shared_secret": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.hkdf.Extract",
+            "function": "hkdf.Extract",
+            "imports": ["crypto/hkdf"],
+            "func_params": ["hash", "secret", "salt"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "phase": "extract",
+                "hash": {
+                    "from_param": "hash"
+                },
+                "ikm": {
+                    "from_param": "secret"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "prk": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.hkdf.Expand",
+            "function": "hkdf.Expand",
+            "imports": ["crypto/hkdf"],
+            "func_params": ["hash", "pseudorandomKey", "info", "keyLength"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "phase": "expand",
+                "hash": {
+                    "from_param": "hash"
+                },
+                "prk": {
+                    "from_param": "pseudorandomKey"
+                },
+                "info": {
+                    "from_param": "info"
+                },
+                "okm_length": {
+                    "from_param": "keyLength"
+                },
+                "okm": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.hkdf.Key",
+            "function": "hkdf.Key",
+            "imports": ["crypto/hkdf"],
+            "func_params": ["hash", "secret", "salt", "info", "keyLength"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "phase": "extract+expand",
+                "hash": {
+                    "from_param": "hash"
+                },
+                "ikm": {
+                    "from_param": "secret"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "info": {
+                    "from_param": "info"
+                },
+                "okm_length": {
+                    "from_param": "keyLength"
+                },
+                "okm": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.hmac.New",
+            "function": "hmac.New",
+            "imports": ["crypto/hmac"],
+            "func_params": ["hash", "key"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_init",
+                "hash_func": {
+                    "from_param": "hash"
+                },
+                "key": {
+                    "from_param": "key"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.hmac.Equal",
+            "function": "hmac.Equal",
+            "imports": ["crypto/hmac"],
+            "func_params": ["mac1", "mac2"],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_compare",
+                "mac1": {
+                    "from_param": "mac1"
+                },
+                "mac2": {
+                    "from_param": "mac2"
+                },
+                "constant_time": true
+            }
+        },
+        {
+            "api_id": "go.std.crypto.md5.New",
+            "function": "md5.New",
+            "imports": ["crypto/md5"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash_init",
+                "security_level": "legacy",
+                "digest_size": 16
+            }
+        },
+        {
+            "api_id": "go.std.crypto.md5.Sum",
+            "function": "md5.Sum",
+            "imports": ["crypto/md5"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash",
+                "digest_size": 16,
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.GenerateKey768",
+            "function": "mlkem.GenerateKey768",
+            "imports": ["crypto/mlkem"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "keygen",
+                "role": "decapsulation_key",
+                "decap_key": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.NewDecapsulationKey768",
+            "function": "mlkem.NewDecapsulationKey768",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["seed"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "key_import",
+                "role": "decapsulation_key",
+                "seed": {
+                    "from_param": "seed"
+                },
+                "decap_key": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.DecapsulationKey768.Bytes",
+            "function": "mlkem.DecapsulationKey768.Bytes",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["dk"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "key_export",
+                "role": "decapsulation_key",
+                "seed": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.DecapsulationKey768.EncapsulationKey",
+            "function": "mlkem.DecapsulationKey768.EncapsulationKey",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["dk"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "derive_public",
+                "role": "encapsulation_key",
+                "decap_key": {
+                    "from_param": "dk"
+                },
+                "encap_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.DecapsulationKey768.Decapsulate",
+            "function": "mlkem.DecapsulationKey768.Decapsulate",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["dk", "ciphertext"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "kem_decapsulate",
+                "decap_key": {
+                    "from_param": "dk"
+                },
+                "ciphertext": {
+                    "from_param": "ciphertext"
+                },
+                "shared_secret": {
+                    "from_return_index": 0
+                },
+                "shared_secret_len": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.NewEncapsulationKey768",
+            "function": "mlkem.NewEncapsulationKey768",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["encapsulationKey"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "key_import",
+                "role": "encapsulation_key",
+                "encap_key_bytes": {
+                    "from_param": "encapsulationKey"
+                },
+                "encap_key": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.EncapsulationKey768.Bytes",
+            "function": "mlkem.EncapsulationKey768.Bytes",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["ek"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "key_export",
+                "role": "encapsulation_key",
+                "encap_key_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.EncapsulationKey768.Encapsulate",
+            "function": "mlkem.EncapsulationKey768.Encapsulate",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["ek"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-768",
+                "operation": "kem_encapsulate",
+                "encap_key": {
+                    "from_param": "ek"
+                },
+                "shared_secret": {
+                    "from_return_index": 0
+                },
+                "ciphertext": {
+                    "from_return_index": 1
+                },
+                "shared_secret_len": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.GenerateKey1024",
+            "function": "mlkem.GenerateKey1024",
+            "imports": ["crypto/mlkem"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "keygen",
+                "role": "decapsulation_key",
+                "decap_key": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.NewDecapsulationKey1024",
+            "function": "mlkem.NewDecapsulationKey1024",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["seed"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "key_import",
+                "role": "decapsulation_key",
+                "seed": {
+                    "from_param": "seed"
+                },
+                "decap_key": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.DecapsulationKey1024.Bytes",
+            "function": "mlkem.DecapsulationKey1024.Bytes",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["dk"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "key_export",
+                "role": "decapsulation_key",
+                "seed": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.DecapsulationKey1024.EncapsulationKey",
+            "function": "mlkem.DecapsulationKey1024.EncapsulationKey",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["dk"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "derive_public",
+                "role": "encapsulation_key",
+                "decap_key": {
+                    "from_param": "dk"
+                },
+                "encap_key": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.DecapsulationKey1024.Decapsulate",
+            "function": "mlkem.DecapsulationKey1024.Decapsulate",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["dk", "ciphertext"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "kem_decapsulate",
+                "decap_key": {
+                    "from_param": "dk"
+                },
+                "ciphertext": {
+                    "from_param": "ciphertext"
+                },
+                "shared_secret": {
+                    "from_return_index": 0
+                },
+                "shared_secret_len": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.NewEncapsulationKey1024",
+            "function": "mlkem.NewEncapsulationKey1024",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["encapsulationKey"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "key_import",
+                "role": "encapsulation_key",
+                "encap_key_bytes": {
+                    "from_param": "encapsulationKey"
+                },
+                "encap_key": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.EncapsulationKey1024.Bytes",
+            "function": "mlkem.EncapsulationKey1024.Bytes",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["ek"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "key_export",
+                "role": "encapsulation_key",
+                "encap_key_bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.mlkem.EncapsulationKey1024.Encapsulate",
+            "function": "mlkem.EncapsulationKey1024.Encapsulate",
+            "imports": ["crypto/mlkem"],
+            "func_params": ["ek"],
+            "semantic": {
+                "profile_id": "ALG.MLKEM-1024",
+                "operation": "kem_encapsulate",
+                "encap_key": {
+                    "from_param": "ek"
+                },
+                "shared_secret": {
+                    "from_return_index": 0
+                },
+                "ciphertext": {
+                    "from_return_index": 1
+                },
+                "shared_secret_len": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.pbkdf2.Key",
+            "function": "pbkdf2.Key",
+            "imports": ["crypto/pbkdf2"],
+            "func_params": ["hash", "password", "salt", "iter", "keyLength"],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "hash_func": {
+                    "from_param": "hash"
+                },
+                "password": {
+                    "from_param": "password"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "iterations": {
+                    "from_param": "iter"
+                },
+                "dk_length": {
+                    "from_param": "keyLength"
+                },
+                "dk": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rand.Reader",
+            "function": "rand.Reader",
+            "imports": ["crypto/rand"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.CSPRNG",
+                "kind": "random_reader",
+                "source": "OS"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rand.Read",
+            "function": "rand.Read",
+            "imports": ["crypto/rand"],
+            "func_params": ["b"],
+            "semantic": {
+                "profile_id": "ALG.CSPRNG",
+                "operation": "random_bytes",
+                "random_bytes": {
+                    "from_param": "b"
+                },
+                "fills_all_bytes": true
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rand.Int",
+            "function": "rand.Int",
+            "imports": ["crypto/rand"],
+            "func_params": ["rand", "max"],
+            "semantic": {
+                "profile_id": "ALG.CSPRNG",
+                "operation": "random_int",
+                "rng": {
+                    "from_param": "rand"
+                },
+                "max": {
+                    "from_param": "max"
+                },
+                "value": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rand.Prime",
+            "function": "rand.Prime",
+            "imports": ["crypto/rand"],
+            "func_params": ["rand", "bits"],
+            "semantic": {
+                "profile_id": "ALG.RANDOM_PRIME",
+                "operation": "random_prime",
+                "rng": {
+                    "from_param": "rand"
+                },
+                "bits": {
+                    "from_param": "bits"
+                },
+                "prime": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rand.Text",
+            "function": "rand.Text",
+            "imports": ["crypto/rand"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.CSPRNG",
+                "operation": "random_text",
+                "encoding": "base32_rfc4648",
+                "entropy_bits_min": 128,
+                "text": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.GenerateKey",
+            "function": "rsa.GenerateKey",
+            "imports": ["crypto/rsa"],
+            "func_params": ["random", "bits"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "keygen",
+                "rng": {
+                    "from_param": "random"
+                },
+                "key_bits": {
+                    "from_param": "bits"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.GenerateMultiPrimeKey",
+            "function": "rsa.GenerateMultiPrimeKey",
+            "imports": ["crypto/rsa"],
+            "func_params": ["random", "nprimes", "bits"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "keygen",
+                "multi_prime": true,
+                "rng": {
+                    "from_param": "random"
+                },
+                "key_bits": {
+                    "from_param": "bits"
+                },
+                "nprimes": {
+                    "from_param": "nprimes"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.EncryptOAEP",
+            "function": "rsa.EncryptOAEP",
+            "imports": ["crypto/rsa"],
+            "func_params": ["hash", "random", "pub", "msg", "label"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "OAEP",
+                "padding": "OAEP",
+                "direction": "encrypt",
+                "hash_func": {
+                    "from_param": "hash"
+                },
+                "rng": {
+                    "from_param": "random"
+                },
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "plaintext": {
+                    "from_param": "msg"
+                },
+                "label": {
+                    "from_param": "label"
+                },
+                "ciphertext": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.DecryptOAEP",
+            "function": "rsa.DecryptOAEP",
+            "imports": ["crypto/rsa"],
+            "func_params": ["hash", "random", "priv", "ciphertext", "label"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "OAEP",
+                "padding": "OAEP",
+                "direction": "decrypt",
+                "hash_func": {
+                    "from_param": "hash"
+                },
+                "rng": {
+                    "from_param": "random"
+                },
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "ciphertext": {
+                    "from_param": "ciphertext"
+                },
+                "label": {
+                    "from_param": "label"
+                },
+                "plaintext": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.EncryptPKCS1v15",
+            "function": "rsa.EncryptPKCS1v15",
+            "imports": ["crypto/rsa"],
+            "func_params": ["random", "pub", "msg"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PKCS1v1.5",
+                "padding": "PKCS1v1.5",
+                "direction": "encrypt",
+                "rng": {
+                    "from_param": "random"
+                },
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "plaintext": {
+                    "from_param": "msg"
+                },
+                "ciphertext": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.DecryptPKCS1v15",
+            "function": "rsa.DecryptPKCS1v15",
+            "imports": ["crypto/rsa"],
+            "func_params": ["random", "priv", "ciphertext"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PKCS1v1.5",
+                "padding": "PKCS1v1.5",
+                "direction": "decrypt",
+                "rng": {
+                    "from_param": "random"
+                },
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "ciphertext": {
+                    "from_param": "ciphertext"
+                },
+                "plaintext": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.DecryptPKCS1v15SessionKey",
+            "function": "rsa.DecryptPKCS1v15SessionKey",
+            "imports": ["crypto/rsa"],
+            "func_params": ["random", "priv", "ciphertext", "key"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PKCS1v1.5",
+                "padding": "PKCS1v1.5",
+                "direction": "decrypt_session_key",
+                "rng": {
+                    "from_param": "random"
+                },
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "ciphertext": {
+                    "from_param": "ciphertext"
+                },
+                "session_key_buf": {
+                    "from_param": "key"
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.SignPSS",
+            "function": "rsa.SignPSS",
+            "imports": ["crypto/rsa"],
+            "func_params": ["rand", "priv", "hash", "digest", "opts"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PSS",
+                "padding": "PSS",
+                "operation": "sign",
+                "rng": {
+                    "from_param": "rand"
+                },
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "hash_id": {
+                    "from_param": "hash"
+                },
+                "digest": {
+                    "from_param": "digest"
+                },
+                "options": {
+                    "from_param": "opts"
+                },
+                "signature": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.VerifyPSS",
+            "function": "rsa.VerifyPSS",
+            "imports": ["crypto/rsa"],
+            "func_params": ["pub", "hash", "digest", "sig", "opts"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PSS",
+                "padding": "PSS",
+                "operation": "verify",
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "hash_id": {
+                    "from_param": "hash"
+                },
+                "digest": {
+                    "from_param": "digest"
+                },
+                "signature": {
+                    "from_param": "sig"
+                },
+                "options": {
+                    "from_param": "opts"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.SignPKCS1v15",
+            "function": "rsa.SignPKCS1v15",
+            "imports": ["crypto/rsa"],
+            "func_params": ["rand", "priv", "hash", "hashed"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PKCS1v1.5",
+                "padding": "PKCS1v1.5",
+                "operation": "sign",
+                "rng": {
+                    "from_param": "rand"
+                },
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "hash_id": {
+                    "from_param": "hash"
+                },
+                "digest": {
+                    "from_param": "hashed"
+                },
+                "signature": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.VerifyPKCS1v15",
+            "function": "rsa.VerifyPKCS1v15",
+            "imports": ["crypto/rsa"],
+            "func_params": ["pub", "hash", "hashed", "sig"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "mode": "PKCS1v1.5",
+                "padding": "PKCS1v1.5",
+                "operation": "verify",
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "hash_id": {
+                    "from_param": "hash"
+                },
+                "digest": {
+                    "from_param": "hashed"
+                },
+                "signature": {
+                    "from_param": "sig"
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.PrivateKey.Sign",
+            "function": "rsa.PrivateKey.Sign",
+            "imports": ["crypto/rsa"],
+            "func_params": ["priv", "rand", "digest", "opts"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "sign_generic",
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "rng": {
+                    "from_param": "rand"
+                },
+                "digest": {
+                    "from_param": "digest"
+                },
+                "signer_opts": {
+                    "from_param": "opts"
+                },
+                "signature": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.rsa.PrivateKey.Decrypt",
+            "function": "rsa.PrivateKey.Decrypt",
+            "imports": ["crypto/rsa"],
+            "func_params": ["priv", "rand", "ciphertext", "opts"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "decrypt_generic",
+                "privkey": {
+                    "from_param": "priv"
+                },
+                "rng": {
+                    "from_param": "rand"
+                },
+                "ciphertext": {
+                    "from_param": "ciphertext"
+                },
+                "decrypt_opts": {
+                    "from_param": "opts"
+                },
+                "plaintext": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha1.New",
+            "function": "sha1.New",
+            "imports": ["crypto/sha1"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA1",
+                "operation": "hash_init",
+                "digest_size": 20,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha1.Sum",
+            "function": "sha1.Sum",
+            "imports": ["crypto/sha1"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA1",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 20,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha256.New",
+            "function": "sha256.New",
+            "imports": ["crypto/sha256"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA256",
+                "operation": "hash_init",
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha256.New224",
+            "function": "sha256.New224",
+            "imports": ["crypto/sha256"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA224",
+                "operation": "hash_init",
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha256.Sum256",
+            "function": "sha256.Sum256",
+            "imports": ["crypto/sha256"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA256",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha256.Sum224",
+            "function": "sha256.Sum224",
+            "imports": ["crypto/sha256"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA224",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.New",
+            "function": "sha512.New",
+            "imports": ["crypto/sha512"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA512",
+                "operation": "hash_init",
+                "digest_size": 64
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.New384",
+            "function": "sha512.New384",
+            "imports": ["crypto/sha512"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA384",
+                "operation": "hash_init",
+                "digest_size": 48
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.New512_224",
+            "function": "sha512.New512_224",
+            "imports": ["crypto/sha512"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA512-224",
+                "operation": "hash_init",
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.New512_256",
+            "function": "sha512.New512_256",
+            "imports": ["crypto/sha512"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA512-256",
+                "operation": "hash_init",
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.Sum512",
+            "function": "sha512.Sum512",
+            "imports": ["crypto/sha512"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA512",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 64
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.Sum384",
+            "function": "sha512.Sum384",
+            "imports": ["crypto/sha512"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA384",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 48
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.Sum512_224",
+            "function": "sha512.Sum512_224",
+            "imports": ["crypto/sha512"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA512-224",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha512.Sum512_256",
+            "function": "sha512.Sum512_256",
+            "imports": ["crypto/sha512"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA512-256",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.New224",
+            "function": "sha3.New224",
+            "imports": ["crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3-224",
+                "operation": "hash_init",
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.New256",
+            "function": "sha3.New256",
+            "imports": ["crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3-256",
+                "operation": "hash_init",
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.New384",
+            "function": "sha3.New384",
+            "imports": ["crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3-384",
+                "operation": "hash_init",
+                "digest_size": 48
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.New512",
+            "function": "sha3.New512",
+            "imports": ["crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3-512",
+                "operation": "hash_init",
+                "digest_size": 64
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.Sum224",
+            "function": "sha3.Sum224",
+            "imports": ["crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-224",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.Sum256",
+            "function": "sha3.Sum256",
+            "imports": ["crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-256",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.Sum384",
+            "function": "sha3.Sum384",
+            "imports": ["crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-384",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 48
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.Sum512",
+            "function": "sha3.Sum512",
+            "imports": ["crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-512",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 64
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.NewSHAKE128",
+            "function": "sha3.NewSHAKE128",
+            "imports": ["crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_init",
+                "digest_size": 16
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.NewSHAKE256",
+            "function": "sha3.NewSHAKE256",
+            "imports": ["crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_init",
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.SumSHAKE128",
+            "function": "sha3.SumSHAKE128",
+            "imports": ["crypto/sha3"],
+            "func_params": ["data", "length"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_sum",
+                "input": {
+                    "from_param": "data"
+                },
+                "output_length": {
+                    "from_param": "length"
+                },
+                "xof_output": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.sha3.SumSHAKE256",
+            "function": "sha3.SumSHAKE256",
+            "imports": ["crypto/sha3"],
+            "func_params": ["data", "length"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_sum",
+                "input": {
+                    "from_param": "data"
+                },
+                "output_length": {
+                    "from_param": "length"
+                },
+                "xof_output": {
+                    "from_return": true
+                }
+            }
+        },
+
+        {
+            "api_id": "go.std.crypto.x509.ParsePKIXPublicKey",
+            "function": "x509.ParsePKIXPublicKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["derBytes"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.KEY",
+                "operation": "key_import",
+                "encoding": "PKIX.SubjectPublicKeyInfo",
+                "format": "DER",
+                "pubkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.MarshalPKIXPublicKey",
+            "function": "x509.MarshalPKIXPublicKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["pub"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.KEY",
+                "operation": "key_export",
+                "encoding": "PKIX.SubjectPublicKeyInfo",
+                "format": "DER",
+                "pubkey": {
+                    "from_param": "pub"
+                },
+                "der": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParsePKCS1PrivateKey",
+            "function": "x509.ParsePKCS1PrivateKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["der"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "key_import",
+                "format": "PKCS#1",
+                "key_kind": "private",
+                "der": {
+                    "from_param": "der"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.MarshalPKCS1PrivateKey",
+            "function": "x509.MarshalPKCS1PrivateKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "key_export",
+                "format": "PKCS#1",
+                "key_kind": "private",
+                "privkey": {
+                    "from_param": "key"
+                },
+                "der": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParsePKCS1PublicKey",
+            "function": "x509.ParsePKCS1PublicKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["der"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "key_import",
+                "format": "PKCS#1",
+                "key_kind": "public",
+                "der": {
+                    "from_param": "der"
+                },
+                "pubkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.MarshalPKCS1PublicKey",
+            "function": "x509.MarshalPKCS1PublicKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.RSA",
+                "operation": "key_export",
+                "format": "PKCS#1",
+                "key_kind": "public",
+                "pubkey": {
+                    "from_param": "key"
+                },
+                "der": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParseECPrivateKey",
+            "function": "x509.ParseECPrivateKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["der"],
+            "semantic": {
+                "profile_id": "ALG.EC",
+                "operation": "key_import",
+                "format": "SEC1",
+                "key_kind": "private",
+                "der": {
+                    "from_param": "der"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParsePKCS8PrivateKey",
+            "function": "x509.ParsePKCS8PrivateKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["der"],
+            "semantic": {
+                "profile_id": "FORMAT.PKCS8",
+                "operation": "key_import",
+                "format": "PKCS#8",
+                "key_kind": "private",
+                "der": {
+                    "from_param": "der"
+                },
+                "privkey": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.MarshalPKCS8PrivateKey",
+            "function": "x509.MarshalPKCS8PrivateKey",
+            "imports": ["crypto/x509"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "FORMAT.PKCS8",
+                "operation": "key_export",
+                "format": "PKCS#8",
+                "key_kind": "private",
+                "privkey": {
+                    "from_param": "key"
+                },
+                "der": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.CreateCertificate",
+            "function": "x509.CreateCertificate",
+            "imports": ["crypto/x509"],
+            "func_params": ["rand", "template", "parent", "pub", "priv"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERT",
+                "operation": "cert_issue",
+                "rng": {
+                    "from_param": "rand"
+                },
+                "subject_pubkey": {
+                    "from_param": "pub"
+                },
+                "issuer_privkey": {
+                    "from_param": "priv"
+                },
+                "template_cert": {
+                    "from_param": "template"
+                },
+                "issuer_cert": {
+                    "from_param": "parent"
+                },
+                "cert_der": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.CreateCertificateRequest",
+            "function": "x509.CreateCertificateRequest",
+            "imports": ["crypto/x509"],
+            "func_params": ["rand", "template", "priv"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CSR",
+                "operation": "csr_issue",
+                "rng": {
+                    "from_param": "rand"
+                },
+                "subject_privkey": {
+                    "from_param": "priv"
+                },
+                "template_csr": {
+                    "from_param": "template"
+                },
+                "csr_der": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParseCertificate",
+            "function": "x509.ParseCertificate",
+            "imports": ["crypto/x509"],
+            "func_params": ["asn1Data"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERT",
+                "operation": "cert_parse",
+                "format": "DER",
+                "cert_der": {
+                    "from_param": "asn1Data"
+                },
+                "cert": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParseCertificates",
+            "function": "x509.ParseCertificates",
+            "imports": ["crypto/x509"],
+            "func_params": ["asn1Data"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERT",
+                "operation": "cert_parse_many",
+                "format": "DER",
+                "cert_der_concat": {
+                    "from_param": "asn1Data"
+                },
+                "certs": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParseCertificateRequest",
+            "function": "x509.ParseCertificateRequest",
+            "imports": ["crypto/x509"],
+            "func_params": ["asn1Data"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CSR",
+                "operation": "csr_parse",
+                "format": "DER",
+                "csr_der": {
+                    "from_param": "asn1Data"
+                },
+                "csr": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParseCRL",
+            "function": "x509.ParseCRL",
+            "imports": ["crypto/x509"],
+            "func_params": ["crlBytes"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CRL",
+                "operation": "crl_parse_auto",
+                "input": {
+                    "from_param": "crlBytes"
+                },
+                "crl": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.ParseDERCRL",
+            "function": "x509.ParseDERCRL",
+            "imports": ["crypto/x509"],
+            "func_params": ["derBytes"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CRL",
+                "operation": "crl_parse",
+                "format": "DER",
+                "crl_der": {
+                    "from_param": "derBytes"
+                },
+                "crl": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.Certificate.CheckSignature",
+            "function": "x509.Certificate.CheckSignature",
+            "imports": ["crypto/x509"],
+            "func_params": ["cert", "algo", "signed", "signature"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERT",
+                "operation": "cert_check_signature",
+                "sig_algorithm": {
+                    "from_param": "algo"
+                },
+                "tbs_data": {
+                    "from_param": "signed"
+                },
+                "signature": {
+                    "from_param": "signature"
+                },
+                "pubkey": {
+                    "from_field_of_param": "cert.PublicKey"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.Certificate.CheckSignatureFrom",
+            "function": "x509.Certificate.CheckSignatureFrom",
+            "imports": ["crypto/x509"],
+            "func_params": ["cert", "parent"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERT",
+                "operation": "cert_check_signature_from",
+                "subject_cert": {
+                    "from_param": "cert"
+                },
+                "issuer_cert": {
+                    "from_param": "parent"
+                },
+                "issuer_pubkey": {
+                    "from_field_of_param": "parent.PublicKey"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.Certificate.Verify",
+            "function": "x509.Certificate.Verify",
+            "imports": ["crypto/x509"],
+            "func_params": ["cert", "opts"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERT",
+                "operation": "cert_chain_verify",
+                "leaf_cert": {
+                    "from_param": "cert"
+                },
+                "verify_options": {
+                    "from_param": "opts"
+                },
+                "chains": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.NewCertPool",
+            "function": "x509.NewCertPool",
+            "imports": ["crypto/x509"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERTPOOL",
+                "operation": "certpool_new",
+                "pool": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.CertPool.AppendCertsFromPEM",
+            "function": "x509.CertPool.AppendCertsFromPEM",
+            "imports": ["crypto/x509"],
+            "func_params": ["pool", "pemCerts"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CERTPOOL",
+                "operation": "certpool_append_pem",
+                "pool": {
+                    "from_param": "pool"
+                },
+                "pem_input": {
+                    "from_param": "pemCerts"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.pkix.Name.FillFromRDNSequence",
+            "function": "pkix.Name.FillFromRDNSequence",
+            "imports": ["crypto/x509/pkix"],
+            "func_params": ["name", "rdns"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.NAME",
+                "operation": "name_from_rdn",
+                "rdn_sequence": {
+                    "from_param": "rdns"
+                },
+                "name_struct": {
+                    "from_param": "name"
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.pkix.Name.ToRDNSequence",
+            "function": "pkix.Name.ToRDNSequence",
+            "imports": ["crypto/x509/pkix"],
+            "func_params": ["name"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.NAME",
+                "operation": "name_to_rdn",
+                "name_struct": {
+                    "from_param": "name"
+                },
+                "rdn_sequence": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.x509.pkix.CertificateList.HasExpired",
+            "function": "pkix.CertificateList.HasExpired",
+            "imports": ["crypto/x509/pkix"],
+            "func_params": ["certList", "now"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.CRL",
+                "operation": "crl_expiry_check",
+                "crl": {
+                    "from_param": "certList"
+                },
+                "time": {
+                    "from_param": "now"
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/argon2.Key",
+            "function": "argon2.Key",
+            "imports": ["golang.org/x/crypto/argon2"],
+            "func_params": [
+                "password",
+                "salt",
+                "time",
+                "memory",
+                "threads",
+                "keyLen"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2",
+                "variant": "Argon2i",
+                "operation": "kdf",
+                "password": {
+                    "from_param": "password"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "time_cost": {
+                    "from_param": "time"
+                },
+                "memory_cost_kib": {
+                    "from_param": "memory"
+                },
+                "parallelism": {
+                    "from_param": "threads"
+                },
+                "dk_length": {
+                    "from_param": "keyLen"
+                },
+                "dk": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/argon2.IDKey",
+            "function": "argon2.IDKey",
+            "imports": ["golang.org/x/crypto/argon2"],
+            "func_params": [
+                "password",
+                "salt",
+                "time",
+                "memory",
+                "threads",
+                "keyLen"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Argon2",
+                "variant": "Argon2id",
+                "operation": "kdf",
+                "password": {
+                    "from_param": "password"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "time_cost": {
+                    "from_param": "time"
+                },
+                "memory_cost_kib": {
+                    "from_param": "memory"
+                },
+                "parallelism": {
+                    "from_param": "threads"
+                },
+                "dk_length": {
+                    "from_param": "keyLen"
+                },
+                "dk": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bcrypt.GenerateFromPassword",
+            "function": "bcrypt.GenerateFromPassword",
+            "imports": ["golang.org/x/crypto/bcrypt"],
+            "func_params": ["password", "cost"],
+            "semantic": {
+                "profile_id": "ALG.Bcrypt",
+                "operation": "password_hash",
+                "password": {
+                    "from_param": "password"
+                },
+                "cost": {
+                    "from_param": "cost"
+                },
+                "hash": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bcrypt.CompareHashAndPassword",
+            "function": "bcrypt.CompareHashAndPassword",
+            "imports": ["golang.org/x/crypto/bcrypt"],
+            "func_params": ["hashedPassword", "password"],
+            "semantic": {
+                "profile_id": "ALG.Bcrypt",
+                "operation": "password_verify",
+                "hash": {
+                    "from_param": "hashedPassword"
+                },
+                "password": {
+                    "from_param": "password"
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bcrypt.Cost",
+            "function": "bcrypt.Cost",
+            "imports": ["golang.org/x/crypto/bcrypt"],
+            "func_params": ["hashedPassword"],
+            "semantic": {
+                "profile_id": "ALG.Bcrypt",
+                "operation": "password_cost_query",
+                "hash": {
+                    "from_param": "hashedPassword"
+                },
+                "cost": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.New",
+            "function": "blake2b.New",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["size", "key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash_init",
+                "digest_size": {
+                    "from_param": "size"
+                },
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.New256",
+            "function": "blake2b.New256",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.New384",
+            "function": "blake2b.New384",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash_init",
+                "digest_size": 48,
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.New512",
+            "function": "blake2b.New512",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash_init",
+                "digest_size": 64,
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.Sum256",
+            "function": "blake2b.Sum256",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.Sum384",
+            "function": "blake2b.Sum384",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 48
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.Sum512",
+            "function": "blake2b.Sum512",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 64
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2b.NewXOF",
+            "function": "blake2b.NewXOF",
+            "imports": ["golang.org/x/crypto/blake2b"],
+            "func_params": ["size", "key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2b",
+                "operation": "xof_init",
+                "digest_size": 32,
+                "output_length": {
+                    "from_param": "size"
+                },
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2s.New128",
+            "function": "blake2s.New128",
+            "imports": ["golang.org/x/crypto/blake2s"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2s",
+                "operation": "hash_init",
+                "digest_size": 16,
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2s.New256",
+            "function": "blake2s.New256",
+            "imports": ["golang.org/x/crypto/blake2s"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2s",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2s.Sum256",
+            "function": "blake2s.Sum256",
+            "imports": ["golang.org/x/crypto/blake2s"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2s",
+                "operation": "hash",
+                "input": {
+                    "from_param": "data"
+                },
+                "digest": {
+                    "from_return": true
+                },
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blake2s.NewXOF",
+            "function": "blake2s.NewXOF",
+            "imports": ["golang.org/x/crypto/blake2s"],
+            "func_params": ["size", "key"],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2s",
+                "operation": "xof_init",
+                "digest_size": 16,
+                "output_length": {
+                    "from_param": "size"
+                },
+                "mac_key": {
+                    "from_param": "key"
+                },
+                "supports_mac": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blowfish.NewCipher",
+            "function": "blowfish.NewCipher",
+            "imports": ["golang.org/x/crypto/blowfish"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.Blowfish",
+                "operation": "block_cipher_init",
+                "key": {
+                    "from_param": "key"
+                },
+                "block_size": 8,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blowfish.NewSaltedCipher",
+            "function": "blowfish.NewSaltedCipher",
+            "imports": ["golang.org/x/crypto/blowfish"],
+            "func_params": ["key", "salt"],
+            "semantic": {
+                "profile_id": "ALG.Blowfish",
+                "operation": "block_cipher_init",
+                "key": {
+                    "from_param": "key"
+                },
+                "salt": {
+                    "from_param": "salt"
+                },
+                "block_size": 8,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blowfish.ExpandKey",
+            "function": "blowfish.ExpandKey",
+            "imports": ["golang.org/x/crypto/blowfish"],
+            "func_params": ["key", "c"],
+            "semantic": {
+                "profile_id": "ALG.Blowfish",
+                "operation": "key_schedule",
+                "key": {
+                    "from_param": "key"
+                },
+                "cipher": {
+                    "from_param": "c"
+                },
+                "block_size": 8,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blowfish.Cipher.BlockSize",
+            "function": "blowfish.Cipher.BlockSize",
+            "imports": ["golang.org/x/crypto/blowfish"],
+            "func_params": ["c"],
+            "semantic": {
+                "profile_id": "ALG.Blowfish",
+                "operation": "block_size_query",
+                "cipher": {
+                    "from_param": "c"
+                },
+                "block_size": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blowfish.Cipher.Encrypt",
+            "function": "blowfish.Cipher.Encrypt",
+            "imports": ["golang.org/x/crypto/blowfish"],
+            "func_params": ["c", "dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.Blowfish",
+                "operation": "block_encrypt",
+                "cipher": {
+                    "from_param": "c"
+                },
+                "plaintext_block": {
+                    "from_param": "src"
+                },
+                "ciphertext_block": {
+                    "from_param": "dst"
+                },
+                "block_size": 8,
+                "direction": "encrypt",
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/blowfish.Cipher.Decrypt",
+            "function": "blowfish.Cipher.Decrypt",
+            "imports": ["golang.org/x/crypto/blowfish"],
+            "func_params": ["c", "dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.Blowfish",
+                "operation": "block_decrypt",
+                "cipher": {
+                    "from_param": "c"
+                },
+                "ciphertext_block": {
+                    "from_param": "src"
+                },
+                "plaintext_block": {
+                    "from_param": "dst"
+                },
+                "block_size": 8,
+                "direction": "decrypt",
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/cast5.NewCipher",
+            "function": "cast5.NewCipher",
+            "imports": ["golang.org/x/crypto/cast5"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.CAST5",
+                "operation": "block_cipher_init",
+                "key": {
+                    "from_param": "key"
+                },
+                "block_size": 8,
+                "nominal_key_size": 16,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/cast5.Cipher.BlockSize",
+            "function": "cast5.Cipher.BlockSize",
+            "imports": ["golang.org/x/crypto/cast5"],
+            "func_params": ["c"],
+            "semantic": {
+                "profile_id": "ALG.CAST5",
+                "operation": "block_size_query",
+                "cipher": {
+                    "from_param": "c"
+                },
+                "block_size": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/cast5.Cipher.Encrypt",
+            "function": "cast5.Cipher.Encrypt",
+            "imports": ["golang.org/x/crypto/cast5"],
+            "func_params": ["c", "dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.CAST5",
+                "operation": "block_encrypt",
+                "cipher": {
+                    "from_param": "c"
+                },
+                "plaintext_block": {
+                    "from_param": "src"
+                },
+                "ciphertext_block": {
+                    "from_param": "dst"
+                },
+                "block_size": 8,
+                "direction": "encrypt",
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/cast5.Cipher.Decrypt",
+            "function": "cast5.Cipher.Decrypt",
+            "imports": ["golang.org/x/crypto/cast5"],
+            "func_params": ["c", "dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.CAST5",
+                "operation": "block_decrypt",
+                "cipher": {
+                    "from_param": "c"
+                },
+                "ciphertext_block": {
+                    "from_param": "src"
+                },
+                "plaintext_block": {
+                    "from_param": "dst"
+                },
+                "block_size": 8,
+                "direction": "decrypt",
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.RandomG1",
+            "function": "bn256.RandomG1",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["r"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "random_scalar_and_point",
+                "rng": {
+                    "from_param": "r"
+                },
+                "scalar": {
+                    "from_return_index": 0
+                },
+                "point": {
+                    "from_return_index": 1
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G1.ScalarBaseMult",
+            "function": "bn256.G1.ScalarBaseMult",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "k"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "scalar_base_mult",
+                "scalar": {
+                    "from_param": "k"
+                },
+                "point": {
+                    "from_return_index": 0
+                },
+                "base_point": true,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G1.ScalarMult",
+            "function": "bn256.G1.ScalarMult",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a", "k"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "scalar_mult",
+                "input_point": {
+                    "from_param": "a"
+                },
+                "scalar": {
+                    "from_param": "k"
+                },
+                "point": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G1.Marshal",
+            "function": "bn256.G1.Marshal",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "point_serialize",
+                "point": {
+                    "from_param": "e"
+                },
+                "bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G1.Unmarshal",
+            "function": "bn256.G1.Unmarshal",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "m"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "point_deserialize",
+                "bytes": {
+                    "from_param": "m"
+                },
+                "point": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G1.Add",
+            "function": "bn256.G1.Add",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a", "b"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "group_add",
+                "point_a": {
+                    "from_param": "a"
+                },
+                "point_b": {
+                    "from_param": "b"
+                },
+                "result": {
+                    "from_return_index": 0
+                },
+                "incomplete": true,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G1.Neg",
+            "function": "bn256.G1.Neg",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G1",
+                "operation": "group_neg",
+                "point": {
+                    "from_param": "a"
+                },
+                "result": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.RandomG2",
+            "function": "bn256.RandomG2",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["r"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "random_scalar_and_point",
+                "rng": {
+                    "from_param": "r"
+                },
+                "scalar": {
+                    "from_return_index": 0
+                },
+                "point": {
+                    "from_return_index": 1
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G2.ScalarBaseMult",
+            "function": "bn256.G2.ScalarBaseMult",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "k"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "scalar_base_mult",
+                "scalar": {
+                    "from_param": "k"
+                },
+                "point": {
+                    "from_return_index": 0
+                },
+                "base_point": true,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G2.ScalarMult",
+            "function": "bn256.G2.ScalarMult",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a", "k"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "scalar_mult",
+                "input_point": {
+                    "from_param": "a"
+                },
+                "scalar": {
+                    "from_param": "k"
+                },
+                "point": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G2.Marshal",
+            "function": "bn256.G2.Marshal",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["n"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "point_serialize",
+                "point": {
+                    "from_param": "n"
+                },
+                "bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G2.Unmarshal",
+            "function": "bn256.G2.Unmarshal",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "m"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "point_deserialize",
+                "bytes": {
+                    "from_param": "m"
+                },
+                "point": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G2.Add",
+            "function": "bn256.G2.Add",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a", "b"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "group_add",
+                "point_a": {
+                    "from_param": "a"
+                },
+                "point_b": {
+                    "from_param": "b"
+                },
+                "result": {
+                    "from_return_index": 0
+                },
+                "incomplete": true,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.G2.Neg",
+            "function": "bn256.G2.Neg",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "G2",
+                "operation": "group_neg",
+                "point": {
+                    "from_param": "a"
+                },
+                "result": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.Pair",
+            "function": "bn256.Pair",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["g1", "g2"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "GT",
+                "operation": "pairing",
+                "input_g1": {
+                    "from_param": "g1"
+                },
+                "input_g2": {
+                    "from_param": "g2"
+                },
+                "pairing_result": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.GT.ScalarMult",
+            "function": "bn256.GT.ScalarMult",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a", "k"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "GT",
+                "operation": "scalar_mult",
+                "input_point": {
+                    "from_param": "a"
+                },
+                "scalar": {
+                    "from_param": "k"
+                },
+                "point": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.GT.Marshal",
+            "function": "bn256.GT.Marshal",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["n"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "GT",
+                "operation": "point_serialize",
+                "point": {
+                    "from_param": "n"
+                },
+                "bytes": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.GT.Unmarshal",
+            "function": "bn256.GT.Unmarshal",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "m"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "GT",
+                "operation": "point_deserialize",
+                "bytes": {
+                    "from_param": "m"
+                },
+                "point": {
+                    "from_return_index": 0
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.GT.Add",
+            "function": "bn256.GT.Add",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a", "b"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "GT",
+                "operation": "group_add",
+                "point_a": {
+                    "from_param": "a"
+                },
+                "point_b": {
+                    "from_param": "b"
+                },
+                "result": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/bn256.GT.Neg",
+            "function": "bn256.GT.Neg",
+            "imports": ["golang.org/x/crypto/bn256"],
+            "func_params": ["e", "a"],
+            "semantic": {
+                "profile_id": "ALG.BN256",
+                "group": "GT",
+                "operation": "group_neg",
+                "point": {
+                    "from_param": "a"
+                },
+                "result": {
+                    "from_return_index": 0
+                },
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/chacha20.NewUnauthenticatedCipher",
+            "function": "chacha20.NewUnauthenticatedCipher",
+            "imports": ["golang.org/x/crypto/chacha20"],
+            "func_params": ["key", "nonce"],
+            "semantic": {
+                "profile_id": "ALG.ChaCha20",
+                "operation": "stream_init",
+                "key": { "from_param": "key" },
+                "iv": { "from_param": "nonce" },
+                "authenticated": false,
+                "stream": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/chacha20.HChaCha20",
+            "function": "chacha20.HChaCha20",
+            "imports": ["golang.org/x/crypto/chacha20"],
+            "func_params": ["key", "nonce"],
+            "semantic": {
+                "profile_id": "ALG.HChaCha20",
+                "operation": "kdf",
+                "input_key": { "from_param": "key" },
+                "nonce": { "from_param": "nonce" },
+                "derived_key": { "from_return_index": 0 },
+                "output_len": 32
+            }
+        },
+        {
+            "api_id": "go.x.crypto/chacha20.Cipher.XORKeyStream",
+            "function": "chacha20.Cipher.XORKeyStream",
+            "imports": ["golang.org/x/crypto/chacha20"],
+            "func_params": ["dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.ChaCha20",
+                "operation": "stream_xor",
+                "input": { "from_param": "src" },
+                "output": { "from_param": "dst" },
+                "direction": "encrypt_decrypt",
+                "authenticated": false
+            }
+        },
+        {
+            "api_id": "go.x.crypto/chacha20.Cipher.SetCounter",
+            "function": "chacha20.Cipher.SetCounter",
+            "imports": ["golang.org/x/crypto/chacha20"],
+            "func_params": ["counter"],
+            "semantic": {
+                "profile_id": "ALG.ChaCha20",
+                "operation": "stream_set_counter",
+                "counter": { "from_param": "counter" }
+            }
+        },
+        {
+            "api_id": "go.std.crypto.chacha20poly1305.New",
+            "function": "chacha20poly1305.New",
+            "imports": ["crypto/chacha20poly1305", "golang.org/x/crypto/chacha20poly1305"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.CHACHA20_POLY1305",
+                "aead": true,
+                "key": { "from_param": "key" },
+                "key_size": 32,
+                "nonce_size": 12
+            }
+        },
+        {
+            "api_id": "go.std.crypto.chacha20poly1305.NewX",
+            "function": "chacha20poly1305.NewX",
+            "imports": ["crypto/chacha20poly1305", "golang.org/x/crypto/chacha20poly1305"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.XCHACHA20_POLY1305",
+                "aead": true,
+                "key": { "from_param": "key" },
+                "key_size": 32,
+                "nonce_size": 24
+            }
+        },
+        {
+            "api_id": "go.x.crypto/curve25519.ScalarBaseMult",
+            "function": "curve25519.ScalarBaseMult",
+            "imports": ["golang.org/x/crypto/curve25519"],
+            "func_params": ["dst", "scalar"],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "keygen_public",
+                "key_bits": 256,
+                "dh_private": { "from_param": "scalar" },
+                "dh_public": { "from_param": "dst" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/curve25519.ScalarMult",
+            "function": "curve25519.ScalarMult",
+            "imports": ["golang.org/x/crypto/curve25519"],
+            "func_params": ["dst", "scalar", "point"],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "dh",
+                "key_bits": 256,
+                "dh_private": { "from_param": "scalar" },
+                "peer_public": { "from_param": "point" },
+                "shared_secret": { "from_param": "dst" },
+                "deprecated": true
+            }
+        },
+        {
+            "api_id": "go.x.crypto/curve25519.X25519",
+            "function": "curve25519.X25519",
+            "imports": ["golang.org/x/crypto/curve25519"],
+            "func_params": ["scalar", "point"],
+            "semantic": {
+                "profile_id": "ALG.X25519",
+                "operation": "dh",
+                "key_bits": 256,
+                "dh_private": { "from_param": "scalar" },
+                "peer_public": { "from_param": "point" },
+                "shared_secret": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/ed25519.GenerateKey",
+            "function": "ed25519.GenerateKey",
+            "imports": ["golang.org/x/crypto/ed25519"],
+            "func_params": ["rand"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "keygen",
+                "returns": {
+                    "public_key_index": 0,
+                    "private_key_index": 1
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/ed25519.PrivateKey.NewKeyFromSeed",
+            "function": "ed25519.PrivateKey.NewKeyFromSeed",
+            "imports": ["golang.org/x/crypto/ed25519"],
+            "func_params": ["seed"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "operation": "derive_private_key",
+                "seed": { "from_param": "seed" },
+                "private_key": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/ed25519.Sign",
+            "function": "ed25519.Sign",
+            "imports": ["golang.org/x/crypto/ed25519"],
+            "func_params": ["privateKey", "message"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "direction": "sign",
+                "private_key": { "from_param": "privateKey" },
+                "message": { "from_param": "message" },
+                "signature": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/ed25519.Verify",
+            "function": "ed25519.Verify",
+            "imports": ["golang.org/x/crypto/ed25519"],
+            "func_params": ["publicKey", "message", "sig"],
+            "semantic": {
+                "profile_id": "ALG.Ed25519",
+                "direction": "verify",
+                "public_key": { "from_param": "publicKey" },
+                "message": { "from_param": "message" },
+                "signature": { "from_param": "sig" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/hkdf.New",
+            "function": "hkdf.New",
+            "imports": ["golang.org/x/crypto/hkdf"],
+            "func_params": ["hash", "secret", "salt", "info"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "phase": "extract+expand_stream",
+                "hash": { "from_param": "hash" },
+                "ikm": { "from_param": "secret" },
+                "salt": { "from_param": "salt" },
+                "info": { "from_param": "info" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/hkdf.Extract",
+            "function": "hkdf.Extract",
+            "imports": ["golang.org/x/crypto/hkdf"],
+            "func_params": ["hash", "secret", "salt"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "phase": "extract",
+                "hash": { "from_param": "hash" },
+                "ikm": { "from_param": "secret" },
+                "salt": { "from_param": "salt" },
+                "prk": { "from_return": "0" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/hkdf.Expand",
+            "function": "hkdf.Expand",
+            "imports": ["golang.org/x/crypto/hkdf"],
+            "func_params": ["hash", "pseudorandomKey", "info"],
+            "semantic": {
+                "profile_id": "ALG.HKDF",
+                "phase": "expand_stream",
+                "hash": {
+                    "from_param": "hash"
+                },
+                "prk": {
+                    "from_param": "pseudorandomKey"
+                },
+                "info": {
+                    "from_param": "info"
+                },
+                "kdf_stream": {
+                    "from_return": true
+                }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/md4.New",
+            "function": "md4.New",
+            "imports": ["golang.org/x/crypto/md4"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.MD4",
+                "operation": "hash_init",
+                "digest_size": 16,
+                "block_size": 64,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/ocsp.CreateRequest",
+            "function": "ocsp.CreateRequest",
+            "imports": ["golang.org/x/crypto/ocsp"],
+            "func_params": ["cert", "issuer", "opts"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.OCSP",
+                "operation": "ocsp_request_create",
+                "subject_cert": { "from_param": "cert" },
+                "issuer_cert": { "from_param": "issuer" },
+                "request_der": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/ocsp.CreateResponse",
+            "function": "ocsp.CreateResponse",
+            "imports": ["golang.org/x/crypto/ocsp"],
+            "func_params": ["issuer", "responderCert", "template", "priv"],
+            "semantic": {
+                "profile_id": "FORMAT.X509.OCSP",
+                "operation": "ocsp_response_create",
+                "issuer_cert": { "from_param": "issuer" },
+                "responder_cert": { "from_param": "responderCert" },
+                "signer": { "from_param": "priv" },
+                "response_der": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.Conversation.Authenticate",
+            "function": "otr.Conversation.Authenticate",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["question", "mutualSecret"],
+            "semantic": {
+                "profile_id": "PROTO.OTRv2",
+                "operation": "smp_authenticate",
+                "question": { "from_param": "question" },
+                "shared_secret": { "from_param": "mutualSecret" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.Conversation.End",
+            "function": "otr.Conversation.End",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.OTRv2",
+                "operation": "conversation_end"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.Conversation.IsEncrypted",
+            "function": "otr.Conversation.IsEncrypted",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.OTRv2",
+                "operation": "conversation_state_query",
+                "encrypted": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.Conversation.Receive",
+            "function": "otr.Conversation.Receive",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["in"],
+            "semantic": {
+                "profile_id": "PROTO.OTRv2",
+                "operation": "conversation_receive",
+                "wire_message": { "from_param": "in" },
+                "plaintext": { "from_return_index": 0 },
+                "encrypted": { "from_return_index": 1 },
+                "security_change": { "from_return_index": 2 },
+                "reply_messages": { "from_return_index": 3 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.Conversation.SMPQuestion",
+            "function": "otr.Conversation.SMPQuestion",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.OTRv2",
+                "operation": "smp_question_get",
+                "question": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.Conversation.Send",
+            "function": "otr.Conversation.Send",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["msg"],
+            "semantic": {
+                "profile_id": "PROTO.OTRv2",
+                "operation": "conversation_send",
+                "plaintext": { "from_param": "msg" },
+                "wire_messages": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.PrivateKey.Generate",
+            "function": "otr.PrivateKey.Generate",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["rand"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "keygen",
+                "rng": { "from_param": "rand" },
+                "private_key": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.PrivateKey.Import",
+            "function": "otr.PrivateKey.Import",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["in"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "key_import",
+                "input_format": "libotr",
+                "encoded_key": { "from_param": "in" },
+                "private_key": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.PrivateKey.Sign",
+            "function": "otr.PrivateKey.Sign",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["rand", "hashed"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "direction": "sign",
+                "private_key": { "from_receiver": true },
+                "rng": { "from_param": "rand" },
+                "message_digest": { "from_param": "hashed" },
+                "signature": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.PublicKey.Fingerprint",
+            "function": "otr.PublicKey.Fingerprint",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "operation": "fingerprint",
+                "hash": "SHA-1",
+                "output_len": 20,
+                "fingerprint": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/otr.PublicKey.Verify",
+            "function": "otr.PublicKey.Verify",
+            "imports": ["golang.org/x/crypto/otr"],
+            "func_params": ["hashed", "sig"],
+            "semantic": {
+                "profile_id": "ALG.DSA",
+                "direction": "verify",
+                "public_key": { "from_receiver": true },
+                "message_digest": { "from_param": "hashed" },
+                "signature": { "from_param": "sig" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/pbkdf2.Key",
+            "function": "pbkdf2.Key",
+            "imports": ["golang.org/x/crypto/pbkdf2"],
+            "func_params": ["password", "salt", "iter", "keyLen", "hash"],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "kdf",
+                "password": { "from_param": "password" },
+                "salt": { "from_param": "salt" },
+                "iterations": { "from_param": "iter" },
+                "dk_length": { "from_param": "keyLen" },
+                "hash": { "from_param": "h" },
+                "prf": "HMAC",
+                "dk": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/salsa20.XORKeyStream",
+            "function": "salsa20.XORKeyStream",
+            "imports": ["golang.org/x/crypto/salsa20"],
+            "func_params": ["out", "in", "nonce", "key"],
+            "semantic": {
+                "profile_id": "ALG.Salsa20",
+                "operation": "stream_xor",
+                "key": { "from_param": "key" },
+                "iv": { "from_param": "nonce" },
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "nonce_len": "8_or_24",
+                "supports_xsalsa20": true,
+                "direction": "encrypt_decrypt",
+                "authenticated": false
+            }
+        },
+
+        {
+            "api_id": "go.x.crypto/salsa20.salsa.Core208",
+            "function": "salsa.Core208",
+            "imports": ["golang.org/x/crypto/salsa20/salsa"],
+            "func_params": ["out", "in"],
+            "semantic": {
+                "profile_id": "ALG.Salsa20",
+                "operation": "core",
+                "rounds": 8,
+                "state_in": { "from_param": "in" },
+                "state_out": { "from_param": "out" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/salsa20.salsa.HSalsa20",
+            "function": "salsa.HSalsa20",
+            "imports": ["golang.org/x/crypto/salsa20/salsa"],
+            "func_params": ["out", "in", "k", "c"],
+            "semantic": {
+                "profile_id": "ALG.Salsa20",
+                "operation": "kdf",
+                "input": { "from_param": "in" },
+                "input_len": 16,
+                "key": { "from_param": "k" },
+                "key_len": 32,
+                "constant": { "from_param": "c" },
+                "constant_len": 16,
+                "derived_key": { "from_param": "out" },
+                "output_len": 32
+            }
+        },
+        {
+            "api_id": "go.x.crypto/salsa20.salsa.XORKeyStream",
+            "function": "salsa.XORKeyStream",
+            "imports": ["golang.org/x/crypto/salsa20/salsa"],
+            "func_params": ["out", "in", "counter", "key"],
+            "semantic": {
+                "profile_id": "ALG.Salsa20",
+                "operation": "stream_xor_lowlevel",
+                "key": { "from_param": "key" },
+                "counter": { "from_param": "counter" },
+                "counter_len": 16,
+                "input": { "from_param": "in" },
+                "output": { "from_param": "out" },
+                "direction": "encrypt_decrypt",
+                "authenticated": false,
+                "unsafe_low_level": true,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.New224",
+            "function": "sha3.New224",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_224",
+                "operation": "hash_init",
+                "digest_size": 28,
+                "block_size": 144
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.New256",
+            "function": "sha3.New256",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_256",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "block_size": 136
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.New384",
+            "function": "sha3.New384",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_384",
+                "operation": "hash_init",
+                "digest_size": 48,
+                "block_size": 104
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.New512",
+            "function": "sha3.New512",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHA3_512",
+                "operation": "hash_init",
+                "digest_size": 64,
+                "block_size": 72
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.NewLegacyKeccak256",
+            "function": "sha3.NewLegacyKeccak256",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.KECCAK-256",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "block_size": 136,
+                "note": "Legacy Keccak variant used in Ethereum and others"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.NewLegacyKeccak512",
+            "function": "sha3.NewLegacyKeccak512",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.KECCAK-512",
+                "operation": "hash_init",
+                "digest_size": 64,
+                "security_level": "legacy_padding"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.Sum224",
+            "function": "sha3.Sum224",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-224",
+                "operation": "hash",
+                "input": { "from_param": "data" },
+                "digest": { "from_return": true },
+                "digest_size": 28
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.Sum256",
+            "function": "sha3.Sum256",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-256",
+                "operation": "hash",
+                "input": { "from_param": "data" },
+                "digest": { "from_return": true },
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.Sum384",
+            "function": "sha3.Sum384",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-384",
+                "operation": "hash",
+                "input": { "from_param": "data" },
+                "digest": { "from_return": true },
+                "digest_size": 48
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.Sum512",
+            "function": "sha3.Sum512",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SHA3-512",
+                "operation": "hash",
+                "input": { "from_param": "data" },
+                "digest": { "from_return": true },
+                "digest_size": 64
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.NewShake128",
+            "function": "sha3.NewShake128",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_init",
+                "xof": true,
+                "digest_size": 16
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.NewShake256",
+            "function": "sha3.NewShake256",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_init",
+                "xof": true,
+                "digest_size": 32
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.NewCShake128",
+            "function": "sha3.NewCShake128",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["N", "S"],
+            "semantic": {
+                "profile_id": "ALG.cSHAKE128",
+                "operation": "xof_init",
+                "xof": true,
+                "digest_size": 16,
+                "function_name": { "from_param": "N" },
+                "customization": { "from_param": "S" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.NewCShake256",
+            "function": "sha3.NewCShake256",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["N", "S"],
+            "semantic": {
+                "profile_id": "ALG.cSHAKE256",
+                "operation": "xof_init",
+                "xof": true,
+                "digest_size": 32,
+                "function_name": { "from_param": "N" },
+                "customization": { "from_param": "S" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.ShakeSum128",
+            "function": "sha3.ShakeSum128",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["data", "length"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_hash",
+                "xof": true,
+                "digest_size": 16,
+                "input": { "from_param": "data" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/sha3.ShakeSum256",
+            "function": "sha3.ShakeSum256",
+            "imports": ["golang.org/x/crypto/sha3"],
+            "func_params": ["data", "length"],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_hash",
+                "xof": true,
+                "digest_size": 32,
+                "input": { "from_param": "data" }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/tea.NewCipher",
+            "function": "tea.NewCipher",
+            "imports": ["golang.org/x/crypto/tea"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.TEA",
+                "operation": "block_cipher_init",
+                "key": { "from_param": "key" },
+                "key_size": 16,
+                "block_size": 8,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/tea.NewCipherWithRounds",
+            "function": "tea.NewCipherWithRounds",
+            "imports": ["golang.org/x/crypto/tea"],
+            "func_params": ["key", "rounds"],
+            "semantic": {
+                "profile_id": "ALG.TEA",
+                "operation": "block_cipher_init",
+                "key": { "from_param": "key" },
+                "rounds": { "from_param": "rounds" },
+                "key_size": 16,
+                "block_size": 8,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/twofish.NewCipher",
+            "function": "twofish.NewCipher",
+            "imports": ["golang.org/x/crypto/twofish"],
+            "func_params": ["key"],
+            "semantic": {
+                "profile_id": "ALG.Twofish",
+                "operation": "block_cipher_init",
+                "key": { "from_param": "key" },
+                "key_sizes": [16, 24, 32],
+                "block_size": 16,
+                "security_level": "legacy"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/twofish.Cipher.BlockSize",
+            "function": "twofish.Cipher.BlockSize",
+            "imports": ["golang.org/x/crypto/twofish"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.Twofish",
+                "operation": "block_size_query",
+                "block_size": { "from_return_index": 0 }
+            }
+        },
+        {
+            "api_id": "go.x.crypto/twofish.Cipher.Encrypt",
+            "function": "twofish.Cipher.Encrypt",
+            "imports": ["golang.org/x/crypto/twofish"],
+            "func_params": ["dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.Twofish",
+                "operation": "block_encrypt",
+                "plaintext_block": { "from_param": "src" },
+                "ciphertext_block": { "from_param": "dst" },
+                "block_size": 16,
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "go.x.crypto/twofish.Cipher.Decrypt",
+            "function": "twofish.Cipher.Decrypt",
+            "imports": ["golang.org/x/crypto/twofish"],
+            "func_params": ["dst", "src"],
+            "semantic": {
+                "profile_id": "ALG.Twofish",
+                "operation": "block_decrypt",
+                "ciphertext_block": { "from_param": "src" },
+                "plaintext_block": { "from_param": "dst" },
+                "block_size": 16,
+                "direction": "decrypt"
+            }
+        }
+    ]
+}

@@ -1,0 +1,555 @@
+{
+  "version": "1.0",
+  "language": "c",
+  "library": "libsodium",
+  "description": "libsodium cryptographic API mappings (Task 28.2)",
+  "mappings": [
+    {
+      "api_id": "c.libsodium.crypto_secretbox_easy",
+      "function": "crypto_secretbox_easy",
+      "imports": ["sodium.h", "sodium/crypto_secretbox.h"],
+      "func_params": ["ciphertext", "message", "message_len", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.XSALSA20_POLY1305",
+        "operation": "authenticated_encrypt",
+        "key": {"param": "key", "index": 4, "source": "param"},
+        "nonce": {"param": "nonce", "index": 3, "source": "param"},
+        "comments": "XSalsa20-Poly1305; 24-byte nonce, 32-byte key"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_secretbox_open_easy",
+      "function": "crypto_secretbox_open_easy",
+      "imports": ["sodium.h", "sodium/crypto_secretbox.h"],
+      "func_params": ["message", "ciphertext", "ciphertext_len", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.XSALSA20_POLY1305",
+        "operation": "authenticated_decrypt",
+        "key": {"param": "key", "index": 4, "source": "param"},
+        "nonce": {"param": "nonce", "index": 3, "source": "param"}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_secretbox_keygen",
+      "function": "crypto_secretbox_keygen",
+      "imports": ["sodium.h", "sodium/crypto_secretbox.h"],
+      "func_params": ["key"],
+      "semantic": {
+        "profile_id": "ALG.XSALSA20_POLY1305",
+        "operation": "keygen",
+        "key": {"param": "key", "index": 0, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_box_easy",
+      "function": "crypto_box_easy",
+      "imports": ["sodium.h", "sodium/crypto_box.h"],
+      "func_params": ["ciphertext", "message", "message_len", "nonce", "recipient_pk", "sender_sk"],
+      "semantic": {
+        "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+        "operation": "public_key_encrypt",
+        "key": {"param": "sender_sk", "index": 5, "source": "param", "bits": 256},
+        "peer_key": {"param": "recipient_pk", "index": 4, "source": "param"},
+        "nonce": {"param": "nonce", "index": 3, "source": "param"},
+        "comments": "X25519 key exchange + XSalsa20-Poly1305 encryption; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_box_open_easy",
+      "function": "crypto_box_open_easy",
+      "imports": ["sodium.h", "sodium/crypto_box.h"],
+      "func_params": ["message", "ciphertext", "ciphertext_len", "nonce", "sender_pk", "recipient_sk"],
+      "semantic": {
+        "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+        "operation": "public_key_decrypt",
+        "key": {"param": "recipient_sk", "index": 5, "source": "param", "bits": 256},
+        "peer_key": {"param": "sender_pk", "index": 4, "source": "param"},
+        "nonce": {"param": "nonce", "index": 3, "source": "param"}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_box_keypair",
+      "function": "crypto_box_keypair",
+      "imports": ["sodium.h", "sodium/crypto_box.h"],
+      "func_params": ["pk", "sk"],
+      "semantic": {
+        "profile_id": "ALG.ECDH",
+        "operation": "keygen",
+        "key": {"param": "sk", "index": 1, "source": "param", "bits": 256},
+        "comments": "X25519 keypair; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_box_seal",
+      "function": "crypto_box_seal",
+      "imports": ["sodium.h", "sodium/crypto_box.h"],
+      "func_params": ["ciphertext", "message", "message_len", "recipient_pk"],
+      "semantic": {
+        "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+        "operation": "sealed_box_encrypt",
+        "key": {"param": "recipient_pk", "index": 3, "source": "param"}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_box_seal_open",
+      "function": "crypto_box_seal_open",
+      "imports": ["sodium.h", "sodium/crypto_box.h"],
+      "func_params": ["message", "ciphertext", "ciphertext_len", "pk", "sk"],
+      "semantic": {
+        "profile_id": "ALG.Curve25519-XSalsa20-Poly1305",
+        "operation": "sealed_box_decrypt",
+        "key": {"param": "sk", "index": 4, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_kx_keypair",
+      "function": "crypto_kx_keypair",
+      "imports": ["sodium.h", "sodium/crypto_kx.h"],
+      "func_params": ["pk", "sk"],
+      "semantic": {
+        "profile_id": "ALG.ECDH",
+        "operation": "keygen",
+        "key": {"param": "sk", "index": 1, "source": "param", "bits": 256},
+        "comments": "X25519-based key exchange; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_kx_client_session_keys",
+      "function": "crypto_kx_client_session_keys",
+      "imports": ["sodium.h", "sodium/crypto_kx.h"],
+      "func_params": ["rx", "tx", "client_pk", "client_sk", "server_pk"],
+      "semantic": {
+        "profile_id": "ALG.ECDH",
+        "operation": "key_exchange",
+        "key": {"param": "client_sk", "index": 3, "source": "param", "bits": 256},
+        "peer_key": {"param": "server_pk", "index": 4, "source": "param"},
+        "comments": "X25519 client-side KX; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_kx_server_session_keys",
+      "function": "crypto_kx_server_session_keys",
+      "imports": ["sodium.h", "sodium/crypto_kx.h"],
+      "func_params": ["rx", "tx", "server_pk", "server_sk", "client_pk"],
+      "semantic": {
+        "profile_id": "ALG.ECDH",
+        "operation": "key_exchange",
+        "key": {"param": "server_sk", "index": 3, "source": "param", "bits": 256},
+        "peer_key": {"param": "client_pk", "index": 4, "source": "param"},
+        "comments": "X25519 server-side KX; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_scalarmult",
+      "function": "crypto_scalarmult",
+      "imports": ["sodium.h", "sodium/crypto_scalarmult.h"],
+      "func_params": ["q", "n", "p"],
+      "semantic": {
+        "profile_id": "ALG.ECDH",
+        "operation": "scalar_mult",
+        "key": {"param": "n", "index": 1, "source": "param", "bits": 256},
+        "comments": "X25519 scalar multiplication; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_keypair",
+      "function": "crypto_sign_keypair",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["pk", "sk"],
+      "semantic": {
+        "profile_id": "ALG.ED25519",
+        "operation": "keygen",
+        "key": {"param": "sk", "index": 1, "source": "param", "bits": 512},
+        "comments": "Ed25519 keypair; quantum unsafe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_ed25519_keypair",
+      "function": "crypto_sign_ed25519_keypair",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["pk", "sk"],
+      "semantic": {
+        "profile_id": "ALG.ED25519",
+        "operation": "keygen",
+        "key": {"param": "sk", "index": 1, "source": "param", "bits": 512}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign",
+      "function": "crypto_sign",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["sm", "smlen_p", "m", "mlen", "sk"],
+      "semantic": {
+        "profile_id": "ALG.EDDSA",
+        "operation": "sign",
+        "key": {"param": "sk", "index": 4, "source": "param", "bits": 512}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_open",
+      "function": "crypto_sign_open",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["m", "mlen_p", "sm", "smlen", "pk"],
+      "semantic": {
+        "profile_id": "ALG.EDDSA",
+        "operation": "verify",
+        "key": {"param": "pk", "index": 4, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_detached",
+      "function": "crypto_sign_detached",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["sig", "siglen_p", "m", "mlen", "sk"],
+      "semantic": {
+        "profile_id": "ALG.EDDSA",
+        "operation": "sign_detached",
+        "key": {"param": "sk", "index": 4, "source": "param", "bits": 512}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_verify_detached",
+      "function": "crypto_sign_verify_detached",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["sig", "m", "mlen", "pk"],
+      "semantic": {
+        "profile_id": "ALG.EDDSA",
+        "operation": "verify_detached",
+        "key": {"param": "pk", "index": 3, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_ed25519_sk_to_pk",
+      "function": "crypto_sign_ed25519_sk_to_pk",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["pk", "sk"],
+      "semantic": {
+        "profile_id": "ALG.ED25519",
+        "operation": "key_extraction",
+        "key": {"param": "sk", "index": 1, "source": "param", "bits": 512}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_sign_ed25519_pk_to_curve25519",
+      "function": "crypto_sign_ed25519_pk_to_curve25519",
+      "imports": ["sodium.h", "sodium/crypto_sign.h"],
+      "func_params": ["x25519_pk", "ed25519_pk"],
+      "semantic": {
+        "profile_id": "ALG.ED25519",
+        "operation": "key_conversion",
+        "comments": "Convert Ed25519 key to X25519 (for hybrid use)"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_chacha20poly1305_encrypt",
+      "function": "crypto_aead_chacha20poly1305_encrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_chacha20poly1305.h"],
+      "func_params": ["ciphertext", "ciphertext_len_p", "message", "message_len", "ad", "ad_len", "nsec", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.CHACHA20_POLY1305",
+        "operation": "aead_encrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256},
+        "nonce": {"param": "nonce", "index": 7, "source": "param", "length_bytes": 8},
+        "comments": "ChaCha20-Poly1305 IETF draft (8-byte nonce); prefer IETF variant"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_chacha20poly1305_ietf_encrypt",
+      "function": "crypto_aead_chacha20poly1305_ietf_encrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_chacha20poly1305.h"],
+      "func_params": ["ciphertext", "ciphertext_len_p", "message", "message_len", "ad", "ad_len", "nsec", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.CHACHA20_POLY1305",
+        "operation": "aead_encrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256},
+        "nonce": {"param": "nonce", "index": 7, "source": "param", "length_bytes": 12},
+        "comments": "ChaCha20-Poly1305 IETF (12-byte nonce); safe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_chacha20poly1305_ietf_decrypt",
+      "function": "crypto_aead_chacha20poly1305_ietf_decrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_chacha20poly1305.h"],
+      "func_params": ["message", "message_len_p", "nsec", "ciphertext", "ciphertext_len", "ad", "ad_len", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.CHACHA20_POLY1305",
+        "operation": "aead_decrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_xchacha20poly1305_ietf_encrypt",
+      "function": "crypto_aead_xchacha20poly1305_ietf_encrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_xchacha20poly1305.h"],
+      "func_params": ["ciphertext", "ciphertext_len_p", "message", "message_len", "ad", "ad_len", "nsec", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.XCHACHA20_POLY1305",
+        "operation": "aead_encrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256},
+        "nonce": {"param": "nonce", "index": 7, "source": "param", "length_bytes": 24},
+        "comments": "XChaCha20-Poly1305 IETF (24-byte nonce); safe"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_xchacha20poly1305_ietf_decrypt",
+      "function": "crypto_aead_xchacha20poly1305_ietf_decrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_xchacha20poly1305.h"],
+      "func_params": ["message", "message_len_p", "nsec", "ciphertext", "ciphertext_len", "ad", "ad_len", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.XCHACHA20_POLY1305",
+        "operation": "aead_decrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_aes256gcm_encrypt",
+      "function": "crypto_aead_aes256gcm_encrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_aes256gcm.h"],
+      "func_params": ["ciphertext", "ciphertext_len_p", "message", "message_len", "ad", "ad_len", "nsec", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.AES",
+        "mode": "GCM",
+        "operation": "aead_encrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256},
+        "nonce": {"param": "nonce", "index": 7, "source": "param", "length_bytes": 12}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_aead_aes256gcm_decrypt",
+      "function": "crypto_aead_aes256gcm_decrypt",
+      "imports": ["sodium.h", "sodium/crypto_aead_aes256gcm.h"],
+      "func_params": ["message", "message_len_p", "nsec", "ciphertext", "ciphertext_len", "ad", "ad_len", "nonce", "key"],
+      "semantic": {
+        "profile_id": "ALG.AES",
+        "mode": "GCM",
+        "operation": "aead_decrypt",
+        "key": {"param": "key", "index": 8, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_generichash",
+      "function": "crypto_generichash",
+      "imports": ["sodium.h", "sodium/crypto_generichash.h"],
+      "func_params": ["out", "outlen", "in", "inlen", "key", "keylen"],
+      "semantic": {
+        "profile_id": "ALG.BLAKE2B",
+        "operation": "hash",
+        "key": {"param": "key", "index": 4, "source": "param"},
+        "comments": "BLAKE2b keyed hash; safe for post-quantum"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_generichash_init",
+      "function": "crypto_generichash_init",
+      "imports": ["sodium.h", "sodium/crypto_generichash.h"],
+      "func_params": ["state", "key", "keylen", "outlen"],
+      "semantic": {
+        "profile_id": "ALG.BLAKE2B",
+        "operation": "hash_init",
+        "key": {"param": "key", "index": 1, "source": "param"}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_hash",
+      "function": "crypto_hash",
+      "imports": ["sodium.h", "sodium/crypto_hash.h"],
+      "func_params": ["out", "in", "inlen"],
+      "semantic": {
+        "profile_id": "ALG.SHA512",
+        "operation": "hash",
+        "comments": "SHA-512 hash"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_hash_sha256",
+      "function": "crypto_hash_sha256",
+      "imports": ["sodium.h", "sodium/crypto_hash_sha256.h"],
+      "func_params": ["out", "in", "inlen"],
+      "semantic": {
+        "profile_id": "ALG.SHA256",
+        "operation": "hash"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_hash_sha512",
+      "function": "crypto_hash_sha512",
+      "imports": ["sodium.h", "sodium/crypto_hash_sha512.h"],
+      "func_params": ["out", "in", "inlen"],
+      "semantic": {
+        "profile_id": "ALG.SHA512",
+        "operation": "hash"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_shorthash",
+      "function": "crypto_shorthash",
+      "imports": ["sodium.h", "sodium/crypto_shorthash.h"],
+      "func_params": ["out", "in", "inlen", "key"],
+      "semantic": {
+        "profile_id": "ALG.SIPHASH64",
+        "operation": "hash",
+        "key": {"param": "key", "index": 3, "source": "param", "bits": 128},
+        "comments": "SipHash-2-4; NOT collision-resistant, for hash tables only"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_auth",
+      "function": "crypto_auth",
+      "imports": ["sodium.h", "sodium/crypto_auth.h"],
+      "func_params": ["mac", "message", "message_len", "key"],
+      "semantic": {
+        "profile_id": "ALG.HMAC.SHA512",
+        "operation": "mac",
+        "key": {"param": "key", "index": 3, "source": "param", "bits": 256},
+        "comments": "HMAC-SHA512256 MAC"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_auth_verify",
+      "function": "crypto_auth_verify",
+      "imports": ["sodium.h", "sodium/crypto_auth.h"],
+      "func_params": ["mac", "message", "message_len", "key"],
+      "semantic": {
+        "profile_id": "ALG.HMAC.SHA512",
+        "operation": "mac_verify",
+        "key": {"param": "key", "index": 3, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_onetimeauth",
+      "function": "crypto_onetimeauth",
+      "imports": ["sodium.h", "sodium/crypto_onetimeauth.h"],
+      "func_params": ["out", "in", "inlen", "key"],
+      "semantic": {
+        "profile_id": "ALG.POLY1305",
+        "operation": "mac",
+        "key": {"param": "key", "index": 3, "source": "param", "bits": 256},
+        "comments": "Poly1305 one-time MAC; key must never be reused"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_onetimeauth_verify",
+      "function": "crypto_onetimeauth_verify",
+      "imports": ["sodium.h", "sodium/crypto_onetimeauth.h"],
+      "func_params": ["mac", "in", "inlen", "key"],
+      "semantic": {
+        "profile_id": "ALG.POLY1305",
+        "operation": "mac_verify",
+        "key": {"param": "key", "index": 3, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_pwhash",
+      "function": "crypto_pwhash",
+      "imports": ["sodium.h", "sodium/crypto_pwhash.h"],
+      "func_params": ["out", "outlen", "passwd", "passwdlen", "salt", "opslimit", "memlimit", "alg"],
+      "semantic": {
+        "profile_id": "ALG.ARGON2ID",
+        "operation": "password_hash",
+        "algorithm_source": {"param": "alg", "index": 7, "source": "param"},
+        "comments": "Argon2id or Argon2i depending on alg param. Default: Argon2id"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_pwhash_scryptsalsa208sha256",
+      "function": "crypto_pwhash_scryptsalsa208sha256",
+      "imports": ["sodium.h", "sodium/crypto_pwhash_scryptsalsa208sha256.h"],
+      "func_params": ["out", "outlen", "passwd", "passwdlen", "salt", "opslimit", "memlimit"],
+      "semantic": {
+        "profile_id": "ALG.SCRYPT",
+        "operation": "password_hash"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_pwhash_str",
+      "function": "crypto_pwhash_str",
+      "imports": ["sodium.h", "sodium/crypto_pwhash.h"],
+      "func_params": ["out", "passwd", "passwdlen", "opslimit", "memlimit"],
+      "semantic": {
+        "profile_id": "ALG.ARGON2ID",
+        "operation": "password_hash_store"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_kdf_derive_from_key",
+      "function": "crypto_kdf_derive_from_key",
+      "imports": ["sodium.h", "sodium/crypto_kdf.h"],
+      "func_params": ["subkey", "subkey_len", "subkey_id", "ctx", "key"],
+      "semantic": {
+        "profile_id": "ALG.BLAKE2B",
+        "operation": "kdf_derive",
+        "key": {"param": "key", "index": 4, "source": "param", "bits": 256},
+        "comments": "BLAKE2b-based KDF; safe for post-quantum"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_kdf_keygen",
+      "function": "crypto_kdf_keygen",
+      "imports": ["sodium.h", "sodium/crypto_kdf.h"],
+      "func_params": ["key"],
+      "semantic": {
+        "profile_id": "ALG.BLAKE2B",
+        "operation": "keygen",
+        "key": {"param": "key", "index": 0, "source": "param", "bits": 256}
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_stream_chacha20",
+      "function": "crypto_stream_chacha20",
+      "imports": ["sodium.h", "sodium/crypto_stream_chacha20.h"],
+      "func_params": ["c", "clen", "n", "k"],
+      "semantic": {
+        "profile_id": "ALG.CHACHA20",
+        "operation": "stream_encrypt",
+        "key": {"param": "k", "index": 3, "source": "param", "bits": 256},
+        "nonce": {"param": "n", "index": 2, "source": "param", "length_bytes": 8},
+        "comments": "ChaCha20 keystream (no authentication); use AEAD variant instead"
+      }
+    },
+    {
+      "api_id": "c.libsodium.crypto_stream_xchacha20",
+      "function": "crypto_stream_xchacha20",
+      "imports": ["sodium.h", "sodium/crypto_stream_xchacha20.h"],
+      "func_params": ["c", "clen", "n", "k"],
+      "semantic": {
+        "profile_id": "ALG.CHACHA20",
+        "operation": "stream_encrypt",
+        "key": {"param": "k", "index": 3, "source": "param", "bits": 256},
+        "nonce": {"param": "n", "index": 2, "source": "param", "length_bytes": 24}
+      }
+    },
+    {
+      "api_id": "c.libsodium.randombytes_buf",
+      "function": "randombytes_buf",
+      "imports": ["sodium.h", "sodium/randombytes.h"],
+      "func_params": ["buf", "size"],
+      "semantic": {
+        "profile_id": "PRIM.CSPRNG",
+        "operation": "random_bytes_fill",
+        "comments": "Secure random bytes from OS CSPRNG"
+      }
+    },
+    {
+      "api_id": "c.libsodium.randombytes_random",
+      "function": "randombytes_random",
+      "imports": ["sodium.h", "sodium/randombytes.h"],
+      "func_params": [],
+      "semantic": {
+        "profile_id": "PRIM.CSPRNG",
+        "operation": "random_uint32"
+      }
+    },
+    {
+      "api_id": "c.libsodium.sodium_init",
+      "function": "sodium_init",
+      "imports": ["sodium.h"],
+      "func_params": [],
+      "semantic": {
+        "profile_id": null,
+        "operation": "library_init",
+        "exclude_from_findings": true,
+        "comments": "Must be called before using any other libsodium function"
+      }
+    }
+  ]
+}

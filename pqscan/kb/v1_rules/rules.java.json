@@ -1,0 +1,377 @@
+{
+  "version": "1.1",
+  "language": "java",
+  "mappings": [
+    {
+      "rule_id": "ALG.AES",
+      "api": {
+        "imports": ["javax.crypto.Cipher", "javax.crypto.KeyGenerator"],
+        "symbols": ["Cipher.getInstance", "KeyGenerator.getInstance"],
+        "literals": ["AES"]
+      },
+      "params": {
+        "key_bits": {
+          "allow": [256],
+          "severity_if_not_allow": "high"
+        },
+        "mode": {
+          "allow": ["GCM", "CTR"],
+          "disallow": ["ECB", "CBC"],
+          "severity_if_disallow": "high",
+          "severity_if_not_allow": "medium"
+        }
+      },
+      "status": "review"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["AES/CCM/NoPadding"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["AES/EAX/NoPadding"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["AES/CTR/NoPadding"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["AES/CBC/PKCS5Padding"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.CHACHA20",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["ChaCha20-Poly1305"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.CHACHA20",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["ChaCha20"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SHA256",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["SHA-256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA384",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["SHA-384"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA512",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["SHA-512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA3_256",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["SHA3-256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SHA3_512",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["SHA3-512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.BLAKE2B",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["BLAKE2B-512"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.RIPEMD160",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["RIPEMD160"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.MD5",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["MD5"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.SHA1",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["java.security.MessageDigest"],
+        "literals": ["SHA-1"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.HMAC.SHA256",
+      "api": {
+        "symbols": ["Mac.getInstance"],
+        "imports": ["javax.crypto.Mac"],
+        "literals": ["HmacSHA256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HMAC.SHA512",
+      "api": {
+        "symbols": ["Mac.getInstance"],
+        "imports": ["javax.crypto.Mac"],
+        "literals": ["HmacSHA512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HMAC.SHA3",
+      "api": {
+        "symbols": ["Mac.getInstance"],
+        "imports": ["javax.crypto.Mac"],
+        "literals": ["HmacSHA3-256"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.PBKDF2",
+      "api": {
+        "symbols": ["SecretKeyFactory.getInstance"],
+        "imports": ["javax.crypto.SecretKeyFactory"],
+        "literals": ["PBKDF2WithHmacSHA256", "PBKDF2WithHmacSHA512"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.PKE",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["RSA/ECB/OAEPWithSHA-256AndMGF1Padding", "RSA/ECB/OAEPWithSHA-1AndMGF1Padding"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.PKE",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["RSA/ECB/PKCS1Padding"]
+      },
+      "status": "unsafe"
+    }, {
+      "rule_id": "ALG.RSA.SIG",
+      "api": {
+        "symbols": ["Signature.getInstance", "PSSParameterSpec"],
+        "imports": ["java.security.Signature", "java.security.spec.PSSParameterSpec", "java.security.spec.MGF1ParameterSpec"],
+        "literals": ["RSASSA-PSS"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.RSA.SIG",
+      "api": {
+        "symbols": ["Signature.getInstance"],
+        "imports": ["java.security.Signature"],
+        "literals": ["SHA256withRSA", "SHA1withRSA"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.ECDSA",
+      "api": {
+        "symbols": ["Signature.getInstance"],
+        "imports": ["java.security.Signature"],
+        "literals": ["SHA256withECDSA", "SHA384withECDSA"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.ECDH",
+      "api": {
+        "symbols": ["KeyAgreement.getInstance"],
+        "imports": ["javax.crypto.KeyAgreement"],
+        "literals": ["ECDH"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.EDDSA",
+      "api": {
+        "symbols": ["Signature.getInstance"],
+        "imports": ["java.security.Signature"],
+        "literals": ["Ed25519"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.ECDH",
+      "api": {
+        "symbols": ["KeyAgreement.getInstance"],
+        "imports": ["javax.crypto.KeyAgreement"],
+        "literals": ["X25519"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "PRIM.CSPRNG",
+      "api": {
+        "symbols": ["SecureRandom"],
+        "imports": ["java.security.SecureRandom"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["org.bouncycastle.jce.provider.BouncyCastleProvider", "javax.crypto.Cipher"],
+        "literals": ["AES/OCB/NoPadding"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["org.bouncycastle.jce.provider.BouncyCastleProvider", "javax.crypto.Cipher"],
+        "literals": ["AES/EAX/NoPadding"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.CHACHA20",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["org.bouncycastle.jce.provider.BouncyCastleProvider", "javax.crypto.Cipher"],
+        "literals": ["ChaCha20-Poly1305"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HKDF",
+      "api": {
+        "symbols": ["HKDFBytesGenerator"],
+        "imports": ["org.bouncycastle.crypto.generators.HKDFBytesGenerator", "org.bouncycastle.crypto.params.HKDFParameters"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SM4",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["org.bouncycastle.jce.provider.BouncyCastleProvider", "javax.crypto.Cipher"],
+        "literals": ["SM4/GCM/NoPadding"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM3",
+      "api": {
+        "symbols": ["MessageDigest.getInstance"],
+        "imports": ["org.bouncycastle.jce.provider.BouncyCastleProvider", "java.security.MessageDigest"],
+        "literals": ["SM3"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SM2.SIG",
+      "api": {
+        "symbols": ["Signature.getInstance"],
+        "imports": ["java.security.Signature"],
+        "literals": ["SM3withSM2"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM2.SIG",
+      "api": {
+        "symbols": ["SM2Signer"],
+        "imports": ["org.bouncycastle.crypto.signers.SM2Signer"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM2.SIG",
+      "api": {
+        "symbols": ["SM2Signer"],
+        "imports": ["org.bouncycastle.crypto.signers.SM2Signer"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM2.PKE",
+      "api": {
+        "symbols": ["SM2Engine"],
+        "imports": ["org.bouncycastle.crypto.engines.SM2Engine"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SM2.PKE",
+      "api": {
+        "symbols": ["Cipher.getInstance"],
+        "imports": ["javax.crypto.Cipher"],
+        "literals": ["SM2"]
+      },
+      "status": "caution"
+    }, {
+      "rule_id": "ALG.SCRYPT",
+      "api": {
+        "symbols": ["SCrypt"],
+        "imports": ["org.bouncycastle.crypto.generators.SCrypt"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.SCRYPT",
+      "api": {
+        "symbols": ["SCryptUtil"],
+        "imports": ["com.lambdaworks.crypto.SCryptUtil"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["AeadConfig.register", "KeysetHandle.generateNew", "AesGcmKeyManager"],
+        "imports": ["com.google.crypto.tink.Aead", "com.google.crypto.tink.aead.AeadConfig", "com.google.crypto.tink.aead.AesGcmKeyManager"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.AES",
+      "api": {
+        "symbols": ["AeadConfig.register", "Aead", "KeyTemplates.get"],
+        "imports": ["com.google.crypto.tink.Aead", "com.google.crypto.tink.KeyTemplates"],
+        "literals": ["AES256_GCM_SIV", "AES128_GCM_SIV"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.EDDSA",
+      "api": {
+        "symbols": ["SignatureConfig.register", "KeysetHandle.generateNew"],
+        "imports": ["com.google.crypto.tink.signature.SignatureConfig"]
+      },
+      "status": "safe"
+    }, {
+      "rule_id": "ALG.HKDF",
+      "api": {
+        "symbols": ["Hkdf.computeHkdf"],
+        "imports": ["com.google.crypto.tink.subtle.Hkdf"]
+      },
+      "status": "safe"
+    }
+  ]
+}

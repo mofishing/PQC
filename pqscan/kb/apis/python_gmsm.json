@@ -1,0 +1,259 @@
+{
+    "version": "2.0",
+    "language": "python",
+    "library": "gmsm",
+    "description": "Chinese National Cryptography Standards (GM/SM series)",
+    "mappings": [
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.__init__",
+            "function": "gmssl.sm2.CryptSM2.__init__",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["private_key", "public_key", "ecc_table", "default_hash"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "sm2_init",
+                "private_key": { "from_param": "private_key" },
+                "public_key": { "from_param": "public_key" },
+                "ecc_table": { "from_param": "ecc_table" },
+                "hash": { "from_param": "default_hash" },
+                "key_bits": 256,
+                "sm2_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.encrypt",
+            "function": "gmssl.sm2.CryptSM2.encrypt",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "encrypt",
+                "sm2_obj": { "from_receiver": true },
+                "plaintext": { "from_param": "data" },
+                "ciphertext": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.decrypt",
+            "function": "gmssl.sm2.CryptSM2.decrypt",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "decrypt",
+                "sm2_obj": { "from_receiver": true },
+                "ciphertext": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.sign",
+            "function": "gmssl.sm2.CryptSM2.sign",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["data", "random_hex_str"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "sign",
+                "sm2_obj": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "random": { "from_param": "random_hex_str" },
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.verify",
+            "function": "gmssl.sm2.CryptSM2.verify",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["sign", "data"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "verify",
+                "sm2_obj": { "from_receiver": true },
+                "signature": { "from_param": "sign" },
+                "message": { "from_param": "data" },
+                "verified": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.sign_with_sm3",
+            "function": "gmssl.sm2.CryptSM2.sign_with_sm3",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["data", "random_hex_str"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "sign_with_hash",
+                "sm2_obj": { "from_receiver": true },
+                "message": { "from_param": "data" },
+                "random": { "from_param": "random_hex_str" },
+                "hash": "SM3",
+                "signature": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.verify_with_sm3",
+            "function": "gmssl.sm2.CryptSM2.verify_with_sm3",
+            "imports": ["gmssl.sm2", "gmssl"],
+            "func_params": ["sign", "data"],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "verify_with_hash",
+                "sm2_obj": { "from_receiver": true },
+                "signature": { "from_param": "sign" },
+                "message": { "from_param": "data" },
+                "hash": "SM3",
+                "verified": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.gmsm.gmssl.sm3.sm3_hash",
+            "function": "gmssl.sm3.sm3_hash",
+            "imports": ["gmssl.sm3", "gmssl"],
+            "func_params": ["msg"],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash",
+                "input": { "from_param": "msg" },
+                "digest": { "from_return": true },
+                "digest_size": 32,
+                "key_bits": 256
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.sm3_kdf",
+            "function": "gmssl.sm3.sm3_kdf",
+            "imports": ["gmssl.sm3", "gmssl"],
+            "func_params": ["z", "klen"],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "kdf",
+                "input": { "from_param": "z" },
+                "dk_length": { "from_param": "klen" },
+                "dk": { "from_return": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.SM3.__init__",
+            "function": "gmssl.sm3.SM3.__init__",
+            "imports": ["gmssl.sm3", "gmssl"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_init",
+                "digest_size": 32,
+                "key_bits": 256,
+                "hash_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.SM3.update",
+            "function": "gmssl.sm3.SM3.update",
+            "imports": ["gmssl.sm3", "gmssl"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_update",
+                "hash_obj": { "from_receiver": true },
+                "input_chunk": { "from_param": "data" }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.SM3.hexdigest",
+            "function": "gmssl.sm3.SM3.hexdigest",
+            "imports": ["gmssl.sm3", "gmssl"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_finalize",
+                "hash_obj": { "from_receiver": true },
+                "digest_hex": { "from_return": true }
+            }
+        },
+
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.__init__",
+            "function": "gmssl.sm4.CryptSM4.__init__",
+            "imports": ["gmssl.sm4", "gmssl"],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "sm4_init",
+                "key_bits": 128,
+                "sm4_obj": { "from_receiver": true }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.set_key",
+            "function": "gmssl.sm4.CryptSM4.set_key",
+            "imports": ["gmssl.sm4", "gmssl"],
+            "func_params": ["key", "mode"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "set_key",
+                "sm4_obj": { "from_receiver": true },
+                "key": { "from_param": "key" },
+                "mode": { "from_param": "mode" },
+                "key_bits": 128
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.encrypt",
+            "function": "gmssl.sm4.CryptSM4.encrypt",
+            "imports": ["gmssl.sm4", "gmssl"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "encrypt",
+                "sm4_obj": { "from_receiver": true },
+                "plaintext": { "from_param": "data" },
+                "ciphertext": { "from_return": true },
+                "direction": "encrypt"
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.decrypt",
+            "function": "gmssl.sm4.CryptSM4.decrypt",
+            "imports": ["gmssl.sm4", "gmssl"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "decrypt",
+                "sm4_obj": { "from_receiver": true },
+                "ciphertext": { "from_param": "data" },
+                "plaintext": { "from_return": true },
+                "direction": "decrypt"
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.crypt_ecb",
+            "function": "gmssl.sm4.CryptSM4.crypt_ecb",
+            "imports": ["gmssl.sm4", "gmssl"],
+            "func_params": ["data"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "encrypt_ecb",
+                "sm4_obj": { "from_receiver": true },
+                "plaintext": { "from_param": "data" },
+                "ciphertext": { "from_return": true },
+                "mode": "ECB"
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.crypt_cbc",
+            "function": "gmssl.sm4.CryptSM4.crypt_cbc",
+            "imports": ["gmssl.sm4", "gmssl"],
+            "func_params": ["iv", "data"],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "encrypt_cbc",
+                "sm4_obj": { "from_receiver": true },
+                "iv": { "from_param": "iv" },
+                "plaintext": { "from_param": "data" },
+                "ciphertext": { "from_return": true },
+                "mode": "CBC"
+            }
+        }
+    ]
+}

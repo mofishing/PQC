@@ -1,0 +1,123 @@
+## policy.org.yaml（测试时临时去掉）
+#org_policy:
+#  transitional_whitelist:
+#    algorithms: []
+
+version: 1
+org_policy:
+  allow_hybrid: true
+
+  transitional_whitelist:
+    algorithms:
+      - ALG.RSA.PKE
+      - ALG.RSA.SIG
+      - ALG.ECDH
+      - ALG.ECDSA
+    until: "2026-12-31"
+    notes: "Legacy RSA/ECDH/ECDSA allowed for migration; prefer hybrid with Kyber; OAEP/PSS and ≥4096 bits."
+
+  enforce_params:
+    ALG.AES:
+      key_bits:
+        allow: [256]
+        default: 256
+        severity_if_not_allow: medium
+      mode:
+        disallow: ["ECB"]
+        default: GCM
+        severity_if_disallow: high
+
+    ALG.CHACHA20:
+      key_bits:
+        allow: [256]
+        default: 256
+      aead:
+        allow: ["Poly1305"]
+        default: "Poly1305"
+        severity_if_not_allow: medium
+
+    ALG.AES.CMAC:
+      key_bits:
+        allow: [256]
+        default: 256
+
+    ALG.RSA.PKE:
+      key_bits:
+        allow: [4096, 8192]
+        default: 4096
+        severity_if_not_allow: high
+      padding:
+        allow: ["OAEP"]
+        default: "OAEP"
+        severity_if_not_allow: high
+
+    ALG.RSA.SIG:
+      key_bits:
+        allow: [4096, 8192]
+        default: 4096
+        severity_if_not_allow: high
+      padding:
+        allow: ["PSS"]
+        default: "PSS"
+        severity_if_not_allow: high
+      hash:
+        allow: ["SHA-256", "SHA-384", "SHA-512", "SHA3-256", "SHA3-512"]
+        default: "SHA-256"
+        severity_if_not_allow: medium
+
+    ALG.ECDH:
+      curves:
+        allow: ["X25519", "Curve448", "P-256", "secp384r1"]
+        default: "X25519"
+
+    ALG.ECDSA:
+      curves:
+        allow: ["P-256", "secp384r1", "secp256k1"]
+        default: "P-256"
+      hash:
+        allow: ["SHA-256", "SHA-384", "SHA-512", "SHA3-256", "SHA3-512"]
+        default: "SHA-256"
+
+    ALG.KYBER:
+      key_bits:
+        allow: [768, 1024]
+        default: 768
+      mode:
+        allow: ["KEM"]
+        default: "KEM"
+
+    ALG.DILITHIUM:
+      level:
+        allow: [2, 3, 5]
+        default: 3
+
+    ALG.FALCON:
+      level:
+        allow: [1, 5]
+        default: 1
+
+    ALG.SPHINCS_PLUS:
+      param_set:
+        allow: ["128s", "128f", "192s", "192f", "256s", "256f"]
+        default: "128s"
+
+    # 明确打红的老算法（可选）
+    ALG.DES:
+      key_bits:
+        disallow: [56]
+        severity_if_disallow: high
+    ALG.3DES:
+      block_bits:
+        disallow: [64]
+        severity_if_disallow: high
+    ALG.RC4: {}
+    ALG.MD5:
+      digest_bits:
+        disallow: [128]
+        severity_if_disallow: high
+    ALG.SHA1:
+      digest_bits:
+        disallow: [160]
+        severity_if_disallow: high
+    ALG.RAINBOW: {}
+    ALG.SIKE: {}

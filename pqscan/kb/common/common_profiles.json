@@ -1,0 +1,4963 @@
+{
+    "version": "2.0",
+    "language": "common",
+    "id_aliases": {
+        "ALG.ECC": "ALG.EC",
+        "ALG.RSA": "ALG.RSA.PKE",
+        "ALG.RSA_OAEP": "ALG.RSA.PKE",
+        "ALG.RSA_PSS": "ALG.RSA.SIG",
+        "ALG.RSA_PKCS1V15_ENC": "ALG.RSA.PKE",
+        "ALG.RSA_PKCS1V15_SIG": "ALG.RSA.SIG",
+        "ALG.PRIME256V1": "ALG.EC",
+        "ALG.PRIME192V1": "ALG.EC",
+        "ALG.SECP224R1": "ALG.EC",
+        "ALG.SECP256K1": "ALG.EC",
+        "ALG.SECP384R1": "ALG.EC",
+        "ALG.SECP521R1": "ALG.EC",
+        "ALG.SM2": "ALG.SM2.SIG",
+        "ALG.DRBG": "PRIM.CSPRNG",
+        "ALG.BLAKE2B_512": "ALG.BLAKE2B",
+        "ALG.XSALSA20_SECRETBOX": "ALG.XSALSA20_POLY1305",
+        "ALG.ED25519_STDLIB": "ALG.EDDSA",
+        "ALG.ECDH_STDLIB": "ALG.ECDH",
+        "ALG.RANDOM_CSPRNG": "PRIM.CSPRNG",
+        "RNG.CSPRNG": "PRIM.CSPRNG",
+        "ALG.TINK_AES_GCM": "ALG.AES",
+        "ALG.TINK_AES_GCM_SIV": "ALG.AES",
+        "ALG.TINK_ED25519": "ALG.EDDSA",
+        "ALG.CIRCL_HPKE": "ALG.HPKE",
+        "ALG.CIRCL_KYBER_KEM": "ALG.KYBER",
+        "ALG.BLAKE2": "ALG.BLAKE2B",
+        "ALG.AES_128_GCM": "ALG.AES",
+        "ALG.AES_192_GCM": "ALG.AES",
+        "ALG.AES_256_GCM": "ALG.AES",
+        "ALG.AES_128_CTR": "ALG.AES",
+        "ALG.AES_192_CTR": "ALG.AES",
+        "ALG.AES_256_CTR": "ALG.AES",
+        "ALG.AES_256_XTS": "ALG.AES.XTS",
+        "ALG.ChaCha20-Poly1305": "ALG.CHACHA20_POLY1305",
+        "ALG.CHACHA20-POLY1305": "ALG.CHACHA20_POLY1305",
+        "ALG.XCHACHA20_POLY1305": "ALG.XCHACHA20_POLY1305",
+        "ALG.XChaCha20-Poly1305": "ALG.XCHACHA20_POLY1305",
+        "ALG.XCHACHA20-POLY1305": "ALG.XCHACHA20_POLY1305",
+        "ALG.AEAD_XCHACHA20_POLY1305_IETF": "ALG.XCHACHA20_POLY1305",
+        "ALG.XSalsa20-Poly1305": "ALG.XSALSA20_POLY1305",
+        "ALG.ARGON2I": "ALG.ARGON2",
+        "ALG.ARGON2D": "ALG.ARGON2",
+        "ALG.ARGON2ID": "ALG.ARGON2ID",
+        "ALG.ARCFOUR": "ALG.RC4",
+        "ALG.ML_DSA_44": "ALG.DILITHIUM",
+        "ALG.ML_DSA_65": "ALG.DILITHIUM",
+        "ALG.ML_DSA_87": "ALG.DILITHIUM",
+        "ALG.ML_KEM": "ALG.ML_KEM",
+        "ALG.ML_KEM_512": "ALG.MLKEM-512",
+        "ALG.ML_KEM_768": "ALG.MLKEM-768",
+        "ALG.ML_KEM_1024": "ALG.MLKEM-1024",
+        "ALG.ML-KEM-512": "ALG.MLKEM-512",
+        "ALG.ML-KEM-768": "ALG.MLKEM-768",
+        "ALG.ML-KEM-1024": "ALG.MLKEM-1024",
+        "ALG.MLKEM_512": "ALG.MLKEM-512",
+        "ALG.MLKEM_768": "ALG.MLKEM-768",
+        "ALG.MLKEM_1024": "ALG.MLKEM-1024",
+        "ALG.WBSM4_XIAOLAI": "ALG.WBSM4",
+        "ALG.WBSM4_BAIWU": "ALG.WBSM4",
+        "ALG.WBSM4_WSISE": "ALG.WBSM4",
+        "ALG.SHA-1": "ALG.SHA1",
+        "ALG.SHA-224": "ALG.SHA224",
+        "ALG.SHA-256": "ALG.SHA256",
+        "ALG.SHA-384": "ALG.SHA384",
+        "ALG.SHA-512": "ALG.SHA512",
+        "ALG.SHA3-224": "ALG.SHA3_224",
+        "ALG.SHA3-256": "ALG.SHA3_256",
+        "ALG.SHA3-384": "ALG.SHA3_384",
+        "ALG.SHA3-512": "ALG.SHA3_512",
+        "ALG.SipHash-2-4": "ALG.SIPHASH64",
+        "ALG.Ed25519": "ALG.ED25519",
+        "ALG.ECC.BRAINPOOL256": "ALG.ECDH",
+        "ALG.ECC.BRAINPOOL384": "ALG.ECDH",
+        "ALG.ECC.BRAINPOOL512": "ALG.ECDH",
+        "ALG.ECC.P192": "ALG.ECDH",
+        "ALG.ECC.P224": "ALG.ECDH",
+        "ALG.ECC.P256": "ALG.ECDH",
+        "ALG.ECC.P384": "ALG.ECDH",
+        "ALG.ECC.P521": "ALG.ECDH"
+    },
+    "aliases": {
+        "curves": {
+            "P256": "P-256",
+            "P-256": "P-256",
+            "secp256r1": "P-256",
+            "prime256v1": "P-256",
+            "nistp256": "P-256",
+
+            "P384": "P-384",
+            "P-384": "P-384",
+            "secp384r1": "P-384",
+            "nistp384": "P-384",
+
+            "P521": "P-521",
+            "P-521": "P-521",
+            "secp521r1": "P-521",
+            "nistp521": "P-521",
+
+            "X25519": "X25519",
+            "Ed25519": "Ed25519",
+            "Ed448": "Ed448"
+        },
+        "modes": {
+            "GCM": "GCM",
+            "GCM-SIV": "GCM-SIV",
+            "CCM": "CCM",
+            "CTR": "CTR",
+            "CBC": "CBC",
+            "ECB": "ECB"
+        }
+    },
+    "rules": [
+        {
+            "id": "ALG.RSA.PKE",
+            "algorithm_family": "RSA",
+            "category": "asymmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "RSA 基于整数分解，Shor 算法可在多项式时间内破解，无论密钥长度",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.KYBER", "ALG.RSA_KYBER_HYBRID"]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [2048, 3072, 4096, 8192],
+                    "min": 2048,
+                    "recommended": 3072,
+                    "severity_map": {
+                        "< 2048": "error",
+                        "2048": "warning",
+                        "3072": "info",
+                        ">= 4096": "none"
+                    },
+                    "reason": "传统下 2048-bit 可抵抗经典计算机穷举，3072-bit 更安全"
+                },
+                "padding": {
+                    "type": "enum",
+                    "allow": ["OAEP"],
+                    "forbidden": ["PKCS1v15", "NoPadding"],
+                    "recommended": "OAEP",
+                    "severity_map": {
+                        "PKCS1v15": "warning",
+                        "NoPadding": "error",
+                        "OAEP": "none"
+                    },
+                    "reason": {
+                        "PKCS1v15": "存在 padding oracle 攻击风险",
+                        "NoPadding": "完全不安全，必须使用 padding",
+                        "OAEP": "安全的 padding 方案"
+                    }
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [4096, 8192],
+                    "default": 4096,
+                    "severity_if_not_allow": "high"
+                },
+                "padding": {
+                    "allow": ["OAEP"],
+                    "default": "OAEP",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "RSA 基于整数分解，被 Shor 算法在容错量子机上破解（0 位）。",
+            "recommendation": "量子模式：立即迁移到 Kyber 或 RSA+Kyber 混合；传统模式：至少使用 3072-bit + OAEP padding。"
+        },
+        {
+            "id": "ALG.RSA.SIG",
+            "algorithm_family": "RSA 签名",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "RSA 签名基于整数分解，Shor 算法可破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [2048, 3072, 4096, 8192],
+                    "min": 2048,
+                    "recommended": 3072,
+                    "severity_map": {
+                        "< 2048": "error",
+                        "2048": "warning",
+                        "3072": "info",
+                        ">= 4096": "none"
+                    }
+                },
+                "padding": {
+                    "type": "enum",
+                    "allow": ["PSS"],
+                    "forbidden": ["PKCS1v15"],
+                    "recommended": "PSS",
+                    "severity_map": {
+                        "PKCS1v15": "warning",
+                        "PSS": "none"
+                    },
+                    "reason": {
+                        "PKCS1v15": "存在理论攻击，PSS 更安全",
+                        "PSS": "可证明安全的签名 padding"
+                    }
+                },
+                "hash": {
+                    "type": "algorithm_ref",
+                    "allow": [
+                        "SHA-256",
+                        "SHA-384",
+                        "SHA-512",
+                        "SHA3-256",
+                        "SHA3-512"
+                    ],
+                    "forbidden": ["SHA-1", "MD5"],
+                    "recommended": "SHA-256",
+                    "severity_map": {
+                        "MD5": "error",
+                        "SHA-1": "error",
+                        "SHA-256": "none"
+                    }
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [4096, 8192],
+                    "default": 4096,
+                    "severity_if_not_allow": "high"
+                },
+                "padding": {
+                    "allow": ["PSS"],
+                    "default": "PSS",
+                    "severity_if_not_allow": "medium"
+                },
+                "hash": {
+                    "allow": [
+                        "SHA-256",
+                        "SHA-384",
+                        "SHA-512",
+                        "SHA3-256",
+                        "SHA3-512"
+                    ],
+                    "default": "SHA-256",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "基于整数分解，量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "量子模式：迁移到 Dilithium/Falcon；传统模式：至少 3072-bit + PSS + SHA-256。"
+        },
+        {
+            "id": "ALG.Curve25519-XSalsa20-Poly1305",
+            "algorithm_family": "NaClBox",
+            "category": "pke",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "nonce_bits": {
+                    "type": "integer",
+                    "allow": [192],
+                    "severity": "info",
+                    "reason": "需保证 nonce 唯一/随机（按构造要求）"
+                },
+                "kex": {
+                    "type": "enum",
+                    "allow": ["X25519"],
+                    "recommended": "X25519",
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "aead": true,
+                "kex": "X25519",
+                "cipher": "XSalsa20",
+                "mac": "Poly1305",
+                "nonce_bits": 192,
+                "shared_key_bits": 256,
+                "sender_authentication": true,
+                "receiver_authentication": true
+            },
+            "reason": "curve25519xsalsa20poly1305：使用 X25519 派生共享密钥，再用 XSalsa20-Poly1305 实现带认证的对称加密，提供机密性与完整性。",
+            "recommendation": "适用于端到端加密等需要公钥认证加密的场景；如需 IETF 标准兼容，可在新设计中考虑 X25519 + (X)ChaCha20-Poly1305 等方案。"
+        },
+        {
+            "id": "ALG.ZUC",
+            "algorithm_family": "ZUC (Zhongchongzhi Stream Cipher)",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "不安全（量子下 64 位）",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "warning"
+                    },
+                    "reason": "ZUC 是移动通信中的 128 位流密码。Grover 模型下穷举复杂度平方根下降，等效强度约 64 位，不满足高强度 PQ 要求，但以目前的量子计算机性能暂时可以使用，推荐升级成256 位版本或者更安全的算法",
+                    "min_pq_resistant": 128
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "info"
+                    },
+                    "reason": "ZUC 是移动通信中的 128 位流密码。Grover 模型下穷举复杂度平方根下降，等效强度约 64 位，不满足高强度 PQ 要求，但以目前的量子计算机性能暂时可以使用，推荐升级成256 位版本或者更安全的算法"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "ZUC 是移动通信中的 128 位流密码。Grover 模型下穷举复杂度平方根下降，等效强度约 64 位，不满足高强度 PQ 要求。",
+            "recommendation": "在通信协议中更关键的是整体方案（含 KDF/KEM）。如向 PQ 迁移，可通过在密钥协商层引入 Kyber/Classic McEliece 等 PQC，同时逐步减少对 128 bit 流密码的长期机密性依赖。"
+        },
+        {
+            "id": "ALG.ZUC_EEA3",
+            "algorithm_family": "ZUC-128 EEA3",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "不安全（量子下 64 位）",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "warning"
+                    },
+                    "reason": "EEA3 是基于 ZUC-128 的 3GPP 加密算法，密钥 128 位，量子 Grover 搜索下等效强度约 2^64，难以满足高强度长期保密需求，但以目前的量子计算机性能暂时可以使用，推荐升级成256 位版本或者更安全的算法",
+                    "min_pq_resistant": 128
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "info"
+                    },
+                    "reason": "EEA3 是基于 ZUC-128 的 3GPP 加密算法，密钥 128 位，量子 Grover 搜索下等效强度约 2^64，难以满足高强度长期保密需求，但以目前的量子计算机性能暂时可以使用，推荐升级成256 位版本或者更安全的算法"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "EEA3 是基于 ZUC-128 的 3GPP 加密算法，密钥 128 位，量子 Grover 搜索下等效强度约 2^64，难以满足高强度长期保密需求。",
+            "recommendation": "在移动通信标准内可以按规范使用，但如需满足长期 PQ 机密性，应在密钥协商层引入 Kyber/ML-KEM 等 PQC KEM 或混合方案。"
+        },
+        {
+            "id": "ALG.ZUC_EIA3",
+            "algorithm_family": "ZUC-128 EIA3",
+            "category": "mac",
+            "quantum_secure": "weak",
+            "status_zh": "不安全（量子下强度很低）",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "warning"
+                    },
+                    "reason": "EIA3 是基于 ZUC-128 的 3GPP 完整性算法，输出标签仅 32 比特，适合有重传/计数限制的无线信令场景，但在通用环境下可被高概率在线猜测。量子攻击进一步削弱其有效强度。",
+                    "min_pq_resistant": 128
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "info"
+                    },
+                    "reason": "EIA3 是基于 ZUC-128 的 3GPP 完整性算法，输出标签仅 32 比特，适合有重传/计数限制的无线信令场景，但在通用环境下可被高概率在线猜测。量子攻击进一步削弱其有效强度。"
+                },
+                "tag_bits": {
+                    "type": "integer",
+                    "allow": [32],
+                    "severity": "warning",
+                    "reason": "tag 太短将导致伪造概率过高"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "tag_bits": {
+                    "allow": [32],
+                    "default": 32,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "EIA3 是基于 ZUC-128 的 3GPP 完整性算法，输出标签仅 32 比特，适合有重传/计数限制的无线信令场景，但在通用环境下可被高概率在线猜测。量子攻击进一步削弱其有效强度。",
+            "recommendation": "仅在遵循 3GPP 规范的无线信令环境使用；一般应用应采用 HMAC-SHA256/SM3 或 AEAD（如 AES-256-GCM、ChaCha20-Poly1305）实现认证。"
+        },
+        {
+            "id": "ALG.ZUC256",
+            "algorithm_family": "ZUC-256 Stream Cipher",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "不安全（量子下 128 位）",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "info"
+                    },
+                    "reason": "ZUC-256 是 ZUC 的 256 位版本，用于更高安全性要求。Grover 算法下等效强度约 128 位，接近后量子安全边界",
+                    "min_pq_resistant": 256
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    },
+                    "reason": "ZUC-256 是 ZUC 的 256 位版本，用于更高安全性要求。Grover 算法下等效强度约 128 位，接近后量子安全边界"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "ZUC-256 是 ZUC 的 256 位版本，用于更高安全性要求。Grover 算法下等效强度约 128 位，接近后量子安全边界",
+            "recommendation": "对于长期保密性，建议结合后量子密钥交换（Kyber/FrodoKEM）或逐步迁移到后量子认证加密方案。"
+        },
+        {
+            "id": "ALG.DH",
+            "algorithm_family": "Finite-field Diffie–Hellman (FFDHE)",
+            "category": "key_exchange",
+            "quantum_secure": "broken",
+            "status_zh": "不安全（大规模量子计算下可被完全破解）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "FFDHE 基于离散对数，Shor 算法可在多项式时间破解",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.KYBER", "ALG.DH_KYBER_HYBRID"]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [2048, 3072, 4096, 8192],
+                    "min": 2048,
+                    "recommended": 3072,
+                    "severity_map": {
+                        "< 2048": "error",
+                        "2048": "warning",
+                        "3072": "info",
+                        ">= 4096": "none"
+                    },
+                    "reason": "传统下 2048-bit 提供约 112-bit 安全性，3072-bit 提供 128-bit"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [2048, 3072, 4096],
+                    "default": 2048,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "有限域 Diffie–Hellman（FFDHE）基于模幂运算与离散对数难题，在经典安全模型下，2048 位模数约对应 112 比特左右的安全强度，更大模数可进一步提升安全性。然而在存在足够规模的通用量子计算机时，Shor 算法可在多项式时间内求解离散对数，使基于 DH 的密钥交换在量子攻击下完全失效，因此量子安全强度视为 0。",
+            "recommendation": "量子模式：立即迁移到 Kyber 或 DH+Kyber 混合；传统模式：至少使用 3072-bit。"
+        },
+        {
+            "id": "ALG.DH.MODP",
+            "algorithm_family": "Diffie–Hellman (MODP)",
+            "category": "asymmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "group_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "MODP 组基于离散对数，Shor 算法可破解",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.KYBER"]
+                }
+            },
+            "classic_constraints": {
+                "group_bits": {
+                    "type": "integer",
+                    "allow": [3072, 4096, 8192],
+                    "min": 3072,
+                    "recommended": 4096,
+                    "severity_map": {
+                        "< 2048": "error",
+                        "2048": "error",
+                        "3072": "warning",
+                        "4096": "info"
+                    },
+                    "reason": "MODP 1024/2048 已不安全，至少 3072-bit"
+                }
+            },
+            "params": {
+                "group_bits": {
+                    "allow": [3072, 4096],
+                    "default": 3072,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "离散对数问题在量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "量子模式：立即迁移到 Kyber 或混合 KEM；传统模式：禁用 1024/2048 MODP。"
+        },
+        {
+            "id": "ALG.ECDH",
+            "algorithm_family": "ECDH",
+            "category": "asymmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "所有 ECC 曲线基于椭圆曲线离散对数，Shor 算法可破解",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.KYBER", "ALG.ECDH_KYBER_HYBRID"]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": [
+                        "P-256",
+                        "P-384",
+                        "P-521",
+                        "X25519",
+                        "X448",
+                        "secp256r1",
+                        "secp384r1",
+                        "secp521r1"
+                    ],
+                    "forbidden": [
+                        "P-192",
+                        "P-224",
+                        "secp192r1",
+                        "secp224r1",
+                        "secp160r1",
+                        "secp112r1"
+                    ],
+                    "recommended": "X25519",
+                    "severity_map": {
+                        "P-192": "error",
+                        "P-224": "warning",
+                        "P-256": "info",
+                        "X25519": "none"
+                    },
+                    "reason": {
+                        "P-192": "96-bit 安全性不足",
+                        "P-224": "112-bit 安全性较弱",
+                        "P-256": "128-bit 安全性，可接受",
+                        "X25519": "安全且高效，推荐使用"
+                    }
+                },
+                "key_bits": {
+                    "type": "derived",
+                    "derive_from": "curve",
+                    "mapping": {
+                        "P-192": 192,
+                        "P-224": 224,
+                        "P-256": 256,
+                        "P-384": 384,
+                        "P-521": 521,
+                        "X25519": 256,
+                        "X448": 448,
+                        "Curve448": 448,
+                        "secp192r1": 192,
+                        "secp224r1": 224,
+                        "secp256r1": 256,
+                        "secp384r1": 384,
+                        "secp521r1": 521
+                    }
+                }
+            },
+            "params": {
+                "curve": {
+                    "type": "enum",
+                    "allow": [
+                        "P-256",
+                        "P-384",
+                        "P-521",
+                        "X25519",
+                        "X448",
+                        "secp384r1",
+                        "secp256r1",
+                        "secp521r1"
+                    ],
+                    "deprecated": ["P-192", "P-224", "secp192r1", "secp224r1"],
+                    "recommended": "X25519",
+                    "default": "X25519",
+                    "severity_if_not_allow": "high"
+                },
+                "key_bits": {
+                    "type": "derived",
+                    "derive_from": "curve",
+                    "mapping": {
+                        "P-192": 192,
+                        "P-224": 224,
+                        "P-256": 256,
+                        "P-384": 384,
+                        "P-521": 521,
+                        "X25519": 256,
+                        "X448": 448,
+                        "Curve448": 448,
+                        "secp192r1": 192,
+                        "secp224r1": 224,
+                        "secp256r1": 256,
+                        "secp384r1": 384,
+                        "secp521r1": 521
+                    }
+                }
+            },
+            "reason": "椭圆曲线离散对数在量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "量子模式：立即迁移到 Kyber 或 ECDH+Kyber 混合；传统模式：至少使用 P-256/X25519。"
+        },
+        {
+            "id": "ALG.SM2.PKE",
+            "algorithm_family": "SM2 (Public-Key Encryption)",
+            "category": "asymmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "algorithm",
+                    "min_pq_resistant": null,
+                    "reason": "SM2 基于椭圆曲线离散对数，Shor 算法可破解",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.KYBER", "ALG.SM2_KYBER_HYBRID"]
+                }
+            },
+            "classic_constraints": {
+                "mode": {
+                    "type": "enum",
+                    "allow": ["C1C3C2"],
+                    "forbidden": ["C1C2C3"],
+                    "recommended": "C1C3C2",
+                    "severity_map": {
+                        "C1C2C3": "warning"
+                    },
+                    "reason": "C1C3C2 模式完整性更强"
+                }
+            },
+            "params": {
+                "mode": {
+                    "allow": ["C1C3C2"],
+                    "default": "C1C3C2",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "SM2 属于 ECC 体制，量子下不安全；同时 C1C2C3 模式完整性更弱。",
+            "recommendation": "量子模式：迁移到 Kyber 或 SM2+Kyber 混合；传统模式：使用 C1C3C2 模式。"
+        },
+        {
+            "id": "ALG.SM2.SIG",
+            "algorithm_family": "SM2",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "algorithm",
+                    "min_pq_resistant": null,
+                    "reason": "SM2 签名基于椭圆曲线离散对数，Shor 算法可破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SM2_DILITHIUM_HYBRID"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": ["sm2p256v1"],
+                    "recommended": "sm2p256v1",
+                    "severity": "info"
+                },
+                "hash": {
+                    "type": "algorithm_ref",
+                    "allow": ["SM3"],
+                    "recommended": "SM3",
+                    "severity": "info"
+                }
+            },
+            "params": {
+                "curve": {
+                    "allow": ["sm2p256v1"],
+                    "default": "sm2p256v1",
+                    "severity_if_not_allow": "medium"
+                },
+                "hash": {
+                    "allow": ["SM3"],
+                    "default": "SM3",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "SM2 基于椭圆曲线，量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "量子模式：迁移到 Dilithium/Falcon 或混合签名；传统模式：SM2+SM3 可用。"
+        },
+        {
+            "id": "ALG.SM2.COMMIT",
+            "algorithm_family": "SM2 承诺 (Commitment)",
+            "category": "advanced",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": ["sm2p256v1"],
+                    "recommended": "sm2p256v1",
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "curve": {
+                    "allow": ["sm2p256v1"],
+                    "default": "sm2p256v1",
+                    "severity_if_not_allow": "medium"
+                },
+                "hash": {
+                    "allow": ["SM3"],
+                    "default": "SM3",
+                    "severity_if_not_allow": "medium"
+                },
+                "variant": {
+                    "allow": ["scalar", "vector"],
+                    "default": "scalar",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "SM2 承诺方案在绑定性上依赖椭圆曲线离散对数问题（与 SM2 签名相同），量子下可被 Shor 算法破解（0 位）；隐藏性依赖 SM3 等哈希的预映像/碰撞性质，但整体协议强度仍由 ECC 假设上限决定。",
+            "recommendation": "重要场景不要单独依赖基于 ECC 的承诺构造；中长期应迁移到基于格或哈希的抗量子承诺方案，或与 PQC 签名/密钥交换组合使用。"
+        },
+        {
+            "id": "ALG.SM2.ELGAMAL",
+            "algorithm_family": "SM2 ElGamal 同态加密",
+            "category": "he",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": ["sm2p256v1"],
+                    "recommended": "sm2p256v1",
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "curve": {
+                    "allow": ["sm2p256v1"],
+                    "default": "sm2p256v1",
+                    "severity_if_not_allow": "medium"
+                },
+                "hash": {
+                    "allow": ["SM3"],
+                    "default": "SM3",
+                    "severity_if_not_allow": "medium"
+                },
+                "plaintext_bits": {
+                    "allow_max": 32,
+                    "default": 32,
+                    "severity_if_violate": "high"
+                },
+                "homomorphic_ops": {
+                    "allow": ["add", "sub", "scalar_mul"],
+                    "default": ["add", "scalar_mul"],
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "SM2 ElGamal 在安全性上依赖 SM2 椭圆曲线离散对数问题，量子计算下同样可被 Shor 算法破解（0 位）；GMSSL 实现中明文域通常是 32bit 整数，结合同态性质（加法/减法/标量乘）在小域上存在枚举和流量分析风险。",
+            "recommendation": "不要将基于 SM2 的 ElGamal 视作长期保密的同态加密方案；如需同态能力，应优先考虑基于格的 HE/BFV/BGV/CKKS 等抗量子方案，或在过渡期使用传统同态加密仅承载低敏感度、小整数计算，并在信道上附加 PQC KEM/签名实现整体迁移。"
+        },
+        {
+            "id": "ALG.SM9.SIG",
+            "algorithm_family": "SM9",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {},
+            "params": {
+                "hash": {
+                    "allow": ["SM3"],
+                    "default": "SM3",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "SM9 签名同样基于双线性对体制，与 ECC 类似在量子计算下失去安全性。",
+            "recommendation": "新设计优先引入 PQC 签名（如 Dilithium/Falcon），可在过渡期采用 SM9+PQC 混合签名结构以平滑迁移。"
+        },
+        {
+            "id": "ALG.SM9.PKE",
+            "algorithm_family": "SM9 (Identity-Based Encryption)",
+            "category": "asymmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {},
+            "params": {
+                "role": {
+                    "allow": ["IBE", "KEM"],
+                    "default": "IBE",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "SM9 基于椭圆曲线上的双线性对，安全性依赖离散对数与相关假设。量子计算下这些假设失效（Shor）。",
+            "recommendation": "中长期应迁移到 PQC KEM（如 Kyber）或 SM9+PQC 的混合方案；新系统避免将 SM9 作为唯一长期机密性保障。"
+        },
+        {
+            "id": "ALG.SM9.KEX",
+            "algorithm_family": "SM9 (Identity-Based Key Exchange)",
+            "category": "kex",
+            "quantum_secure": false,
+            "status_zh": "不安全（量子下）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {},
+            "params": {
+                "role": {
+                    "allow": ["KEX"],
+                    "default": "KEX",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "SM9 密钥交换同样基于椭圆曲线上的双线性对，安全性依赖离散对数及相关计算困难假设。量子计算（Shor 算法）下，这些假设失效，导致协议整体不具备长期抗量子安全。",
+            "recommendation": "中长期应迁移到 PQC 密钥交换 / KEM（如 Kyber）或 SM9 + PQC 的混合密钥协商方案；新系统避免将 SM9 密钥交换作为唯一长期机密性保障手段。"
+        },
+        {
+            "id": "ALG.SM2DH_MLKEM768_HYBRID",
+            "algorithm_family": "SM2DH-ML-KEM768 混合密钥交换",
+            "category": "kex",
+            "quantum_secure": true,
+            "status_zh": "混合/PQ 安全（由 ML-KEM768 提供）",
+            "q_security_bits": 128,
+            "params": {
+                "components": {
+                    "allow": ["SM2DH", "ML-KEM-768"],
+                    "default": ["SM2DH", "ML-KEM-768"],
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "该方案将基于椭圆曲线的 SM2 Diffie-Hellman 与格基 KEM（ML-KEM-768，对应 Kyber-768）组合，协商得到会话密钥。经典部分在量子下不安全，但 PQC 部分仍然提供约 128 位抗量子安全位，整体可视为过渡阶段的混合 PQ 方案。",
+            "recommendation": "适合作为现有 SM2 生态向 PQC 平滑迁移的中间形态。长期建议逐步过渡到纯 PQC KEM（ML-KEM/Classic McEliece 等）或纯 PQC 协议栈。"
+        },
+        {
+            "id": "ALG.DSA",
+            "algorithm_family": "DSA",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "DSA 基于离散对数，Shor 算法可破解",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.DILITHIUM", "ALG.FALCON"]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [2048, 3072],
+                    "min": 2048,
+                    "recommended": 3072,
+                    "severity_map": {
+                        "< 2048": "error",
+                        "2048": "warning",
+                        "3072": "info"
+                    },
+                    "reason": "传统下至少需要 2048-bit，推荐 3072-bit"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [3072],
+                    "default": 3072,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "离散对数问题量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "量子模式：立即停用并迁移到 Dilithium/Falcon；传统模式：至少 3072-bit。"
+        },
+        {
+            "id": "ALG.ECDSA",
+            "algorithm_family": "ECDSA",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "ECDSA 基于椭圆曲线离散对数，Shor 算法可破解所有曲线",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": [
+                        "P-256",
+                        "P-384",
+                        "P-521",
+                        "secp256k1",
+                        "secp256r1",
+                        "secp384r1",
+                        "secp521r1"
+                    ],
+                    "forbidden": [
+                        "P-192",
+                        "P-224",
+                        "secp192r1",
+                        "secp224r1",
+                        "secp160r1"
+                    ],
+                    "recommended": "P-256",
+                    "severity_map": {
+                        "P-192": "error",
+                        "P-224": "warning",
+                        "P-256": "info",
+                        "P-384": "none"
+                    }
+                },
+                "key_bits": {
+                    "type": "derived",
+                    "derive_from": "curve",
+                    "mapping": {
+                        "P-192": 192,
+                        "P-224": 224,
+                        "P-256": 256,
+                        "P-384": 384,
+                        "P-521": 521,
+                        "secp192r1": 192,
+                        "secp224r1": 224,
+                        "secp256r1": 256,
+                        "secp256k1": 256,
+                        "secp384r1": 384,
+                        "secp521r1": 521
+                    }
+                },
+                "hash": {
+                    "type": "algorithm_ref",
+                    "allow": [
+                        "SHA-256",
+                        "SHA-384",
+                        "SHA-512",
+                        "SHA3-256",
+                        "SHA3-512"
+                    ],
+                    "forbidden": ["SHA-1", "MD5"],
+                    "recommended": "SHA-256",
+                    "severity_map": {
+                        "MD5": "error",
+                        "SHA-1": "error",
+                        "SHA-224": "warning",
+                        "SHA-256": "none"
+                    }
+                }
+            },
+            "params": {
+                "curve": {
+                    "type": "enum",
+                    "allow": [
+                        "P-256",
+                        "P-384",
+                        "P-521",
+                        "secp256k1",
+                        "secp256r1",
+                        "secp384r1",
+                        "secp521r1"
+                    ],
+                    "deprecated": ["P-192", "P-224", "secp192r1", "secp224r1"],
+                    "recommended": "P-256",
+                    "default": "P-256",
+                    "severity_if_not_allow": "high"
+                },
+                "key_bits": {
+                    "type": "derived",
+                    "derive_from": "curve",
+                    "mapping": {
+                        "P-192": 192,
+                        "P-224": 224,
+                        "P-256": 256,
+                        "P-384": 384,
+                        "P-521": 521,
+                        "secp192r1": 192,
+                        "secp224r1": 224,
+                        "secp256r1": 256,
+                        "secp256k1": 256,
+                        "secp384r1": 384,
+                        "secp521r1": 521
+                    }
+                },
+                "hash": {
+                    "type": "algorithm_ref",
+                    "allow": [
+                        "SHA-256",
+                        "SHA-384",
+                        "SHA-512",
+                        "SHA3-256",
+                        "SHA3-512"
+                    ],
+                    "deprecated": ["SHA-1", "MD5"],
+                    "recommended": "SHA-256",
+                    "default": "SHA-256",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "ECDLP 在量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "量子模式：迁移到 Dilithium/Falcon；传统模式：至少使用 P-256 + SHA-256。"
+        },
+        {
+            "id": "ALG.EC",
+            "algorithm_family": "Elliptic-curve public-key (generic ECDH/ECDSA)",
+            "category": "asymmetric_key",
+            "quantum_secure": false,
+            "status_zh": "在大规模量子计算机下面对通用攻击不安全（椭圆曲线离散对数可被 Shor 算法高效求解）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [224, 256, 384, 521],
+                    "recommended": 521,
+                    "severity_map": {
+                        "224": "info",
+                        "256": "none",
+                        "384": "none",
+                        "521": "none"
+                    },
+                    "reason": "cryptography.hazmat.primitives.asymmetric.ec 模块使用的经典椭圆曲线（如 SECP256R1、SECP384R1 等）在经典攻击模型下安全性较高，但一旦存在大规模通用量子计算机，ECDLP 可以被 Shor 算法直接破解，因此量子安全强度视为 0。"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [224, 256, 384, 521],
+                    "default": 256,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "cryptography.hazmat.primitives.asymmetric.ec 模块使用的经典椭圆曲线（如 SECP256R1、SECP384R1 等）在经典攻击模型下安全性较高，但一旦存在大规模通用量子计算机，ECDLP 可以被 Shor 算法直接破解，因此量子安全强度视为 0。",
+            "recommendation": "在仅考虑经典安全的系统中，推荐使用 P-256/P-384 这类主流曲线；若需要抗量子安全，应迁移到格基密码（如 CRYSTALS-Kyber/Dilithium 等）或混合方案。"
+        },
+        {
+            "id": "ALG.Ed448",
+            "algorithm_family": "EdDSA over Ed448",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "在大规模量子计算机下面对通用攻击不安全（椭圆曲线离散对数可被 Shor 算法高效求解）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "基于整数分解/离散对数等，在通用量子计算机下可被 Shor 类算法破解（与密钥长度无关）",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.DH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 448,
+                    "recommended": 448,
+                    "severity_map": {
+                        "448": "none"
+                    },
+                    "reason": "Ed448 是基于 448-bit 椭圆曲线的 EdDSA 签名算法，在经典模型下提供非常高的安全裕度。但与所有基于离散对数问题的 ECC 一样，在存在通用量子计算机时会被 Shor 算法彻底破解，因此量子安全强度为 0。"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [448],
+                    "default": 448,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "Ed448 是基于 448-bit 椭圆曲线的 EdDSA 签名算法，在经典模型下提供非常高的安全裕度。但与所有基于离散对数问题的 ECC 一样，在存在通用量子计算机时会被 Shor 算法彻底破解，因此量子安全强度为 0。",
+            "recommendation": "在追求高经典安全性的系统中可作为 Ed25519 的高安全等级替代；如需抗量子，应考虑迁移到后量子签名方案（如 Dilithium、Falcon 等）。"
+        },
+        {
+            "id": "ALG.ED25519",
+            "algorithm_family": "Ed25519",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "安全（经典）,量子下不安全",
+            "q_security_bits_range": [0, 0],
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": ["edwards25519"],
+                    "recommended": "edwards25519",
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "curve": "edwards25519",
+                "field_bits": 255,
+                "classical_security_bits": 128,
+                "public_key_bytes": 32,
+                "private_key_bytes": 32,
+                "signature_bytes": 64,
+                "deterministic": true,
+                "context_support": true,
+                "prehash_variant": "Ed25519ph"
+            },
+            "reason": "基于 Edwards25519 曲线的高性能签名方案，设计避免常见实现陷阱，提供约 128-bit 经典安全强度，已在 RFC 8032 等标准中广泛部署。",
+            "recommendation": "通用数字签名的首选方案之一，适用于协议签名、软件更新签名等场景；如需抵抗大规模量子攻击，应与后量子签名或 KEM 组合使用。"
+        },
+        {
+            "id": "ALG.EDDSA",
+            "algorithm_family": "EdDSA",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": ["Ed25519", "Ed448"],
+                    "recommended": "Ed25519",
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "key_bits": {},
+                "curves": {
+                    "allow": ["Ed25519", "Ed448"],
+                    "default": "Ed25519",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "基于椭圆曲线，量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "迁移到 PQC 签名（Dilithium/Falcon）。"
+        },
+        {
+            "id": "ALG.SCHNORR",
+            "algorithm_family": "Schnorr",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "min_pq_resistant": null,
+                    "reason": "基于离散对数/双线性对等结构，在通用量子计算机下可被 Shor 类算法破解",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.ECDH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {
+                "curve": {
+                    "type": "enum",
+                    "allow": ["secp256k1", "P-256"],
+                    "recommended": "secp256k1",
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "curves": {
+                    "allow": ["secp256k1", "P-256"],
+                    "default": "secp256k1",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "基于（EC）DLP，量子下被 Shor 算法破解（0 位）。",
+            "recommendation": "链上应用转向 PQC 或混合（如 Dilithium + 现有签名）。"
+        },
+        {
+            "id": "ALG.NULL_CIPHER",
+            "algorithm_family": "Null cipher (EVP_enc_null)",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全（无加密）",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "基于整数分解/离散对数等，在通用量子计算机下可被 Shor 类算法破解（与密钥长度无关）",
+                    "severity": "critical",
+                    "migrate_to": [
+                        "ALG.KYBER",
+                        "ALG.DH_KYBER_HYBRID",
+                        "ALG.DILITHIUM",
+                        "ALG.FALCON",
+                        "ALG.SPHINCS_PLUS"
+                    ]
+                }
+            },
+            "classic_constraints": {},
+            "params": {},
+            "reason": "EVP_enc_null 不对明文做任何加密，仅作透明拷贝，相当于明文传输。",
+            "recommendation": "只用于测试或协议协商阶段的占位，绝不应用于保护真实敏感数据。"
+        },
+        {
+            "id": "ALG.DES",
+            "algorithm_family": "DES",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 56,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "DES 56-bit 密钥在量子下降为 28-bit，完全不安全",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "forbidden": [56],
+                    "severity": "error",
+                    "reason": "DES 56-bit 在传统下已可穷举破解（SWEET32）"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [],
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "经典攻击与穷举已不可接受；量子只会更差。",
+            "recommendation": "量子模式：立即停用，迁移到 AES-256；传统模式：同样必须停用。"
+        },
+        {
+            "id": "ALG.DESX",
+            "algorithm_family": "DESX",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全/过时",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "warning"
+                    },
+                    "reason": "DESX 在 DES 基础上做 key whitening，但仍是 64 位分组，存在生日界风险；算法本身已停止标准化和广泛分析，工程上视为过时方案。量子下穷举强度约 2^64。",
+                    "min_pq_resistant": null
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "warning",
+                    "reason": "64-bit 分组存在生日界风险；量子时代更易受影响"
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "info"
+                    },
+                    "reason": "DESX 在 DES 基础上做 key whitening，但仍是 64 位分组，存在生日界风险；算法本身已停止标准化和广泛分析，工程上视为过时方案。量子下穷举强度约 2^64。"
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "error",
+                    "reason": "64-bit 分组存在 SWEET32/生日攻击风险"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "block_bits": 64
+            },
+            "reason": "DESX 在 DES 基础上做 key whitening，但仍是 64 位分组，存在生日界风险；算法本身已停止标准化和广泛分析，工程上视为过时方案。量子下穷举强度约 2^64。",
+            "recommendation": "停用 DESX；使用 AES-256/GCM 或 ChaCha20-Poly1305 替代。"
+        },
+        {
+            "id": "ALG.3DES",
+            "algorithm_family": "3DES",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 80,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": null,
+                    "reason": "3DES 有效 112-bit 密钥在量子下降为 56-bit，不足",
+                    "severity": "critical",
+                    "migrate_to": ["ALG.AES"]
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "warning",
+                    "reason": "64-bit 分组在量子时代更容易受生日攻击影响"
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [168],
+                    "severity": "warning",
+                    "reason": "3DES 虽有 168-bit 密钥，但有效强度仅 112-bit"
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "error",
+                    "reason": "64-bit 分组存在 SWEET32 生日攻击（传统威胁）"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [168],
+                    "default": 168,
+                    "severity_if_not_allow": "high"
+                },
+                "block_bits": 64
+            },
+            "reason": "64 位分组导致生日界风险（SWEET32），且有效强度 <80 位。",
+            "recommendation": "量子模式：立即停用，迁移到 AES-256；传统模式：同样必须停用（SWEET32）。"
+        },
+        {
+            "id": "ALG.AES",
+            "algorithm_family": "AES",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "过渡/安全取决于密钥长度",
+            "q_security_bits": {
+                "AES-128": 64,
+                "AES-192": 96,
+                "AES-256": 128
+            },
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [128, 192, 256],
+                    "min_pq_resistant": 256,
+                    "recommended": 256,
+                    "classic_secure": 128,
+                    "severity_map": {
+                        "128": "warning",
+                        "192": "info",
+                        "256": "none"
+                    },
+                    "reason": "Grover 算法使 AES-128 量子安全性降为 64-bit（不足），AES-256 降为 128-bit（充足）"
+                },
+                "mode": {
+                    "type": "enum",
+                    "recommended": ["GCM", "GCM-SIV", "CCM"],
+                    "reason": "量子时代推荐 AEAD 模式以增强完整性保护，防止碰撞攻击加速",
+                    "severity": "info"
+                }
+            },
+            "classic_constraints": {
+                "mode": {
+                    "type": "enum",
+                    "allow": [
+                        "GCM",
+                        "GCM-SIV",
+                        "CCM",
+                        "CTR",
+                        "CBC",
+                        "OFB",
+                        "CFB"
+                    ],
+                    "forbidden": ["ECB"],
+                    "recommended": "GCM",
+                    "severity_map": {
+                        "ECB": "error",
+                        "CBC": "warning",
+                        "CTR": "info"
+                    },
+                    "reason": {
+                        "ECB": "模式泄露，相同明文产生相同密文",
+                        "CBC": "需要随机 IV，存在 padding oracle 风险",
+                        "CTR": "需要唯一 nonce，但可接受"
+                    }
+                },
+                "iv_bits": {
+                    "type": "derived",
+                    "derive_from": "mode",
+                    "mapping": {
+                        "GCM": 96,
+                        "CTR": 128,
+                        "CBC": 128,
+                        "CCM": 96
+                    },
+                    "require_random": ["GCM", "CTR", "CBC"],
+                    "severity": "high"
+                }
+            },
+            "params": {
+                "block_size": {
+                    "type": "fixed",
+                    "value": 128
+                }
+            },
+            "reason": "Grover 将穷举复杂度平方根下降；AES-256 仍达 128 位量子有效强度。",
+            "recommendation": "量子模式：优先 AES-256（128-bit 量子安全）；传统模式：禁止 ECB，推荐 GCM/CCM。"
+        },
+        {
+            "id": "ALG.AES.XTS",
+            "algorithm_family": "AES-XTS",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "过渡/磁盘加密场景特定",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256, 512],
+                    "recommended": 512,
+                    "severity_map": {
+                        "256": "warning",
+                        "512": "none"
+                    },
+                    "reason": "XTS 使用两把密钥（例如 AES-256-XTS 实际 512 bit key），传统安全性足够；量子下对称部分约 128 位。主要用于磁盘扇区加密，不提供消息认证。",
+                    "min_pq_resistant": 512
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256, 512],
+                    "recommended": 512,
+                    "severity_map": {
+                        "256": "none",
+                        "512": "none"
+                    },
+                    "reason": "XTS 使用两把密钥（例如 AES-256-XTS 实际 512 bit key），传统安全性足够；量子下对称部分约 128 位。主要用于磁盘扇区加密，不提供消息认证。"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256, 512],
+                    "default": 512,
+                    "severity_if_not_allow": "medium"
+                },
+                "sector_bytes": {
+                    "allow_min": 512,
+                    "severity_if_violate": "low"
+                }
+            },
+            "reason": "XTS 使用两把密钥（例如 AES-256-XTS 实际 512 bit key），传统安全性足够；量子下对称部分约 128 位。主要用于磁盘扇区加密，不提供消息认证。",
+            "recommendation": "继续用于磁盘/块设备加密；避免误用在通用 AEAD 场景。对数据完整性需额外配合 MAC/AEAD。"
+        },
+        {
+            "id": "ALG.SM4",
+            "algorithm_family": "SM4",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "不安全（量子下 64 位）",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "min_pq_resistant": null,
+                    "severity": "warning",
+                    "reason": "SM4 固定 128-bit 密钥，在 Grover 下降为 64-bit 安全性",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "info",
+                    "reason": "SM4 传统下 128-bit 安全，但长期保密建议更高强度"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "128 位密钥在 Grover 下仅 ~2^64。",
+            "recommendation": "量子模式：迁移到 AES-256/ChaCha20-Poly1305；传统模式：国密场景可继续使用。"
+        },
+        {
+            "id": "ALG.WBSM4",
+            "algorithm_family": "White-box SM4",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "过渡/实现风险高",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "warning"
+                    },
+                    "reason": "白盒 SM4 试图在攻击者可读/可调试环境下隐藏密钥，但公开的白盒设计多次被攻破，工程风险主要来自实现而非算法本身。其量子安全性不优于普通 SM4（Grover 下约 2^64）。",
+                    "min_pq_resistant": null
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "recommended": 128,
+                    "severity_map": {
+                        "128": "info"
+                    },
+                    "reason": "白盒 SM4 试图在攻击者可读/可调试环境下隐藏密钥，但公开的白盒设计多次被攻破，工程风险主要来自实现而非算法本身。其量子安全性不优于普通 SM4（Grover 下约 2^64）。"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "variant": {
+                    "allow": ["xiaolai", "baiwu", "wsise"],
+                    "default": "xiaolai",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "白盒 SM4 试图在攻击者可读/可调试环境下隐藏密钥，但公开的白盒设计多次被攻破，工程风险主要来自实现而非算法本身。其量子安全性不优于普通 SM4（Grover 下约 2^64）。",
+            "recommendation": "仅在确有白盒需求（如 DRM）并结合其它防护手段时使用；通用数据加密推荐标准 SM4/AES-256 等常规实现。"
+        },
+        {
+            "id": "ALG.CHACHA20",
+            "algorithm_family": "ChaCha20",
+            "category": "symmetric",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256],
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    },
+                    "reason": "ChaCha20-256 在量子下达到 128-bit 安全性，充足"
+                },
+                "aead": {
+                    "type": "enum",
+                    "recommended": ["Poly1305"],
+                    "severity": "info",
+                    "reason": "量子时代推荐使用 AEAD 组合（ChaCha20-Poly1305）"
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256],
+                    "severity": "none",
+                    "reason": "ChaCha20-256 传统下完全安全"
+                },
+                "nonce": {
+                    "type": "validation",
+                    "require_unique": true,
+                    "nonce_bits": 96,
+                    "severity": "error",
+                    "reason": "ChaCha20 要求唯一 nonce，重复将导致密钥流重用"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "high"
+                },
+                "aead": {
+                    "allow": ["Poly1305"],
+                    "default": "Poly1305",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "256 位密钥在 Grover 下仍约 128 位。",
+            "recommendation": "量子模式：继续使用 ChaCha20-Poly1305；传统模式：确保 nonce 唯一性。"
+        },
+        {
+            "id": "ALG.CHACHA20_POLY1305",
+            "algorithm_family": "ChaCha20-Poly1305",
+            "category": "aead",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256],
+                    "recommended": 256,
+                    "severity": "none",
+                    "reason": "ChaCha20-Poly1305-256 量子下 128-bit 安全，推荐使用"
+                }
+            },
+            "classic_constraints": {
+                "nonce_bytes": {
+                    "type": "integer",
+                    "allow": [12],
+                    "severity": "error",
+                    "reason": "必须使用 12-byte nonce，且绝不能重用"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "nonce_bytes": {
+                    "allow": [12],
+                    "default": 12,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "ChaCha20-Poly1305 提供高性能与安全性，256 位密钥在 Grover 下仍约 128 位。",
+            "recommendation": "量子模式：推荐使用；传统模式：确保 nonce 不重用。"
+        },
+        {
+            "id": "ALG.XCHACHA20_POLY1305",
+            "algorithm_family": "XChaCha20-Poly1305",
+            "category": "aead",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    },
+                    "reason": "XChaCha20-Poly1305 提供 192 bit nonce 空间，适合随机 nonce 使用，避免传统 96 bit nonce 计数溢出与重用风险。256 位密钥在 Grover 下仍约 128 位。",
+                    "min_pq_resistant": 256
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    },
+                    "reason": "XChaCha20-Poly1305 提供 192 bit nonce 空间，适合随机 nonce 使用，避免传统 96 bit nonce 计数溢出与重用风险。256 位密钥在 Grover 下仍约 128 位。"
+                },
+                "nonce_bytes": {
+                    "type": "integer",
+                    "allow": [24],
+                    "severity": "error",
+                    "reason": "nonce 长度必须符合协议/库要求且绝不能重用"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "nonce_bytes": {
+                    "allow": [24],
+                    "default": 24,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "XChaCha20-Poly1305 提供 192 bit nonce 空间，适合随机 nonce 使用，避免传统 96 bit nonce 计数溢出与重用风险。256 位密钥在 Grover 下仍约 128 位。",
+            "recommendation": "新设计中可优先采用 XChaCha20-Poly1305（随机 24 字节 nonce，绝不重用）。如环境对 AES 有硬件加速，可视情况继续使用 AES-256-GCM。"
+        },
+        {
+            "id": "ALG.SALSA20",
+            "algorithm_family": "Salsa20",
+            "category": "symmetric",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    },
+                    "reason": "与 ChaCha20 类似的安全边际；量子下约 128 位。",
+                    "min_pq_resistant": 256
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    },
+                    "reason": "与 ChaCha20 类似的安全边际；量子下约 128 位。"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "与 ChaCha20 类似的安全边际；量子下约 128 位。",
+            "recommendation": "如保留，建议配合 Poly1305（AEAD）。"
+        },
+        {
+            "id": "ALG.BLOWFISH",
+            "algorithm_family": "Blowfish",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "过渡",
+            "q_security_bits_range": [64, 128],
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256, 384, 448],
+                    "recommended": 448,
+                    "severity_map": {
+                        "256": "none",
+                        "384": "none",
+                        "448": "none"
+                    },
+                    "reason": "64 位分组带来生日界风险；量子下强度受限。",
+                    "min_pq_resistant": 256
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "warning",
+                    "reason": "64-bit 分组存在生日界风险；量子时代更易受影响"
+                }
+            },
+            "classic_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "allow": [256, 384, 448],
+                    "recommended": 448,
+                    "severity_map": {
+                        "256": "none",
+                        "384": "none",
+                        "448": "none"
+                    },
+                    "reason": "64 位分组带来生日界风险；量子下强度受限。"
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "error",
+                    "reason": "64-bit 分组存在 SWEET32/生日攻击风险"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [256, 384, 448],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "block_bits": 64
+            },
+            "reason": "64 位分组带来生日界风险；量子下强度受限。",
+            "recommendation": "迁移到 AES-256 或 ChaCha20；避免长期数据加密场景。"
+        },
+        {
+            "id": "ALG.RC2",
+            "algorithm_family": "RC2",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 64,
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "high"
+                },
+                "block_bits": 64
+            },
+            "reason": "RC2 是过时的对称算法，64位分组存在生日界攻击，已被现代密码分析攻破。",
+            "recommendation": "停用RC2；迁移到AES-256/GCM或ChaCha20-Poly1305。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "severity": "warning",
+                    "reason": "RC2 经 Grover 攻击后量子安全性不足，且存在已知密码分析弱点",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "info",
+                    "reason": "64-bit 分组在大数据量下存在生日界风险"
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "RC2 是过时算法，存在已知密码分析攻击和 64-bit 分组的 Sweet32 风险"
+                }
+            }
+        },
+        {
+            "id": "ALG.IDEA",
+            "algorithm_family": "IDEA",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "过渡",
+            "q_security_bits": 64,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "warning",
+                    "reason": "IDEA-128 经 Grover 攻击后量子安全性降为 64-bit，不足以抵抗量子计算机",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "info",
+                    "reason": "64-bit 分组在大数据量下存在生日界风险"
+                }
+            },
+            "classic_constraints": {
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "warning",
+                    "reason": "64-bit 分组在传输大量数据时存在 Sweet32 攻击风险"
+                }
+            },
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "high"
+                },
+                "block_bits": 64
+            },
+            "reason": "IDEA虽然设计良好，但64位分组存在生日界风险，且专利限制使其使用受限。",
+            "recommendation": "迁移到AES-256；仅用于历史兼容场景。"
+        },
+        {
+            "id": "ALG.TWOFISH",
+            "algorithm_family": "Twofish",
+            "category": "symmetric",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": 256,
+                    "severity_map": {
+                        "128": "warning",
+                        "192": "info",
+                        "256": "none"
+                    },
+                    "reason": "Twofish-128 经 Grover 攻击后量子安全性为 64-bit，Twofish-256 为 128-bit（充足）"
+                }
+            },
+            "classic_constraints": {},
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "256 位密钥在 Grover 下约 128 位。",
+            "recommendation": "可作为 AES-256 的等价候选。"
+        },
+        {
+            "id": "ALG.CAMELLIA",
+            "algorithm_family": "Camellia",
+            "category": "symmetric",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "mode": {
+                    "allow": ["GCM", "CTR", "CCM"],
+                    "default": "GCM",
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "与 AES-256 等级相当的量子有效强度。",
+            "recommendation": "使用 Camellia-256/GCM。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": 256,
+                    "severity_map": {
+                        "128": "warning",
+                        "192": "info",
+                        "256": "none"
+                    },
+                    "reason": "Camellia-128 经 Grover 攻击后量子安全性为 64-bit，Camellia-256 为 128-bit（充足）"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.ARIA",
+            "algorithm_family": "ARIA",
+            "category": "symmetric",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "key_bits": {
+                    "allow": [128, 192, 256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "mode": {
+                    "allow": ["GCM", "CTR", "CCM"],
+                    "default": "GCM",
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "韩国标准分组密码，128-256 位密钥。ARIA-256 在量子环境下提供约 128-bit 安全强度。",
+            "recommendation": "优先使用 ARIA-256/GCM。若无特殊需求，推荐使用 AES-256/GCM 作为更广泛支持的替代。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": 256,
+                    "severity_map": {
+                        "128": "warning",
+                        "192": "info",
+                        "256": "none"
+                    },
+                    "reason": "ARIA-128 经 Grover 攻击后量子安全性为 64-bit，ARIA-256 为 128-bit（充足）"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SEED",
+            "algorithm_family": "SEED",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "弱安全",
+            "q_security_bits": 64,
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "mode": {
+                    "allow": ["GCM", "CTR", "CBC"],
+                    "default": "GCM",
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "韩国标准分组密码（KISA），128位固定密钥长度。量子环境下仅提供约64位安全强度。",
+            "recommendation": "不推荐用于新系统。迁移至 AES-256 或 ARIA-256。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "warning",
+                    "reason": "SEED-128 经 Grover 攻击后量子安全性降为 64-bit，不足以抵抗量子计算机",
+                    "migrate_to": ["ALG.AES", "ALG.ARIA"]
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.CAST5",
+            "algorithm_family": "CAST5",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "弱安全",
+            "q_security_bits": 64,
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "mode": {
+                    "disallow": ["ECB"],
+                    "default": "CBC",
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "CAST5（CAST-128）最大密钥长度 128-bit，量子环境下安全强度约 64-bit。64-bit 分组大小在处理大量数据时存在生日攻击风险。",
+            "recommendation": "不建议用于新系统。推荐迁移到 AES-256/GCM 或 ChaCha20-Poly1305。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "severity": "warning",
+                    "reason": "CAST5（40-128 bit）经 Grover 攻击后量子安全性不足，且 64-bit 分组存在生日界问题",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "info",
+                    "reason": "64-bit 分组在大数据量下存在生日界风险"
+                }
+            },
+            "classic_constraints": {
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "warning",
+                    "reason": "64-bit 分组存在 Sweet32 攻击风险"
+                }
+            }
+        },
+        {
+            "id": "ALG.RC4",
+            "algorithm_family": "RC4",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "critical",
+                    "reason": "RC4 流密码存在严重统计偏差（BEAST、RC4 bias），已被多种实用攻击破解，量子下完全无安全性",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "RC4 存在严重偏差（密钥流前256字节不均匀）和实用攻击（BEAST），自2015年已被禁用"
+                }
+            },
+            "params": {},
+            "reason": "严重偏差与实际攻击，已不安全。",
+            "recommendation": "彻底停用。"
+        },
+        {
+            "id": "ALG.RC5",
+            "algorithm_family": "RC5-32/12/16",
+            "category": "symmetric",
+            "quantum_secure": "weak",
+            "status_zh": "过渡/不推荐",
+            "q_security_bits": 64,
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "block_bits": 64,
+                "rounds": {
+                    "allow": [12],
+                    "default": 12,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "RC5-32/12/16 使用 64 位分组，已存在针对减轮 RC5 的密码分析结果。算法长期未被主流标准采用且缺乏现代化安全评估，量子下穷举强度约 2^64。",
+            "recommendation": "新系统不应使用 RC5；现有系统建议迁移到 AES-256/GCM 或 ChaCha20-Poly1305。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "severity": "warning",
+                    "reason": "RC5-128 经 Grover 攻击后量子安全性为 64-bit，且 64-bit 分组存在生日界问题",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                },
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "info",
+                    "reason": "64-bit 分组在大数据量下存在生日界风险"
+                }
+            },
+            "classic_constraints": {
+                "block_bits": {
+                    "type": "fixed",
+                    "value": 64,
+                    "severity": "warning",
+                    "reason": "64-bit 分组存在 Sweet32 攻击风险"
+                }
+            }
+        },
+        {
+            "id": "ALG.TEA",
+            "algorithm_family": "TEA",
+            "category": "symmetric",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {
+                "key_bits": {
+                    "allow": [128, 256, 512],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "block_bits": 64
+            },
+            "reason": "存在实用的密码分析攻击，且长期未被主流标准采用，视为不安全。",
+            "recommendation": "彻底停用；迁移到 AES-256/GCM 或 ChaCha20-Poly1305。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "critical",
+                    "reason": "TEA 存在严重密码分析弱点（related-key attacks），量子下完全不安全",
+                    "migrate_to": ["ALG.AES", "ALG.CHACHA20"]
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "TEA 存在实用的密码分析攻击（equivalent keys, related-key attacks）"
+                }
+            }
+        },
+        {
+            "id": "ALG.NULL_HASH",
+            "algorithm_family": "Null digest (EVP_md_null)",
+            "category": "hash",
+            "quantum_secure": false,
+            "status_zh": "不安全（无散列保护）",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "EVP_md_null 不对输入做任何杂凑运算，只是占位符。使用该“算法”等价于没有消息完整性保护。",
+            "recommendation": "仅可用于测试或兼容占位，禁止在实际安全协议、签名或 MAC 中使用。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "critical",
+                    "reason": "Null digest 不提供任何完整性保护，等价于无哈希",
+                    "migrate_to": ["ALG.SHA256", "ALG.SHA3_256"]
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "Null digest 不提供任何完整性保护"
+                }
+            }
+        },
+        {
+            "id": "ALG.MD2",
+            "algorithm_family": "MD2",
+            "category": "hash",
+            "quantum_secure": false,
+            "status_zh": "不安全 / 已废弃",
+            "q_security_bits": 0,
+            "params": {
+                "digest_bits": 128
+            },
+            "reason": "MD2 是早期消息摘要算法，已被多种密码分析实质性削弱，不再满足现代安全需求。",
+            "recommendation": "仅被动识别遗留系统中的 MD2，用于风险告警；禁止在新系统中继续使用。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "critical",
+                    "reason": "MD2 已被多种密码分析攻击破解，量子下完全无安全性",
+                    "migrate_to": ["ALG.SHA256", "ALG.SHA3_256"]
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "error",
+                    "reason": "MD2 已被实质性削弱，不满足现代安全需求"
+                }
+            }
+        },
+        {
+            "id": "ALG.MD5",
+            "algorithm_family": "MD5",
+            "category": "hash",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "critical",
+                    "reason": "MD5 已被碰撞攻击破解，量子下更无安全性可言",
+                    "migrate_to": ["ALG.SHA256", "ALG.SHA3_256"]
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 128,
+                    "severity": "error",
+                    "reason": "MD5 已被实用碰撞攻击完全破解（2004 年起）"
+                }
+            },
+            "params": {
+                "digest_bits": 128
+            },
+            "reason": "已被实用碰撞攻击；量子下更弱。",
+            "recommendation": "量子模式：立即停用；传统模式：同样必须停用。"
+        },
+        {
+            "id": "ALG.MD5_SHA1",
+            "algorithm_family": "MD5 + SHA-1 组合摘要",
+            "category": "hash",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "critical",
+                    "reason": "MD5 和 SHA-1 都已被实用碰撞攻击破解，组合后无法提供安全保障，量子下更无防护",
+                    "migrate_to": ["ALG.SHA256", "ALG.SHA384", "ALG.SHA3_256"]
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "MD5 和 SHA-1 都存在碰撞攻击，组合后安全性取决于最弱环节（已破解）"
+                }
+            },
+            "params": {
+                "digest_bits": 160
+            },
+            "reason": "TLS 早期使用的 MD5||SHA-1 组合，两者分别已被实用碰撞攻击，组合后安全性仍取决于最弱的一方，整体视为不安全。",
+            "recommendation": "不再使用 MD5+SHA1，统一迁移到 SHA-256/384/512 或 SHA3-256/512。"
+        },
+        {
+            "id": "ALG.SHA1",
+            "algorithm_family": "SHA-1",
+            "category": "hash",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 160,
+                    "severity": "critical",
+                    "reason": "SHA-1 已被碰撞攻击破解，量子下完全不安全",
+                    "migrate_to": ["ALG.SHA256", "ALG.SHA3_256"]
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 160,
+                    "severity": "error",
+                    "reason": "SHA-1 已被实用碰撞攻击破解（2017 年 SHAttered）"
+                }
+            },
+            "params": {
+                "digest_bits": 160
+            },
+            "reason": "已被实用碰撞攻击；量子下更弱。",
+            "recommendation": "量子模式：立即停用；传统模式：同样必须停用。"
+        },
+        {
+            "id": "ALG.SHA224",
+            "algorithm_family": "SHA-224",
+            "category": "hash",
+            "quantum_secure": "weak",
+            "status_zh": "过渡",
+            "q_security_bits": 112,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 224,
+                    "severity": "info",
+                    "reason": "SHA-224 在 Grover 下约 112-bit 碰撞抵抗，勉强可用但不推荐",
+                    "q_collision_bits": 112
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 224,
+                    "severity": "info",
+                    "reason": "SHA-224 传统下安全，但输出较短"
+                }
+            },
+            "params": {
+                "digest_bits": 224
+            },
+            "reason": "Grover 下等效 112 位。",
+            "recommendation": "量子模式：推荐 SHA-256/SHA3-256；传统模式：可用但推荐更长输出。"
+        },
+        {
+            "id": "ALG.SHA256",
+            "algorithm_family": "SHA-256",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none",
+                    "reason": "SHA-256 在量子下提供 128-bit 碰撞抵抗和 160-bit 原像抵抗，充足",
+                    "q_collision_bits": 128,
+                    "q_preimage_bits": 160
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none",
+                    "reason": "SHA-256 传统下完全安全，推荐使用"
+                }
+            },
+            "params": {
+                "digest_bits": 256
+            },
+            "reason": "Grover 下等效 128 位预映像强度。",
+            "recommendation": "量子模式：推荐使用；传统模式：推荐使用。"
+        },
+        {
+            "id": "ALG.SHA512_224",
+            "algorithm_family": "SHA-512/224",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全（缩短输出）",
+            "q_security_bits": 112,
+            "params": {
+                "digest_bits": 224
+            },
+            "reason": "基于 SHA-512 的截断版本，量子下预映像强度约 112 位，碰撞强度约 112 位。",
+            "recommendation": "新设计一般继续采用 SHA-256/384/512；除非有特别标准依赖，不建议新引入。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 224,
+                    "severity": "info",
+                    "reason": "SHA-512/224 量子下 112-bit 碰撞抵抗，满足一般应用",
+                    "q_collision_bits": 112
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 224,
+                    "severity": "none"
+                }
+            }
+        },
+        {
+            "id": "ALG.SHA512_256",
+            "algorithm_family": "SHA-512/256",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全（缩短输出）",
+            "q_security_bits": 128,
+            "params": {
+                "digest_bits": 256
+            },
+            "reason": "基于 SHA-512 的截断版本，量子下预映像强度约 128 位。",
+            "recommendation": "如已有标准要求，可使用；否则 SHA-256/384 足够。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none",
+                    "reason": "SHA-512/256 量子下 128-bit 碰撞抵抗，安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none"
+                }
+            }
+        },
+        {
+            "id": "ALG.SHA384",
+            "algorithm_family": "SHA-384",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 192,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 384,
+                    "severity": "none",
+                    "reason": "SHA-384 在量子下提供 192-bit 碰撞抵抗，高安全性",
+                    "q_collision_bits": 192
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 384,
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "digest_bits": 384
+            },
+            "reason": "更高安全余量。",
+            "recommendation": "高安全应用推荐。"
+        },
+        {
+            "id": "ALG.SHA512",
+            "algorithm_family": "SHA-512",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 512,
+                    "severity": "none",
+                    "reason": "SHA-512 量子下提供 256-bit 碰撞抵抗和 320-bit 原像抵抗，极高安全性",
+                    "q_collision_bits": 256,
+                    "q_preimage_bits": 320
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 512,
+                    "severity": "none",
+                    "reason": "SHA-512 传统下具有极高安全性"
+                }
+            },
+            "params": {
+                "digest_bits": 512
+            },
+            "reason": "量子下仍具高安全位。",
+            "recommendation": "量子模式：长期数据保护推荐；传统模式：高安全应用推荐。"
+        },
+        {
+            "id": "ALG.SHA3_224",
+            "algorithm_family": "SHA3-224",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "推荐",
+            "q_security_bits": 112,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 224,
+                    "severity": "info",
+                    "reason": "SHA3-224 量子下 112-bit 碰撞抵抗，满足一般应用，高安全场景建议使用 SHA3-256 及以上",
+                    "q_collision_bits": 112
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 224,
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "digest_bits": {
+                    "allow": [224],
+                    "default": 224,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "SHA3-224 为 SHA-3 系列的 224 位输出变种，抗碰撞安全约 112 bit，适用于中等安全强度的哈希场景。",
+            "recommendation": "新设计中需要 ~112 bit 抗碰撞强度时可使用 SHA3-224；更高强度建议选 SHA3-256 及以上。"
+        },
+        {
+            "id": "ALG.SHA3_256",
+            "algorithm_family": "SHA-3-256",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none",
+                    "reason": "SHA3-256 量子下 128-bit 碰撞抵抗，安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "digest_bits": 256
+            },
+            "reason": "海绵结构，良好安全余量。",
+            "recommendation": "对抗长度扩展与新设计偏好时使用。"
+        },
+        {
+            "id": "ALG.SHA3_384",
+            "algorithm_family": "SHA3-384",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "推荐",
+            "q_security_bits": 192,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 384,
+                    "severity": "none",
+                    "reason": "SHA3-384 量子下 192-bit 碰撞抵抗，高安全性",
+                    "q_collision_bits": 192
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 384,
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "digest_bits": {
+                    "allow": [384],
+                    "default": 384,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "SHA3-384 为 SHA-3 系列的 384 位输出变种，提供约 192 bit 的抗碰撞安全，适合高安全需求。",
+            "recommendation": "在需要高安全但不想使用 512 位输出时，推荐使用 SHA3-384。"
+        },
+        {
+            "id": "ALG.SHA3_512",
+            "algorithm_family": "SHA-3-512",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 512,
+                    "severity": "none",
+                    "reason": "SHA3-512 量子下 256-bit 碰撞抵抗，最高安全性",
+                    "q_collision_bits": 256
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 512,
+                    "severity": "none"
+                }
+            },
+            "params": {
+                "digest_bits": 512
+            },
+            "reason": "高强度。",
+            "recommendation": "高安全哈希优选。"
+        },
+        {
+            "id": "ALG.KECCAK-256",
+            "algorithm_family": "Keccak-256",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "digest_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none",
+                    "reason": "Keccak-256 量子下 128-bit 碰撞抵抗，安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.KECCAK-512",
+            "algorithm_family": "Keccak-512",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "params": {
+                "digest_bits": {
+                    "allow": [512],
+                    "default": 512,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 512,
+                    "severity": "none",
+                    "reason": "Keccak-512 量子下 256-bit 碰撞抵抗，极高安全",
+                    "q_collision_bits": 256
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SHAKE128",
+            "algorithm_family": "SHAKE128 (XOF)",
+            "category": "xof",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "digest_bits": {
+                    "allow_min": 256,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "可变输出长度的可扩展输出函数（XOF），量子下预映像强度约 128 位。",
+            "recommendation": "如用于哈希/导出，确保输出长度≥安全级别×2 比特（例如 256-bit 安全水平输出≥512-bit）。",
+            "quantum_constraints": {
+                "output_bits": {
+                    "type": "variable",
+                    "severity": "info",
+                    "reason": "SHAKE128 量子下 64-bit 碰撞抵抗，适合一般应用，高安全场景建议 SHAKE256",
+                    "q_collision_bits": 64
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SHAKE256",
+            "algorithm_family": "SHAKE256 (XOF)",
+            "category": "xof",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "params": {
+                "digest_bits": {
+                    "allow_min": 512,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "可变输出长度的可扩展输出函数（XOF），量子下预映像强度约 256 位。",
+            "recommendation": "如用于哈希/导出，确保输出长度≥安全级别×2 比特（例如 256-bit 安全水平输出≥512-bit）。",
+            "quantum_constraints": {
+                "output_bits": {
+                    "type": "variable",
+                    "severity": "none",
+                    "reason": "SHAKE256 量子下 128-bit 碰撞抵抗，安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.cShake128",
+            "algorithm_family": "cSHAKE128 (Customizable XOF)",
+            "category": "xof",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "digest_bits": {
+                    "allow_min": 256,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "可变输出长度的可扩展输出函数（XOF），量子下预映像强度约 128 位。",
+            "recommendation": "如用于哈希/导出，确保输出长度≥安全级别×2 比特（例如 256-bit 安全水平输出≥512-bit）。",
+            "quantum_constraints": {
+                "output_bits": {
+                    "type": "variable",
+                    "severity": "info",
+                    "reason": "cSHAKE128 量子下 64-bit 碰撞抵抗，适合一般应用",
+                    "q_collision_bits": 64
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.cShake256",
+            "algorithm_family": "cSHAKE256 (Customizable XOF)",
+            "category": "xof",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "params": {
+                "digest_bits": {
+                    "allow_min": 512,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "可变输出长度的可扩展输出函数（XOF），量子下预映像强度约 256 位。",
+            "recommendation": "如用于哈希/导出，确保输出长度≥安全级别×2 比特（例如 256-bit 安全水平输出≥512-bit）。",
+            "quantum_constraints": {
+                "output_bits": {
+                    "type": "variable",
+                    "severity": "none",
+                    "reason": "cSHAKE256 量子下 128-bit 碰撞抵抗，安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SM3",
+            "algorithm_family": "SM3",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": 256,
+                    "recommended": 256,
+                    "severity": "info",
+                    "reason": "量子下为了保持 128-bit 预映像抗性，需要 256-bit 摘要长度"
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "integer",
+                    "allow": [256],
+                    "recommended": 256,
+                    "severity_map": {
+                        "256": "none"
+                    }
+                }
+            },
+            "params": {
+                "digest_bits": 256
+            },
+            "reason": "与 SHA-256 等级相近。",
+            "recommendation": "国密环境采用。"
+        },
+        {
+            "id": "ALG.BLAKE2B",
+            "algorithm_family": "BLAKE2b",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "digest_bits": {
+                    "allow": [256, 384, 512],
+                    "default": 512,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "现代快速哈希；选择不同摘要长度适配场景。",
+            "recommendation": "一般推荐 512-bit 摘要；对带宽敏感可选 256。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "variable",
+                    "severity_map": {
+                        "256": "info",
+                        "384": "none",
+                        "512": "none"
+                    },
+                    "reason": "BLAKE2b-256 量子下 128-bit 碰撞抵抗，BLAKE2b-512 为 256-bit（极高安全）"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.BLAKE2S",
+            "algorithm_family": "BLAKE2s",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "digest_bits": {
+                    "allow": [128, 160, 224, 256],
+                    "default": 256,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "适合 32-bit/资源受限环境。",
+            "recommendation": "常用 256-bit。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "variable",
+                    "severity": "info",
+                    "reason": "BLAKE2s-256 量子下 128-bit 碰撞抵抗，安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.BLAKE3",
+            "algorithm_family": "BLAKE3",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "digest_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "现代高性能哈希，基于树型并行设计，具备强安全性与良好实现特性。",
+            "recommendation": "通用哈希可采用；对兼容性要求高的场景继续使用 SHA-2/3。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "variable",
+                    "severity": "none",
+                    "reason": "BLAKE3 量子下 128-bit 碰撞抵抗（256-bit 输出），安全",
+                    "q_collision_bits": 128
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.RIPEMD160",
+            "algorithm_family": "RIPEMD-160",
+            "category": "hash",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 80,
+            "params": {
+                "digest_bits": 160
+            },
+            "reason": "量子下等效强度不足，且有老化风险。",
+            "recommendation": "迁移到 SHA-256/3。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 160,
+                    "severity": "warning",
+                    "reason": "RIPEMD-160 量子下 80-bit 碰撞抵抗，不足以抵抗量子计算机",
+                    "migrate_to": ["ALG.SHA256", "ALG.SHA3_256"],
+                    "q_collision_bits": 80
+                }
+            },
+            "classic_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 160,
+                    "severity": "warning",
+                    "reason": "RIPEMD-160 安全边际较低，建议迁移到 SHA-256 或更强算法"
+                }
+            }
+        },
+        {
+            "id": "ALG.WHIRLPOOL",
+            "algorithm_family": "Whirlpool",
+            "category": "hash",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "params": {
+                "digest_bits": 512
+            },
+            "reason": "512 位摘要在量子下仍具 256 位级别预映像强度。",
+            "recommendation": "文件完整性等长寿命场景可用。",
+            "quantum_constraints": {
+                "digest_bits": {
+                    "type": "fixed",
+                    "value": 512,
+                    "severity": "none",
+                    "reason": "Whirlpool-512 量子下 256-bit 碰撞抵抗，极高安全",
+                    "q_collision_bits": 256
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SHAKE",
+            "algorithm_family": "SHAKE (XOF)",
+            "category": "xof",
+            "quantum_secure": "profile-dependent",
+            "status_zh": "谨慎",
+            "params": {
+                "security_level_bits": {
+                    "allow": [128, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "可变输出长度的可扩展输出函数（XOF），需正确配置输出长度以满足安全级别。",
+            "recommendation": "如用于哈希/导出，确保输出长度≥安全级别×2 比特（例如 256-bit 安全水平输出≥512-bit）。"
+        },
+        {
+            "id": "ALG.BCRYPT",
+            "algorithm_family": "bcrypt",
+            "category": "password_hash",
+            "quantum_secure": "weak",
+            "status_zh": "过渡",
+            "params": {
+                "cost": {
+                    "allow_min": 12,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "相较 Argon2/Scrypt 抗并行更弱。",
+            "recommendation": "新系统优先 Argon2id；如保留，提升 cost。",
+            "quantum_constraints": {
+                "cost": {
+                    "type": "integer",
+                    "severity": "info",
+                    "reason": "Bcrypt 基于 Blowfish，量子下密码搜索空间减半，建议配合强密码策略和高 cost 因子"
+                }
+            },
+            "classic_constraints": {
+                "cost": {
+                    "type": "integer",
+                    "severity": "info",
+                    "reason": "Bcrypt cost 因子建议至少 12，以抵抗暴力破解"
+                }
+            }
+        },
+        {
+            "id": "ALG.ARGON2",
+            "algorithm_family": "Argon2 (i/d)",
+            "category": "password_hash",
+            "quantum_secure": "weak",
+            "status_zh": "安全性依赖参数/变种",
+            "params": {
+                "variant": {
+                    "allow": ["argon2i", "argon2d"],
+                    "default": "argon2id",
+                    "severity_if_not_allow": "medium"
+                },
+                "time_cost": {
+                    "allow_min": 3,
+                    "severity_if_violate": "medium"
+                },
+                "memory_cost_kib": {
+                    "allow_min": 65536,
+                    "severity_if_violate": "medium"
+                },
+                "parallelism": {
+                    "allow_min": 1,
+                    "severity_if_violate": "low"
+                },
+                "salt_bytes": {
+                    "allow_min": 16,
+                    "severity_if_violate": "low"
+                }
+            },
+            "reason": "Argon2 是密码学竞赛获胜的内存硬口令哈希。i/d 变种分别针对侧信道与 GPU，量子环境下仍可通过穷举削弱安全性。",
+            "recommendation": "推荐使用 Argon2id 变种；设置高 memory_cost（≥64 MiB）与足够的 time_cost。避免直接使用 argon2d 用于通用口令哈希。",
+            "quantum_constraints": {
+                "memory_cost": {
+                    "type": "integer",
+                    "severity": "info",
+                    "reason": "Argon2 是内存困难型 KDF，量子下仍需配合强密码和高参数"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.ARGON2ID",
+            "algorithm_family": "Argon2id",
+            "category": "password_hash",
+            "quantum_secure": "weak",
+            "status_zh": "当前推荐口令哈希方案",
+            "params": {
+                "time_cost": {
+                    "allow_min": 3,
+                    "severity_if_violate": "medium"
+                },
+                "memory_cost_kib": {
+                    "allow_min": 65536,
+                    "severity_if_violate": "medium"
+                },
+                "parallelism": {
+                    "allow_min": 1,
+                    "severity_if_violate": "low"
+                },
+                "salt_bytes": {
+                    "allow_min": 16,
+                    "severity_if_violate": "low"
+                }
+            },
+            "reason": "Argon2id 结合 i/d 优点，在实际部署中被广泛认为是口令哈希首选方案。量子下穷举仍可削弱安全性，但内存硬特性对大规模加速有抑制作用。",
+            "recommendation": "新系统优先采用 Argon2id，设置 memory_cost ≥ 64MiB，time_cost ≥ 3，随机 16+ 字节盐。",
+            "quantum_constraints": {
+                "memory_cost": {
+                    "type": "integer",
+                    "severity": "info",
+                    "reason": "Argon2id 是内存困难型 KDF，量子下仍需配合强密码和高参数"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SCRYPT",
+            "algorithm_family": "kdf",
+            "category": "password_hash",
+            "quantum_secure": "weak",
+            "status_zh": "过渡/取决于参数",
+            "params": {
+                "N": {
+                    "allow_min": 32768,
+                    "severity_if_violate": "medium"
+                },
+                "r": {
+                    "allow_min": 8,
+                    "severity_if_violate": "low"
+                },
+                "p": {
+                    "allow_min": 1,
+                    "severity_if_violate": "low"
+                },
+                "salt_bytes": {
+                    "allow_min": 16,
+                    "severity_if_violate": "low"
+                }
+            },
+            "reason": "scrypt 为内存硬口令哈希；量子下穷举仍受限但并非根本安全。",
+            "recommendation": "新系统优先 Argon2id；保留 scrypt 时将 N≥2^15、r≥8、p≥1，盐≥16 字节。",
+            "quantum_constraints": {
+                "memory_cost": {
+                    "type": "integer",
+                    "severity": "info",
+                    "reason": "Scrypt 是内存困难型 KDF，量子下仍需配合强密码和高参数"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HKDF",
+            "algorithm_family": "HKDF",
+            "category": "kdf",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "hash": {
+                    "allow": [
+                        "SHA-256",
+                        "SHA-384",
+                        "SHA-512",
+                        "SHA3-256",
+                        "SHA3-512"
+                    ],
+                    "default": "SHA-256",
+                    "severity_if_not_allow": "low"
+                },
+                "salt_optional": true
+            },
+            "reason": "基于 HMAC 的密钥派生，广泛标准化。",
+            "recommendation": "优先于 PBKDF2 用于 KDF/扩展会话密钥。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "info",
+                    "reason": "HKDF 安全性取决于底层哈希算法，建议使用 SHA-256 或 SHA3-256"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.TLS1_PRF",
+            "algorithm_family": "TLS1-PRF",
+            "category": "kdf",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "hash": {
+                    "allow": ["SHA-256", "SHA-384", "SHA-512"],
+                    "default": "SHA-256",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "TLS伪随机函数(PRF)用于TLS协议中的密钥派生，基于HMAC-SHA256/384。",
+            "recommendation": "仅用于TLS协议实现；通用KDF场景使用HKDF。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "warning",
+                    "reason": "TLS1 PRF 基于 MD5 和 SHA-1，量子下不安全，建议使用 TLS 1.2+ PRF"
+                }
+            },
+            "classic_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "warning",
+                    "reason": "TLS1 PRF 基于 MD5 和 SHA-1，已过时"
+                }
+            }
+        },
+        {
+            "id": "ALG.PBKDF2",
+            "algorithm_family": "PBKDF2",
+            "category": "kdf",
+            "quantum_secure": "weak",
+            "status_zh": "过渡",
+            "quantum_constraints": {
+                "recommendation": {
+                    "type": "info",
+                    "severity": "info",
+                    "reason": "PBKDF2 本身不直接受量子攻击影响，但派生密钥强度取决于密码熵，量子下密码搜索成本降低",
+                    "migrate_to": ["ALG.ARGON2", "ALG.SCRYPT"]
+                }
+            },
+            "classic_constraints": {
+                "hash": {
+                    "type": "algorithm_ref",
+                    "forbidden": ["MD5", "SHA-1"],
+                    "recommended": ["SHA-256", "SHA-512"],
+                    "severity_map": {
+                        "MD5": "error",
+                        "SHA-1": "error"
+                    }
+                },
+                "iter": {
+                    "type": "integer",
+                    "allow_min": 600000,
+                    "recommended": 1000000,
+                    "severity": "medium"
+                }
+            },
+            "params": {
+                "hash": {
+                    "allow": ["SHA-256", "SHA-512", "SHA3-256", "SHA3-512"],
+                    "default": "SHA-256",
+                    "severity_if_not_allow": "medium"
+                },
+                "iter": {
+                    "allow_min": 600000,
+                    "severity_if_violate": "medium"
+                },
+                "salt_bytes": {
+                    "allow_min": 16,
+                    "severity_if_violate": "low"
+                }
+            },
+            "reason": "抗 GPU 的口令 KDF 边际不足；量子下等效更弱。",
+            "recommendation": "量子模式：迁移到 Argon2/Scrypt 提高内存成本；传统模式：提高迭代次数 (>600k)。"
+        },
+        {
+            "id": "ALG.PBE.MD5.DES",
+            "algorithm_family": "PBE (MD5 + DES)",
+            "category": "pbe",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {
+                "key_bits": 56
+            },
+            "reason": "使用弱MD5哈希和弱DES加密（56位有效密钥），严重不安全。",
+            "recommendation": "立即停用；改用PBEWithHmacSHA256AndAES_256或PBKDF2+AES-GCM。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "critical",
+                    "reason": "PBE-MD5-DES 使用已破解的 MD5 和 DES，量子下完全不安全",
+                    "migrate_to": ["ALG.PBE.HMACSHA256.AES256"]
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "PBE-MD5-DES 使用已破解的 MD5 和 DES，必须停用"
+                }
+            }
+        },
+        {
+            "id": "ALG.PBE.SHA1.DES",
+            "algorithm_family": "PBE (SHA1 + DES)",
+            "category": "pbe",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {
+                "key_bits": 56
+            },
+            "reason": "使用弱SHA1哈希和弱DES加密（56位有效密钥），严重不安全。",
+            "recommendation": "立即停用；改用PBEWithHmacSHA256AndAES_256或PBKDF2+AES-GCM。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "critical",
+                    "reason": "PBE-SHA1-DES 使用已破解的 SHA-1 和 DES，量子下完全不安全",
+                    "migrate_to": ["ALG.PBE.HMACSHA256.AES256"]
+                }
+            },
+            "classic_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "error",
+                    "reason": "PBE-SHA1-DES 使用已破解的 DES，必须停用"
+                }
+            }
+        },
+        {
+            "id": "ALG.PBE.HMACSHA256.AES256",
+            "algorithm_family": "PBE (HMAC-SHA256 + AES-256)",
+            "category": "pbe",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "key_bits": 256,
+                "iterations": {
+                    "allow_min": 10000,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "基于HMAC-SHA256和AES-256（256位密钥），提供较好的密码保护。",
+            "recommendation": "可用于密码存储场景，建议迭代次数>=10000。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "none",
+                    "reason": "PBE-HMACSHA256-AES256 使用安全的 SHA-256 和 AES-256，量子下 128-bit 安全性"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.PBE.HMACSHA512.AES256",
+            "algorithm_family": "PBE (HMAC-SHA512 + AES-256)",
+            "category": "pbe",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "key_bits": 256,
+                "iterations": {
+                    "allow_min": 10000,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "基于HMAC-SHA512和AES-256（256位密钥），提供高强度密码保护。",
+            "recommendation": "推荐用于高安全密码存储场景，迭代次数>=10000。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "none",
+                    "reason": "PBE-HMACSHA512-AES256 使用安全的 SHA-512 和 AES-256，极高安全"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.POLY1305",
+            "algorithm_family": "Poly1305",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "Poly1305 是一次性密钥的通用哈希 MAC。常与 ChaCha20 组合为 AEAD（ChaCha20-Poly1305）。",
+            "recommendation": "推荐作为 AEAD 的一部分使用。若单独使用，必须保证每条消息的密钥唯一且不可重用。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "fixed",
+                    "value": 256,
+                    "severity": "none",
+                    "reason": "Poly1305 使用 256-bit 密钥，量子下 128-bit 安全性，充足"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.GHASH",
+            "algorithm_family": "GHASH (GCM Authentication Sub-function)",
+            "category": "mac",
+            "quantum_secure": "weak",
+            "status_zh": "过渡（仅作为 GCM 内部组件使用）",
+            "q_security_bits": 64,
+            "params": {
+                "tag_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "usage": {
+                    "allow": ["AEAD_INTERNAL"],
+                    "default": "AEAD_INTERNAL",
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "GHASH 是基于 GF(2^128) 的多项式 MAC，安全性依赖 128 位密钥（通常为 AES/SM4-GCM 的子密钥 h = ENC_k(0^128)）。量子下暴力搜索可获得约 2^64 级别有效强度，单独作为通用 MAC 使用风险较大。",
+            "recommendation": "只推荐作为 GCM/GMAC 内部组件使用，不建议单独暴露为通用 MAC。整体 AEAD 安全性需同时考虑底层分组算法与 GHASH 的组合安全。",
+            "quantum_constraints": {
+                "algorithm": {
+                    "type": "fixed",
+                    "severity": "info",
+                    "reason": "GHASH 是 GCM 模式的认证组件，安全性取决于整体 GCM 使用"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HMAC",
+            "algorithm_family": "HMAC (Generic)",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全（取决于底层哈希）",
+            "q_security_bits": 128,
+            "quantum_constraints": {
+                "hash": {
+                    "type": "algorithm_ref",
+                    "recommended": ["SHA-256", "SHA3-256", "SHA-512"],
+                    "severity": "info",
+                    "reason": "HMAC 的量子安全性主要取决于底层哈希，推荐 SHA-256 或更强"
+                }
+            },
+            "classic_constraints": {
+                "hash": {
+                    "type": "algorithm_ref",
+                    "forbidden": ["MD5", "SHA-1"],
+                    "recommended": ["SHA-256", "SHA-384", "SHA-512"],
+                    "severity_map": {
+                        "MD5": "error",
+                        "SHA-1": "error"
+                    }
+                }
+            },
+            "params": {},
+            "reason": "基于哈希的消息认证码，安全性取决于底层哈希函数。",
+            "recommendation": "量子模式：使用 SHA-256/SHA3-256 或更强；传统模式：禁止 MD5/SHA-1。"
+        },
+        {
+            "id": "ALG.HMAC.MD5",
+            "algorithm_family": "HMAC-MD5",
+            "category": "mac",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "底层散列已弱，组合安全性不足。",
+            "recommendation": "停用；改用 HMAC-SHA256/512 或 KMAC/SHA3。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "critical",
+                    "reason": "HMAC-MD5 基于已破解的 MD5，量子下完全不安全",
+                    "migrate_to": ["ALG.HMAC.SHA256", "ALG.HMAC.SHA3"]
+                }
+            },
+            "classic_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "error",
+                    "reason": "HMAC-MD5 基于已破解的 MD5，不应继续使用"
+                }
+            }
+        },
+        {
+            "id": "ALG.HMAC.SHA1",
+            "algorithm_family": "HMAC-SHA1",
+            "category": "mac",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "底层散列老化且边际不足。",
+            "recommendation": "停用；改用 HMAC-SHA256/512。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "critical",
+                    "reason": "HMAC-SHA1 基于已破解的 SHA-1，量子下完全不安全",
+                    "migrate_to": ["ALG.HMAC.SHA256", "ALG.HMAC.SHA3"]
+                }
+            },
+            "classic_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "warning",
+                    "reason": "HMAC-SHA1 基于已破解的 SHA-1，建议迁移到 HMAC-SHA256"
+                }
+            }
+        },
+        {
+            "id": "ALG.HMAC.SHA224",
+            "algorithm_family": "HMAC-SHA224",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 112,
+            "params": {},
+            "reason": "基于 SHA-224，量子下约 112 位，适用于中等安全场景。",
+            "recommendation": "可用，但建议优先使用 HMAC-SHA256。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "info",
+                    "reason": "HMAC-SHA224 量子下 112-bit 安全性，满足一般应用"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HMAC.SHA256",
+            "algorithm_family": "HMAC-SHA256",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {},
+            "reason": "基于 SHA-256，量子下约 128 位。",
+            "recommendation": "常用首选。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "none",
+                    "reason": "HMAC-SHA256 量子下 128-bit 安全性，安全"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HMAC.SHA384",
+            "algorithm_family": "HMAC-SHA384",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 192,
+            "params": {},
+            "reason": "基于 SHA-384，量子下约 192 位，提供高安全余量。",
+            "recommendation": "高安全场景推荐。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "none",
+                    "reason": "HMAC-SHA384 量子下 192-bit 安全性，极高安全"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HMAC.SHA512",
+            "algorithm_family": "HMAC-SHA512",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 256,
+            "params": {},
+            "reason": "高安全余量。",
+            "recommendation": "高安全或长寿命密钥。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "none",
+                    "reason": "HMAC-SHA512 量子下 256-bit 安全性，极高安全"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HMAC.SHA3",
+            "algorithm_family": "HMAC-SHA3 (KMAC)",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "digest_bits": {
+                    "allow": [256, 512],
+                    "default": 256,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "SHA-3 家族，良好 AE 安全性。",
+            "recommendation": "新系统可优先采用（KMAC）。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "none",
+                    "reason": "HMAC-SHA3 量子下 128-bit+ 安全性（取决于输出长度），安全"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.HMAC.SM3",
+            "algorithm_family": "HMAC-SM3",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits": 128,
+            "params": {
+                "digest_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "low"
+                },
+                "key_bits": {
+                    "allow_min": 128,
+                    "severity_if_violate": "medium"
+                }
+            },
+            "reason": "基于 SM3（256 位哈希），在 Grover 模型下预映像强度约 128 位，足够用作 MAC。",
+            "recommendation": "在国密场景中优先采用 HMAC-SM3；若需与国际算法互操作可并行部署 HMAC-SHA256。",
+            "quantum_constraints": {
+                "hash_algorithm": {
+                    "type": "derived",
+                    "severity": "none",
+                    "reason": "HMAC-SM3 量子下 128-bit 安全性，安全"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.CMAC",
+            "algorithm_family": "CMAC (block-cipher-based MAC)",
+            "category": "mac",
+            "params": {
+                "underlying_cipher_profile": {
+                    "required": true,
+                    "source": "semantic.underlying_block_cipher"
+                }
+            },
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "derived",
+                    "severity": "info",
+                    "reason": "CMAC 安全性取决于底层分组密码，建议使用 AES-256"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.AES.CMAC",
+            "algorithm_family": "AES-CMAC",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "key_bits": {
+                    "allow": [128, 256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "对称密钥下量子等效强度充足（取决于密钥长度）。",
+            "recommendation": "资源受限设备的对称认证方案。",
+            "quantum_constraints": {
+                "key_bits": {
+                    "type": "integer",
+                    "min_pq_resistant": 256,
+                    "severity_map": {
+                        "128": "warning",
+                        "192": "info",
+                        "256": "none"
+                    },
+                    "reason": "AES-CMAC 量子安全性取决于 AES 密钥长度"
+                }
+            },
+            "classic_constraints": {}
+        },
+        {
+            "id": "ALG.SM4.CBCMAC",
+            "algorithm_family": "SM4-CBC-MAC",
+            "category": "mac",
+            "quantum_secure": "weak",
+            "status_zh": "过渡（仅限固定长度/协议限定场景）",
+            "q_security_bits": 64,
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "tag_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "usage": {
+                    "allow": ["fixed_length", "protocol_constrained"],
+                    "default": "protocol_constrained",
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "SM4-CBC-MAC 使用 SM4 分组密码 + CBC 链接生成 MAC。理论上在“固定消息长度/协议严格限制场景”下是安全的，但在一般可变长度消息场景容易被误用（例如不加长度编码时存在扩展攻击）。量子下仅剩约 2^64 暴力安全位。",
+            "recommendation": "新设计中优先使用 SM4-GCM/SM4-CCM 等 AEAD，或基于 SM3/HMAC 的 MAC。仅在已有协议中且确认为固定长度消息时保留 SM4-CBC-MAC。"
+        },
+        {
+            "id": "ALG.SM4.CMAC",
+            "algorithm_family": "SM4-CMAC",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "推荐（国密场景）",
+            "q_security_bits": 128,
+            "params": {
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "high"
+                },
+                "tag_bits": {
+                    "allow": [64, 96, 128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "SM4-CMAC 基于 SM4 分组密码构造，与 AES-CMAC 类似，在正确实现前提下安全性与 128 bit 密钥大致匹配。",
+            "recommendation": "国密环境下需要基于 SM4 的 MAC 时推荐优先使用 SM4-CMAC（或 AEAD：SM4-GCM/SM4-CCM），避免继续使用 SM4-CBC-MAC。"
+        },
+        {
+            "id": "ALG.GMAC.AES",
+            "algorithm_family": "AES-GMAC",
+            "category": "mac",
+            "quantum_secure": true,
+            "status_zh": "推荐",
+            "q_security_bits_range": [112, 256],
+            "params": {
+                "key_bits": {
+                    "allow": [128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "high"
+                },
+                "tag_bits": {
+                    "allow": [96, 104, 112, 120, 128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "nonce_bits": {
+                    "allow": [96],
+                    "default": 96,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "AES-GMAC 是 AES-GCM 在“只做认证不加密”场景下的特化形式，认证安全性等价于 GCM 的 tag 部分。",
+            "recommendation": "仅需完整性与认证、不需要机密性时可使用 AES-GMAC；同时需要加密+认证时更推荐直接使用 AES-GCM。"
+        },
+        {
+            "id": "ALG.SIPHASHX24",
+            "algorithm_family": "SipHashx-2-4",
+            "category": "mac",
+            "quantum_secure": false,
+            "status_zh": "安全（经典，对称MAC）",
+            "q_security_bits_range": [64, 64],
+            "params": {
+                "key_bits": 128,
+                "digest_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "high"
+                },
+                "rounds": {
+                    "c": 2,
+                    "d": 4
+                },
+                "short_input_optimized": true
+            },
+            "reason": "SipHash 系列是针对短输入设计的 keyed hash/PRF，用于抵抗哈希表碰撞 DoS。SipHashx-2-4 是 libsodium 提供的 128-bit 输出变种：使用 128-bit 密钥，2 轮压缩 + 4 轮终结，输出 128-bit 标签，相比标准 64-bit SipHash-2-4 有更低的碰撞与伪造概率。",
+            "recommendation": "适用于需要短输入 keyed MAC 的场景，如哈希表索引、Bloom 过滤器、协议中的轻量完整性检查等；不应当作通用无密钥哈希使用，涉及长期消息认证或高安全需求时建议选用 HMAC-SHA-2、BLAKE2 keyed 模式等算法。"
+        },
+        {
+            "id": "ALG.SIPHASH64",
+            "algorithm_family": "SipHash-2-4",
+            "category": "mac",
+            "quantum_secure": "weak",
+            "status_zh": "仅限 DoS 防护 / Hash flooding 场景",
+            "q_security_bits": 64,
+            "params": {
+                "output_bits": {
+                    "allow": [64],
+                    "default": 64,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "SipHash-2-4(64 bit 输出) 主要用于防止哈希表碰撞攻击，并非通用认证码，输出较短，安全强度有限。",
+            "recommendation": "仅在哈希表防 DoS/hashing flooding 等场景使用 SipHash64；通用 MAC 场景改用 HMAC-SHA2/SHA3 或 AEAD。"
+        },
+        {
+            "id": "ALG.SIPHASH128",
+            "algorithm_family": "SipHash-2-4-128",
+            "category": "mac",
+            "quantum_secure": "weak",
+            "status_zh": "过渡 / 限定场景",
+            "q_security_bits": 64,
+            "params": {
+                "output_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "128 位输出的 SipHash 变体有更大碰撞空间，但仍主要用于 keyed-hash/防 DoS，对高安全认证并不理想。",
+            "recommendation": "如非协议强制，一般不建议用作通用 MAC；优先选 HMAC / GMAC / CMAC。"
+        },
+        {
+            "id": "ALG.DRBG.HASH.SHA2",
+            "algorithm_family": "HASH-DRBG-SHA2",
+            "category": "drbg",
+            "quantum_secure": true,
+            "status_zh": "推荐",
+            "q_security_bits_range": [112, 256],
+            "params": {
+                "digest_profile": {
+                    "allow": [
+                        "ALG.SHA224",
+                        "ALG.SHA256",
+                        "ALG.SHA384",
+                        "ALG.SHA512"
+                    ],
+                    "default": "ALG.SHA256",
+                    "severity_if_not_allow": "medium"
+                },
+                "security_strength_bits": {
+                    "allow": [112, 128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "基于 SHA-2 的 HASH-DRBG 为 NIST 标准结构，分析成熟，安全性与所选摘要函数大致匹配。",
+            "recommendation": "通用场景可优先选用 SHA-256/384/512 的 HASH-DRBG（配合足够熵源与重播保护）。"
+        },
+        {
+            "id": "ALG.DRBG.HASH.SM3",
+            "algorithm_family": "HASH-DRBG-SM3",
+            "category": "drbg",
+            "quantum_secure": true,
+            "status_zh": "推荐（国密场景）",
+            "q_security_bits": 128,
+            "params": {
+                "digest_profile": "ALG.SM3",
+                "security_strength_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "基于 SM3 的 HASH-DRBG 满足国密体系要求，安全性与 SM3 抗性相当。",
+            "recommendation": "在国密合规环境中可作为首选 HASH-DRBG 实现。"
+        },
+        {
+            "id": "ALG.DRBG.HMAC.SHA1",
+            "algorithm_family": "HMAC-DRBG-SHA1",
+            "category": "drbg",
+            "quantum_secure": false,
+            "status_zh": "不推荐 / 仅限兼容",
+            "q_security_bits": 80,
+            "params": {
+                "digest_profile": "ALG.SHA1",
+                "security_strength_bits": {
+                    "allow": [80],
+                    "default": 80,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "基于 SHA-1 的 HMAC-DRBG 受 SHA-1 本身漏洞影响，不适合新设计使用。",
+            "recommendation": "仅短期兼容保留，优先迁移到 HMAC-DRBG-SHA256 或更强方案。"
+        },
+        {
+            "id": "ALG.DRBG.HMAC.SHA2",
+            "algorithm_family": "HMAC-DRBG-SHA2",
+            "category": "drbg",
+            "quantum_secure": true,
+            "status_zh": "推荐",
+            "q_security_bits_range": [112, 256],
+            "params": {
+                "digest_profile": {
+                    "allow": [
+                        "ALG.SHA224",
+                        "ALG.SHA256",
+                        "ALG.SHA384",
+                        "ALG.SHA512"
+                    ],
+                    "default": "ALG.SHA256",
+                    "severity_if_not_allow": "medium"
+                },
+                "security_strength_bits": {
+                    "allow": [112, 128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "HMAC-DRBG 基于 HMAC 结构，分析充分、部署广泛，使用 SHA2 族可提供高安全度的 CSPRNG。",
+            "recommendation": "新系统中推荐使用 HMAC-DRBG-SHA256/384，注意熵源质量与定期重播种。"
+        },
+        {
+            "id": "ALG.DRBG.HMAC.SM3",
+            "algorithm_family": "HMAC-DRBG-SM3",
+            "category": "drbg",
+            "quantum_secure": true,
+            "status_zh": "推荐（国密场景）",
+            "q_security_bits": 128,
+            "params": {
+                "digest_profile": "ALG.SM3",
+                "security_strength_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "基于 SM3 的 HMAC-DRBG 同时满足国密与 HMAC-DRBG 的分析优势。",
+            "recommendation": "国密环境中推荐采用，注意严格实现标准流程。"
+        },
+        {
+            "id": "ALG.DRBG.CTR.AES",
+            "algorithm_family": "CTR-DRBG-AES",
+            "category": "drbg",
+            "quantum_secure": true,
+            "status_zh": "推荐",
+            "q_security_bits_range": [112, 256],
+            "params": {
+                "cipher_profile": "ALG.AES",
+                "key_bits": {
+                    "allow": [128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "security_strength_bits": {
+                    "allow": [112, 128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "df": {
+                    "allow": [true, false],
+                    "default": true,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "CTR-DRBG(AES) 是 NIST 推荐的 DRBG 方案之一，分析充分、实现成熟，适合作为通用 CSPRNG。",
+            "recommendation": "通用高安全、高性能随机数需求可优先使用 CTR-DRBG(AES)，配合健康检测和熵源监控。"
+        },
+        {
+            "id": "ALG.DRBG.CTR.SM4",
+            "algorithm_family": "CTR-DRBG-SM4",
+            "category": "drbg",
+            "quantum_secure": true,
+            "status_zh": "推荐（国密场景）",
+            "q_security_bits": 128,
+            "params": {
+                "cipher_profile": "ALG.SM4",
+                "key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "security_strength_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "df": {
+                    "allow": [true, false],
+                    "default": true,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "CTR-DRBG(SM4) 将 SM4 用于 CTR-DRBG 结构，满足国密体系下的随机数需求。",
+            "recommendation": "国密体系中可作为 CSPRNG 首选，确保有合格熵源和安全的初始化流程。"
+        },
+        {
+            "id": "ALG.PAILLIER",
+            "algorithm_family": "Paillier",
+            "category": "he",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "基于整数分解，被 Shor 算法破解。",
+            "recommendation": "迁移到格基同态加密（BFV/BGV/CKKS）或安全多方。"
+        },
+        {
+            "id": "ALG.RSA.HE",
+            "algorithm_family": "RSA-based HE",
+            "category": "he",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "基于 RSA 的构造在量子下不安全。",
+            "recommendation": "迁移到格基 HE（BFV/BGV/CKKS）。"
+        },
+        {
+            "id": "ALG.ZK.ECC",
+            "algorithm_family": "ECC-based zk-SNARKs",
+            "category": "advanced",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "基于椭圆曲线群的知识证明在量子下失去安全假设。",
+            "recommendation": "考虑 STARKs（哈希为主）或面向 PQ 的格基证明系统。"
+        },
+        {
+            "id": "ALG.RING.GROUP.ECC",
+            "algorithm_family": "Ring/Group Signatures (ECC-based)",
+            "category": "advanced",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "基于 ECC 的环/群签名量子下不安全。",
+            "recommendation": "采用格基环签、群签（基于 Dilithium/GPV 等）。"
+        },
+        {
+            "id": "ALG.NTRU",
+            "algorithm_family": "NTRU",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "security_level": {
+                    "allow": [128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "格基公钥体制，已知量子攻击下仍保持 ≥128 位。",
+            "recommendation": "可作为 Kyber 的替代/补充。"
+        },
+        {
+            "id": "ALG.KYBER",
+            "algorithm_family": "Kyber",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 192],
+            "params": {
+                "key_bits": {
+                    "allow": [768, 1024],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "mode": {
+                    "allow": ["KEM"],
+                    "default": "KEM",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "NIST PQC KEM，抗量子攻击。",
+            "recommendation": "用于密钥交换或与传统算法做混合。"
+        },
+        {
+            "id": "ALG.ML_KEM",
+            "algorithm_family": "ML-KEM",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "°²È«",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "key_bits": {
+                    "allow": [512, 768, 1024],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "mode": {
+                    "allow": ["KEM"],
+                    "default": "KEM",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "NIST PQC KEM (ML-KEM/Kyber family).",
+            "recommendation": "Prefer ML-KEM-768/1024 for stronger security; use hybrid in migration."
+        },
+        {
+            "id": "ALG.MLKEM-512",
+            "algorithm_family": "ML-KEM-512",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "°²È«",
+            "q_security_bits_range": [128],
+            "params": {
+                "key_bits": {
+                    "allow": [512],
+                    "default": 512,
+                    "severity_if_not_allow": "low"
+                },
+                "mode": {
+                    "allow": ["KEM"],
+                    "default": "KEM",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "ML-KEM-512 parameter set (≈128-bit PQ security).",
+            "recommendation": "Use ML-KEM-768/1024 when possible for higher PQ margin."
+        },
+        {
+            "id": "ALG.MLKEM-768",
+            "algorithm_family": "ML-KEM-768",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "°²È«",
+            "q_security_bits_range": [192],
+            "params": {
+                "key_bits": {
+                    "allow": [768],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "mode": {
+                    "allow": ["KEM"],
+                    "default": "KEM",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "ML-KEM-768 parameter set (≈192-bit PQ security).",
+            "recommendation": "Recommended default for PQ migration and hybrid KEM use."
+        },
+        {
+            "id": "ALG.MLKEM-1024",
+            "algorithm_family": "ML-KEM-1024",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "°²È«",
+            "q_security_bits_range": [256],
+            "params": {
+                "key_bits": {
+                    "allow": [1024],
+                    "default": 1024,
+                    "severity_if_not_allow": "low"
+                },
+                "mode": {
+                    "allow": ["KEM"],
+                    "default": "KEM",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "ML-KEM-1024 parameter set (≈256-bit PQ security).",
+            "recommendation": "Use when highest PQ security margin is required."
+        },
+        {
+            "id": "ALG.DILITHIUM",
+            "algorithm_family": "Dilithium",
+            "category": "signature",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "level": {
+                    "allow": [2, 3, 5],
+                    "default": 3,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "NIST PQC 签名（格基）。",
+            "recommendation": "通用 PQC 签名首选。"
+        },
+        {
+            "id": "ALG.FALCON",
+            "algorithm_family": "Falcon",
+            "category": "signature",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "level": {
+                    "allow": [1, 5],
+                    "default": 1,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "NIST PQC 签名（格基），签名短。",
+            "recommendation": "带宽敏感场景或证书体系。"
+        },
+        {
+            "id": "ALG.CLASSIC.MCELIECE",
+            "algorithm_family": "Classic McEliece",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "level": {
+                    "allow": [128, 192, 256],
+                    "default": 128,
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "码基 KEM，公众密钥很大但抗量子。",
+            "recommendation": "长寿命密钥交换，接受大公钥的场景。"
+        },
+        {
+            "id": "ALG.XMSS",
+            "algorithm_family": "XMSS",
+            "category": "signature",
+            "quantum_secure": true,
+            "status_zh": "安全（有状态）",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "stateful": true
+            },
+            "reason": "基于哈希的有状态签名，抗量子。",
+            "recommendation": "设备固件签名等可管理状态的场景。"
+        },
+        {
+            "id": "ALG.XMSSMT",
+            "algorithm_family": "XMSSMT",
+            "category": "signature",
+            "quantum_secure": true,
+            "status_zh": "安全（有状态）",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "stateful": true,
+                "multi_tree": true
+            },
+            "reason": "基于哈希的 XMSS 多树有状态签名，抗量子，相比单树 XMSS 支持更多签名次数。",
+            "recommendation": "适用于需要大签名容量的场景，如长期运行设备的固件/代码签名等，前提是能严格管理签名状态。"
+        },
+        {
+            "id": "ALG.SPHINCS_PLUS",
+            "algorithm_family": "SPHINCS+",
+            "category": "signature",
+            "quantum_secure": true,
+            "status_zh": "安全（无状态）",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "param_set": {
+                    "allow": ["128s", "128f", "192s", "192f", "256s", "256f"],
+                    "default": "128s",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "基于哈希的无状态签名，标准化 PQC。",
+            "recommendation": "对无状态有强需求的签名系统。"
+        },
+        {
+            "id": "ALG.RAINBOW",
+            "algorithm_family": "Rainbow",
+            "category": "signature",
+            "quantum_secure": false,
+            "status_zh": "不安全（已攻破）",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "存在有效攻击，已被移除。",
+            "recommendation": "不要使用。"
+        },
+        {
+            "id": "ALG.GEMSS",
+            "algorithm_family": "GeMSS",
+            "category": "signature",
+            "quantum_secure": "weak",
+            "status_zh": "过渡",
+            "q_security_bits_range": [128, 256],
+            "params": {},
+            "reason": "多变量方案，理论与实现安全性仍有不确定性。",
+            "recommendation": "优先选择已标准化的 PQC（Dilithium/Falcon/SPHINCS+）。"
+        },
+        {
+            "id": "ALG.SIKE",
+            "algorithm_family": "SIKE",
+            "category": "kem",
+            "quantum_secure": false,
+            "status_zh": "不安全",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "已被实用攻击击破（同态端口攻击/格基还原）。",
+            "recommendation": "不要使用；改用 Kyber 或 Classic McEliece。"
+        },
+        {
+            "id": "ALG.XSALSA20_POLY1305",
+            "algorithm_family": "XSalsa20-Poly1305",
+            "category": "aead",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "nonce_bytes": {
+                    "allow": [24],
+                    "default": 24,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "NaCl/secretbox 采用 24 字节随机 nonce，误用会破坏安全性。",
+            "recommendation": "严格遵循 API 使用规范；唯一/随机 nonce。"
+        },
+        {
+            "id": "ALG.SM4_CBC_SM3_HMAC",
+            "algorithm_family": "SM4-CBC + HMAC-SM3 (Encrypt-then-MAC)",
+            "category": "aead",
+            "quantum_secure": "weak",
+            "status_zh": "过渡/有条件安全",
+            "q_security_bits": 64,
+            "params": {
+                "enc_key_bits": {
+                    "allow": [128],
+                    "default": 128,
+                    "severity_if_not_allow": "medium"
+                },
+                "mac_key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                },
+                "tag_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "low"
+                },
+                "mode": {
+                    "allow": ["CBC+EtM"],
+                    "default": "CBC+EtM",
+                    "severity_if_not_allow": "medium"
+                },
+                "padding": {
+                    "allow": ["PKCS7"],
+                    "default": "PKCS7",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "该构造用 SM4-CBC 加密数据，再用 HMAC-SM3 对 (AAD || Ciphertext) 做 MAC，属于 Encrypt-then-MAC AEAD。SM4 密钥 128 位，量子下约 64 位穷举强度；SM3-HMAC 提供 256 位标签，但整体长期机密性仍受对称密钥长度限制。",
+            "recommendation": "新系统优先考虑标准 AEAD（如 SM4-GCM/SM4-CCM 或 PQC 时代的格基 AEAD），SM4-CBC+HMAC-SM3 更适合作为老系统兼容方案。应确保 EtM 正确实现（MAC 覆盖 AAD+密文），禁止复用 key/iv。"
+        },
+        {
+            "id": "ALG.HPKE",
+            "algorithm_family": "HPKE",
+            "category": "kem_aead_suite",
+            "quantum_secure": "profile-dependent",
+            "status_zh": "取决于所选 KEM/KDF/AEAD",
+            "params": {
+                "kem": {
+                    "allow": [
+                        "DHKEM(P-256)",
+                        "DHKEM(X25519)",
+                        "DHKEM(X448)",
+                        "KEM(Kyber768)"
+                    ],
+                    "severity_if_not_allow": "medium"
+                },
+                "kdf": {
+                    "allow": ["HKDF-SHA256", "HKDF-SHA384", "HKDF-SHA512"],
+                    "default": "HKDF-SHA256",
+                    "severity_if_not_allow": "low"
+                },
+                "aead": {
+                    "allow": [
+                        "AES-128-GCM",
+                        "AES-256-GCM",
+                        "ChaCha20-Poly1305"
+                    ],
+                    "default": "AES-256-GCM",
+                    "severity_if_not_allow": "low"
+                }
+            },
+            "reason": "HPKE 是组合方案，整体强度取决于子算法。",
+            "recommendation": "优先选择强 KEM（或 PQC KEM）+ HKDF-SHA256 + AES-256-GCM。"
+        },
+        {
+            "id": "PRIM.CSPRNG",
+            "algorithm_family": "CSPRNG",
+            "category": "primitive",
+            "quantum_secure": true,
+            "status_zh": "安全",
+            "params": {},
+            "reason": "系统级安全随机原语。",
+            "recommendation": "使用操作系统提供的 CSPRNG（如 crypto/rand）；避免 math/rand。"
+        },
+        {
+            "id": "WRAP.Generic",
+            "layer": ["wrapper"],
+            "category": "wrapper",
+            "match": {
+                "naming_contains": [
+                    "Wrap",
+                    "Wrapper",
+                    "Compat",
+                    "Adapter",
+                    "Safe",
+                    "Secure",
+                    "Encrypt",
+                    "Decrypt",
+                    "Sign",
+                    "Verify",
+                    "KEM",
+                    "Key",
+                    "Crypto"
+                ]
+            },
+            "quantum_secure": "weak",
+            "params": {},
+            "reason": "Wrapper functions may hide or fix crypto parameters (padding/mode/key size), risking weakened security.",
+            "recommendation": "Do not hardcode weak params; propagate secure params (OAEP/PSS/GCM/AES-256) or migrate to PQC/hybrid."
+        },
+        {
+            "id": "PROTO.OTRv2",
+            "algorithm_family": "OTR",
+            "category": "protocol",
+            "quantum_secure": false,
+            "status_zh": "谨慎使用（过时算法套件）",
+            "params": {
+                "version": "2",
+                "sync_only": true,
+                "forward_secrecy": true,
+                "deniability": true,
+                "group_chat": false,
+                "primitive_suite": {
+                    "kex": "DH-1536",
+                    "cipher": "AES-128-CTR",
+                    "mac": "HMAC-SHA1",
+                    "hash": "SHA-1"
+                }
+            },
+            "reason": "经典点对点即时通信端到端加密协议，提供前向保密和可否认性，但使用 1536-bit Diffie–Hellman、AES-128 及 SHA-1/HMAC-SHA1 等较旧原语，整体设计已明显落后于现代安全消息协议。",
+            "recommendation": "仅在需要与既有 OTRv2 实现互操作时保留支持；新系统不再建议采用，优先使用更新的安全消息协议（如 Signal/MLS 等）。"
+        },
+        {
+            "id": "ALG.X25519",
+            "algorithm_family": "X25519",
+            "category": "kex",
+            "quantum_secure": false,
+            "status_zh": "经典安全，量子下不安全",
+            "q_security_bits_range": [0, 0],
+            "params": {
+                "curve": "Curve25519",
+                "field_bits": 255,
+                "scalar_bits": 255,
+                "classical_security_bits": 128,
+                "public_key_bytes": 32,
+                "private_key_bytes": 32,
+                "shared_secret_bytes": 32,
+                "montgomery_form": true,
+                "cofactor": 8,
+                "ephemeral_supported": true,
+                "static_supported": true
+            },
+            "reason": "基于 Curve25519 的椭圆曲线 Diffie–Hellman 密钥协商，提供约 128-bit 经典安全强度，设计简单且抗实现陷阱，已在 RFC 7748 等标准中广泛采用。",
+            "recommendation": "可作为现代协议的默认密钥协商算法（如 TLS 1.3、Noise 等），但在面向长期机密或量子安全需求时应考虑与后量子 KEM 组合使用或逐步迁移。"
+        },
+        {
+            "id": "ALG.X448",
+            "algorithm_family": "X448 (RFC 7748 elliptic-curve Diffie-Hellman)",
+            "category": "key_agreement",
+            "quantum_secure": "broken",
+            "status_zh": "在经典模型下安全性很高，但在存在大规模量子计算机时可被 Shor 算法完全破解。",
+            "q_security_bits": 0,
+            "params": {
+                "key_bits": {
+                    "allow": [448],
+                    "default": 448,
+                    "severity_if_not_allow": "high"
+                }
+            },
+            "reason": "X448 是基于 448 比特椭圆曲线的 ECDH 密钥交换方案，在经典攻击下具有很高安全强度。但与所有基于椭圆曲线离散对数问题的方案一样，在通用量子计算机存在时会被 Shor 算法多项式时间破解，因此量子安全强度视为 0。",
+            "recommendation": "仅在经典安全场景中使用 X448 进行长期密钥协商；若要求抗量子安全，应采用后量子 KEM（如 Kyber）或与其组合的混合方案。"
+        },
+        {
+            "id": "ALG.Fernet",
+            "algorithm_family": "Fernet (AES-128-CBC + HMAC-SHA256)",
+            "category": "aead",
+            "quantum_secure": "medium",
+            "status_zh": "一般安全（量子下强度中等，取决于 AES-128/HMAC-SHA256）",
+            "q_security_bits": 64,
+            "params": {
+                "key_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "high"
+                },
+                "tag_bits": {
+                    "allow": [256],
+                    "default": 256,
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "Fernet 是一种基于 AES-128-CBC 与 HMAC-SHA256 的组合加密格式，使用 256 位密钥（其中 128 位用于加密、128 位用于 MAC），并输出 256 位的 HMAC 标签。在经典安全模型下，其安全性大致与 AES-128/HMAC-SHA256 相当；在存在 Grover 等量子搜索攻击的假设下，对称部分有效安全强度约为 64 比特，因此在长期高价值数据场景下强度有限。",
+            "recommendation": "适合作为应用层对称加密封装（如配置项、令牌、会话信息等）的默认选择，前提是密钥妥善管理且 IV/时间戳正确使用。对需要长期保密或高价值数据，建议优先采用更高强度的 AEAD 方案（如 AES-256-GCM、ChaCha20-Poly1305），并在协议层配合密钥轮换策略。"
+        },
+        {
+            "id": "UTIL.HashFactory",
+            "kind": "util",
+            "category": "hash",
+            "description": "通用哈希工厂/上下文；具体算法由参数或上下文决定，如 hashlib.new(name) 或 java.security.MessageDigest.getInstance(algorithm)。",
+            "status_zh": "依赖调用参数和平台实现，需结合上层数据流推断具体算法。",
+            "algo_source": {
+                "from_param": [
+                    "algorithm_name",
+                    "hash_name",
+                    "algorithm",
+                    "name"
+                ],
+                "from_context_method": ["getAlgorithm", "name"],
+                "from_context_field": ["algorithm", "hash_name", "name"],
+                "from_return": ["algorithm_name"],
+                "priority": [
+                    "from_param",
+                    "from_context_method",
+                    "from_context_field",
+                    "from_return"
+                ]
+            },
+            "operations": {
+                "create_digest": {
+                    "description": "根据算法名和可选 provider 创建哈希上下文对象。",
+                    "fields": {
+                        "hash_name": {
+                            "description": "算法名字符串，如 'SHA-256'、'SM3'。这是首选算法来源（参数）。"
+                        },
+                        "provider_name": {
+                            "description": "可选 provider 名称（如 JCA provider 名字）。"
+                        },
+                        "provider_obj": {
+                            "description": "可选 provider 对象实例。"
+                        },
+                        "digest_obj": {
+                            "description": "返回的哈希上下文对象；其 getAlgorithm()/name 属性是算法的上下文来源。"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "UTIL.MACFactory",
+            "kind": "factory",
+            "category": "mac",
+            "description": "Factory for creating MAC (e.g. HMAC) contexts where the underlying hash or MAC algorithm is chosen at the call site.",
+            "operations": ["mac_init_dynamic"],
+            "fields": {
+                "key": "Secret key used for the MAC.",
+                "message": "Optional initial message bytes.",
+                "hash": "Hash/MAC algorithm selector (string or constructor).",
+                "mac_obj": "MAC context object returned by the factory."
+            }
+        },
+        {
+            "id": "UTIL.CipherFactory",
+            "kind": "factory",
+            "category": "cipher",
+            "description": "Factory for constructing cipher objects where the concrete block/stream cipher is chosen at the call site.",
+            "operations": ["cipher_init_dynamic"],
+            "fields": {
+                "cipher_name": "Name or constructor of the cipher algorithm.",
+                "key": "Symmetric key material.",
+                "params": "Additional parameters passed into the factory (e.g. key size, rounds, variant).",
+                "cipher_obj": "Cipher context object returned by the factory."
+            }
+        },
+        {
+            "id": "UTIL.AEADFactory",
+            "kind": "factory",
+            "category": "aead",
+            "description": "Factory for constructing AEAD (authenticated encryption with associated data) objects where the underlying cipher or mode is provided as an argument.",
+            "operations": ["aead_init_dynamic"],
+            "fields": {
+                "underlying_cipher": "Block/stream cipher object or algorithm used inside AEAD.",
+                "key": "Key material used for AEAD (from underlying cipher or explicit).",
+                "nonce_size": "Nonce size used by the AEAD construction.",
+                "tag_size": "Authentication tag size, if configurable.",
+                "aead_obj": "AEAD context object."
+            }
+        },
+        {
+            "id": "UTIL.KDFFactory",
+            "kind": "factory",
+            "category": "kdf",
+            "description": "Factory for KDF-style primitives where the exact KDF (or its parameters) are fully determined at call site.",
+            "operations": ["kdf_init_dynamic"],
+            "fields": {
+                "kdf_name": "Name/selector of the KDF (PBKDF2, HKDF, Argon2, etc.).",
+                "password_or_key": "Input password or keying material.",
+                "salt": "Salt/nonce used in the KDF.",
+                "params": "KDF parameters (iterations, memory, parallelism, info, etc.).",
+                "dk_length": "Desired length of derived key.",
+                "dk": "Derived key bytes returned by the function."
+            }
+        },
+        {
+            "id": "UTIL.SignatureFactory",
+            "kind": "util",
+            "category": "signature",
+            "description": "通用签名工厂/上下文；具体算法由参数或上下文决定，如 java.security.Signature.getInstance(\"SHA256withRSA\")。",
+            "status_zh": "依赖调用参数和平台实现，需结合上层数据流推断具体算法。",
+            "algo_source": {
+                "from_param": [
+                    "algorithm_name",
+                    "signature_algorithm",
+                    "algorithm",
+                    "name"
+                ],
+                "from_context_method": ["getAlgorithm"],
+                "from_context_field": ["algorithm", "sig_alg_name"],
+                "from_return": ["algorithm_name"],
+                "priority": [
+                    "from_param",
+                    "from_context_method",
+                    "from_context_field",
+                    "from_return"
+                ]
+            },
+            "operations": {
+                "create_signature": {
+                    "description": "根据算法名和可选 provider 创建签名上下文对象。",
+                    "fields": {
+                        "algorithm_name": {
+                            "description": "算法名字符串，如 'SHA256withRSA'、'SM2'。这是首选算法来源（参数）。"
+                        },
+                        "provider_name": {
+                            "description": "可选 provider 名称（如 JCA provider 名字）。"
+                        },
+                        "provider_obj": {
+                            "description": "可选 provider 对象实例。"
+                        },
+                        "signature_obj": {
+                            "description": "返回的签名上下文对象；其 getAlgorithm() 结果是算法的上下文来源。"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "UTIL.KeyFactory",
+            "kind": "util",
+            "category": "key",
+            "description": "Factory for generating/importing/exporting cryptographic keys where the algorithm or key type is chosen at the call site.",
+            "algo_source": {
+                "from_param": ["algorithm_name", "algorithm"],
+                "from_context_method": ["getAlgorithm"],
+                "from_context_field": [],
+                "priority": [
+                    "from_param",
+                    "from_context_method",
+                    "from_context_field"
+                ]
+            }
+        },
+        {
+            "id": "UTIL.RNGFactory",
+            "kind": "factory",
+            "category": "rng",
+            "description": "Factory or selector for random number generators where the RNG backend is chosen at call site.",
+            "operations": ["rng_select_dynamic"],
+            "fields": {
+                "rng_name": "RNG backend name or selector.",
+                "seed": "Seed material, if any.",
+                "rng_obj": "RNG object returned by the factory."
+            }
+        },
+        {
+            "id": "UTIL.Encoding",
+            "kind": "utility",
+            "category": "encoding",
+            "description": "Non-cryptographic encoding/decoding helpers (hex, base64, bytes<->string) that are commonly used around cryptographic operations.",
+            "operations": [
+                "bytes_to_string",
+                "string_to_bytes",
+                "encode",
+                "decode"
+            ],
+            "fields": {
+                "input": "Input bytes or string.",
+                "encoding": "Encoding name (e.g. 'utf-8', 'hex').",
+                "output": "Output bytes or string."
+            }
+        },
+        {
+            "id": "UTIL.ConstantTimeCompare",
+            "kind": "utility",
+            "category": "comparison",
+            "description": "Constant-time comparison routines used to avoid timing side-channels when comparing secrets (MAC tags, hashes, keys, etc.).",
+            "operations": ["compare_digest"],
+            "fields": {
+                "left": "Left-hand side bytes.",
+                "right": "Right-hand side bytes.",
+                "equal": "Boolean result of comparison."
+            }
+        },
+        {
+            "id": "UTIL.DSS_SIGNATURE_CODEC",
+            "algorithm_family": "DSS (DSA/ECDSA) signature DER codec",
+            "category": "util",
+            "quantum_secure": "n/a",
+            "status_zh": "仅负责 DSA/ECDSA 签名在 (r,s) 与 ASN.1 DER 编码之间转换，不直接参与密码学安全性。",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "cryptography.hazmat.primitives.asymmetric.utils.encode_dss_signature / decode_dss_signature 只是对已有签名值做格式编解码，不生成密钥、不计算签名，也不验证签名。",
+            "recommendation": "在做规则或风险分析时，将此 profile 视为中立工具节点，真正的算法与安全性应从其调用方（例如 ALG.DSA、ALG.ECDSA）上获取。"
+        },
+        {
+            "id": "UTIL.CIPHER_CONTEXT_FACTORY",
+            "algorithm_family": "Cipher encryptor/decryptor context factory",
+            "category": "factory",
+            "quantum_secure": "n/a",
+            "status_zh": "根据给定的对称算法和模式创建加密/解密上下文，本身不决定算法或安全等级。",
+            "q_security_bits": 0,
+            "params": {},
+            "reason": "cryptography.hazmat.primitives.ciphers.Cipher.encryptor / decryptor 只是把已选好的算法、密钥、IV/nonce 等绑定成上下文对象，实际安全性由底层算法（如 AES、ChaCha20）及模式（如 GCM、CTR）决定。",
+            "recommendation": "在规则引擎中，将该 profile 用作“工厂/工作流节点”，同时追踪其生成的上下文所绑定的具体算法 profile（例如 ALG.AES、ALG.ChaCha20-Poly1305 等）以进行安全属性分析。"
+        },
+        {
+            "id": "ALG.RSA_KYBER_HYBRID",
+            "algorithm_family": "RSA+Kyber 混合 KEM",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "混合/PQ 安全（由 Kyber 提供）",
+            "q_security_bits_range": [128, 192],
+            "params": {
+                "rsa_key_bits": {
+                    "allow": [3072, 4096, 8192],
+                    "default": 3072,
+                    "severity_if_not_allow": "medium"
+                },
+                "rsa_padding": {
+                    "allow": ["OAEP"],
+                    "default": "OAEP",
+                    "severity_if_not_allow": "high"
+                },
+                "kyber_key_bits": {
+                    "allow": [768, 1024],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "construction": {
+                    "allow": ["concat-kdf"],
+                    "default": "concat-kdf",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "混合方案将传统 RSA-OAEP 与 Kyber KEM 共同用于会话密钥派生。量子攻击者可用 Shor 破坏 RSA 部分，但 Kyber 仍提供约 128–192 位抗量子安全位；在正确的混合构造（例如将两路共享秘密拼接后经 KDF）下，可视为过渡期的 PQ 安全方案。",
+            "recommendation": "用于迁移期的兼容与抗量子保护；长期建议逐步转向纯 PQ KEM（如 ML-KEM/Kyber）。"
+        },
+        {
+            "id": "ALG.DH_KYBER_HYBRID",
+            "algorithm_family": "FFDHE+Kyber 混合密钥交换",
+            "category": "key_exchange",
+            "quantum_secure": true,
+            "status_zh": "混合/PQ 安全（由 Kyber 提供）",
+            "q_security_bits_range": [128, 192],
+            "params": {
+                "ffdhe_group": {
+                    "allow": [2048, 3072, 4096, 8192],
+                    "default": 3072,
+                    "severity_if_not_allow": "medium"
+                },
+                "kyber_key_bits": {
+                    "allow": [768, 1024],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "construction": {
+                    "allow": ["concat-kdf"],
+                    "default": "concat-kdf",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "混合方案结合 FFDHE（经典安全）与 Kyber（抗量子）。在量子对手下，FFDHE 可被 Shor 破解，但 Kyber 仍提供抗量子安全；正确混合后整体可视为 PQ 安全的过渡方案。",
+            "recommendation": "迁移期优先选用；长期逐步过渡到纯 PQ 密钥交换。"
+        },
+        {
+            "id": "ALG.ECDH_KYBER_HYBRID",
+            "algorithm_family": "ECDH+Kyber 混合密钥交换",
+            "category": "key_agreement",
+            "quantum_secure": true,
+            "status_zh": "混合/PQ 安全（由 Kyber 提供）",
+            "q_security_bits_range": [128, 192],
+            "params": {
+                "curve": {
+                    "allow": ["P-256", "P-384", "P-521", "X25519"],
+                    "default": "X25519",
+                    "severity_if_not_allow": "low"
+                },
+                "kyber_key_bits": {
+                    "allow": [768, 1024],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "construction": {
+                    "allow": ["concat-kdf"],
+                    "default": "concat-kdf",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "混合方案结合 ECDH（经典安全）与 Kyber（抗量子）。在量子对手下，ECDH 可被 Shor 破解，但 Kyber 仍提供抗量子安全；正确混合后整体可视为 PQ 安全的过渡方案。",
+            "recommendation": "迁移期优先选用；长期逐步过渡到纯 PQ KEM/密钥交换。"
+        },
+        {
+            "id": "ALG.SM2_KYBER_HYBRID",
+            "algorithm_family": "SM2+Kyber 混合 KEM",
+            "category": "kem",
+            "quantum_secure": true,
+            "status_zh": "混合/PQ 安全（由 Kyber 提供）",
+            "q_security_bits_range": [128, 192],
+            "params": {
+                "sm2_mode": {
+                    "allow": ["PKE"],
+                    "default": "PKE",
+                    "severity_if_not_allow": "low"
+                },
+                "kyber_key_bits": {
+                    "allow": [768, 1024],
+                    "default": 768,
+                    "severity_if_not_allow": "low"
+                },
+                "construction": {
+                    "allow": ["concat-kdf"],
+                    "default": "concat-kdf",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "混合方案将 SM2 加密/密钥封装与 Kyber KEM 共同用于密钥派生。量子攻击者可破坏 SM2（Shor），但 Kyber 仍提供抗量子安全；正确混合后整体可视为过渡期 PQ 安全方案。",
+            "recommendation": "用于 SM2 生态向 PQC 迁移的中间形态；长期建议逐步转向纯 PQ KEM。"
+        },
+        {
+            "id": "ALG.SM2_DILITHIUM_HYBRID",
+            "algorithm_family": "SM2+DILITHIUM 混合签名",
+            "category": "signature",
+            "quantum_secure": true,
+            "status_zh": "混合/PQ 安全（由 Dilithium 提供）",
+            "q_security_bits_range": [128, 256],
+            "params": {
+                "dilithium_level": {
+                    "allow": [2, 3, 5],
+                    "default": 3,
+                    "severity_if_not_allow": "low"
+                },
+                "construction": {
+                    "allow": ["dual-sign"],
+                    "default": "dual-sign",
+                    "severity_if_not_allow": "medium"
+                }
+            },
+            "reason": "混合签名通常采用“双签名/双验证”（同时生成并验证 SM2 与 Dilithium 签名）。量子对手下 SM2 可被破解，但 Dilithium 仍提供抗量子安全；在协议与验证策略正确的前提下，可作为迁移期方案。",
+            "recommendation": "用于迁移与互操作；长期逐步转向纯 PQ 签名（Dilithium/Falcon 等）。"
+        }
+    ]
+}

@@ -1,0 +1,873 @@
+{
+    "version": "2.0",
+    "language": "python",
+    "library": "gmsm",
+    "description": "Chinese National Cryptography Standards (GM/SM series)",
+    "mappings": [
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.__init__",
+            "function": "gmssl.sm2.CryptSM2.__init__",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "private_key",
+                "public_key",
+                "ecc_table",
+                "default_hash"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "sm2_init",
+                "private_key": {
+                    "param": "private_key",
+                    "source": "param",
+                    "index": 0
+                },
+                "public_key": {
+                    "param": "public_key",
+                    "source": "param",
+                    "index": 1
+                },
+                "ecc_table": {
+                    "param": "ecc_table",
+                    "source": "param",
+                    "index": 2
+                },
+                "hash": {
+                    "param": "default_hash",
+                    "source": "param",
+                    "index": 3
+                },
+                "key_bits": 256,
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "private_key",
+                        "from": {
+                            "param": "private_key",
+                            "source": "param",
+                            "index": 0
+                        }
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key",
+                        "from": {
+                            "param": "public_key",
+                            "source": "param",
+                            "index": 1
+                        }
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "ecc_table",
+                        "from": {
+                            "param": "ecc_table",
+                            "source": "param",
+                            "index": 2
+                        }
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "hash",
+                        "from": {
+                            "param": "default_hash",
+                            "source": "param",
+                            "index": 3
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.encrypt",
+            "function": "gmssl.sm2.CryptSM2.encrypt",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "encrypt",
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "ciphertext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "encrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.decrypt",
+            "function": "gmssl.sm2.CryptSM2.decrypt",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "decrypt",
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "ciphertext": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "decrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.sign",
+            "function": "gmssl.sm2.CryptSM2.sign",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "data",
+                "random_hex_str"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "sign",
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "message": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "random": {
+                    "param": "random_hex_str",
+                    "source": "param",
+                    "index": 1
+                },
+                "signature": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "padding"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "digest"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "salt"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.verify",
+            "function": "gmssl.sm2.CryptSM2.verify",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "sign",
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "verify",
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "signature": {
+                    "param": "sign",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 1
+                },
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "padding"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "digest"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "salt"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.sign_with_sm3",
+            "function": "gmssl.sm2.CryptSM2.sign_with_sm3",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "data",
+                "random_hex_str"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "sign_with_hash",
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "message": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "random": {
+                    "param": "random_hex_str",
+                    "source": "param",
+                    "index": 1
+                },
+                "hash": "SM3",
+                "signature": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm2.CryptSM2.verify_with_sm3",
+            "function": "gmssl.sm2.CryptSM2.verify_with_sm3",
+            "imports": [
+                "gmssl.sm2",
+                "gmssl"
+            ],
+            "func_params": [
+                "sign",
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM2",
+                "operation": "verify_with_hash",
+                "sm2_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "signature": {
+                    "param": "sign",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 1
+                },
+                "hash": "SM3",
+                "verified": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm2_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.sm3_hash",
+            "function": "gmssl.sm3.sm3_hash",
+            "imports": [
+                "gmssl.sm3",
+                "gmssl"
+            ],
+            "func_params": [
+                "msg"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash",
+                "input": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key_bits": 256,
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.sm3_kdf",
+            "function": "gmssl.sm3.sm3_kdf",
+            "imports": [
+                "gmssl.sm3",
+                "gmssl"
+            ],
+            "func_params": [
+                "z",
+                "klen"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "kdf",
+                "input": {
+                    "param": "z",
+                    "source": "param",
+                    "index": 0
+                },
+                "dk_length": {
+                    "param": "klen",
+                    "source": "param",
+                    "index": 1
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.SM3.__init__",
+            "function": "gmssl.sm3.SM3.__init__",
+            "imports": [
+                "gmssl.sm3",
+                "gmssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_init",
+                "key_bits": 256,
+                "hash_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "digest_bits": 256,
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "hash_obj"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.SM3.update",
+            "function": "gmssl.sm3.SM3.update",
+            "imports": [
+                "gmssl.sm3",
+                "gmssl"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_update",
+                "hash_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "input_chunk": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "hash_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm3.SM3.hexdigest",
+            "function": "gmssl.sm3.SM3.hexdigest",
+            "imports": [
+                "gmssl.sm3",
+                "gmssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SM3",
+                "operation": "hash_finalize",
+                "hash_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "digest_hex": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "hash_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.__init__",
+            "function": "gmssl.sm4.CryptSM4.__init__",
+            "imports": [
+                "gmssl.sm4",
+                "gmssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "sm4_init",
+                "key_bits": 128,
+                "sm4_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm4_obj"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.set_key",
+            "function": "gmssl.sm4.CryptSM4.set_key",
+            "imports": [
+                "gmssl.sm4",
+                "gmssl"
+            ],
+            "func_params": [
+                "key",
+                "mode"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "set_key",
+                "sm4_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "mode": {
+                    "param": "mode",
+                    "source": "param",
+                    "index": 1
+                },
+                "key_bits": 128,
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm4_obj"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "key",
+                        "from": {
+                            "param": "key",
+                            "source": "param",
+                            "index": 0
+                        }
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "mode",
+                        "from": {
+                            "param": "mode",
+                            "source": "param",
+                            "index": 1
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.encrypt",
+            "function": "gmssl.sm4.CryptSM4.encrypt",
+            "imports": [
+                "gmssl.sm4",
+                "gmssl"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "encrypt",
+                "sm4_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "ciphertext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "encrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm4_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.decrypt",
+            "function": "gmssl.sm4.CryptSM4.decrypt",
+            "imports": [
+                "gmssl.sm4",
+                "gmssl"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "decrypt",
+                "sm4_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "ciphertext": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "direction": "decrypt",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm4_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.crypt_ecb",
+            "function": "gmssl.sm4.CryptSM4.crypt_ecb",
+            "imports": [
+                "gmssl.sm4",
+                "gmssl"
+            ],
+            "func_params": [
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "encrypt_ecb",
+                "sm4_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "ciphertext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "mode": "ECB",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm4_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.gmsm.gmssl.sm4.CryptSM4.crypt_cbc",
+            "function": "gmssl.sm4.CryptSM4.crypt_cbc",
+            "imports": [
+                "gmssl.sm4",
+                "gmssl"
+            ],
+            "func_params": [
+                "iv",
+                "data"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SM4",
+                "operation": "encrypt_cbc",
+                "sm4_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "iv": {
+                    "param": "iv",
+                    "source": "param",
+                    "index": 0
+                },
+                "plaintext": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 1
+                },
+                "ciphertext": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "mode": "CBC",
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "sm4_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        }
+    ]
+}

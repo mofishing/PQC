@@ -1,0 +1,109 @@
+{
+  'lang': 'python',
+  'imports': ['hashlib', 'Crypto.Cipher', 'Crypto.Cipher.AES'],
+  'import_aliases': {
+    'hashlib': 'hashlib',
+    'AES': 'Crypto.Cipher.AES'
+  },
+  'calls': [
+    {
+      'symbol': 'AES.new',
+      'pkg': 'AES',
+      'member': 'new',
+      'line': 9,
+      'code': 'AES.new(key, AES.MODE_CBC)',
+      '_node': <Nodetype=call,start_point=(8,13),end_point=(8,39)>
+    }, {
+      'symbol': 'print',
+      'pkg': None,
+      'member': 'print',
+      'line': 10,
+      'code': 'print("AES-CBC test")',
+      '_node': <Nodetype=call,start_point=(9,4),end_point=(9,25)>
+    }, {
+      'symbol': 'AES.new',
+      'pkg': 'AES',
+      'member': 'new',
+      'line': 15,
+      'code': 'AES.new(key, AES.MODE_ECB)',
+      '_node': <Nodetype=call,start_point=(14,13),end_point=(14,39)>
+    }, {
+      'symbol': 'print',
+      'pkg': None,
+      'member': 'print',
+      'line': 16,
+      'code': 'print("AES-ECB test")',
+      '_node': <Node
+      type=call,
+      start_point=(15,
+      4),
+      end_point=(15,
+      25)>
+    }
+  ],
+  'functions': [
+    {
+      'name': 'test_aes_cbc',
+      'start_line': 6,
+      'end_line': 10,
+      'src': 'def test_aes_cbc():\n    """Test AES in CBC mode"""\n    key = b\'0123456789abcdef\'\n    cipher = AES.new(key, AES.MODE_CBC)\n    print("AES-CBC test")',
+      '_body': <Node
+      type=block,
+      start_point=(6,
+      4),
+      end_point=(9,
+      25)>,
+      '_node': <Node
+      type=function_definition,
+      start_point=(5,
+      0),
+      end_point=(9,
+      25)>
+    }, {
+      'name': 'test_aes_ecb',
+      'start_line': 12,
+      'end_line': 16,
+      'src': 'def test_aes_ecb():\n    """Test AES in ECB mode - should trigger warning"""\n    key = b\'0123456789abcdef\' \n    cipher = AES.new(key, AES.MODE_ECB)\n    print("AES-ECB test")',
+      '_body': <Node
+      type=block,
+      start_point=(12,
+      4),
+      end_point=(15,
+      25)>,
+      '_node': <Node
+      type=function_definition,
+      start_point=(11,
+      0),
+      end_point=(15,
+      25)>
+    }
+  ],
+  'literals': [],
+  'attributes': [
+    {
+      'symbol': 'AES.new',
+      'pkg': 'AES',
+      'member': 'new',
+      'line': 9,
+      'fq_symbol': 'Crypto.Cipher.AES.new'
+    }, {
+      'symbol': 'AES.MODE_CBC',
+      'pkg': 'AES',
+      'member': 'MODE_CBC',
+      'line': 9,
+      'fq_symbol': 'Crypto.Cipher.AES.MODE_CBC'
+    }, {
+      'symbol': 'AES.new',
+      'pkg': 'AES',
+      'member': 'new',
+      'line': 15,
+      'fq_symbol': 'Crypto.Cipher.AES.new'
+    }, {
+      'symbol': 'AES.MODE_ECB',
+      'pkg': 'AES',
+      'member': 'MODE_ECB',
+      'line': 15,
+      'fq_symbol': 'Crypto.Cipher.AES.MODE_ECB'
+    }
+  ]
+}

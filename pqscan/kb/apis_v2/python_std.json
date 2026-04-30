@@ -1,0 +1,2888 @@
+{
+    "version": "2.0",
+    "language": "python",
+    "librarys": "python-stdlib",
+    "mappings": [
+        {
+            "api_id": "py.stdlib.hashlib.__get_builtin_constructor",
+            "function": "hashlib.__get_builtin_constructor",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "name"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_factory_lookup",
+                "hash_name": {
+                    "param": "name",
+                    "source": "param",
+                    "index": 0
+                },
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.file_digest",
+            "function": "hashlib.file_digest",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "fileobj",
+                "digest",
+                "_bufsize"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_file",
+                "fileobj": {
+                    "param": "fileobj",
+                    "source": "param",
+                    "index": 0
+                },
+                "hash_ctor": {
+                    "param": "digest",
+                    "source": "param",
+                    "index": 1
+                },
+                "buffer_size": {
+                    "param": "_bufsize",
+                    "source": "param",
+                    "index": 2
+                },
+                "digest_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.md5",
+            "function": "hashlib.md5",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.MD5",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "security_level": "weak",
+                "usedforsecurity": {
+                    "param": "usedforsecurity",
+                    "source": "param",
+                    "index": 1
+                },
+                "digest_bits": 128
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.new",
+            "function": "hashlib.new",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "name",
+                "data",
+                "kwargs"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.HashFactory",
+                "operation": "hash_init_dynamic",
+                "hash_name": {
+                    "param": "name",
+                    "source": "param",
+                    "index": 0
+                },
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 1
+                },
+                "digest_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.pbkdf2_hmac",
+            "function": "hashlib.pbkdf2_hmac",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "hash_name",
+                "password",
+                "salt",
+                "iterations",
+                "dklen"
+            ],
+            "semantic": {
+                "profile_id": "ALG.PBKDF2",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 1
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 2
+                },
+                "iterations": {
+                    "param": "iterations",
+                    "source": "param",
+                    "index": 3
+                },
+                "dk_length": {
+                    "param": "dklen",
+                    "source": "param",
+                    "index": 4
+                },
+                "hash": {
+                    "param": "hash_name",
+                    "source": "param",
+                    "index": 0
+                },
+                "prf": "HMAC",
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.scrypt",
+            "function": "hashlib.scrypt",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "password",
+                "salt",
+                "n",
+                "r",
+                "p",
+                "maxmem",
+                "dklen"
+            ],
+            "semantic": {
+                "profile_id": "ALG.Scrypt",
+                "operation": "kdf",
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 0
+                },
+                "salt": {
+                    "param": "salt",
+                    "source": "param",
+                    "index": 1
+                },
+                "N": {
+                    "param": "n",
+                    "source": "param",
+                    "index": 2
+                },
+                "r": {
+                    "param": "r",
+                    "source": "param",
+                    "index": 3
+                },
+                "p": {
+                    "param": "p",
+                    "source": "param",
+                    "index": 4
+                },
+                "maxmem": {
+                    "param": "maxmem",
+                    "source": "param",
+                    "index": 5
+                },
+                "dk_length": {
+                    "param": "dklen",
+                    "source": "param",
+                    "index": 6
+                },
+                "dk": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha1",
+            "function": "hashlib.sha1",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-1",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "security_level": "weak",
+                "usedforsecurity": {
+                    "param": "usedforsecurity",
+                    "source": "param",
+                    "index": 1
+                },
+                "digest_bits": 160
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha224",
+            "function": "hashlib.sha224",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-224",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 224
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha256",
+            "function": "hashlib.sha256",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-256",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha384",
+            "function": "hashlib.sha384",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-384",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 384
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha3_224",
+            "function": "hashlib.sha3_224",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3-224",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 224
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha3_256",
+            "function": "hashlib.sha3_256",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3-256",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha3_384",
+            "function": "hashlib.sha3_384",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3-384",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 384
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha3_512",
+            "function": "hashlib.sha3_512",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA3-512",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 512
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha512",
+            "function": "hashlib.sha512",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA-512",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 512
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha512_224",
+            "function": "hashlib.sha512_224",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA512_224",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 224
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.sha512_256",
+            "function": "hashlib.sha512_256",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHA512_256",
+                "operation": "hash_init",
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "digest_bits": 256
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.shake_128",
+            "function": "hashlib.shake_128",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHAKE128",
+                "operation": "xof_init",
+                "xof": true,
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.shake_256",
+            "function": "hashlib.shake_256",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "string",
+                "usedforsecurity"
+            ],
+            "semantic": {
+                "profile_id": "ALG.SHAKE256",
+                "operation": "xof_init",
+                "xof": true,
+                "input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.blake2b",
+            "function": "hashlib.blake2b",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "data",
+                "digest_size",
+                "key",
+                "salt",
+                "person"
+            ],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2B",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 2
+                },
+                "digest_bits": {
+                    "param": "digest_size",
+                    "source": "param",
+                    "index": 1,
+                    "unit": "bytes",
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hashlib.blake2s",
+            "function": "hashlib.blake2s",
+            "imports": [
+                "hashlib"
+            ],
+            "func_params": [
+                "data",
+                "digest_size",
+                "key",
+                "salt",
+                "person"
+            ],
+            "semantic": {
+                "profile_id": "ALG.BLAKE2S",
+                "operation": "hash_init",
+                "input": {
+                    "param": "data",
+                    "source": "param",
+                    "index": 0
+                },
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 2
+                },
+                "digest_bits": {
+                    "param": "digest_size",
+                    "source": "param",
+                    "index": 1,
+                    "unit": "bytes",
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.compare_digest",
+            "function": "hmac.compare_digest",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [
+                "a",
+                "b"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.ConstantTimeCompare",
+                "operation": "compare_digest",
+                "left": {
+                    "param": "a",
+                    "source": "param",
+                    "index": 0
+                },
+                "right": {
+                    "param": "b",
+                    "source": "param",
+                    "index": 1
+                },
+                "equal": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "constant_time": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.digest",
+            "function": "hmac.digest",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [
+                "key",
+                "msg",
+                "digest"
+            ],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 1
+                },
+                "hash": {
+                    "param": "digest",
+                    "source": "param",
+                    "index": 2
+                },
+                "tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.new",
+            "function": "hmac.new",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [
+                "key",
+                "msg",
+                "digestmod"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.MACFactory",
+                "operation": "mac_init_dynamic",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 1
+                },
+                "hash": {
+                    "param": "digestmod",
+                    "source": "param",
+                    "index": 2
+                },
+                "mac_obj": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "key_bits": {
+                    "unit": "bytes",
+                    "param": "key",
+                    "source": "param",
+                    "index": 0,
+                    "transform": "bytes_to_bits"
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.HMAC.__init__",
+            "function": "hmac.HMAC.__init__",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [
+                "key",
+                "msg",
+                "digestmod"
+            ],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_init",
+                "key": {
+                    "param": "key",
+                    "source": "param",
+                    "index": 0
+                },
+                "message": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 1
+                },
+                "hash": {
+                    "param": "digestmod",
+                    "source": "param",
+                    "index": 2
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.HMAC.copy",
+            "function": "hmac.HMAC.copy",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_copy",
+                "mac_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "mac_obj_copy": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "mac_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.HMAC.digest",
+            "function": "hmac.HMAC.digest",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_finalize",
+                "mac_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "tag": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "mac_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.HMAC.hexdigest",
+            "function": "hmac.HMAC.hexdigest",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_finalize_hex",
+                "mac_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "tag_hex": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "mac_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.hmac.HMAC.update",
+            "function": "hmac.HMAC.update",
+            "imports": [
+                "hmac"
+            ],
+            "func_params": [
+                "msg"
+            ],
+            "semantic": {
+                "profile_id": "ALG.HMAC",
+                "operation": "mac_update",
+                "mac_obj": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "message_chunk": {
+                    "param": "msg",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "mac_obj"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "block_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.compare_digest",
+            "function": "secrets.compare_digest",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "a",
+                "b"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.ConstantTimeCompare",
+                "operation": "compare_digest",
+                "left": {
+                    "param": "a",
+                    "source": "param",
+                    "index": 0
+                },
+                "right": {
+                    "param": "b",
+                    "source": "param",
+                    "index": 1
+                },
+                "equal": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "constant_time": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.choice",
+            "function": "secrets.choice",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "sequence"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_choice",
+                "population": {
+                    "param": "sequence",
+                    "source": "param",
+                    "index": 0
+                },
+                "value": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.randbits",
+            "function": "secrets.randbits",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "k"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bits",
+                "bit_length": {
+                    "param": "k",
+                    "source": "param",
+                    "index": 0
+                },
+                "random_bits": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.randbelow",
+            "function": "secrets.randbelow",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "exclusive_upper_bound"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_int_below",
+                "max_exclusive": {
+                    "param": "exclusive_upper_bound",
+                    "source": "param",
+                    "index": 0
+                },
+                "value": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.token_bytes",
+            "function": "secrets.token_bytes",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "nbytes"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes",
+                "size": {
+                    "param": "nbytes",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true,
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.token_hex",
+            "function": "secrets.token_hex",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "nbytes"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes_hex",
+                "size": {
+                    "param": "nbytes",
+                    "source": "param",
+                    "index": 0
+                },
+                "random_bytes_hex": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.secrets.token_urlsafe",
+            "function": "secrets.token_urlsafe",
+            "imports": [
+                "secrets"
+            ],
+            "func_params": [
+                "nbytes"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes_urlsafe",
+                "size": {
+                    "param": "nbytes",
+                    "source": "param",
+                    "index": 0
+                },
+                "random_string": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.DER_cert_to_PEM_cert",
+            "function": "ssl.DER_cert_to_PEM_cert",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "der_cert_bytes"
+            ],
+            "semantic": {
+                "profile_id": "FORMAT.X509",
+                "operation": "cert_der_to_pem",
+                "cert_der": {
+                    "param": "der_cert_bytes",
+                    "source": "param",
+                    "index": 0
+                },
+                "cert_pem": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.PEM_cert_to_DER_cert",
+            "function": "ssl.PEM_cert_to_DER_cert",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "pem_cert_string"
+            ],
+            "semantic": {
+                "profile_id": "FORMAT.X509",
+                "operation": "cert_pem_to_der",
+                "cert_pem": {
+                    "param": "pem_cert_string",
+                    "source": "param",
+                    "index": 0
+                },
+                "cert_der": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.RAND_add",
+            "function": "ssl.RAND_add",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "string",
+                "entropy"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "rng_reseed",
+                "rng_source": "OpenSSL",
+                "entropy_input": {
+                    "param": "string",
+                    "source": "param",
+                    "index": 0
+                },
+                "entropy_estimate": {
+                    "param": "entropy",
+                    "source": "param",
+                    "index": 1
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.RAND_bytes",
+            "function": "ssl.RAND_bytes",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "n"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes",
+                "rng_source": "OpenSSL",
+                "size": {
+                    "param": "n",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true,
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.RAND_status",
+            "function": "ssl.RAND_status",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "rng_status",
+                "rng_source": "OpenSSL",
+                "ready": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl._create_default_https_context",
+            "function": "ssl._create_default_https_context",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "purpose",
+                "cafile",
+                "capath",
+                "cadata"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.TLSContextFactory",
+                "operation": "tls_context_default_https",
+                "purpose": {
+                    "param": "purpose",
+                    "source": "param",
+                    "index": 0
+                },
+                "cafile": {
+                    "param": "cafile",
+                    "source": "param",
+                    "index": 1
+                },
+                "capath": {
+                    "param": "capath",
+                    "source": "param",
+                    "index": 2
+                },
+                "cadata": {
+                    "param": "cadata",
+                    "source": "param",
+                    "index": 3
+                },
+                "context": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "verified_by_default": true,
+                "internal": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl._create_stdlib_context",
+            "function": "ssl._create_stdlib_context",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "protocol",
+                "cert_reqs",
+                "check_hostname",
+                "purpose",
+                "certfile",
+                "keyfile",
+                "cafile",
+                "capath",
+                "cadata"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.TLSContextFactory",
+                "operation": "tls_context_custom",
+                "protocol": {
+                    "param": "protocol",
+                    "source": "param",
+                    "index": 0
+                },
+                "cert_reqs": {
+                    "param": "cert_reqs",
+                    "source": "param",
+                    "index": 1
+                },
+                "check_hostname": {
+                    "param": "check_hostname",
+                    "source": "param",
+                    "index": 2
+                },
+                "purpose": {
+                    "param": "purpose",
+                    "source": "param",
+                    "index": 3
+                },
+                "certfile": {
+                    "param": "certfile",
+                    "source": "param",
+                    "index": 4
+                },
+                "keyfile": {
+                    "param": "keyfile",
+                    "source": "param",
+                    "index": 5
+                },
+                "cafile": {
+                    "param": "cafile",
+                    "source": "param",
+                    "index": 6
+                },
+                "capath": {
+                    "param": "capath",
+                    "source": "param",
+                    "index": 7
+                },
+                "cadata": {
+                    "param": "cadata",
+                    "source": "param",
+                    "index": 8
+                },
+                "context": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl._create_unverified_context",
+            "function": "ssl._create_unverified_context",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "protocol",
+                "cert_reqs",
+                "check_hostname",
+                "purpose",
+                "certfile",
+                "keyfile",
+                "cafile",
+                "capath",
+                "cadata"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.TLSContextFactory",
+                "operation": "tls_context_unverified",
+                "protocol": {
+                    "param": "protocol",
+                    "source": "param",
+                    "index": 0
+                },
+                "cert_reqs": {
+                    "param": "cert_reqs",
+                    "source": "param",
+                    "index": 1
+                },
+                "check_hostname": {
+                    "param": "check_hostname",
+                    "source": "param",
+                    "index": 2
+                },
+                "purpose": {
+                    "param": "purpose",
+                    "source": "param",
+                    "index": 3
+                },
+                "certfile": {
+                    "param": "certfile",
+                    "source": "param",
+                    "index": 4
+                },
+                "keyfile": {
+                    "param": "keyfile",
+                    "source": "param",
+                    "index": 5
+                },
+                "cafile": {
+                    "param": "cafile",
+                    "source": "param",
+                    "index": 6
+                },
+                "capath": {
+                    "param": "capath",
+                    "source": "param",
+                    "index": 7
+                },
+                "cadata": {
+                    "param": "cadata",
+                    "source": "param",
+                    "index": 8
+                },
+                "context": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "verify_disabled": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.create_default_context",
+            "function": "ssl.create_default_context",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "purpose",
+                "cafile",
+                "capath",
+                "cadata"
+            ],
+            "semantic": {
+                "profile_id": "UTIL.TLSContextFactory",
+                "operation": "tls_context_default",
+                "purpose": {
+                    "param": "purpose",
+                    "source": "param",
+                    "index": 0
+                },
+                "cafile": {
+                    "param": "cafile",
+                    "source": "param",
+                    "index": 1
+                },
+                "capath": {
+                    "param": "capath",
+                    "source": "param",
+                    "index": 2
+                },
+                "cadata": {
+                    "param": "cadata",
+                    "source": "param",
+                    "index": 3
+                },
+                "context": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "verified_by_default": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.enum_certificates",
+            "function": "ssl.enum_certificates",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "store_name"
+            ],
+            "semantic": {
+                "profile_id": "FORMAT.X509",
+                "operation": "enum_certificates",
+                "store_name": {
+                    "param": "store_name",
+                    "source": "param",
+                    "index": 0
+                },
+                "cert_list": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.enum_crls",
+            "function": "ssl.enum_crls",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "store_name"
+            ],
+            "semantic": {
+                "profile_id": "FORMAT.X509",
+                "operation": "enum_crls",
+                "store_name": {
+                    "param": "store_name",
+                    "source": "param",
+                    "index": 0
+                },
+                "crl_list": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.get_default_verify_paths",
+            "function": "ssl.get_default_verify_paths",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_default_verify_paths",
+                "paths": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.get_server_certificate",
+            "function": "ssl.get_server_certificate",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "addr",
+                "ssl_version",
+                "ca_certs",
+                "timeout"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "fetch_server_certificate",
+                "address": {
+                    "param": "addr",
+                    "source": "param",
+                    "index": 0
+                },
+                "ssl_version": {
+                    "param": "ssl_version",
+                    "source": "param",
+                    "index": 1
+                },
+                "ca_certs": {
+                    "param": "ca_certs",
+                    "source": "param",
+                    "index": 2
+                },
+                "timeout": {
+                    "param": "timeout",
+                    "source": "param",
+                    "index": 3
+                },
+                "cert_pem": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.__init__",
+            "function": "ssl.SSLContext.__init__",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "args",
+                "kwargs"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_init",
+                "protocol": {
+                    "param": "args",
+                    "source": "param",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.load_cert_chain",
+            "function": "ssl.SSLContext.load_cert_chain",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "certfile",
+                "keyfile",
+                "password"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_load_cert_chain",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "certfile": {
+                    "param": "certfile",
+                    "source": "param",
+                    "index": 0
+                },
+                "keyfile": {
+                    "param": "keyfile",
+                    "source": "param",
+                    "index": 1
+                },
+                "password": {
+                    "param": "password",
+                    "source": "param",
+                    "index": 2
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.load_default_certs",
+            "function": "ssl.SSLContext.load_default_certs",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "purpose"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_load_default_certs",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "purpose": {
+                    "param": "purpose",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.load_dh_params",
+            "function": "ssl.SSLContext.load_dh_params",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "path"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_load_dh_params",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "dh_params_file": {
+                    "param": "path",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.load_verify_locations",
+            "function": "ssl.SSLContext.load_verify_locations",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "cafile",
+                "capath",
+                "cadata"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_load_verify_locations",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cafile": {
+                    "param": "cafile",
+                    "source": "param",
+                    "index": 0
+                },
+                "capath": {
+                    "param": "capath",
+                    "source": "param",
+                    "index": 1
+                },
+                "cadata": {
+                    "param": "cadata",
+                    "source": "param",
+                    "index": 2
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "padding"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "digest"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "salt"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.set_alpn_protocols",
+            "function": "ssl.SSLContext.set_alpn_protocols",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "alpn_protocols"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_set_alpn_protocols",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "alpn_protocols": {
+                    "param": "alpn_protocols",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "alpn_protocols",
+                        "from": {
+                            "param": "alpn_protocols",
+                            "source": "param",
+                            "index": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.set_ciphers",
+            "function": "ssl.SSLContext.set_ciphers",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "cipherlist"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_set_ciphers",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cipher_suites": {
+                    "param": "cipherlist",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "cipher_suites",
+                        "from": {
+                            "param": "cipherlist",
+                            "source": "param",
+                            "index": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.set_default_verify_paths",
+            "function": "ssl.SSLContext.set_default_verify_paths",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_set_default_verify_paths",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "private_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "public_key"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "padding"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "digest"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "salt"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "output_bits"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.set_ecdh_curve",
+            "function": "ssl.SSLContext.set_ecdh_curve",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "name"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_set_ecdh_curve",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "curve_name": {
+                    "param": "name",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "curve_name",
+                        "from": {
+                            "param": "name",
+                            "source": "param",
+                            "index": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.set_npn_protocols",
+            "function": "ssl.SSLContext.set_npn_protocols",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "npn_protocols"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_set_npn_protocols",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "npn_protocols": {
+                    "param": "npn_protocols",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "npn_protocols",
+                        "from": {
+                            "param": "npn_protocols",
+                            "source": "param",
+                            "index": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.set_servername_callback",
+            "function": "ssl.SSLContext.set_servername_callback",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "server_name_callback"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_set_servername_callback",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "callback": {
+                    "param": "server_name_callback",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    }
+                ],
+                "context_writes": [
+                    {
+                        "object": "receiver",
+                        "field": "callback",
+                        "from": {
+                            "param": "server_name_callback",
+                            "source": "param",
+                            "index": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.wrap_bio",
+            "function": "ssl.SSLContext.wrap_bio",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "incoming",
+                "outgoing",
+                "server_side",
+                "server_hostname",
+                "session"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_wrap_bio",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "server_side": {
+                    "param": "server_side",
+                    "source": "param",
+                    "index": 2
+                },
+                "server_hostname": {
+                    "param": "server_hostname",
+                    "source": "param",
+                    "index": 3
+                },
+                "session": {
+                    "param": "session",
+                    "source": "param",
+                    "index": 4
+                },
+                "tls_object": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLContext.wrap_socket",
+            "function": "ssl.SSLContext.wrap_socket",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "sock",
+                "server_side",
+                "do_handshake_on_connect",
+                "suppress_ragged_eofs",
+                "server_hostname",
+                "session"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "context_wrap_socket",
+                "context": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "sock": {
+                    "param": "sock",
+                    "source": "param",
+                    "index": 0
+                },
+                "server_side": {
+                    "param": "server_side",
+                    "source": "param",
+                    "index": 1
+                },
+                "server_hostname": {
+                    "param": "server_hostname",
+                    "source": "param",
+                    "index": 4
+                },
+                "do_handshake_on_connect": {
+                    "param": "do_handshake_on_connect",
+                    "source": "param",
+                    "index": 2
+                },
+                "session": {
+                    "param": "session",
+                    "source": "param",
+                    "index": 5
+                },
+                "tls_socket": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "context"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.do_handshake",
+            "function": "ssl.SSLObject.do_handshake",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "handshake",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.cipher",
+            "function": "ssl.SSLObject.cipher",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_cipher",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cipher_info": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.getpeercert",
+            "function": "ssl.SSLObject.getpeercert",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "binary_form"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_peer_cert",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "binary_form": {
+                    "param": "binary_form",
+                    "source": "param",
+                    "index": 0
+                },
+                "certificate": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.version",
+            "function": "ssl.SSLObject.version",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_version",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "tls_version": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.get_channel_binding",
+            "function": "ssl.SSLObject.get_channel_binding",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "cb_type"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_channel_binding",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cb_type": {
+                    "param": "cb_type",
+                    "source": "param",
+                    "index": 0
+                },
+                "channel_binding_data": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.shared_ciphers",
+            "function": "ssl.SSLObject.shared_ciphers",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "shared_ciphers",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cipher_list": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.selected_alpn_protocol",
+            "function": "ssl.SSLObject.selected_alpn_protocol",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_selected_alpn",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "alpn_protocol": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.selected_npn_protocol",
+            "function": "ssl.SSLObject.selected_npn_protocol",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_selected_npn",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "npn_protocol": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLObject.verify_client_post_handshake",
+            "function": "ssl.SSLObject.verify_client_post_handshake",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "post_handshake_client_auth",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.do_handshake",
+            "function": "ssl.SSLSocket.do_handshake",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "block"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "handshake",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "blocking": {
+                    "param": "block",
+                    "source": "param",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.cipher",
+            "function": "ssl.SSLSocket.cipher",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_cipher",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cipher_info": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.getpeercert",
+            "function": "ssl.SSLSocket.getpeercert",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "binary_form"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_peer_cert",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "binary_form": {
+                    "param": "binary_form",
+                    "source": "param",
+                    "index": 0
+                },
+                "certificate": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.version",
+            "function": "ssl.SSLSocket.version",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_version",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "tls_version": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.shared_ciphers",
+            "function": "ssl.SSLSocket.shared_ciphers",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "shared_ciphers",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cipher_list": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.get_channel_binding",
+            "function": "ssl.SSLSocket.get_channel_binding",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [
+                "cb_type"
+            ],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "get_channel_binding",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "cb_type": {
+                    "param": "cb_type",
+                    "source": "param",
+                    "index": 0
+                },
+                "channel_binding_data": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.ssl.SSLSocket.verify_client_post_handshake",
+            "function": "ssl.SSLSocket.verify_client_post_handshake",
+            "imports": [
+                "ssl"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "PROTO.TLS",
+                "operation": "post_handshake_client_auth",
+                "connection": {
+                    "param": "$receiver",
+                    "source": "receiver",
+                    "index": 0
+                },
+                "context_reads": [
+                    {
+                        "object": "receiver",
+                        "field": "connection"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "algorithm"
+                    },
+                    {
+                        "object": "receiver",
+                        "field": "key"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "py.stdlib.os.urandom",
+            "function": "os.urandom",
+            "imports": [
+                "os"
+            ],
+            "func_params": [
+                "size"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes",
+                "size": {
+                    "param": "size",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true,
+                "source": "OS",
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.getrandbits",
+            "function": "random.SystemRandom.getrandbits",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "k"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bits",
+                "bit_length": {
+                    "param": "k",
+                    "source": "param",
+                    "index": 0
+                },
+                "random_bits": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.randbytes",
+            "function": "random.SystemRandom.randbytes",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "n"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_bytes",
+                "size": {
+                    "param": "n",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true,
+                "random": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                }
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.random",
+            "function": "random.SystemRandom.random",
+            "imports": [
+                "random"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_float_0_1",
+                "value": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.randrange",
+            "function": "random.SystemRandom.randrange",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "start",
+                "stop",
+                "step"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_int_range",
+                "start": {
+                    "param": "start",
+                    "source": "param",
+                    "index": 0
+                },
+                "stop": {
+                    "param": "stop",
+                    "source": "param",
+                    "index": 1
+                },
+                "step": {
+                    "param": "step",
+                    "source": "param",
+                    "index": 2
+                },
+                "value": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.randint",
+            "function": "random.SystemRandom.randint",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "a",
+                "b"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_int_closed_interval",
+                "min_inclusive": {
+                    "param": "a",
+                    "source": "param",
+                    "index": 0
+                },
+                "max_inclusive": {
+                    "param": "b",
+                    "source": "param",
+                    "index": 1
+                },
+                "value": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.choice",
+            "function": "random.SystemRandom.choice",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "seq"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_choice",
+                "population": {
+                    "param": "seq",
+                    "source": "param",
+                    "index": 0
+                },
+                "value": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.choices",
+            "function": "random.SystemRandom.choices",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "population",
+                "weights",
+                "cum_weights",
+                "k"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_choices",
+                "population": {
+                    "param": "population",
+                    "source": "param",
+                    "index": 0
+                },
+                "weights": {
+                    "param": "weights",
+                    "source": "param",
+                    "index": 1
+                },
+                "cum_weights": {
+                    "param": "cum_weights",
+                    "source": "param",
+                    "index": 2
+                },
+                "k": {
+                    "param": "k",
+                    "source": "param",
+                    "index": 3
+                },
+                "values": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.sample",
+            "function": "random.SystemRandom.sample",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "population",
+                "k",
+                "counts"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_sample",
+                "population": {
+                    "param": "population",
+                    "source": "param",
+                    "index": 0
+                },
+                "k": {
+                    "param": "k",
+                    "source": "param",
+                    "index": 1
+                },
+                "values": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.random.SystemRandom.shuffle",
+            "function": "random.SystemRandom.shuffle",
+            "imports": [
+                "random"
+            ],
+            "func_params": [
+                "x"
+            ],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "random_shuffle",
+                "sequence": {
+                    "param": "x",
+                    "source": "param",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        },
+        {
+            "api_id": "py.stdlib.uuid.uuid4",
+            "function": "uuid.uuid4",
+            "imports": [
+                "uuid"
+            ],
+            "func_params": [],
+            "semantic": {
+                "profile_id": "RNG.CSPRNG",
+                "operation": "uuid4",
+                "uuid": {
+                    "param": "$return",
+                    "source": "return",
+                    "index": 0
+                },
+                "cryptographically_secure": true
+            }
+        }
+    ]
+}

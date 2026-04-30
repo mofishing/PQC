@@ -1,0 +1,1354 @@
+{
+    "version": "1.0",
+    "language": "c",
+    "library": "tongsuo",
+    "mappings": [
+        {
+            "api_id": "c.tongsuo.paillier_encrypt",
+            "function": "PAILLIER_encrypt",
+            "imports": ["openssl/paillier.h"],
+            "func_params": ["ctx", "r", "m"],
+            "semantic": {
+                "description": "Tongsuo specific: Paillier additive homomorphic encryption",
+                "profile_id": "ALG.PAILLIER",
+                "category": "asymmetric_homomorphic",
+                "operation": "encrypt",
+                "ctx": {
+                    "param": "ctx",
+                    "type": "PAILLIER_CTX"
+                },
+                "key": {
+                    "param": "ctx",
+                    "attribute": "public_key"
+                },
+                "out": {
+                    "param": "r",
+                    "type": "PAILLIER_CIPHERTEXT"
+                },
+                "in": {
+                    "param": "m",
+                    "type": "BIGNUM",
+                    "description": "Plaintext integer"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.paillier_add",
+            "function": "PAILLIER_add",
+            "imports": ["openssl/paillier.h"],
+            "func_params": ["ctx", "r", "c1", "c2"],
+            "semantic": {
+                "description": "Tongsuo specific: Homomorphic addition of two ciphertexts",
+                "profile_id": "ALG.PAILLIER",
+                "category": "asymmetric_homomorphic",
+                "operation": "add",
+                "ctx": {
+                    "param": "ctx",
+                    "type": "PAILLIER_CTX"
+                },
+                "out": {
+                    "param": "r",
+                    "type": "PAILLIER_CIPHERTEXT",
+                    "description": "Result of c1 + c2 (homomorphically)"
+                },
+                "operands": [
+                    {
+                        "param": "c1",
+                        "type": "PAILLIER_CIPHERTEXT"
+                    },
+                    {
+                        "param": "c2",
+                        "type": "PAILLIER_CIPHERTEXT"
+                    }
+                ]
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_zuc_128_eea3",
+            "function": "EVP_zuc_128_eea3",
+            "imports": ["openssl/evp.h", "openssl/zuc.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for ZUC 128-bit stream cipher (Encryption)",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.ZUC",
+                "mode": "EEA3",
+                "key_length": 16,
+                "iv_length": 16,
+                "streaming": true
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_zuc_128_eia3",
+            "function": "EVP_zuc_128_eia3",
+            "imports": ["openssl/evp.h", "openssl/zuc.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for ZUC 128-bit integrity algorithm (MAC)",
+                "category": "digest_factory",
+                "return_type": "EVP_MD*",
+                "profile_id": "ALG.ZUC",
+                "mode": "EIA3",
+                "key_length": 16,
+                "iv_length": 16
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_zuc_256",
+            "function": "EVP_zuc_256",
+            "imports": ["openssl/evp.h", "openssl/zuc.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for ZUC 256-bit stream cipher",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.ZUC256",
+                "mode": "STREAM",
+                "key_length": 32,
+                "iv_length": 23,
+                "streaming": true
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ntls_server_method",
+            "function": "NTLS_server_method",
+            "imports": ["openssl/ssl.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Tongsuo specific: Creates a server-side SSL_METHOD for GM/T 0024 (NTLS) protocol",
+                "category": "protocol_method",
+                "profile_id": "PROTO.NTLS",
+                "role": "server",
+                "requirements": ["dual_certificate"]
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ssl_ctx_use_sign_certificate",
+            "function": "SSL_CTX_use_sign_certificate",
+            "imports": ["openssl/ssl.h"],
+            "func_params": ["ctx", "x"],
+            "semantic": {
+                "description": "Tongsuo specific: Sets the signing certificate for NTLS (Double Cert Mode)",
+                "category": "config",
+                "operation": "set_certificate",
+                "profile_hint": ["PROTO.NTLS"],
+                "target_ctx": {
+                    "param": "ctx",
+                    "type": "SSL_CTX"
+                },
+                "cert_role": "signing",
+                "certificate_source": {
+                    "param": "x",
+                    "type": "X509*"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ssl_ctx_use_enc_certificate",
+            "function": "SSL_CTX_use_enc_certificate",
+            "imports": ["openssl/ssl.h"],
+            "func_params": ["ctx", "x"],
+            "semantic": {
+                "description": "Tongsuo specific: Sets the encryption certificate for NTLS (Double Cert Mode)",
+                "category": "config",
+                "operation": "set_certificate",
+                "profile_hint": ["PROTO.NTLS"],
+                "target_ctx": {
+                    "param": "ctx",
+                    "type": "SSL_CTX"
+                },
+                "cert_role": "encryption",
+                "certificate_source": {
+                    "param": "x",
+                    "type": "X509*"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.bp_range_proof_prove",
+            "function": "BP_RANGE_PROOF_prove",
+            "imports": ["openssl/bulletproofs.h"],
+            "func_params": ["ctx", "pp", "witness", "proof"],
+            "semantic": {
+                "description": "Tongsuo specific: Generates a Zero-Knowledge Range Proof (Bulletproofs)",
+                "profile_id": "ALG.BULLETPROOFS",
+                "category": "zero_knowledge_proof",
+                "operation": "prove",
+                "ctx": {
+                    "param": "ctx",
+                    "type": "BP_CTX"
+                },
+                "public_params": {
+                    "param": "pp",
+                    "type": "BP_PUB_PARAM"
+                },
+                "witness": {
+                    "param": "witness",
+                    "description": "Secret value and blinding factor"
+                },
+                "out": {
+                    "param": "proof",
+                    "type": "BP_RANGE_PROOF"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ssl_ctx_use_sign_privatekey",
+            "function": "SSL_CTX_use_sign_PrivateKey",
+            "imports": ["openssl/ssl.h"],
+            "func_params": ["ctx", "pkey"],
+            "semantic": {
+                "description": "Tongsuo specific: Sets the signing private key for NTLS",
+                "category": "config",
+                "operation": "set_private_key",
+                "profile_hint": ["PROTO.NTLS"],
+                "target_ctx": {
+                    "param": "ctx",
+                    "type": "SSL_CTX"
+                },
+                "key_role": "signing",
+                "key_source": {
+                    "param": "pkey",
+                    "type": "EVP_PKEY*"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_sm3",
+            "function": "EVP_sm3",
+            "imports": ["openssl/evp.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for SM3 hash algorithm",
+                "category": "hash_factory",
+                "return_type": "EVP_MD*",
+                "profile_id": "ALG.SM3"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_sm4_ecb",
+            "function": "EVP_sm4_ecb",
+            "imports": ["openssl/evp.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for SM4-ECB cipher",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.SM4_ECB"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_sm4_cbc",
+            "function": "EVP_sm4_cbc",
+            "imports": ["openssl/evp.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for SM4-CBC cipher",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.SM4_CBC"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_sm4_ctr",
+            "function": "EVP_sm4_ctr",
+            "imports": ["openssl/evp.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for SM4-CTR cipher",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.SM4_CTR"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_sm4_ofb",
+            "function": "EVP_sm4_ofb",
+            "imports": ["openssl/evp.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for SM4-OFB cipher",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.SM4_OFB"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_sm4_cfb",
+            "function": "EVP_sm4_cfb",
+            "imports": ["openssl/evp.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Factory function for SM4-CFB cipher",
+                "category": "cipher_factory",
+                "return_type": "EVP_CIPHER*",
+                "profile_id": "ALG.SM4_CFB"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ssl_ctx_use_enc_privatekey",
+            "function": "SSL_CTX_use_enc_PrivateKey",
+            "imports": ["openssl/ssl.h"],
+            "func_params": ["ctx", "pkey"],
+            "semantic": {
+                "description": "Tongsuo specific: Sets the encryption private key for NTLS",
+                "category": "config",
+                "operation": "set_private_key",
+                "profile_hint": ["PROTO.NTLS"],
+                "target_ctx": {
+                    "param": "ctx",
+                    "type": "SSL_CTX"
+                },
+                "key_role": "encryption",
+                "key_source": {
+                    "param": "pkey",
+                    "type": "EVP_PKEY*"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_set_encrypt_key",
+            "function": "AES_set_encrypt_key",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["userKey", "bits", "key"],
+            "semantic": {
+                "description": "Set AES encryption key (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.AES"],
+                "key_bits_param": "bits",
+                "target": {
+                    "param": "key",
+                    "type": "AES_KEY"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_set_decrypt_key",
+            "function": "AES_set_decrypt_key",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["userKey", "bits", "key"],
+            "semantic": {
+                "description": "Set AES decryption key (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.AES"],
+                "key_bits_param": "bits",
+                "target": {
+                    "param": "key",
+                    "type": "AES_KEY"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_cbc_encrypt",
+            "function": "AES_cbc_encrypt",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["in", "out", "len", "key", "ivec", "enc"],
+            "semantic": {
+                "description": "Low-level AES CBC encrypt/decrypt function",
+                "category": "cipher",
+                "profile_hint": ["ALG.AES"],
+                "mode": "CBC",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rsa_generate_key_ex",
+            "function": "RSA_generate_key_ex",
+            "imports": ["openssl/rsa.h"],
+            "func_params": ["rsa", "bits", "e", "cb"],
+            "semantic": {
+                "description": "Generate RSA keypair (low-level)",
+                "category": "asymmetric_keygen",
+                "profile_id": "ALG.RSA.PKE",
+                "key_bits_param": "bits",
+                "out": {
+                    "param": "rsa",
+                    "type": "RSA*"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rsa_public_encrypt",
+            "function": "RSA_public_encrypt",
+            "imports": ["openssl/rsa.h"],
+            "func_params": ["flen", "from", "to", "rsa", "padding"],
+            "semantic": {
+                "description": "RSA public-key encrypt (low-level)",
+                "category": "asymmetric_encrypt",
+                "profile_hint": ["ALG.RSA.PKE"],
+                "key_param": "rsa",
+                "padding_param": "padding"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rsa_private_decrypt",
+            "function": "RSA_private_decrypt",
+            "imports": ["openssl/rsa.h"],
+            "func_params": ["flen", "from", "to", "rsa", "padding"],
+            "semantic": {
+                "description": "RSA private-key decrypt (low-level)",
+                "category": "asymmetric_decrypt",
+                "profile_hint": ["ALG.RSA.PKE"],
+                "key_param": "rsa",
+                "padding_param": "padding"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ec_key_new_by_curve",
+            "function": "EC_KEY_new_by_curve_name",
+            "imports": ["openssl/ec.h"],
+            "func_params": ["nid"],
+            "semantic": {
+                "description": "Create EC key for given curve NID",
+                "category": "asymmetric_key_factory",
+                "profile_hint": ["ALG.EC"],
+                "curve_param": "nid",
+                "out": {
+                    "param": "return",
+                    "type": "EC_KEY*"
+                }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ec_key_generate",
+            "function": "EC_KEY_generate_key",
+            "imports": ["openssl/ec.h"],
+            "func_params": ["eckey"],
+            "semantic": {
+                "description": "Generate EC keypair (low-level)",
+                "category": "asymmetric_keygen",
+                "profile_hint": ["ALG.EC"],
+                "out": {
+                    "param": "eckey",
+                    "type": "EC_KEY*"
+                }
+            }
+        }
+        ,
+        {
+            "api_id": "c.tongsuo.sm3_init",
+            "function": "SM3_Init",
+            "imports": ["openssl/sm3.h"],
+            "func_params": ["c"],
+            "semantic": {
+                "description": "Initialize an SM3 digest context (low-level)",
+                "category": "hash_init",
+                "profile_hint": ["ALG.SM3"],
+                "ctx_param": "c",
+                "return_type": "int"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm3_update",
+            "function": "SM3_Update",
+            "imports": ["openssl/sm3.h"],
+            "func_params": ["c", "data", "len"],
+            "semantic": {
+                "description": "Update SM3 digest with data (low-level)",
+                "category": "hash_update",
+                "profile_hint": ["ALG.SM3"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm3_final",
+            "function": "SM3_Final",
+            "imports": ["openssl/sm3.h"],
+            "func_params": ["md", "c"],
+            "semantic": {
+                "description": "Finalize SM3 digest (low-level)",
+                "category": "hash_final",
+                "profile_hint": ["ALG.SM3"],
+                "ctx_param": "c",
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_set_encrypt_key",
+            "function": "SM4_set_key",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["userKey", "key"],
+            "semantic": {
+                "description": "Set SM4 key schedule (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.SM4"],
+                "key_param": "userKey",
+                "target": { "param": "key", "type": "SM4_KEY" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_encrypt",
+            "function": "SM4_encrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "key"],
+            "semantic": {
+                "description": "SM4 single-block encrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_decrypt",
+            "function": "SM4_decrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "key"],
+            "semantic": {
+                "description": "SM4 single-block decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm2_sign",
+            "function": "SM2_sign",
+            "imports": ["openssl/sm2.h"],
+            "func_params": ["type", "dgst", "dgst_len", "sig", "siglen", "pkey"],
+            "semantic": {
+                "description": "SM2 signature (low-level)",
+                "category": "signature",
+                "profile_hint": ["ALG.SM2"],
+                "key_param": "pkey",
+                "out": { "param": "sig", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm2_verify",
+            "function": "SM2_verify",
+            "imports": ["openssl/sm2.h"],
+            "func_params": ["type", "dgst", "dgst_len", "sig", "siglen", "pkey"],
+            "semantic": {
+                "description": "SM2 signature verification (low-level)",
+                "category": "signature_verify",
+                "profile_hint": ["ALG.SM2"],
+                "key_param": "pkey"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm2_encrypt",
+            "function": "SM2_encrypt",
+            "imports": ["openssl/sm2.h"],
+            "func_params": ["in", "inlen", "out", "outlen", "pkey"],
+            "semantic": {
+                "description": "SM2 asymmetric encryption (low-level)",
+                "category": "asymmetric_encrypt",
+                "profile_hint": ["ALG.SM2"],
+                "key_param": "pkey",
+                "out": { "param": "out", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm2_decrypt",
+            "function": "SM2_decrypt",
+            "imports": ["openssl/sm2.h"],
+            "func_params": ["in", "inlen", "out", "outlen", "pkey"],
+            "semantic": {
+                "description": "SM2 asymmetric decryption (low-level)",
+                "category": "asymmetric_decrypt",
+                "profile_hint": ["ALG.SM2"],
+                "key_param": "pkey",
+                "out": { "param": "out", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_ecb_encrypt",
+            "function": "AES_ecb_encrypt",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["in", "out", "key", "enc"],
+            "semantic": {
+                "description": "Low-level AES ECB single block encrypt/decrypt",
+                "category": "cipher",
+                "profile_hint": ["ALG.AES"],
+                "mode": "ECB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_ofb128_encrypt",
+            "function": "AES_ofb128_encrypt",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "num"],
+            "semantic": {
+                "description": "Low-level AES OFB mode encryption",
+                "category": "cipher",
+                "profile_hint": ["ALG.AES"],
+                "mode": "OFB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_cfb128_encrypt",
+            "function": "AES_cfb128_encrypt",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "num", "enc"],
+            "semantic": {
+                "description": "Low-level AES CFB128 mode encryption",
+                "category": "cipher",
+                "profile_hint": ["ALG.AES"],
+                "mode": "CFB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.aes_ctr128_encrypt",
+            "function": "AES_ctr128_encrypt",
+            "imports": ["openssl/aes.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "ecount_buf", "num"],
+            "semantic": {
+                "description": "Low-level AES CTR mode encryption",
+                "category": "cipher",
+                "profile_hint": ["ALG.AES"],
+                "mode": "CTR",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.des_set_key",
+            "function": "DES_set_key",
+            "imports": ["openssl/des.h"],
+            "func_params": ["key", "schedule"],
+            "semantic": {
+                "description": "Set DES key schedule (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.DES"],
+                "key_param": "key",
+                "target": { "param": "schedule", "type": "DES_key_schedule" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.des_ecb_encrypt",
+            "function": "DES_ecb_encrypt",
+            "imports": ["openssl/des.h"],
+            "func_params": ["input", "output", "ks", "enc"],
+            "semantic": {
+                "description": "DES ECB single block encrypt/decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.DES"],
+                "mode": "ECB",
+                "key_param": "ks"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.des_ede3_cbc_encrypt",
+            "function": "DES_ede3_cbc_encrypt",
+            "imports": ["openssl/des.h"],
+            "func_params": ["input", "output", "length", "ks1", "ks2", "ks3", "ivec", "enc"],
+            "semantic": {
+                "description": "Triple DES (3DES) CBC encrypt/decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.3DES"],
+                "mode": "CBC",
+                "key_param": "ks1"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.dsa_generate_parameters_ex",
+            "function": "DSA_generate_parameters_ex",
+            "imports": ["openssl/dsa.h"],
+            "func_params": ["dsa", "bits", "seed", "seed_len", "counter_ret", "h_ret", "cb"],
+            "semantic": {
+                "description": "Generate DSA parameters (low-level)",
+                "category": "asymmetric_param_gen",
+                "profile_hint": ["ALG.DSA"],
+                "key_bits_param": "bits",
+                "out": { "param": "dsa", "type": "DSA*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.dsa_generate_key",
+            "function": "DSA_generate_key",
+            "imports": ["openssl/dsa.h"],
+            "func_params": ["dsa"],
+            "semantic": {
+                "description": "Generate DSA keypair (low-level)",
+                "category": "asymmetric_keygen",
+                "profile_hint": ["ALG.DSA"],
+                "out": { "param": "dsa", "type": "DSA*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.dh_generate_parameters_ex",
+            "function": "DH_generate_parameters_ex",
+            "imports": ["openssl/dh.h"],
+            "func_params": ["dh", "prime_len", "generator", "cb"],
+            "semantic": {
+                "description": "Generate DH parameters (low-level)",
+                "category": "key_exchange_param_gen",
+                "profile_hint": ["ALG.DH.MODP"],
+                "key_bits_param": "prime_len",
+                "out": { "param": "dh", "type": "DH*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.dh_generate_key",
+            "function": "DH_generate_key",
+            "imports": ["openssl/dh.h"],
+            "func_params": ["dh"],
+            "semantic": {
+                "description": "Generate DH keypair (low-level)",
+                "category": "key_exchange_keygen",
+                "profile_hint": ["ALG.DH.MODP"],
+                "out": { "param": "dh", "type": "DH*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.dh_compute_key",
+            "function": "DH_compute_key",
+            "imports": ["openssl/dh.h"],
+            "func_params": ["key", "pub_key", "dh"],
+            "semantic": {
+                "description": "Compute DH shared secret (low-level)",
+                "category": "key_exchange",
+                "profile_hint": ["ALG.DH.MODP"],
+                "key_param": "dh",
+                "out": { "param": "key", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rsa_sign",
+            "function": "RSA_sign",
+            "imports": ["openssl/rsa.h"],
+            "func_params": ["type", "m", "m_length", "sigret", "siglen", "rsa"],
+            "semantic": {
+                "description": "RSA signature (low-level)",
+                "category": "signature",
+                "profile_hint": ["ALG.RSA"],
+                "key_param": "rsa",
+                "out": { "param": "sigret", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rsa_verify",
+            "function": "RSA_verify",
+            "imports": ["openssl/rsa.h"],
+            "func_params": ["type", "m", "m_length", "sigbuf", "siglen", "rsa"],
+            "semantic": {
+                "description": "RSA signature verification (low-level)",
+                "category": "signature_verify",
+                "profile_hint": ["ALG.RSA"],
+                "key_param": "rsa"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ecdsa_sign",
+            "function": "ECDSA_sign",
+            "imports": ["openssl/ecdsa.h"],
+            "func_params": ["type", "dgst", "dgstlen", "sig", "siglen", "eckey"],
+            "semantic": {
+                "description": "ECDSA signature (low-level)",
+                "category": "signature",
+                "profile_hint": ["ALG.ECDSA"],
+                "key_param": "eckey",
+                "out": { "param": "sig", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ecdsa_verify",
+            "function": "ECDSA_verify",
+            "imports": ["openssl/ecdsa.h"],
+            "func_params": ["type", "dgst", "dgstlen", "sig", "siglen", "eckey"],
+            "semantic": {
+                "description": "ECDSA signature verification (low-level)",
+                "category": "signature_verify",
+                "profile_hint": ["ALG.ECDSA"],
+                "key_param": "eckey"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ecdh_compute_key",
+            "function": "ECDH_compute_key",
+            "imports": ["openssl/ecdh.h"],
+            "func_params": ["out", "outlen", "pub_key", "ecdh", "kdf"],
+            "semantic": {
+                "description": "ECDH shared secret computation (low-level)",
+                "category": "key_exchange",
+                "profile_hint": ["ALG.ECDH"],
+                "key_param": "ecdh",
+                "out": { "param": "out", "type": "void*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.md5_init",
+            "function": "MD5_Init",
+            "imports": ["openssl/md5.h"],
+            "func_params": ["c"],
+            "semantic": {
+                "description": "Initialize MD5 digest context (low-level)",
+                "category": "hash_init",
+                "profile_hint": ["ALG.MD5"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha1_init",
+            "function": "SHA1_Init",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["c"],
+            "semantic": {
+                "description": "Initialize SHA1 digest context (low-level)",
+                "category": "hash_init",
+                "profile_hint": ["ALG.SHA1"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha256_init",
+            "function": "SHA256_Init",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["c"],
+            "semantic": {
+                "description": "Initialize SHA256 digest context (low-level)",
+                "category": "hash_init",
+                "profile_hint": ["ALG.SHA256"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha512_init",
+            "function": "SHA512_Init",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["c"],
+            "semantic": {
+                "description": "Initialize SHA512 digest context (low-level)",
+                "category": "hash_init",
+                "profile_hint": ["ALG.SHA512"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.hmac",
+            "function": "HMAC",
+            "imports": ["openssl/hmac.h"],
+            "func_params": ["evp_md", "key", "key_len", "d", "n", "md", "md_len"],
+            "semantic": {
+                "description": "HMAC one-shot computation (low-level)",
+                "category": "mac",
+                "profile_hint": ["ALG.HMAC"],
+                "digest_param": "evp_md",
+                "key_param": "key",
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rc4_set_key",
+            "function": "RC4_set_key",
+            "imports": ["openssl/rc4.h"],
+            "func_params": ["key", "len", "data"],
+            "semantic": {
+                "description": "Set RC4 key (low-level, variable key size)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.RC4"],
+                "key_length_param": "len",
+                "target": { "param": "key", "type": "RC4_KEY" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rc4",
+            "function": "RC4",
+            "imports": ["openssl/rc4.h"],
+            "func_params": ["key", "len", "indata", "outdata"],
+            "semantic": {
+                "description": "RC4 stream encryption (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.RC4"],
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.blowfish_set_key",
+            "function": "BF_set_key",
+            "imports": ["openssl/blowfish.h"],
+            "func_params": ["key", "len", "data"],
+            "semantic": {
+                "description": "Set Blowfish key (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.BLOWFISH"],
+                "key_length_param": "len",
+                "target": { "param": "key", "type": "BF_KEY" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.blowfish_ecb_encrypt",
+            "function": "BF_ecb_encrypt",
+            "imports": ["openssl/blowfish.h"],
+            "func_params": ["in", "out", "key", "enc"],
+            "semantic": {
+                "description": "Blowfish ECB encrypt/decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.BLOWFISH"],
+                "mode": "ECB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.cast5_set_key",
+            "function": "CAST_set_key",
+            "imports": ["openssl/cast.h"],
+            "func_params": ["key", "len", "data"],
+            "semantic": {
+                "description": "Set CAST5 key (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.CAST5"],
+                "key_length_param": "len",
+                "target": { "param": "key", "type": "CAST_KEY" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_cbc_encrypt",
+            "function": "SM4_cbc_encrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "enc"],
+            "semantic": {
+                "description": "SM4 CBC mode encrypt/decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "mode": "CBC",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_ecb_encrypt",
+            "function": "SM4_ecb_encrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "key", "enc"],
+            "semantic": {
+                "description": "SM4 ECB mode single block encrypt/decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "mode": "ECB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_cfb128_encrypt",
+            "function": "SM4_cfb128_encrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "num", "enc"],
+            "semantic": {
+                "description": "SM4 CFB128 mode encrypt/decrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "mode": "CFB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_ofb128_encrypt",
+            "function": "SM4_ofb128_encrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "num"],
+            "semantic": {
+                "description": "SM4 OFB128 mode encrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "mode": "OFB",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm4_ctr128_encrypt",
+            "function": "SM4_ctr128_encrypt",
+            "imports": ["openssl/sm4.h"],
+            "func_params": ["in", "out", "length", "key", "ivec", "ecount_buf", "num"],
+            "semantic": {
+                "description": "SM4 CTR mode encrypt (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.SM4"],
+                "mode": "CTR",
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rand_bytes",
+            "function": "RAND_bytes",
+            "imports": ["openssl/rand.h"],
+            "func_params": ["buf", "num"],
+            "semantic": {
+                "description": "Generate cryptographically secure random bytes",
+                "category": "random",
+                "profile_hint": ["UTIL.CSPRNG"],
+                "out": { "param": "buf", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.rand_priv_bytes",
+            "function": "RAND_priv_bytes",
+            "imports": ["openssl/rand.h"],
+            "func_params": ["buf", "num"],
+            "semantic": {
+                "description": "Generate private random bytes (for key material)",
+                "category": "random",
+                "profile_hint": ["UTIL.CSPRNG"],
+                "out": { "param": "buf", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.pbkdf2",
+            "function": "PKCS5_PBKDF2_HMAC",
+            "imports": ["openssl/evp.h"],
+            "func_params": ["pass", "passlen", "salt", "saltlen", "iter", "digest", "keylen", "out"],
+            "semantic": {
+                "description": "PBKDF2 key derivation function",
+                "category": "kdf",
+                "profile_hint": ["ALG.PBKDF2"],
+                "digest_param": "digest",
+                "iteration_param": "iter",
+                "out": { "param": "out", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.zuc_set_key",
+            "function": "ZUC_set_key",
+            "imports": ["openssl/zuc.h"],
+            "func_params": ["key", "iv"],
+            "semantic": {
+                "description": "Set ZUC stream cipher key (low-level)",
+                "category": "cipher_key_setup",
+                "profile_hint": ["ALG.ZUC"],
+                "key_param": "key",
+                "iv_param": "iv"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.zuc_encrypt",
+            "function": "ZUC_encrypt",
+            "imports": ["openssl/zuc.h"],
+            "func_params": ["in", "out", "len", "key"],
+            "semantic": {
+                "description": "ZUC stream cipher encryption (low-level)",
+                "category": "cipher",
+                "profile_hint": ["ALG.ZUC"],
+                "key_param": "key"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.bp_range_proof_verify",
+            "function": "BP_RANGE_PROOF_verify",
+            "imports": ["openssl/bulletproofs.h"],
+            "func_params": ["proof", "ctx"],
+            "semantic": {
+                "description": "Tongsuo specific: Bulletproofs range proof verification",
+                "profile_id": "ALG.BULLETPROOFS",
+                "category": "zkp_verify",
+                "operation": "verify",
+                "proof_param": "proof",
+                "ctx_param": "ctx"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.bp_r1cs_proof_prove",
+            "function": "BP_R1CS_PROOF_prove",
+            "imports": ["openssl/bulletproofs.h"],
+            "func_params": ["ctx", "r1cs", "witness"],
+            "semantic": {
+                "description": "Tongsuo specific: Bulletproofs R1CS proof generation",
+                "profile_id": "ALG.BULLETPROOFS",
+                "category": "zkp_prove",
+                "operation": "prove",
+                "ctx_param": "ctx"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.bp_r1cs_proof_verify",
+            "function": "BP_R1CS_PROOF_verify",
+            "imports": ["openssl/bulletproofs.h"],
+            "func_params": ["proof", "ctx", "r1cs"],
+            "semantic": {
+                "description": "Tongsuo specific: Bulletproofs R1CS proof verification",
+                "profile_id": "ALG.BULLETPROOFS",
+                "category": "zkp_verify",
+                "operation": "verify",
+                "proof_param": "proof"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ntls_client_method",
+            "function": "NTLS_client_method",
+            "imports": ["openssl/ssl.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Tongsuo specific: NTLS client method (国密SSL/TLS双证书客户端)",
+                "profile_id": "PROTO.NTLS",
+                "category": "tls_method",
+                "side": "client",
+                "return_type": "SSL_METHOD*"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ntls_method",
+            "function": "NTLS_method",
+            "imports": ["openssl/ssl.h"],
+            "func_params": [],
+            "semantic": {
+                "description": "Tongsuo specific: NTLS method (国密SSL/TLS双证书通用)",
+                "profile_id": "PROTO.NTLS",
+                "category": "tls_method",
+                "return_type": "SSL_METHOD*"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm2_compute_key",
+            "function": "SM2_compute_key",
+            "imports": ["openssl/sm2.h"],
+            "func_params": ["out", "outlen", "pub_key", "ecdh"],
+            "semantic": {
+                "description": "SM2 key exchange (ECDH with SM2 curve)",
+                "category": "key_exchange",
+                "profile_hint": ["ALG.SM2"],
+                "operation": "ecdh",
+                "out": { "param": "out", "type": "void*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sm2_key_generate",
+            "function": "SM2_KEY_generate_key",
+            "imports": ["openssl/sm2.h"],
+            "func_params": ["key"],
+            "semantic": {
+                "description": "Generate SM2 key pair (low-level)",
+                "category": "key_generation",
+                "profile_hint": ["ALG.SM2"],
+                "key_bits": 256,
+                "target": { "param": "key", "type": "EC_KEY*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.paillier_decrypt",
+            "function": "PAILLIER_decrypt",
+            "imports": ["openssl/paillier.h"],
+            "func_params": ["ctx", "m", "c"],
+            "semantic": {
+                "description": "Tongsuo specific: Paillier decryption",
+                "profile_id": "ALG.PAILLIER",
+                "category": "asymmetric_homomorphic",
+                "operation": "decrypt",
+                "ctx": { "param": "ctx", "type": "PAILLIER_CTX" },
+                "out": { "param": "m", "type": "BIGNUM" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.paillier_sub",
+            "function": "PAILLIER_sub",
+            "imports": ["openssl/paillier.h"],
+            "func_params": ["ctx", "r", "c1", "c2"],
+            "semantic": {
+                "description": "Tongsuo specific: Homomorphic subtraction",
+                "profile_id": "ALG.PAILLIER",
+                "category": "asymmetric_homomorphic",
+                "operation": "subtract",
+                "out": { "param": "r", "type": "PAILLIER_CIPHERTEXT" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.paillier_mul",
+            "function": "PAILLIER_mul",
+            "imports": ["openssl/paillier.h"],
+            "func_params": ["ctx", "r", "c", "m"],
+            "semantic": {
+                "description": "Tongsuo specific: Homomorphic scalar multiplication",
+                "profile_id": "ALG.PAILLIER",
+                "category": "asymmetric_homomorphic",
+                "operation": "multiply",
+                "out": { "param": "r", "type": "PAILLIER_CIPHERTEXT" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.md5_update",
+            "function": "MD5_Update",
+            "imports": ["openssl/md5.h"],
+            "func_params": ["c", "data", "len"],
+            "semantic": {
+                "description": "MD5 hash update (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.MD5"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.md5_final",
+            "function": "MD5_Final",
+            "imports": ["openssl/md5.h"],
+            "func_params": ["md", "c"],
+            "semantic": {
+                "description": "MD5 hash finalization (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.MD5"],
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha1_update",
+            "function": "SHA1_Update",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["c", "data", "len"],
+            "semantic": {
+                "description": "SHA1 hash update (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.SHA1"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha1_final",
+            "function": "SHA1_Final",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["md", "c"],
+            "semantic": {
+                "description": "SHA1 hash finalization (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.SHA1"],
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha256_update",
+            "function": "SHA256_Update",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["c", "data", "len"],
+            "semantic": {
+                "description": "SHA256 hash update (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.SHA256"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha256_final",
+            "function": "SHA256_Final",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["md", "c"],
+            "semantic": {
+                "description": "SHA256 hash finalization (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.SHA256"],
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha512_update",
+            "function": "SHA512_Update",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["c", "data", "len"],
+            "semantic": {
+                "description": "SHA512 hash update (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.SHA512"],
+                "ctx_param": "c"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.sha512_final",
+            "function": "SHA512_Final",
+            "imports": ["openssl/sha.h"],
+            "func_params": ["md", "c"],
+            "semantic": {
+                "description": "SHA512 hash finalization (low-level)",
+                "category": "digest",
+                "profile_hint": ["ALG.SHA512"],
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.hmac_init_ex",
+            "function": "HMAC_Init_ex",
+            "imports": ["openssl/hmac.h"],
+            "func_params": ["ctx", "key", "len", "md", "impl"],
+            "semantic": {
+                "description": "Initialize HMAC context (low-level)",
+                "category": "mac_init",
+                "profile_hint": ["ALG.HMAC"],
+                "digest_param": "md",
+                "key_param": "key",
+                "ctx": { "param": "ctx", "type": "HMAC_CTX*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.hmac_update",
+            "function": "HMAC_Update",
+            "imports": ["openssl/hmac.h"],
+            "func_params": ["ctx", "data", "len"],
+            "semantic": {
+                "description": "Update HMAC context with data (low-level)",
+                "category": "mac",
+                "profile_hint": ["ALG.HMAC"],
+                "ctx_param": "ctx"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.hmac_final",
+            "function": "HMAC_Final",
+            "imports": ["openssl/hmac.h"],
+            "func_params": ["ctx", "md", "len"],
+            "semantic": {
+                "description": "Finalize HMAC computation (low-level)",
+                "category": "mac",
+                "profile_hint": ["ALG.HMAC"],
+                "out": { "param": "md", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ec_group_new_by_curve_name",
+            "function": "EC_GROUP_new_by_curve_name",
+            "imports": ["openssl/ec.h"],
+            "func_params": ["nid"],
+            "semantic": {
+                "description": "Create EC_GROUP from curve NID (low-level)",
+                "category": "key_generation",
+                "profile_hint": ["ALG.ECC"],
+                "curve_param": "nid",
+                "return_type": "EC_GROUP*"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.ec_point_mul",
+            "function": "EC_POINT_mul",
+            "imports": ["openssl/ec.h"],
+            "func_params": ["group", "r", "n", "q", "m", "ctx"],
+            "semantic": {
+                "description": "EC point multiplication (low-level)",
+                "category": "asymmetric",
+                "profile_hint": ["ALG.ECC"],
+                "operation": "point_mul"
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_pkey_derive",
+            "function": "EVP_PKEY_derive",
+            "imports": ["openssl/evp.h"],
+            "func_params": ["ctx", "key", "keylen"],
+            "semantic": {
+                "description": "Derive shared secret (ECDH/DH)",
+                "category": "key_exchange",
+                "profile_hint": ["ALG.ECDH", "ALG.DH"],
+                "operation": "derive",
+                "out": { "param": "key", "type": "unsigned char*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_pkey_derive_init",
+            "function": "EVP_PKEY_derive_init",
+            "imports": ["openssl/evp.h"],
+            "func_params": ["ctx"],
+            "semantic": {
+                "description": "Initialize key derivation context",
+                "category": "key_exchange_init",
+                "profile_hint": ["ALG.ECDH", "ALG.DH"],
+                "ctx": { "param": "ctx", "type": "EVP_PKEY_CTX*" }
+            }
+        },
+        {
+            "api_id": "c.tongsuo.evp_pkey_derive_set_peer",
+            "function": "EVP_PKEY_derive_set_peer",
+            "imports": ["openssl/evp.h"],
+            "func_params": ["ctx", "peer"],
+            "semantic": {
+                "description": "Set peer public key for key derivation",
+                "category": "key_exchange",
+                "profile_hint": ["ALG.ECDH", "ALG.DH"],
+                "peer_param": "peer"
+            }
+        }
+    ]
+}
