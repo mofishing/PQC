@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   extractor.py   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/18 16:49   1.0         function/call/import/constant/assignment/basic block
-"""
 from typing import Dict
 
 # pqscan/abstract_syntax_tree/extractor.py

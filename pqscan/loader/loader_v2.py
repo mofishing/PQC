@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   loader_v2
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/19 10:50   2.0         Knowledge base loader v2 (API mappings + common profiles)
-"""
-
 # pqscan/knowledge/loader_v2.py
 
 import json

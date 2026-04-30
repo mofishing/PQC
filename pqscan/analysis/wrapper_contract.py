@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-"""
-Task 13.3: Wrapper 约束传播实现
-
-基于已有的 wrapper_summary 和 propagation_graph，实现封装约束传播。
-不直接跨函数追溯变量，而是：
-1. 为每个wrapper函数生成Contract（约束）
-2. 将Contract传播到调用链
-3. 在检测时应用Contract判断是否违反约束
-
-设计思路：
-- 为wrapper生成Effect（关键输入归因）+ Contract（派生约束）
-- 使用CallersIndex构建调用链
-- 传播约束时累积参数变换
-"""
-
 from typing import Dict, List, Optional, Set, Any
 from dataclasses import dataclass, field
 

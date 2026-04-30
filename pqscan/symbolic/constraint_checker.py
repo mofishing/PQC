@@ -1,11 +1,3 @@
-"""
-约束检查器：双模式约束验证（量子 + 传统）
-
-支持：
-1. quantum_constraints: 量子计算威胁（Shor/Grover 攻击）
-2. classic_constraints: 传统密码学问题（ECB 模式、弱填充等）
-"""
-
 from typing import Dict, Any, Optional, List
 from dataclasses import dataclass
 from enum import Enum

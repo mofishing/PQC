@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   base   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/19 10:49    1.0         AnalyzerBase
-"""
-
 # pqscan/analysis/base.py
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional

@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-"""
-封装契约加载器（Wrapper Contract Loader）
-
-功能：
-1. 加载手工预定义的封装契约（kb/wrappers/*.json）
-2. 加载自动派生的封装契约（kb/derived/*.json）
-3. 转换为与 apis 同构的格式
-4. 合并到 api_mappings 中
-
-架构：
-- 封装规则 = apis 规则 + derived_meta
-- 复用现有的匹配、参数抽取、ctx 追踪流程
-- 优先级：direct APIs > wrapper contracts > symbolic execution
-"""
-
 import json
 import pathlib
 from typing import Dict, Any, List, Optional

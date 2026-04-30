@@ -1,14 +1,3 @@
-#!/usr/bin/env python3
-"""
-Java Transformation String Parser
-解析 Java Cipher.getInstance() 的 transformation 字符串
-
-支持格式:
-- "AES" → algorithm=AES
-- "AES/CBC/PKCS5Padding" → algorithm=AES, mode=CBC, padding=PKCS5Padding
-- "RSA/ECB/OAEPPadding" → algorithm=RSA, mode=ECB, padding=OAEPPadding
-"""
-
 import re
 from typing import Dict, Optional, Tuple
 from dataclasses import dataclass

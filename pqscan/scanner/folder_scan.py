@@ -1,26 +1,3 @@
-"""
-pqscan/scanner/folder_scan.py – Task 33: Bulk folder scan API
-
-Public API
-----------
-    scan_folder(
-        folder_path   : str | Path,
-        recursive     : bool = True,
-        langs         : list[str] | None = None,
-        max_workers   : int = 4,
-        on_progress   : Callable[[int, int, str], None] | None = None,
-    ) -> FolderScanReport
-
-Design notes
-------------
-* Language detection is purely file-extension based (no heuristics).
-* Files that are too large (> MAX_FILE_BYTES) are skipped with a warning.
-* Errors in individual files are captured per-file; they never abort the batch.
-* on_progress(current, total, file_path) is called after each file completes.
-* The returned FolderScanReport is a plain Python dataclass — JSON-serialisable
-  via dataclasses.asdict() or the built-in .to_dict() helper.
-"""
-
 from __future__ import annotations
 
 import os

@@ -1,33 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-Library Call Analyzer - 加密库API调用检测与分析
-
-设计原则：
-1. **AST优先**: 优先使用AST解析和语义规则，正则仅作为快速兜底
-2. **KB驱动**: 算法映射、安全策略等从KB规则动态加载，避免硬编码
-3. **语义分析**: 通过semantic字段驱动推断，支持参数追踪和类型传播
-
-核心流程：
-1. **规则匹配**: 通过符号、导入、参数类型匹配KB规则
-2. **算法解析**: 从semantic.algorithm_name配置提取算法（支持字符串参数、枚举常量等）
-3. **密钥推断**: 调用keysize模块进行深度推断（变量追踪、数据流、曲线查找）
-4. **安全评估**: 根据KB policy和profile评估安全等级
-
-工具方法设计：
-- _extract_string_param: AST优先提取参数，正则作为兜底
-- _build_algorithm_mapper: 从KB动态构建映射表，避免硬编码
-- _infer_keysize: 统一的密钥推断入口，条件判断基于semantic配置
-
-多语言支持：Java, Python, Go, C/C++
-
-@File    :   library.py
-@Contact :   mypandamail@163.com  
-@Author  :   mooo
-@Version :   3.0
-@Date    :   2026/1/9
-"""
-
 from typing import List, Dict, Any, Optional
 import re
 from .base import AnalyzerBase

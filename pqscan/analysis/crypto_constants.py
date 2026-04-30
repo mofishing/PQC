@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   crypto_constants.py
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/12/25 00:00   1.0         通用密码算法常量映射
-"""
-
 from typing import Optional, Dict
 import re
 

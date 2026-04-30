@@ -1,8 +1,3 @@
-"""
-Symbolic Execution Core Data Structures
-符号执行核心数据结构
-"""
-
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Union
 from enum import Enum

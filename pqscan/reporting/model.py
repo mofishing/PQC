@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   model   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/19 10:54   1.0         None
-"""
-
 # pqscan/reporting/model.py
 from dataclasses import dataclass, field, asdict
 from typing import List, Dict, Any

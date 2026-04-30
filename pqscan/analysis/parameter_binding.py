@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-"""
-参数绑定提取器 v2（无正则版本）
-
-使用简单的字符串分析代替正则表达式，更清晰、更易维护。
-
-支持的表达式：
-- 常量：256, 1024
-- 变量：x, keylen
-- 乘法：x*8, 8*x
-- 加法：x+10
-- 减法：x-10
-
-不支持复杂嵌套，但足够处理 90% 的实际情况。
-"""
-
 from typing import Dict, Any, Optional
 from dataclasses import dataclass
 

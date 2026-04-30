@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   __init__.py   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/18 16:48    1.0         None
-2026/1/23          2.0         重构：两阶段架构
-"""
-
 from typing import Optional, Dict, Any
 
 # Phase 1: AST 快速候选提取

@@ -1,10 +1,3 @@
-"""
-Symbolic Execution Package
-符号执行模块
-
-Phase 2: 精确参数推导和影响面分析
-"""
-
 from .schema import (
     # SSA/IR
     InstructionType,

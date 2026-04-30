@@ -1,21 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-增强的参数追踪模块 - 支持复杂场景
-
-新增支持：
-1. 结构体字段追踪
-2. 对象状态追踪（ctx/config 等）
-3. 条件分支的参数选择
-4. 指针/引用间接访问
-
-@File    :   enhanced_tracing.py
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Version :   1.0
-@Date    :   2026/1/26
-"""
-
 from typing import Dict, List, Optional, Any
 from pqscan.symbolic.state_tracker import StateTracker, ObjectType
 from pqscan.analysis.candidate import Candidate

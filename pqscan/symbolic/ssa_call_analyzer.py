@@ -1,8 +1,3 @@
-"""
-SSA Call Analyzer
-将 AST 调用转换为 SSA 形式，支持多语言
-"""
-
 from typing import Dict, List, Optional, Any
 from ..symbolic.ssa_object_tracker import (
     SSAObjectTracker, SSAVariableNamer, SSAVariable

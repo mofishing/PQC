@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-"""
-封装契约自动生成器（Wrapper Contract Generator）
-
-从源码分析中自动派生封装契约并保存到 KB。
-
-工作流程：
-1. 扫描源码，识别调用敏感 API 的函数（封装函数）
-2. 使用 ContractDeriver 派生约束
-3. 提取参数变换表达式
-4. 生成与 wrappers KB 同构的 JSON
-5. 保存到 kb/derived/<lang>/<lib>.json
-
-核心：将运行时派生结果固化为 KB，下次扫描直接查表。
-"""
-
 import json
 import sys
 import os

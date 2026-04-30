@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   use_def   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/19 10:24   1.0         use-def chain (reverse slicing)
-"""
-
 import re
 from typing import List, Dict, Set, Tuple, Any
 

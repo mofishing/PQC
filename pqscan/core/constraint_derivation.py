@@ -1,17 +1,3 @@
-"""
-约束派生引擎（Constraint Derivation Engine）
-
-核心问题：
-- 敏感函数 A 的约束：key_bits >= 3072
-- 封装函数 B 的参数：keylen（单位：字节）
-- 参数关系：key_bits = keylen * 8
-- 派生约束：keylen >= 384（反向求解）
-
-复用现有的 ConstraintSolver（自建求解器 + Z3）：
-1. 简单线性约束 → 自建求解器（快速）
-2. 复杂非线性约束 → Z3 SMT 求解器（强大）
-"""
-
 from typing import Dict, Any, List, Optional, Tuple, Union
 from dataclasses import dataclass
 import sys

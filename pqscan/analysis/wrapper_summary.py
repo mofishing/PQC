@@ -1,9 +1,3 @@
-"""
-封装派生架构：Wrapper Summary 数据结构
-
-支持从敏感点（Sink）向外派生封装函数的约束，用于剪枝和入口判定。
-"""
-
 from typing import Dict, List, Optional, Set, Any, Union, Tuple
 from dataclasses import dataclass, field
 from enum import Enum

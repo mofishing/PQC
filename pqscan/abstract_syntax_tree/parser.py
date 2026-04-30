@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   parser.py   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/18 16:49   1.0         get_parser(lang)
-"""
-
 # pqscan/abstract_syntax_tree/parser.py
 from __future__ import annotations
 

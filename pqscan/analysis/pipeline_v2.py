@@ -1,10 +1,3 @@
-"""
-两阶段分析 Pipeline (v2.0)
-
-Phase 1: AST 快速候选提取
-Phase 2: 符号执行精确分析
-"""
-
 import ast
 import os
 import re

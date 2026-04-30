@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   __init__.py
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/18 16:46   1.1         knowledge interface (generalized dispatch + robust symbol/import collection)
-"""
-
 # pqscan/loader/__init__.py
 from pathlib import Path
 from typing import Dict, Any, List, Set, Tuple, Optional

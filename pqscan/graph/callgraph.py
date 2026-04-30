@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   callgraph
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/19 10:22   1.2         Call graph + roots/paths via + path trie
-"""
 from collections import defaultdict, deque
 from typing import Dict, Set, List, Any, Iterable, Optional
 

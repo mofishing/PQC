@@ -1,13 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   navigator.py   
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/10/17 15:38   1.0         AST 语义导航与语言适配
-"""
 
 # pqscan/abstract_syntax_tree/navigator.py
 

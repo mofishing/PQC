@@ -1,14 +1,3 @@
-#!/usr/bin/env python3
-"""
-封装传播器 v3 - 完整版
-
-基于 PropagationGraph 的完整实现，支持：
-1. 参数绑定提取和约束派生
-2. 状态约束传播
-3. 多层封装支持
-4. 约束累积和简化
-"""
-
 from typing import Dict, List, Optional, Any, Set
 from dataclasses import dataclass, field
 

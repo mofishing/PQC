@@ -1,8 +1,3 @@
-"""
-SSA-Based Object State Tracker
-基于 SSA 的对象状态追踪器 - 多语言支持
-"""
-
 from typing import Dict, List, Optional, Any, Set, Tuple
 from dataclasses import dataclass, field
 from enum import Enum

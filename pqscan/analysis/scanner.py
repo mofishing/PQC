@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-"""
-PQScan Two-Pass Scanner
-======================
-
-两阶段扫描架构的核心实现：
-- Phase 1: AST 提取（语法分析）
-- Phase 2: 符号分析（语义分析 + 约束检查）
-"""
-
 import json
 import hashlib
 import re

@@ -1,20 +1,3 @@
-"""
-对象ID管理器：基于分配点（alloc site）的版本化对象追踪
-
-核心思想：
-- ObjectID = (alloc_site, version)
-- 新对象：分配新ID（基于行号/AST节点）
-- 别名：解析到同一对象ID
-- 跨函数：参数绑定到调用者的对象ID
-
-这是 SSA-like 的轻量级实现，不需要完整的 SSA IR。
-
-扩展功能（P0+P1）：
-- 对象状态存储：ObjectID -> state dict
-- 赋值事件处理：process_assignment()
-- 状态读写：write_state(), read_state()
-"""
-
 from typing import Dict, Optional, Set, Tuple, Any, List, Union
 from dataclasses import dataclass, field
 from enum import Enum

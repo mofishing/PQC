@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   matcher.py
-@Contact :   mypandamail@163.com
-@Author  :   mooo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2025/9/18 16:48   1.1         Rule matching (support 'api' or 'match', richer symbol/import matching)
-"""
-
 import re
 from functools import lru_cache
 from typing import List, Dict, Any, Iterable

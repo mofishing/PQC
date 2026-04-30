@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-Report renderers (JSON / Markdown)
-"""
-
 from __future__ import annotations
 
 from typing import List

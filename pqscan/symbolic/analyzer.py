@@ -1,8 +1,3 @@
-"""
-符号执行层：精确参数推导和影响面分析
-整合原 analysis/{dataflow, wrapper, custom} 的功能
-"""
-
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
 import os

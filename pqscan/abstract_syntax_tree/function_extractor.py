@@ -1,8 +1,3 @@
-"""
-函数定义提取增强 - 提取返回表达式和参数用于函数内联
-
-Task 13.2.2: 为SimpleFunctionInliner提供必需的函数元数据
-"""
 
 from typing import Dict, Any, List, Optional
 from .parser import get_parser

@@ -1,31 +1,3 @@
-#!/usr/bin/env python3
-"""
-传播子图（Propagation Subgraph）
-
-实现 callsite 级别的传播分析，构建传播子图并支持高效查询。
-
-核心功能：
-1. Fast Pass: 使用 callsite_table + callers_index 快速构建可达性
-2. Deep Pass: 构建传播子图（prop_edges），记录传播关系
-3. SAT/UNSAT 剪枝：在 callsite 级别判定并剪枝
-4. Parameter-Entry 截断：识别参数入口点并截断传播
-
-传播子图结构：
-- 节点：callsite（函数调用点）
-- 边：传播关系（caller -> callee）
-- 属性：SAT/UNSAT 状态、参数绑定、约束信息
-
-示例：
-  main@10 -> generate_key@20 -> RSA_generate_key@30
-  
-  传播子图：
-    Node(main@10, sat=True, pruned=True)
-    Node(generate_key@20, sat=False, propagate=True)
-    Node(RSA_generate_key@30, sensitive=True)
-    Edge(main@10 -> generate_key@20, param_binding={size: 256})
-    Edge(generate_key@20 -> RSA_generate_key@30, param_binding={bits: size*8})
-"""
-
 from typing import Dict, List, Optional, Set, Tuple, Any
 from dataclasses import dataclass, field
 from enum import Enum

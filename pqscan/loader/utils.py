@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-Shared loader utilities (normalization, matching helpers, JSON comment stripping)
-"""
-
 from __future__ import annotations
 
 import re

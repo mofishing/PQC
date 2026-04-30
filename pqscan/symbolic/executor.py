@@ -1,8 +1,3 @@
-"""
-Symbolic Executor
-符号执行引擎：对候选集进行精确分析
-"""
-
 from typing import Any, Dict, List, Optional, Set
 from ..analysis.candidate import Candidate
 from .schema import (

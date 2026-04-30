@@ -1,16 +1,3 @@
-"""
-PQ-ValueGraph: Unified IR for multi-language analysis
-
-工作流程：
-1. 源码 → Partial SSA (不追求完整 SSA，只需 def-use 关系)
-2. Backward Slicing (从切片准则回溯依赖)
-3. Alias/Pointer (局部 forward slicing 扫描特定指令)
-4. Inter-procedural (CHA 构建调用图，追踪参数)
-5. Sparse Evaluation (只在切片子图上做值传播)
-
-统一的值图表示，支持从不同语言 IR（Go SSA, Jimple, LLVM, AST）转换
-"""
-
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Union, Tuple
 from enum import Enum

@@ -1,10 +1,5 @@
-"""
-PQScan - Post-Quantum Cryptography Security Scanner
-量子安全密码学扫描工具
-"""
-
 __version__ = "0.1.0"
-__author__ = "mooo"
+__author__ = ""
 
 from pathlib import Path
 

@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@File    :   algorithm_mapper.py
-@Contact :   mypandamail@163.com
-@Author  :   moo
-@Modify Time      @Version    @Description
-------------      --------    -----------
-2026/1/4 15:00    1.0         KB-driven algorithm detection (no regex)
-"""
-
 import json
 import pathlib
 from typing import Dict, Any, Optional, List, Tuple

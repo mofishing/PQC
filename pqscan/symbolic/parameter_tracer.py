@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""
-Parameter Tracer: Extract and infer parameters from API calls
-
-负责从 AST 提取的候选调用中推断参数：
-- 从字面量参数中提取 (key_bits, mode, digest_bits)
-- 从符号名称中语义推断 (EVP_aes_128_cbc → key_bits=128, mode=CBC)
-- Java 特殊处理: 解析 transformation 字符串 ("AES/CBC/PKCS5Padding")
-- 变量追踪: 解析变量引用和表达式 (keySize → 128)
-"""
-
 from typing import Dict, Any, List, Optional
 from .variable_tracker import VariableTracker
 import re

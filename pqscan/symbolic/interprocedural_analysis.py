@@ -1,14 +1,3 @@
-#!/usr/bin/env python3
-"""
-过程间分析增强（Interprocedural Analysis Enhancement）
-
-为 ValueGraph 添加完整的过程间分析支持：
-1. 参数传递追踪
-2. 返回值传播
-3. 调用上下文敏感分析
-4. 跨函数值流分析
-"""
-
 from typing import Dict, List, Optional, Set, Tuple, Any
 from dataclasses import dataclass, field
 

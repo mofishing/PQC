@@ -1,8 +1,3 @@
-"""
-pqscan.kb — Knowledge Base 入口模块
-
-提供统一的 KB 加载接口，供 scan_candidates() 等 Phase 1 函数使用。
-"""
 from __future__ import annotations
 
 from pathlib import Path

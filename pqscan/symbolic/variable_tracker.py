@@ -1,19 +1,3 @@
-#!/usr/bin/env python3
-"""
-Variable Tracker: AST-based variable value tracking
-
-纯 AST 实现的变量追踪，替代正则表达式：
-1. 常量追踪：#define KEY_SIZE 128, const int KEY_SIZE = 128
-2. 变量追踪：int keySize = 128; AES_set_key(..., keySize, ...)
-3. 跨函数追踪：通过 ValueGraph 的数据流分析
-4. 表达式求值：keySize * 8, 16 << 3
-
-设计原则：
-- 纯 AST，无正则
-- 语言无关（基于统一的 AST 结构）
-- 与 ObjectStateTracker 配合（对象状态追踪）
-"""
-
 from typing import Dict, Any, List, Optional, Set
 
 

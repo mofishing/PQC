@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-"""
-Object State Tracker: Track hidden state in ctx/receiver objects
-
-用于追踪面向对象和上下文对象中的隐藏状态，解决如下场景：
-1. Java: KeyGenerator keyGen = KeyGenerator.getInstance("AES"); keyGen.init(128);
-2. C: EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new(); EVP_EncryptInit_ex(ctx, EVP_aes_256_gcm(), ...);
-3. Python: cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
-"""
-
 from typing import Dict, Any, List, Optional, Set
 from dataclasses import dataclass, field
 from enum import Enum

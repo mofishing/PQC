@@ -1,27 +1,3 @@
-"""
-简单函数内联器 - 纯计算函数的内联求值
-
-职责：
-- 检测纯计算函数（单个 return，无副作用）
-- 提取函数定义和返回表达式
-- 执行参数替换（符号替换）
-- 使用 Z3 求值替换后的表达式
-
-限制：
-- 仅支持单个 return 语句
-- 仅支持算术表达式（无控制流）
-- 不支持递归调用
-- 不支持副作用（IO、全局变量修改等）
-
-示例：
-    def calc_keysize(security_level):
-        return security_level * 16
-    
-    bits = calc_keysize(64)  
-    → 内联为: bits = 64 * 16
-    → Z3求值: bits = 1024
-"""
-
 from typing import Optional, Dict, Any, List
 import re
 

@@ -1,8 +1,3 @@
-## policy.org.yaml（测试时临时去掉）
-#org_policy:
-#  transitional_whitelist:
-#    algorithms: []
-
 version: 1
 org_policy:
   allow_hybrid: true

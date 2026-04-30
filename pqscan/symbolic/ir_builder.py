@@ -1,8 +1,3 @@
-"""
-SSA/IR Builder
-从 AST 构建 SSA (Static Single Assignment) 形式的中间表示
-"""
-
 from typing import Any, Dict, List, Optional
 from ..symbolic.schema import (
     SSAFunction, SSABlock, SSAInstruction, SSAValue,
